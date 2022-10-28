@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Poem"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/etPoemTopic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text= "topic"/>
+
+
+
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etUpdatePoem"
+        app:layout_constraintTop_toBottomOf="@id/etPoemTopic"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvPoem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Poem"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="22sp" />
+
+    <EditText
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPoem"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/etUpdatePoem"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp" />
+
+
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/etUpdatePoem"
+        app:layout_constraintEnd_toStartOf="@id/tvCancel"
+        android:id="@+id/tvUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="UPDATE"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold" />
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/etUpdatePoem"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:text="CANCEL"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
