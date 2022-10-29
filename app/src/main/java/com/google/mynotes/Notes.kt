@@ -27,6 +27,16 @@ class Notes : AppCompatActivity() {
         binding =  ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        binding?.tvabout?.setOnClickListener {
+            val intent = Intent(this@Notes,About::class.java)
+            startActivity(intent)
+        }
+
+        binding?.tvSetting?.setOnClickListener {
+            val intent=Intent(this@Notes,Setting::class.java)
+            startActivity(intent)
+        }
+
 
 
         val NotesDao = (application as NotesApp).db.NotesDao()
