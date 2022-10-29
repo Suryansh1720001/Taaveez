@@ -177,7 +177,7 @@ class Notes : AppCompatActivity() {
 
 
     private fun updateRecordDialog(id:Int,NotesDao: NotesDao){
-        val updateDialog = Dialog(this, com.google.android.material.R.style.Theme_AppCompat_DialogWhenLarge)
+        val updateDialog = Dialog(this)
         updateDialog.setCancelable(false)
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
@@ -191,7 +191,7 @@ class Notes : AppCompatActivity() {
             }
 
         }
-        binding.tvUpdate.setOnClickListener{
+        binding.btnUpdatePoem.setOnClickListener{
             val Topic = binding.etPoemTopic.text.toString()
             val Poem = binding.etUpdatePoem.text.toString()
             if(Topic.isNotEmpty() && Poem.isNotEmpty()){
@@ -205,7 +205,7 @@ class Notes : AppCompatActivity() {
             }
         }
 
-        binding.tvCancel.setOnClickListener {
+        binding.btnCancelPoem.setOnClickListener {
             updateDialog.dismiss()
         }
         updateDialog.show()
