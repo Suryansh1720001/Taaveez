@@ -7,6 +7,18 @@
     tools:context=".MainActivity">
 
 
+    <FrameLayout
+        android:id="@+id/flheading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/front_ui"
+        android:foregroundGravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/ivBook"
         android:layout_width="416dp"
@@ -22,10 +34,11 @@
         android:id="@+id/tvNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:text="Notes"
+        android:fontFamily="serif"
+        android:text="Write Poem"
         android:textSize="60sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

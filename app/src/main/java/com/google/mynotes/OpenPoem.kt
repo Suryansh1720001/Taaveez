@@ -26,7 +26,7 @@ class OpenPoem : AppCompatActivity() {
         binding = ActivityOpenPoemBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-  
+
 
 
 
