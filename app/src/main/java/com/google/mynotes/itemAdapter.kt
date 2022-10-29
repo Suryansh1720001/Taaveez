@@ -18,6 +18,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
                    private val updateListener:(id:Int)->Unit,
                    private val deleteListener:(id:Int)->Unit,
                   private val OpenListener:(id:Int)->Unit,
+                  private val ShareListener:(id:Int)->Unit,
 )
     :RecyclerView.Adapter<itemAdapter.ViewHolder>() {
 
@@ -28,6 +29,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete
         val llTopic = binding.llTopic
+        val  ivShare=         binding.ivShare
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -54,6 +56,9 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         }
         holder.llTopic.setOnClickListener{
             OpenListener.invoke(item.id)
+        }
+        holder.ivShare.setOnClickListener{
+            ShareListener.invoke(item.id)
         }
     }
 

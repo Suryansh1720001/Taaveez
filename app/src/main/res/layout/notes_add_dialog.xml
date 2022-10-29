@@ -57,7 +57,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Write here ... "
         android:id="@+id/etNotes"
@@ -67,14 +67,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPoem"
-        app:layout_constraintBottom_toBottomOf="@id/llbutton"
+        app:layout_constraintBottom_toTopOf="@id/llbutton"
 
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idnotes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="230dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="15sp" />

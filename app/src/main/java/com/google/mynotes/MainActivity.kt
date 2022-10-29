@@ -9,8 +9,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        supportActionBar!!.hide()
         val thread: Thread = object : Thread() {
             override fun run() {
                 try {

@@ -2,6 +2,7 @@ package com.google.mynotes
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -35,7 +36,7 @@ class Notes : AppCompatActivity() {
 
 
         lifecycleScope.launch{
-            NotesDao.fetchAllEmployees().collect{
+            NotesDao.fetchAllNotes().collect{
                 val list = ArrayList(it)
                 setupListOfDateINtoRecycleVIew(list,NotesDao)
             }
@@ -100,6 +101,10 @@ class Notes : AppCompatActivity() {
                     OpenId ->
                     openNotes(OpenId,NotesDao)
                 },
+                {
+                        ShareId ->
+                    ShareNotes(ShareId,NotesDao)
+                },
             )
             binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
             binding?.rvItemsPoem?.adapter = itemAdapter
@@ -111,16 +116,50 @@ class Notes : AppCompatActivity() {
         }
     }
 
+    private fun ShareNotes(id: Int, NotesDao: NotesDao) {
+
+        var Topic :String = "hs"
+        var PoemDes =String()
+
+        lifecycleScope.launch{
+            NotesDao.fetchNotesById(id).collect {
+                if (it != null) {
+                    Topic = it.Topic
+                    PoemDes =it.Poem
+
+                    Toast.makeText(applicationContext,"${Topic} and ${PoemDes} and",Toast.LENGTH_LONG).show()
+                    val sendIntent = Intent()
+                    sendIntent.type = "text/plain"
+                    sendIntent.action = Intent.ACTION_SEND
+                    val body = "The Poem Topic is = ${Topic}\n"+
+                            "--------------------------------\n"+
+                            "${PoemDes}"
+                    sendIntent.putExtra(Intent.EXTRA_TEXT,body)
+                    Intent.createChooser(sendIntent, "Share using")
+                    startActivity(sendIntent)
+                }
+            }
+
+        }
 
 
-    private fun openNotes(id:Int,employeeDao: NotesDao){
+
+//        Toast.makeText(applicationContext,"${Topic} and ${PoemDes} and",Toast.LENGTH_LONG).show()
+
+
+
+
+    }
+
+
+    private fun openNotes(id:Int,NotesDao: NotesDao){
         val OpenDialog = Dialog(this)
         OpenDialog.setCancelable(false)
         val binding = OpenNotesBinding.inflate(layoutInflater)
         OpenDialog.setContentView(binding.root)
 
         lifecycleScope.launch{
-            employeeDao.fetchEmployeeById(id).collect {
+            NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.tvPoemTopic.setText(it.Topic)
                     binding.tvPoemDes.setText(it.Poem)
@@ -137,14 +176,14 @@ class Notes : AppCompatActivity() {
     }
 
 
-    private fun updateRecordDialog(id:Int,employeeDao: NotesDao){
+    private fun updateRecordDialog(id:Int,NotesDao: NotesDao){
         val updateDialog = Dialog(this, com.google.android.material.R.style.Theme_AppCompat_DialogWhenLarge)
         updateDialog.setCancelable(false)
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
         lifecycleScope.launch{
-            employeeDao.fetchEmployeeById(id).collect {
+            NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
                     binding.etUpdatePoem.setText(it.Poem)
@@ -157,7 +196,7 @@ class Notes : AppCompatActivity() {
             val Poem = binding.etUpdatePoem.text.toString()
             if(Topic.isNotEmpty() && Poem.isNotEmpty()){
                 lifecycleScope.launch{
-                    employeeDao.update(NotesEntity(id,Topic,Poem))
+                    NotesDao.update(NotesEntity(id,Topic,Poem))
                     Toast.makeText(applicationContext,"Record Updated",Toast.LENGTH_LONG).show()
                     updateDialog.dismiss()
                 }

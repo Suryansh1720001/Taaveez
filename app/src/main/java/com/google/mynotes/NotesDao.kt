@@ -19,10 +19,10 @@ interface NotesDao {
     suspend fun delete(NotesEntity : NotesEntity)
 
     @Query("select * from `Poem-table`")
-    fun fetchAllEmployees(): Flow<List<NotesEntity>>
+    fun fetchAllNotes(): Flow<List<NotesEntity>>
 
 
     @Query("select * from `Poem-table` where id=:id")
-    fun fetchEmployeeById(id:Int):Flow<NotesEntity>
+    fun fetchNotesById(id:Int):Flow<NotesEntity>
 
 }
