@@ -29,7 +29,7 @@ class Notes : AppCompatActivity() {
 
 
 
-        val NotesDao = (application as NotesApp).db.employeeDao()
+        val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
             NewPoemDialog(NotesDao)
         }
@@ -153,26 +153,36 @@ class Notes : AppCompatActivity() {
 
 
     private fun openNotes(id:Int,NotesDao: NotesDao){
-        val OpenDialog = Dialog(this)
-        OpenDialog.setCancelable(false)
-        val binding = OpenNotesBinding.inflate(layoutInflater)
-        OpenDialog.setContentView(binding.root)
+//        val OpenDialog = Dialog(this)
+//        OpenDialog.setCancelable(false)
+//        val binding = OpenNotesBinding.inflate(layoutInflater)
+//        OpenDialog.setContentView(binding.root)
+        var Topic = ""
+        var PoemDes = ""
 
         lifecycleScope.launch{
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
-                    binding.tvPoemTopic.setText(it.Topic)
-                    binding.tvPoemDes.setText(it.Poem)
+                    Topic = it.Topic
+                    PoemDes = it.Poem
+
+                    val intent = Intent(this@Notes,OpenPoem::class.java)
+                    intent.putExtra(Constants.POEM_TOPIC,Topic)
+                    intent.putExtra(Constants.POEM_DES,PoemDes)
+                    startActivity(intent)
+
+//                    binding.tvPoemTopic.setText(it.Topic)
+//                    binding.tvPoemDes.setText(it.Poem)
                 }
             }
 
         }
 
-
-        binding.btnClose.setOnClickListener {
-           OpenDialog.dismiss()
-        }
-        OpenDialog.show()
+//
+//        binding.btnClose.setOnClickListener {
+//           OpenDialog.dismiss()
+//        }
+//        OpenDialog.show()
     }
 
 
