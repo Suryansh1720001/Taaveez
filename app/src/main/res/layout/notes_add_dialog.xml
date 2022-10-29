@@ -74,7 +74,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idnotes"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="200dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:textSize="15sp" />
