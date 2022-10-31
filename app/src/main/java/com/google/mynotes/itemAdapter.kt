@@ -1,18 +1,11 @@
 package com.google.mynotes
 
-import android.app.Dialog
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.GridLayout
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.mynotes.databinding.ItemPoemBinding
-import kotlinx.coroutines.launch
+
 
 class itemAdapter(private val items: ArrayList<NotesEntity>,
                    private val updateListener:(id:Int)->Unit,
@@ -29,7 +22,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete
         val llTopic = binding.llTopic
-        val  ivShare=         binding.ivShare
+        val  ivShare= binding.ivShare
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

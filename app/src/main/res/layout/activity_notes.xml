@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Notes">
-
-
-
+    
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,7 +20,7 @@
         android:id="@+id/tvNotesHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Poem"
+        android:text="@string/Poem"
         android:textSize="40sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
@@ -71,48 +69,52 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="@id/flbottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_add"
         android:tint="@color/white" />
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/flbottom"
-        android:background="@drawable/bottom_bg">
 
-        <TextView
-            android:id="@+id/tvSetting"
-            android:layout_width="wrap_content"
+
+
+        <FrameLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:text="Setting"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:id="@+id/flbottom"
+            android:background="@drawable/bottom_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+            <TextView
+                android:id="@+id/tvSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="60dp"
+                android:text="@string/setting"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="25sp" />
 
-        <TextView
+            <TextView
             android:id="@+id/tvabout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_gravity="right"
-            android:text="About"
-            android:textColor="@color/white"
+                android:layout_marginEnd="60dp"
+          android:layout_gravity="right"
+            android:text="Abouts"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="25sp" />
 
-    </FrameLayout>
-
+        </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

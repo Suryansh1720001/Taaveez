@@ -3,12 +3,6 @@ package com.google.mynotes
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.mynotes.databinding.ActivityNotesBinding
 import com.google.mynotes.databinding.ActivityOpenPoemBinding
 import com.google.mynotes.databinding.OpenNotesBinding
 import kotlinx.coroutines.launch

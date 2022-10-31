@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mynotes.databinding.ActivityNotesBinding
-import com.google.mynotes.databinding.OpenNotesBinding
 import com.google.mynotes.databinding.UpdateNotesBinding
 import kotlinx.coroutines.launch
 
@@ -22,8 +21,9 @@ class Notes : AppCompatActivity() {
     private var binding: ActivityNotesBinding ?= null
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
+
         binding =  ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 

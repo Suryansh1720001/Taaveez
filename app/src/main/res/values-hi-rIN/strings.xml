@@ -1,0 +1,10 @@
+
+<resources>
+    <string name="app_name">मेरी टिप्पणियाँ</string>
+    <string name="Poem">कविता</string>
+    <string name="setting">स्थापना</string>
+    <string name="ChooseLanguage">भाषा चुनें</string>
+    <string name="back">पीछे</string>
+    <string name="about">के बारे में</string>
+
+</resources>

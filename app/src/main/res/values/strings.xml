@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Notes</string>
+    <string name="Poem">Poem</string>
+    <string name="setting">Setting</string>
+    <string name="ChooseLanguage">Choose Language</string>
+    <string name="back">Back</string>
+    <string name="about">About</string>
+
 </resources>
