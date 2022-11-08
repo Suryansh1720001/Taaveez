@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -14,6 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mynotes.databinding.ActivityNotesBinding
 import com.google.mynotes.databinding.UpdateNotesBinding
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Notes : AppCompatActivity() {
 
@@ -26,6 +30,8 @@ class Notes : AppCompatActivity() {
 
         binding =  ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        setSupportActionBar(binding?.toolbarExercise)
 
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes,About::class.java)
@@ -69,6 +75,7 @@ class Notes : AppCompatActivity() {
 
 
 
+
         cancelBtn.setOnClickListener {
             PoemDialog.dismiss()
 
@@ -78,10 +85,23 @@ class Notes : AppCompatActivity() {
             val itemTopic: String = itemTopic.text.toString()
             val PoemDes: String = PoemDes.text.toString()
 
+
+
+            val c = Calendar.getInstance()
+            val dateTime= c.time
+            Log.e("Date: ",""+dateTime)
+            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+            val date = sdf.format(dateTime)
+            Log.e("Formatted Date: ",""+date)
+
+
+
+
+
             if(itemTopic.isNotEmpty() && PoemDes.isNotEmpty()){
              lifecycleScope.launch{
-            NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes))
-                 Toast.makeText(applicationContext,"Record saved",Toast.LENGTH_LONG).show()
+            NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
+                 Toast.makeText(applicationContext,getString(R.string.Record_saved),Toast.LENGTH_LONG).show()
              }
                 PoemDialog.dismiss()
             }else{
@@ -116,6 +136,7 @@ class Notes : AppCompatActivity() {
                     ShareNotes(ShareId,NotesDao)
                 },
             )
+
             binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
             binding?.rvItemsPoem?.adapter = itemAdapter
             binding?.rvItemsPoem?.visibility = View.VISIBLE
@@ -154,10 +175,6 @@ class Notes : AppCompatActivity() {
 
 
 
-//        Toast.makeText(applicationContext,"${Topic} and ${PoemDes} and",Toast.LENGTH_LONG).show()
-
-
-
 
     }
 
@@ -181,18 +198,12 @@ class Notes : AppCompatActivity() {
                     intent.putExtra(Constants.POEM_DES,PoemDes)
                     startActivity(intent)
 
-//                    binding.tvPoemTopic.setText(it.Topic)
-//                    binding.tvPoemDes.setText(it.Poem)
                 }
             }
 
         }
 
-//
-//        binding.btnClose.setOnClickListener {
-//           OpenDialog.dismiss()
-//        }
-//        OpenDialog.show()
+
     }
 
 
@@ -214,9 +225,18 @@ class Notes : AppCompatActivity() {
         binding.btnUpdatePoem.setOnClickListener{
             val Topic = binding.etPoemTopic.text.toString()
             val Poem = binding.etUpdatePoem.text.toString()
+
+                val c = Calendar.getInstance()
+                val dateTime= c.time
+                Log.e("Date: ",""+dateTime)
+                val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+                val date = sdf.format(dateTime)
+                Log.e("Formatted Date: ",""+date)
+
+
             if(Topic.isNotEmpty() && Poem.isNotEmpty()){
                 lifecycleScope.launch{
-                    NotesDao.update(NotesEntity(id,Topic,Poem))
+                    NotesDao.update(NotesEntity(id,Topic,Poem,date))
                     Toast.makeText(applicationContext,"Record Updated",Toast.LENGTH_LONG).show()
                     updateDialog.dismiss()
                 }
@@ -239,6 +259,7 @@ class Notes : AppCompatActivity() {
 
 //        builder.setIcon(android)
 
+
         builder.setPositiveButton("Yes"){
                 dialogInterface,_ ->
             lifecycleScope.launch{
@@ -258,7 +279,8 @@ class Notes : AppCompatActivity() {
         alertDialog.show()
     }
 
-    }
+
+}
 
 
 

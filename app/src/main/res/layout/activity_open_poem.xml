@@ -22,7 +22,7 @@
             android:id="@+id/tvTopic"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            tools:text="Poem"
+            tools:text="@string/Poem"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
@@ -49,6 +49,7 @@
         >
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/tvPoemDes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,18 +62,22 @@
 
     </ScrollView>
 
+
     <Button
         android:id="@+id/btnClose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:text="Close"
-        android:backgroundTint="@color/blue_shade_2"
+        android:layout_marginBottom="20dp"
+        android:text="@string/back"
+        android:padding="12dp"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_margin="12dp"
         />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

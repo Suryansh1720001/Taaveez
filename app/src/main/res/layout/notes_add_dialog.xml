@@ -9,7 +9,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Topic"
+        android:hint="@string/Topic"
         android:id="@+id/etNotesTopic"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/black"
@@ -44,7 +44,7 @@
         android:id="@+id/tvPoem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Poem"
+        android:text="@string/Poem"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
@@ -59,7 +59,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Write here ... "
+        android:hint="@string/write_here"
         android:id="@+id/etNotes"
         android:textColorHint="@color/black"
         app:hintTextColor="@color/black"
@@ -102,7 +102,7 @@
             android:layout_margin="8dp"
             android:id="@+id/idBtnCancel"
             android:background="@drawable/custom_button"
-            android:text="Cance"
+            android:text="@string/cancel"
             android:textAllCaps="false"
             />
         <Button
@@ -112,7 +112,7 @@
             android:layout_margin="8dp"
             android:id="@+id/idBtnAdd"
             android:background="@drawable/custom_button"
-            android:text="Add"
+            android:text="@string/add"
             android:textAllCaps="false"
             />
 

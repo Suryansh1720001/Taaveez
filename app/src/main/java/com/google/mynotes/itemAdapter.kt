@@ -1,10 +1,14 @@
 package com.google.mynotes
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.mynotes.databinding.ItemPoemBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class itemAdapter(private val items: ArrayList<NotesEntity>,
@@ -23,6 +27,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val ivDelete = binding.ivDelete
         val llTopic = binding.llTopic
         val  ivShare= binding.ivShare
+        val tvDate = binding.tvDate
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,12 +40,12 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val item = items[position]
 
         holder.tvTopic.text = item.Topic
-//        holder.tvEmail.text = item.email
 
 
 
 
-//
+        holder.tvDate.text = item.Date
+
         holder.ivEdit.setOnClickListener{
             updateListener.invoke(item.id)
         }
@@ -53,6 +58,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         holder.ivShare.setOnClickListener{
             ShareListener.invoke(item.id)
         }
+
     }
 
     override fun getItemCount(): Int {

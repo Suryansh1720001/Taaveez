@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">मेरी टिप्पणियाँ</string>
+    <string name="app_name">मेरी कविता</string>
     <string name="Poem">कविता</string>
     <string name="setting">स्थापना</string>
     <string name="ChooseLanguage">भाषा चुनें</string>
     <string name="back">पीछे</string>
     <string name="about">के बारे में</string>
+    <string name="no_data_available">कोई डेटा मौजूद नहीं</string>
+    <string name="close">बंद करना</string>
+    <string name="write_poem">कविता लिखें</string>
+    <string name="Theme">थीम</string>
+    <string name="Topic">विषय</string>
+    <string name="write_here">यहाँ लिखें ...</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="add">जोड़ें</string>
+    <string name="update">अपडेट करें</string>
+    <string name="Record_saved">Record saved</string>
 
 </resources>
