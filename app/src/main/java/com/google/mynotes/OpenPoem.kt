@@ -28,11 +28,8 @@ class OpenPoem : AppCompatActivity() {
         binding?.tvPoemDes?.setText(PoemDes)
 
         binding?.btnClose?.setOnClickListener {
-            finish()
+            onBackPressed()
         }
-
-
-
 
 
 

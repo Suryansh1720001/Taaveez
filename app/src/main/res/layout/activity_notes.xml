@@ -4,18 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3C4048"
     android:orientation="vertical"
     tools:context=".Notes">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarExercise"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        />
 
 
     <FrameLayout
@@ -38,21 +31,24 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         />
 </FrameLayout>
-
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvItemsPoem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/flbottom"
         app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@id/flheading"
+        app:layout_constraintVertical_bias="0.016"
         tools:visibility="visible" />
 
     <TextView
@@ -64,7 +60,7 @@
         android:gravity="center"
         android:fontFamily="casual"
         android:text="@string/no_data_available"
-        android:textColor="#212121"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="visible"
         tools:visibility="visible" />
@@ -83,8 +79,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#088ed7"
         android:src="@drawable/ic_add"
-        android:tint="@color/white" />
+        android:background="@color/white"
+        />
 
 
 
@@ -108,7 +106,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="60dp"
                 android:text="@string/setting"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="25sp" />
 
@@ -121,7 +119,7 @@
                 android:layout_marginEnd="60dp"
           android:layout_gravity="right"
             android:text="@string/about"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="25sp" />
 

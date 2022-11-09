@@ -12,7 +12,7 @@ class About : AppCompatActivity() {
         setContentView(binding?.root)
 
 
-        binding?.tvAbout?.setText("This is the Poem application in which you can store your application.")
+        binding?.tvAbout?.setText(getString(R.string.about_poem))
 
         binding?.btnAboutBack?.setOnClickListener {
             finish()

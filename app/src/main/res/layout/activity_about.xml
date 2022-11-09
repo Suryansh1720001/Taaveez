@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3C4048"
     tools:context=".About">
 
 
@@ -44,6 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"
         tools:text="About"
+        android:textColor="@color/white"
         android:layout_margin="12dp"
         android:padding="10dp"
         />

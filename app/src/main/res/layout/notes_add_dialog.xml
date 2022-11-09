@@ -1,33 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
+    android:layout_gravity="center"
 
     >
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/Topic"
-        android:id="@+id/etNotesTopic"
-        android:textColorHint="@color/black"
-        app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#3C4048"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#0f1521"
+                android:layout_marginBottom="8dp"
+                >
+
+            <TextView
+                android:id="@+id/tvPoem"
+                android:text="@string/add_the_poem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                />
+            </LinearLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etNotesTopic"
+        android:layout_margin="5dp"
+        android:hint="@string/Topic"
+        android:padding="5dp"
+        android:textColorHint="@color/black"
+        app:hintTextColor="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
             android:textColor="@color/black"
+
             android:textColorHint="@color/black"
-            android:textSize="15sp"
-            />
+            android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="@string/Topic"-->
+<!--        android:id="@+id/etNotesTopic"-->
+<!--        android:textColorHint="@color/black"-->
+<!--        app:hintTextColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        >-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/idTopic"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textColorHint="@color/black"-->
+<!--            android:textSize="15sp"-->
+<!--            />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
 
 <!--    <EditText-->
 <!--        android:layout_width="0dp"-->
@@ -40,89 +100,94 @@
 <!--        />-->
 
 
-    <TextView
-        android:id="@+id/tvPoem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Poem"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNotesTopic"
 
-        />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
+                android:layout_marginTop="20dp"
+               android:layout_margin="8dp"
+                android:id="@+id/etNotes"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/idnotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:textColor="@color/black"
+                    android:hint="@string/write_here"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/write_here"
-        android:id="@+id/etNotes"
-        android:textColorHint="@color/black"
-        app:hintTextColor="@color/black"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPoem"
-        app:layout_constraintBottom_toTopOf="@id/llbutton"
 
-        >
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/etNotes"-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:hint="@string/write_here"-->
+<!--                android:padding="5dp"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                app:hintTextColor="@color/black">-->
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idnotes"
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/idnotes"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:inputType="text"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textColorHint="@color/black"-->
+<!--                    android:textSize="14sp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+
+        <LinearLayout
+            android:id="@+id/llbutton"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="15sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/llbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_margin="5dp"
-        app:layout_constraintTop_toBottomOf="@id/etNotes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
-        <Button
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:id="@+id/idBtnCancel"
-            android:background="@drawable/custom_button"
-            android:text="@string/cancel"
-            android:textAllCaps="false"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:id="@+id/idBtnAdd"
-            android:background="@drawable/custom_button"
-            android:text="@string/add"
-            android:textAllCaps="false"
-            />
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/idBtnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="@string/cancel"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/idBtnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="@string/add"
+                android:textAllCaps="false" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+</LinearLayout>
 
 
 
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

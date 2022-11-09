@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3C4048"
     tools:context=".Setting">
 
     <FrameLayout
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content"
             android:text="@string/ChooseLanguage"
             android:id="@+id/chooseLanguage"
+            android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
             />
@@ -71,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@id/llLanguage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
         android:padding="30dp"
         android:text="@string/Theme"
         android:textStyle="bold"

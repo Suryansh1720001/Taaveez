@@ -31,7 +31,7 @@ class Notes : AppCompatActivity() {
         binding =  ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        setSupportActionBar(binding?.toolbarExercise)
+
 
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes,About::class.java)
@@ -158,7 +158,6 @@ class Notes : AppCompatActivity() {
                     Topic = it.Topic
                     PoemDes =it.Poem
 
-                    Toast.makeText(applicationContext,"${Topic} and ${PoemDes} and",Toast.LENGTH_LONG).show()
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
