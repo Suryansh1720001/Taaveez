@@ -73,7 +73,19 @@
             />
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/iv_update_info"
+            android:id="@+id/iv_update"
+            tools:visibility="visible"
+            android:visibility="visible"
+            android:layout_marginBottom="5dp"
+            />
+
+
+        <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/idPoemTopic"

@@ -42,9 +42,11 @@
                 />
             </LinearLayout>
 
+
+
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="190dp"
                 android:layout_margin="5dp"
                 android:src="@drawable/iv_add_image"
                 />
