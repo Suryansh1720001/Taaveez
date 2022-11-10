@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Poems</string>
+    <string name="app_name">Taaveez</string>
     <string name="Poem">Poem</string>
     <string name="setting">Setting</string>
     <string name="ChooseLanguage">Choose Language</string>
@@ -18,5 +18,5 @@
     <string name="add_the_poem">Add The Poem</string>
     <string name="update_poem">Update Poem</string>
     <string name="about_poem">This is the Poem application in which you can save your poem easily and in a very efficient way. You can add the poem by simple pressing the add icon in right bottom and then write poem with its topic. You can also update the poem if you want and also share that with your friends and family. You can also check out the past date where you saved your poem.</string>
-
+    <string name="taaveez">Taaveez</string>
 </resources>

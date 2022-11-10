@@ -141,9 +141,12 @@ class Notes : AppCompatActivity() {
             binding?.rvItemsPoem?.adapter = itemAdapter
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
+            binding?.ivNoData?.visibility =View.GONE
         }else{
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
+            binding?.ivNoData?.visibility =View.VISIBLE
+
         }
     }
 

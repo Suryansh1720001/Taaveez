@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">मेरी कविता</string>
+    <string name="app_name">Taaveez</string>
     <string name="Poem">कविता</string>
     <string name="setting">स्थापना</string>
     <string name="ChooseLanguage">भाषा चुनें</string>
@@ -19,6 +19,6 @@
     <string name="add_the_poem">कवित जोड़ें</string>
     <string name="update_poem">कवित अपडेट करें</string>
     <string name="about_poem">यह कविता एप्लिकेशन है जिसमें आप अपनी कविता को आसानी से और बहुत ही कुशल तरीके से सहेज सकते हैं। आप दाहिनी ओर ऐड आइकन को साधारण रूप से दबाकर कविता जोड़ सकते हैं और फिर उसके विषय के साथ कविता लिख ​​​​सकते हैं। आप चाहें तो कविता को अपडेट भी कर सकते हैं और इसे अपने दोस्तों और परिवार के साथ साझा भी कर सकते हैं। आप पिछली तारीख भी देख सकते हैं जहां आपने अपनी कविता को सहेजा था।</string>
-
+    <string name="taaveez">Taaveez</string>
 
 </resources>

@@ -24,7 +24,7 @@
         android:id="@+id/tvNotesHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Poem"
+        android:text="@string/taaveez"
         android:textSize="40sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
@@ -48,23 +48,51 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@id/flheading"
-        app:layout_constraintVertical_bias="0.016"
+        app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 
-    <TextView
+    <LinearLayout
+
+        android:id="@+id/llnoData"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_noData"
         app:layout_constraintTop_toBottomOf="@id/flheading"
-        app:layout_constraintBottom_toTopOf="@id/flbottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+
+
+        >
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:src="@drawable/iv_no_data"
+        android:id="@+id/iv_noData"
+        tools:visibility="visible"
+        android:visibility="visible"
+        android:layout_marginBottom="5dp"
+        />
+
+
+    <TextView
         android:id="@+id/tvNoDataAvailable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:fontFamily="casual"
+        android:gravity="center"
         android:text="@string/no_data_available"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="visible"
-        tools:visibility="visible" />
+        android:textStyle="bold"
 
+        tools:visibility="visible" />
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/idFABAdd"
