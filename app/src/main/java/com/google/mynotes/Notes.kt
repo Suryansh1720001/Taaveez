@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mynotes.databinding.ActivityNotesBinding
+import com.google.mynotes.databinding.DeleteItemBinding
 import com.google.mynotes.databinding.UpdateNotesBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -274,36 +275,67 @@ class Notes : AppCompatActivity() {
             updateDialog.show()
         }
 
+//
+//        private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle("Delete Record")
+//            builder.setIcon(android.R.drawable.ic_dialog_alert)
+//
+////        builder.setIcon(android)
+//
+//
+//            builder.setPositiveButton("Yes") { dialogInterface, _ ->
+//                lifecycleScope.launch {
+//                    employeeDao.delete(NotesEntity(id))
+//                    Toast.makeText(applicationContext,
+//                        "Record deleted successfully",
+//                        Toast.LENGTH_LONG).show()
+//                }
+//                dialogInterface.dismiss()
+//            }
+//
+//            builder.setNegativeButton("No") { dialogInterface, which ->
+//                dialogInterface.dismiss()
+//            }
+//
+//            val alertDialog: AlertDialog = builder.create()
+//            alertDialog.setCancelable(false)
+//            alertDialog.show()
+//        }
+//
 
-        private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Delete Record")
-            builder.setIcon(android.R.drawable.ic_dialog_alert)
 
-//        builder.setIcon(android)
+    private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
+
+        val deleteDialog = Dialog(this)
+        deleteDialog.setCancelable(false)
+        val binding = DeleteItemBinding.inflate(layoutInflater)
+        deleteDialog.setContentView(binding.root)
 
 
-            builder.setPositiveButton("Yes") { dialogInterface, _ ->
-                lifecycleScope.launch {
+
+        binding?.btnDeleteNo?.setOnClickListener {
+            deleteDialog.dismiss()
+        }
+        binding?.btnDeleteYes?.setOnClickListener {
+            lifecycleScope.launch {
                     employeeDao.delete(NotesEntity(id))
                     Toast.makeText(applicationContext,
                         "Record deleted successfully",
                         Toast.LENGTH_LONG).show()
                 }
-                dialogInterface.dismiss()
-            }
+                deleteDialog.dismiss()
 
-            builder.setNegativeButton("No") { dialogInterface, which ->
-                dialogInterface.dismiss()
-            }
-
-            val alertDialog: AlertDialog = builder.create()
-            alertDialog.setCancelable(false)
-            alertDialog.show()
         }
+
+        deleteDialog.show()
+
 
 
     }
+
+
+}
 
 
 
