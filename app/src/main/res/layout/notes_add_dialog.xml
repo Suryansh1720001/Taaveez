@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="#0f1521"
+                android:background="@color/black"
                 android:layout_marginBottom="8dp"
                 >
 
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_margin="5dp"
-                android:src="@drawable/iv_add_image"
+                android:src="@drawable/iv_add_poem"
                 />
 
             <com.google.android.material.textfield.TextInputLayout

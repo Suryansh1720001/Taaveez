@@ -22,27 +22,26 @@ import kotlin.collections.ArrayList
 class Notes : AppCompatActivity() {
 
 
-    private var binding: ActivityNotesBinding ?= null
+    private var binding: ActivityNotesBinding? = null
 
 
-    override fun onCreate(savedInstanceState: Bundle?)  {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding =  ActivityNotesBinding.inflate(layoutInflater)
+        binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
 
 
         binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes,About::class.java)
+            val intent = Intent(this@Notes, About::class.java)
             startActivity(intent)
         }
 
         binding?.tvSetting?.setOnClickListener {
-            val intent=Intent(this@Notes,Setting::class.java)
+            val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
         }
-
 
 
         val NotesDao = (application as NotesApp).db.NotesDao()
@@ -51,21 +50,20 @@ class Notes : AppCompatActivity() {
         }
 
 
-        lifecycleScope.launch{
-            NotesDao.fetchAllNotes().collect{
+        lifecycleScope.launch {
+            NotesDao.fetchAllNotes().collect {
                 val list = ArrayList(it)
-                setupListOfDateINtoRecycleVIew(list,NotesDao)
+                setupListOfDateINtoRecycleVIew(list, NotesDao)
             }
         }
 
     }
 
 
-    private fun NewPoemDialog(NotesDao: NotesDao){
-        val  PoemDialog = Dialog(this)
+    private fun NewPoemDialog(NotesDao: NotesDao) {
+        val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
         PoemDialog.setContentView(R.layout.notes_add_dialog)
-
 
 
         val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
@@ -82,30 +80,42 @@ class Notes : AppCompatActivity() {
         }
 
         addBtn.setOnClickListener {
-            val itemTopic: String = itemTopic.text.toString()
+            var itemTopic: String = itemTopic.text.toString()
             val PoemDes: String = PoemDes.text.toString()
 
 
-
             val c = Calendar.getInstance()
-            val dateTime= c.time
-            Log.e("Date: ",""+dateTime)
+            val dateTime = c.time
+            Log.e("Date: ", "" + dateTime)
             val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
             val date = sdf.format(dateTime)
-            Log.e("Formatted Date: ",""+date)
+            Log.e("Formatted Date: ", "" + date)
 
 
 
 
 
-            if(itemTopic.isNotEmpty() && PoemDes.isNotEmpty()){
-             lifecycleScope.launch{
-            NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
-                 Toast.makeText(applicationContext,getString(R.string.Record_saved),Toast.LENGTH_LONG).show()
-             }
-                PoemDialog.dismiss()
-            }else{
-                Toast.makeText(this,"field cannot be blank",Toast.LENGTH_LONG).show()
+            if (PoemDes.isNotEmpty()) {
+                if (itemTopic.isNotEmpty()) {
+                    lifecycleScope.launch {
+                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
+                        Toast.makeText(applicationContext,
+                            getString(R.string.Record_saved),
+                            Toast.LENGTH_LONG).show()
+                    }
+                    PoemDialog.dismiss()
+                } else {
+                    itemTopic = "दुआ\n"
+                    lifecycleScope.launch {
+                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
+                        Toast.makeText(applicationContext,
+                            getString(R.string.Record_saved),
+                            Toast.LENGTH_LONG).show()
+                    }
+                    PoemDialog.dismiss()
+                }
+            } else {
+                Toast.makeText(this, "field cannot be blank", Toast.LENGTH_LONG).show()
             }
 
         }
@@ -115,25 +125,24 @@ class Notes : AppCompatActivity() {
     }
 
 
-    private fun setupListOfDateINtoRecycleVIew(NotesList: ArrayList<NotesEntity>,
-                                               NotesDao: NotesDao){
-        if(NotesList.isNotEmpty()){
-            val itemAdapter = itemAdapter(NotesList,
-                {
-                        updateId ->
-                    updateRecordDialog(updateId,NotesDao)
+    private fun setupListOfDateINtoRecycleVIew(
+        NotesList: ArrayList<NotesEntity>,
+        NotesDao: NotesDao
+    ) {
+        if (NotesList.isNotEmpty()) {
+            val itemAdapter = itemAdapter(
+                NotesList,
+                { updateId ->
+                    updateRecordDialog(updateId, NotesDao)
                 },
-                {
-                        deleteId ->
-                    deleteRecordAlertDialog(deleteId,NotesDao)
+                { deleteId ->
+                    deleteRecordAlertDialog(deleteId, NotesDao)
                 },
-                {
-                    OpenId ->
-                    openNotes(OpenId,NotesDao)
+                { OpenId ->
+                    openNotes(OpenId, NotesDao)
                 },
-                {
-                        ShareId ->
-                    ShareNotes(ShareId,NotesDao)
+                { ShareId ->
+                    ShareNotes(ShareId, NotesDao)
                 },
             )
 
@@ -141,33 +150,35 @@ class Notes : AppCompatActivity() {
             binding?.rvItemsPoem?.adapter = itemAdapter
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
-            binding?.ivNoData?.visibility =View.GONE
-        }else{
+            binding?.ivNoData?.visibility = View.GONE
+        } else {
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
-            binding?.ivNoData?.visibility =View.VISIBLE
+            binding?.ivNoData?.visibility = View.VISIBLE
 
         }
     }
 
+
+
     private fun ShareNotes(id: Int, NotesDao: NotesDao) {
 
-        var Topic :String = "hs"
-        var PoemDes =String()
+        var Topic: String = "hs"
+        var PoemDes = String()
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
-                    PoemDes =it.Poem
+                    PoemDes = it.Poem
 
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
-                    val body = "The Poem Topic is = ${Topic}\n"+
-                            "--------------------------------\n"+
+                    val body = "The Poem Topic is = ${Topic}\n" +
+                            "--------------------------------\n" +
                             "${PoemDes}"
-                    sendIntent.putExtra(Intent.EXTRA_TEXT,body)
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, body)
                     Intent.createChooser(sendIntent, "Share using")
                     startActivity(sendIntent)
                 }
@@ -176,12 +187,10 @@ class Notes : AppCompatActivity() {
         }
 
 
-
-
     }
 
 
-    private fun openNotes(id:Int,NotesDao: NotesDao){
+    private fun openNotes(id: Int, NotesDao: NotesDao) {
 //        val OpenDialog = Dialog(this)
 //        OpenDialog.setCancelable(false)
 //        val binding = OpenNotesBinding.inflate(layoutInflater)
@@ -189,15 +198,15 @@ class Notes : AppCompatActivity() {
         var Topic = ""
         var PoemDes = ""
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Poem
 
-                    val intent = Intent(this@Notes,OpenPoem::class.java)
-                    intent.putExtra(Constants.POEM_TOPIC,Topic)
-                    intent.putExtra(Constants.POEM_DES,PoemDes)
+                    val intent = Intent(this@Notes, OpenPoem::class.java)
+                    intent.putExtra(Constants.POEM_TOPIC, Topic)
+                    intent.putExtra(Constants.POEM_DES, PoemDes)
                     startActivity(intent)
 
                 }
@@ -209,13 +218,13 @@ class Notes : AppCompatActivity() {
     }
 
 
-    private fun updateRecordDialog(id:Int,NotesDao: NotesDao){
+    private fun updateRecordDialog(id: Int, NotesDao: NotesDao) {
         val updateDialog = Dialog(this)
         updateDialog.setCancelable(false)
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
@@ -224,65 +233,78 @@ class Notes : AppCompatActivity() {
             }
 
         }
-        binding.btnUpdatePoem.setOnClickListener{
-            val Topic = binding.etPoemTopic.text.toString()
+        binding.btnUpdatePoem.setOnClickListener {
+            var Topic = binding.etPoemTopic.text.toString()
             val Poem = binding.etUpdatePoem.text.toString()
 
-                val c = Calendar.getInstance()
-                val dateTime= c.time
-                Log.e("Date: ",""+dateTime)
-                val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
-                val date = sdf.format(dateTime)
-                Log.e("Formatted Date: ",""+date)
+            val c = Calendar.getInstance()
+            val dateTime = c.time
+            Log.e("Date: ", "" + dateTime)
+            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+            val date = sdf.format(dateTime)
+            Log.e("Formatted Date: ", "" + date)
 
 
-            if(Topic.isNotEmpty() && Poem.isNotEmpty()){
-                lifecycleScope.launch{
-                    NotesDao.update(NotesEntity(id,Topic,Poem,date))
-                    Toast.makeText(applicationContext,"Record Updated",Toast.LENGTH_LONG).show()
-                    updateDialog.dismiss()
+            if (Poem.isNotEmpty()) {
+                if (Topic.isNotEmpty()) {
+                    lifecycleScope.launch {
+                        NotesDao.update(NotesEntity(id, Topic, Poem, date))
+                        Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                            .show()
+                        updateDialog.dismiss()
+                    }
+                } else {
+                    Topic = "दुआ"
+                    lifecycleScope.launch {
+                        NotesDao.update(NotesEntity(id, Topic, Poem, date))
+                        Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                            .show()
+                        updateDialog.dismiss()
+                    }
                 }
-            }else{
-                Toast.makeText(applicationContext,"filed cannot be blank",Toast.LENGTH_LONG).show()
+            } else{
+                    Toast.makeText(applicationContext, "filed cannot be blank", Toast.LENGTH_LONG)
+                        .show()
+                }
             }
+
+            binding.btnCancelPoem.setOnClickListener {
+                updateDialog.dismiss()
+            }
+            updateDialog.show()
         }
 
-        binding.btnCancelPoem.setOnClickListener {
-            updateDialog.dismiss()
-        }
-        updateDialog.show()
-    }
 
-
-    private fun deleteRecordAlertDialog(id:Int,employeeDao: NotesDao){
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Delete Record")
-        builder.setIcon(android.R.drawable.ic_dialog_alert)
+        private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Delete Record")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
 
 //        builder.setIcon(android)
 
 
-        builder.setPositiveButton("Yes"){
-                dialogInterface,_ ->
-            lifecycleScope.launch{
-                employeeDao.delete(NotesEntity(id))
-                Toast.makeText(applicationContext,"Record deleted successfully",Toast.LENGTH_LONG).show()
+            builder.setPositiveButton("Yes") { dialogInterface, _ ->
+                lifecycleScope.launch {
+                    employeeDao.delete(NotesEntity(id))
+                    Toast.makeText(applicationContext,
+                        "Record deleted successfully",
+                        Toast.LENGTH_LONG).show()
+                }
+                dialogInterface.dismiss()
             }
-            dialogInterface.dismiss()
+
+            builder.setNegativeButton("No") { dialogInterface, which ->
+                dialogInterface.dismiss()
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
         }
 
-        builder.setNegativeButton("No"){
-                dialogInterface,which->
-            dialogInterface.dismiss()
-        }
 
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.setCancelable(false)
-        alertDialog.show()
     }
 
-
-}
 
 
 
