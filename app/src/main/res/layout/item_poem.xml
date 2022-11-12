@@ -13,103 +13,128 @@
     android:backgroundTint="#0f1521"
     >
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-
-
-
     <LinearLayout
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:id="@+id/llTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
+            android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/llButtons"
+        app:layout_constraintBottom_toTopOf="@id/lldateandbutton"
+        android:weightSum="5"
             >
 
+        <ImageView
+            android:id="@+id/ivEdit"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:contentDescription="image"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="center"
+            android:src="@drawable/ic_action_edit"
+            android:layout_weight="1"
 
+            />
 
-    <TextView
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="4"
+    >
+        <TextView
+            android:layout_margin="2dp"
+            android:foreground="?attr/selectableItemBackground"
         android:textColor="@color/white"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="@string/Topic"
         android:textSize="22sp"
         android:textStyle="bold"
         android:id="@+id/tvtextTopic"
         android:gravity="center"
-        android:layout_margin="10dp"
-
+            android:layout_marginTop="3dp"
         />
+</LinearLayout>
+
+
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:background="#262c38"
-        android:id="@+id/llButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tvtextTopic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/lldate"
-        >
+<!--    <LinearLayout-->
+<!--        android:background="#262c38"-->
+<!--        android:id="@+id/llButtons"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--android:gravity="center"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvtextTopic"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/lldate"-->
+<!--        >-->
 
-    <ImageView
-        android:id="@+id/ivEdit"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:contentDescription="image"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="center"
-        android:src="@drawable/ic_action_edit"
-        />
-
-
-        <ImageView
-
-            android:id="@+id/ivShare"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="image"
-            android:foreground="?attr/selectableItemBackground"
-            android:scaleType="center"
-            android:src="@drawable/ic_share"
-            />
-
-    <ImageView
-        android:id="@+id/ivDelete"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:contentDescription="image"
-        android:foreground="?attr/selectableItemBackground"
-        android:scaleType="center"
-        android:src="@drawable/ic_action_delete"
-        />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivEdit"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:contentDescription="image"-->
+<!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--        android:scaleType="center"-->
+<!--        android:src="@drawable/ic_action_edit"-->
+<!--        />-->
 
 
-    </LinearLayout>
+<!--        <ImageView-->
+
+<!--            android:id="@+id/ivShare"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:contentDescription="image"-->
+<!--            android:foreground="?attr/selectableItemBackground"-->
+<!--            android:scaleType="center"-->
+<!--            android:src="@drawable/ic_share"-->
+<!--            />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/ivDelete"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:contentDescription="image"-->
+<!--        android:foreground="?attr/selectableItemBackground"-->
+<!--        android:scaleType="center"-->
+<!--        android:src="@drawable/ic_action_delete"-->
+<!--        />-->
+
+
+<!--    </LinearLayout>-->
+        <LinearLayout
+            android:background="#262c38"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lldateandbutton"
+            app:layout_constraintTop_toBottomOf="@id/llTopic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            >
 
         <LinearLayout
             android:id="@+id/lldate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llButtons"
+            android:orientation="vertical"
+            android:layout_weight="5"
 
             >
 
@@ -120,8 +145,12 @@ android:gravity="center"
                 app:cardCornerRadius="10dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:backgroundTint="#262c38"
-               android:layout_margin="9dp"
+                android:backgroundTint="#0f1521"
+               android:layout_margin="7dp"
+
+
+
+
                 >
 
                 <TextView
@@ -135,6 +164,8 @@ android:gravity="center"
                     android:layout_margin="4dp"
                     android:textColor="@color/white"
 
+
+
                     />
 
             </androidx.cardview.widget.CardView>
@@ -142,6 +173,42 @@ android:gravity="center"
 
         </LinearLayout>
 
+        <LinearLayout
+
+            android:id="@+id/lldelandshare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+         android:layout_weight="1"
+
+            >
+
+            <ImageView
+
+                android:id="@+id/ivShare"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:foreground="?attr/selectableItemBackground"
+                android:scaleType="center"
+                android:src="@drawable/ic_share"
+                android:layout_weight="1"
+                />
+
+            <ImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="image"
+                android:foreground="?attr/selectableItemBackground"
+                android:scaleType="center"
+                android:src="@drawable/ic_action_delete"
+                android:layout_weight="1"
+
+                />
+
+        </LinearLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

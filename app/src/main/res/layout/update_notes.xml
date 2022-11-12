@@ -7,34 +7,11 @@
     android:layout_gravity="center"
 
    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/llupdateheading"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--    android:background="#0f1521"-->
-
-
-<!--        >-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tvPoem"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:text="@string/update_poem"-->
-<!--            android:layout_margin="9dp"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="22sp"-->
-<!--            android:textStyle="bold" />-->
-
-
-<!--    </LinearLayout>-->
     <LinearLayout
         android:background="#3C4048"
         android:layout_width="match_parent"
@@ -250,4 +227,5 @@
 <!--        android:textStyle="bold" />-->
 
     </LinearLayout>
+    </ScrollView>
 </androidx.cardview.widget.CardView>

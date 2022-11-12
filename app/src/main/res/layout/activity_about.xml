@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/flheading"
+        android:id="@+id/flheadingAbout"
         android:background="@drawable/heading_bg">
 
         <TextView
@@ -33,26 +33,30 @@
     </FrameLayout>
 
 
-
+    <ScrollView
+   android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/flheadingAbout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/Sv_about"
+        app:layout_constraintBottom_toTopOf="@id/btnAboutBack"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
     <ImageView
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:layout_constraintTop_toBottomOf="@id/flheading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAbout"
+
        android:src="@drawable/about_page"
         android:id="@+id/ivaboutImage"
         />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ivaboutImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+
     <TextView
         android:textStyle="bold"
         android:layout_width="match_parent"
@@ -60,14 +64,16 @@
         android:gravity="center_horizontal"
         android:id="@+id/tvAbout"
         android:textSize="22sp"
-
         android:layout_marginTop="12dp"
         tools:text="About"
         android:textColor="@color/white"
         android:layout_margin="12dp"
         android:padding="10dp"
         />
+        </LinearLayout>
     </ScrollView>
+
+
 
     <Button
         android:id="@+id/btnAboutBack"

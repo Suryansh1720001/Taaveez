@@ -11,7 +11,7 @@ class OpenPoem : AppCompatActivity() {
     private var binding :ActivityOpenPoemBinding?=null
     private var PoemTopic: String? =null
     private var PoemDes: String? =null
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         PoemTopic = intent.getStringExtra(Constants.POEM_TOPIC)
         PoemDes = intent.getStringExtra(Constants.POEM_DES)
@@ -25,15 +25,7 @@ class OpenPoem : AppCompatActivity() {
         binding?.tvPoemDes?.setText(PoemDes)
 
         binding?.btnClose?.setOnClickListener {
-           finish()
+            finish()
         }
-
-
-
-
     }
-
-
-
-
 }

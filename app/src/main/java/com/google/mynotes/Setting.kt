@@ -40,7 +40,7 @@ open class Setting : AppCompatActivity() {
             finish()
         }
 
-        binding?.chooseLanguage?.setOnClickListener {
+        binding?.llLanguage?.setOnClickListener {
             showChangeLang()
         }
 

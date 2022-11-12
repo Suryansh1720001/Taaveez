@@ -9,7 +9,7 @@
 
 
     <FrameLayout
-        android:id="@+id/flheading"
+        android:id="@+id/flheadingmain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/front_ui"
@@ -20,29 +20,42 @@
         app:layout_constraintTop_toTopOf="parent">
     </FrameLayout>
 
+<!--    <ImageView-->
+<!--        android:id="@+id/ivBook"-->
+<!--        android:layout_width="416dp"-->
+<!--        android:layout_height="306dp"-->
+<!--        android:src="@drawable/book_image"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvNotes"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.466"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <ImageView
-        android:id="@+id/ivBook"
-        android:layout_width="416dp"
-        android:layout_height="306dp"
-        android:src="@drawable/book_image"
-        app:layout_constraintBottom_toTopOf="@+id/tvNotes"
+        android:id="@+id/iv_book_gif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/book_gif"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <TextView
-        android:id="@+id/tvNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="@string/write_poem"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBook" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvNotes"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="serif"-->
+<!--        android:text="@string/write_poem"-->
+<!--        android:textSize="60sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ivBook" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

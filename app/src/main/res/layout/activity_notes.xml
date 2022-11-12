@@ -19,8 +19,31 @@
     app:layout_constraintEnd_toEndOf="parent"
     android:id="@+id/flheading"
     android:background="@drawable/heading_bg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
 
+
+        <TextView
+            android:id="@+id/tvNotesHeadingHindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="तावीज़"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            />
     <TextView
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:id="@+id/tvNotesHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,10 +55,27 @@
         android:textStyle="bold"
         android:layout_marginTop="5dp"
         />
+
+            <TextView
+                android:id="@+id/tvNotesHeadingUrdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تابیج"
+                android:textSize="30sp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
 </FrameLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="1dp"
         android:id="@+id/rvItemsPoem"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -126,31 +166,75 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/tvSetting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="60dp"
-                android:text="@string/setting"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:gravity="center"
+                >
 
-            <TextView
-            android:id="@+id/tvabout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-                android:layout_marginEnd="60dp"
-          android:layout_gravity="right"
-            android:text="@string/about"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="25sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:id="@+id/tvSetting"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"/>
+
+
+                <TextView
+                    android:id="@+id/tvabout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/about"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+
+                <!--            <TextView-->
+<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:id="@+id/tvSetting"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginStart="60dp"-->
+<!--                android:text="@string/setting"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textSize="25sp" />-->
+
+<!--            <TextView-->
+<!--                android:layout_weight="1"-->
+<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:id="@+id/tvabout"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginEnd="60dp"-->
+<!--          android:layout_gravity="right"-->
+<!--            android:text="@string/about"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="25sp" />-->
+            </LinearLayout>
         </FrameLayout>
 
 
