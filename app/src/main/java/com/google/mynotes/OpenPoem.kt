@@ -1,6 +1,7 @@
 package com.google.mynotes
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.mynotes.databinding.ActivityOpenPoemBinding
@@ -25,6 +26,10 @@ class OpenPoem : AppCompatActivity() {
         binding?.tvPoemDes?.setText(PoemDes)
 
         binding?.btnClose?.setOnClickListener {
+
+            val intent = Intent(this@OpenPoem,Notes::class.java)
+            intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
     }

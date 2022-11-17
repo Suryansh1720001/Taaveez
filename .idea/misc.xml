@@ -18,10 +18,14 @@
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1805" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/ic_share.xml" value="0.1805" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/ic_straight_line.xml" value="0.1805" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/slide_in_left.xml" value="0.197" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/slide_in_right.xml" value="0.197" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/slide_out_left.xml" value="0.197" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/slide_out_rigth.xml" value="0.197" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout-v23/item_poem.xml" value="0.20833333333333334" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_about.xml" value="0.1897644927536232" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_notes.xml" value="0.165" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_notes.xml" value="0.125" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_open_poem.xml" value="0.1897644927536232" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_setting.xml" value="0.19610507246376813" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/delete_item.xml" value="0.22418478260869565" />

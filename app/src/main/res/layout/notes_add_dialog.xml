@@ -141,6 +141,8 @@
             android:weightSum="2">
 
             <Button
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+
                 android:id="@+id/idBtnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,6 +153,8 @@
                 android:textAllCaps="false" />
 
             <Button
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+
                 android:id="@+id/idBtnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

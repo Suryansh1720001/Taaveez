@@ -87,6 +87,8 @@
         android:textStyle="bold"
         android:textSize="19sp"
         android:layout_margin="12dp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+
         />
 
 

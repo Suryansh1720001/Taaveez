@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -37,11 +38,15 @@ class Notes : AppCompatActivity() {
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes, About::class.java)
             startActivity(intent)
+            overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_rigth);
+
         }
 
         binding?.tvSetting?.setOnClickListener {
             val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
+                overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+
         }
 
 
@@ -62,9 +67,13 @@ class Notes : AppCompatActivity() {
 
 
     private fun NewPoemDialog(NotesDao: NotesDao) {
+
+        overridePendingTransition(androidx.constraintlayout.widget.R.anim.abc_popup_enter,
+            androidx.appcompat.R.anim.abc_popup_exit)
         val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
         PoemDialog.setContentView(R.layout.notes_add_dialog)
+
 
 
         val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
@@ -93,11 +102,8 @@ class Notes : AppCompatActivity() {
             Log.e("Formatted Date: ", "" + date)
 
 
-
-
-
-            if (PoemDes.isNotEmpty()) {
-                if (itemTopic.isNotEmpty()) {
+            if (!(TextUtils.isEmpty(PoemDes.trim { it <= ' ' }))) {
+                if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
                         Toast.makeText(applicationContext,
@@ -106,7 +112,7 @@ class Notes : AppCompatActivity() {
                     }
                     PoemDialog.dismiss()
                 } else {
-                    itemTopic = "दुआ\n"
+                    itemTopic = "दुआ"
                     lifecycleScope.launch {
                         NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date))
                         Toast.makeText(applicationContext,
@@ -172,7 +178,6 @@ class Notes : AppCompatActivity() {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Poem
-
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
@@ -181,7 +186,10 @@ class Notes : AppCompatActivity() {
                             "${PoemDes}"
                     sendIntent.putExtra(Intent.EXTRA_TEXT, body)
                     Intent.createChooser(sendIntent, "Share using")
+                    intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                     startActivity(sendIntent)
+
                 }
             }
 
@@ -209,7 +217,7 @@ class Notes : AppCompatActivity() {
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
                     intent.putExtra(Constants.POEM_DES, PoemDes)
                     startActivity(intent)
-
+                    overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_left);
                 }
             }
 
@@ -246,12 +254,14 @@ class Notes : AppCompatActivity() {
             Log.e("Formatted Date: ", "" + date)
 
 
-            if (Poem.isNotEmpty()) {
-                if (Topic.isNotEmpty()) {
+            if (!(TextUtils.isEmpty(Poem.trim { it <= ' ' }))) {
+                if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         NotesDao.update(NotesEntity(id, Topic, Poem, date))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
+                        intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                         updateDialog.dismiss()
                     }
                 } else {
@@ -260,6 +270,8 @@ class Notes : AppCompatActivity() {
                         NotesDao.update(NotesEntity(id, Topic, Poem, date))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
+                        intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                         updateDialog.dismiss()
                     }
                 }

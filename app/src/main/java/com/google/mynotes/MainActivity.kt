@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
 
-     Glide.with(this@MainActivity).load(R.drawable.gif_book).into(binding?.ivBookGif!!)
+//     Glide.with(this@MainActivity).load(R.drawable.gif_book).into(binding?.ivBookGif!!)
 
 
         val thread: Thread = object : Thread() {

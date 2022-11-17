@@ -36,7 +36,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
-            android:textStyle="bold"
+
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
@@ -52,7 +52,6 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:layout_marginTop="5dp"
         />
 
@@ -65,7 +64,6 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
@@ -186,7 +184,7 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:id="@+id/tvSetting"
-                    android:textSize="22sp"
+                    android:textSize="25sp"
                     android:textColor="@color/white"/>
 
 
@@ -201,7 +199,7 @@
                     android:gravity="center"
                     android:text="@string/about"
                     android:textColor="@color/white"
-                    android:textSize="22sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
 
 

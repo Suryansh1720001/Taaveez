@@ -127,8 +127,12 @@
             android:background="@drawable/custom_button"
             android:text="@string/update"
             android:textAllCaps="false"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+
             />
         <Button
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
