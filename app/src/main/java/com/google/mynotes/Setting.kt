@@ -38,6 +38,8 @@ open class Setting : AppCompatActivity() {
 
         binding?.btnSettingBack?.setOnClickListener {
             finish()
+            overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+
         }
 
         binding?.llLanguage?.setOnClickListener {

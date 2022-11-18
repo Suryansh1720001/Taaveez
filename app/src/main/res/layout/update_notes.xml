@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/black"
+        android:background="@drawable/heading_bg_dialog"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            android:layout_margin="5dp"
+            android:layout_marginTop="7dp"
             android:src="@drawable/iv_update_poem"
             android:id="@+id/iv_update"
             tools:visibility="visible"

@@ -18,6 +18,8 @@ class About : AppCompatActivity() {
 
         binding?.btnAboutBack?.setOnClickListener {
             finish()
+            overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_rigth);
+
         }
 
 
