@@ -1,6 +1,7 @@
 package com.google.mynotes
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,9 @@ class MainActivity : AppCompatActivity() {
 
 
 //     Glide.with(this@MainActivity).load(R.drawable.gif_book).into(binding?.ivBookGif!!)
-
+        val typeface: Typeface =
+            Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        binding?.tvNotes?.typeface = typeface
 
         val thread: Thread = object : Thread() {
             override fun run() {
@@ -34,6 +37,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
 
                     finish()
+                    overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+
                 }
             }
         };thread.start()

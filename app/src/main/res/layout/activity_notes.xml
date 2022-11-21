@@ -19,6 +19,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     android:id="@+id/flheading"
     android:background="@drawable/heading_bg">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -59,7 +60,7 @@
                 android:id="@+id/tvNotesHeadingUrdu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="تابیج"
+                android:text="تَعْوِیذ"
                 android:textSize="30sp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"

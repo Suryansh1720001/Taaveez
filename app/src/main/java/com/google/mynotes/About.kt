@@ -1,6 +1,7 @@
 package com.google.mynotes
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,9 @@ class About : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        val typeface: Typeface =
+            Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        binding?.tvNotesHeading?.typeface = typeface
 
         binding?.tvAbout?.setText(getString(R.string.about_poem))
 

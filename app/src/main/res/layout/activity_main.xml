@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -20,44 +20,44 @@
 <!--        app:layout_constraintTop_toTopOf="parent">-->
 <!--    </FrameLayout>-->
 
-
-
-        <TextView
-        android:id="@+id/tvNotes"
+    <ImageView
+        android:id="@+id/ivBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="@string/app_name"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-            android:layout_marginTop="10dp"
+        android:src="@drawable/front_ui_image"
+        app:layout_constraintBottom_toTopOf="@+id/flheadingMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
         <FrameLayout
             android:id="@+id/flheadingMain"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:background="@drawable/heading_bg"
+            android:layout_height="400dp"
+            android:background="@drawable/front_ui"
             android:foregroundGravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             >
 
-            <ImageView
-                android:id="@+id/ivBook"
-                android:layout_marginTop="50dp"
+
+            <TextView
+                android:id="@+id/tvNotes"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:src="@drawable/front_ui_book"
-                app:layout_constraintBottom_toTopOf="@+id/flheadingMain"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="serif"
+                android:text="@string/app_name"
+                android:textColor="#e1e8ed"
+                android:textSize="60sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
 
         </FrameLayout>
 

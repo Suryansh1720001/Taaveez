@@ -3,6 +3,7 @@ package com.google.mynotes
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -32,6 +33,10 @@ class Notes : AppCompatActivity() {
 
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        val typeface: Typeface =
+            Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        binding?.tvNotesHeading?.typeface = typeface
 
 
 
@@ -187,7 +192,6 @@ class Notes : AppCompatActivity() {
                     sendIntent.putExtra(Intent.EXTRA_TEXT, body)
                     Intent.createChooser(sendIntent, "Share using")
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
                     startActivity(sendIntent)
 
                 }

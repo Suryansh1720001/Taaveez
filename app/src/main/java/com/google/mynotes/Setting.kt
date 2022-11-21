@@ -4,6 +4,7 @@ import  android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.LocaleList
@@ -35,6 +36,9 @@ open class Setting : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
+        val typeface: Typeface =
+            Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        binding?.tvNotesHeading?.typeface = typeface
 
         binding?.btnSettingBack?.setOnClickListener {
             finish()
