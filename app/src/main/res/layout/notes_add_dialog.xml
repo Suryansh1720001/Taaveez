@@ -78,6 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,29 +104,56 @@
 
 
 
+                
+// add image in poem
 
-<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/etNotes"-->
-<!--                android:layout_margin="5dp"-->
-<!--                android:hint="@string/write_here"-->
-<!--                android:padding="5dp"-->
-<!--                android:textColorHint="@color/black"-->
-<!--                app:hintTextColor="@color/black">-->
+<!--                android:orientation="horizontal"-->
+<!--                android:gravity="center"-->
+<!--                android:weightSum="2"-->
 
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/idnotes"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="200dp"-->
-<!--                    android:inputType="text"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textColorHint="@color/black"-->
-<!--                    android:textSize="14sp" />-->
+<!--                >-->
+<!--                -->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height=""-->
 
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--                <FrameLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                 android:layout_margin="10dp"-->
+<!--                    >-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:layout_margin="2dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        >-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@drawable/ic_add"/>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:text="Image"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        />-->
+<!--                    </LinearLayout>-->
+<!--                    <View-->
+<!--                        android:layout_width="150dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/image_add_background"-->
+<!--                />-->
+<!--                </FrameLayout>-->
 
 
+<!--            </LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/llbutton"

@@ -1,17 +1,25 @@
 package com.google.mynotes
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Typeface
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mynotes.databinding.ActivityNotesBinding
@@ -27,6 +35,45 @@ class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
 
+    val openGalleryLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK && result.data != null) {
+//                val imageBackground: ImageView = findViewById(R.id.iv_background)
+//                imageBackground.setImageURI(result.data?.data)
+            }
+        }
+    private val requestPermission: ActivityResultLauncher<Array<String>> =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permission ->
+            permission.entries.forEach {
+                val permissionName = it.key
+                val isGranted = it.value
+                if (isGranted) {
+                    Toast.makeText(
+                        this@Notes,
+                        "Permission granted for read storage",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    val pickIntent =
+                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                    openGalleryLauncher.launch(pickIntent)
+
+                } else {
+                    if (permissionName == Manifest.permission.READ_EXTERNAL_STORAGE) {
+                        Toast.makeText(
+                            this,
+                            "Permission denied for read storage",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                }
+            }
+
+
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,9 +132,13 @@ class Notes : AppCompatActivity() {
         val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
         val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
         val PoemDes = PoemDialog.findViewById<EditText>(R.id.idnotes)
+//        val addImage = PoemDialog.findViewById<ImageView>(R.id.ib_gallery)
 
 
-
+//
+//        addImage.setOnClickListener {
+//            requestStoragePermission()
+//        }
 
         cancelBtn.setOnClickListener {
             PoemDialog.dismiss()
@@ -97,6 +148,7 @@ class Notes : AppCompatActivity() {
         addBtn.setOnClickListener {
             var itemTopic: String = itemTopic.text.toString()
             val PoemDes: String = PoemDes.text.toString()
+//            val Image : ImageView? = addImage
 
 
             val c = Calendar.getInstance()
@@ -135,6 +187,36 @@ class Notes : AppCompatActivity() {
         PoemDialog.show()
 
     }
+
+    private fun requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this, Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            showRationalDialog(
+                "Kids Drawing App",
+                "Kids Drawing App " + "needs to Access your External Storage"
+            )
+        } else {
+            requestPermission.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
+
+        }
+    }
+
+    private fun showRationalDialog(
+        title: String,
+        message: String,
+    ) {
+        val builder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(this)
+        builder.setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.create().show()
+    }
+
+
 
 
     private fun setupListOfDateINtoRecycleVIew(

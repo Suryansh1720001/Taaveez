@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable-v21/heading_poem_background.xml" value="0.177" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1805" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable-v24/image_add_background.xml" value="0.1365" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/bottom_bg.xml" value="0.177" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/custom_button.xml" value="0.1805" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/drawable/front_UI.xml" value="0.1805" />
@@ -32,7 +33,7 @@
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/activity_setting.xml" value="0.19610507246376813" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/delete_item.xml" value="0.22418478260869565" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/item_poem.xml" value="0.19610507246376813" />
-        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/notes_add_dialog.xml" value="0.19610507246376813" />
+        <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/notes_add_dialog.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/open_notes.xml" value="0.19610507246376813" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/layout/update_notes.xml" value="0.19610507246376813" />
         <entry key="..\:/AndroidStudioProjects/MyNotes/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1805" />
