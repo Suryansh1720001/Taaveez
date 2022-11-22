@@ -41,6 +41,7 @@ open class Setting : AppCompatActivity() {
         binding?.tvNotesHeading?.typeface = typeface
 
         binding?.btnSettingBack?.setOnClickListener {
+           startActivity(Intent(this@Setting,Notes::class.java))
             finish()
             overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
 

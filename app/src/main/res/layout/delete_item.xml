@@ -27,7 +27,7 @@
 
                 <TextView
                     android:id="@+id/tvDeletePoem"
-                    android:text="Delete Record"
+                    android:text="@string/delete_record"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -72,7 +72,7 @@
                     android:layout_margin="8dp"
                     android:id="@+id/btnDeleteNo"
                     android:background="@drawable/custom_button"
-                    android:text="No"
+                    android:text="@string/no"
                     android:textAllCaps="false"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
 
@@ -85,7 +85,7 @@
                     android:layout_margin="8dp"
                     android:id="@+id/btnDeleteYes"
                     android:background="@drawable/custom_button"
-                    android:text="Yes"
+                    android:text="@string/yes"
                     android:textAllCaps="false"
                     />
 
