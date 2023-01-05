@@ -9,7 +9,7 @@
 
 ### Write poem and your stories in this application for the enhancement of your work. You can save it in one application.
 
-It is based on Kotlin language. You can find out many categories here for the saving your content.
+It is based on Kotlin language. Every content creator can write their material in a variety of genres.
 - Poems - कविताएं
 - Stories - कहानियां
 - Couplets - दोहे
