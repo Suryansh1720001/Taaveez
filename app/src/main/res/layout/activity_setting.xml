@@ -37,41 +37,41 @@
         android:layout_margin="20dp"
         android:src="@drawable/iv_setting"
         app:layout_constraintTop_toBottomOf="@id/flheadingSetting"
-        app:layout_constraintBottom_toTopOf="@id/llLanguage"
+        app:layout_constraintBottom_toTopOf="@id/llpreference"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/iv_settingImage"
         />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/iv_settingImage"
+        app:layout_constraintStart_toStartOf="parent"
+       android:padding="10dp"
+
+        >
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/iv_settingImage"
-app:layout_constraintBottom_toTopOf="@+id/llLanguage"
+        app:layout_constraintBottom_toTopOf="@+id/llLanguage"
         android:id="@+id/llpreference"
+        app:layout_constraintStart_toStartOf="parent"
         >
-
-
-
-
-        <ImageView
-            android:layout_width="27dp"
-            android:layout_height="27dp"
-            android:src="@drawable/ic_langage"
-            android:layout_marginEnd="5dp"
-            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Preferences"
-            android:textSize="22sp"
+            android:textSize="31sp"
             app:layout_constraintStart_toStartOf="parent"
-            android:textColor="@color/white"
+            android:textColor="#F5F5F5"
+            android:layout_marginStart="4dp"
             />
-
-
 
 
     </LinearLayout>
@@ -80,31 +80,36 @@ app:layout_constraintBottom_toTopOf="@+id/llLanguage"
 
     <LinearLayout
         android:id="@+id/llLanguage"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/llpreference"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:padding="5dp"
         >
 
 
         <ImageView
-            android:layout_width="27dp"
-            android:layout_height="27dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_langage"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp"
             />
 
 
         <TextView
+            android:id="@+id/tv_chooseLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ChooseLanguage"
-            android:id="@+id/chooseLanguage"
             android:textColor="@color/white"
             android:textSize="22sp"
+
 
             />
 
@@ -127,7 +132,96 @@ app:layout_constraintBottom_toTopOf="@+id/llLanguage"
 <!--        />-->
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/llLanguage"
+        android:text="Developement"
+        android:textSize="31sp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#F5F5F5"
+        android:layout_marginStart="4dp"
+        android:id="@+id/tv_developement"
+        android:layout_marginTop="20dp"
+        />
 
+
+    <LinearLayout
+        android:id="@+id/llDeveloper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_developement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+
+        >
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_computer"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Developer"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llsourceCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/llDeveloper"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:padding="5dp"
+        >
+
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_code"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="2dp"
+            />
+
+
+        <TextView
+
+            android:id="@+id/tv_sourceCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Source Code"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            />
+
+    </LinearLayout>
+
+
+
+
+    </LinearLayout>
 
 
 
