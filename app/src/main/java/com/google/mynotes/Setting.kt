@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Typeface
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -49,9 +50,15 @@ open class Setting : AppCompatActivity() {
             showChangeLang()
         }
 
-        binding?.tvSourceCode?.setOnClickListener {
+        binding?.llsourceCode?.setOnClickListener {
             sourceCode()
         }
+
+        binding?.llDeveloper?.setOnClickListener{
+            aboutDeveloper()
+        }
+
+
 
 //        binding?.switchTheme?.setOnCheckedChangeListener{ buttonView,isChecked ->
 //            if(isChecked){
@@ -63,6 +70,13 @@ open class Setting : AppCompatActivity() {
 ////                reset()
 //            }
 //        }
+    }
+
+    private fun aboutDeveloper() {
+        val url = "https://suryansh1720001.github.io"
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        startActivity(i)
     }
 
 //    private fun reset() {
