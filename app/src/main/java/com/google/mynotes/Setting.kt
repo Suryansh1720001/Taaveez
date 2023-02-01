@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import com.google.mynotes.databinding.ActivitySettingBinding
 import com.google.mynotes.databinding.DialogSourceCdeBinding
 import java.util.*
@@ -20,11 +23,13 @@ open class Setting : AppCompatActivity() {
 
     private var binding :ActivitySettingBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
+
 //        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES ){
 //            setTheme(R.style.Theme_MyNotes_DarkTheme)
 //        }else{
 //            setTheme(R.style.Theme_MyNotes)
 //        }
+
         super.onCreate(savedInstanceState)
        loadLocate()
         binding = ActivitySettingBinding.inflate(layoutInflater)
