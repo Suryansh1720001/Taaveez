@@ -58,6 +58,10 @@ open class Setting : AppCompatActivity() {
             aboutDeveloper()
         }
 
+        binding?.llshare?.setOnClickListener {
+            share()
+        }
+
 
 
 //        binding?.switchTheme?.setOnCheckedChangeListener{ buttonView,isChecked ->
