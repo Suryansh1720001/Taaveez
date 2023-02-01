@@ -23,5 +23,5 @@
     <string name="yes">हां</string>
     <string name="no">नहीं</string>
     <string name="delete_record">रिकॉर्ड हटाएं</string>
-
+    <string name="appVersion">v.1.1.0</string>
 </resources>

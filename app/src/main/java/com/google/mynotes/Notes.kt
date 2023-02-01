@@ -35,45 +35,45 @@ class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
 
-    val openGalleryLauncher: ActivityResultLauncher<Intent> =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK && result.data != null) {
-//                val imageBackground: ImageView = findViewById(R.id.iv_background)
-//                imageBackground.setImageURI(result.data?.data)
-            }
-        }
-    private val requestPermission: ActivityResultLauncher<Array<String>> =
-        registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permission ->
-            permission.entries.forEach {
-                val permissionName = it.key
-                val isGranted = it.value
-                if (isGranted) {
-                    Toast.makeText(
-                        this@Notes,
-                        "Permission granted for read storage",
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    val pickIntent =
-                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                    openGalleryLauncher.launch(pickIntent)
-
-                } else {
-                    if (permissionName == Manifest.permission.READ_EXTERNAL_STORAGE) {
-                        Toast.makeText(
-                            this,
-                            "Permission denied for read storage",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-
-                }
-            }
-
-
-        }
+//    val openGalleryLauncher: ActivityResultLauncher<Intent> =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == RESULT_OK && result.data != null) {
+////                val imageBackground: ImageView = findViewById(R.id.iv_background)
+////                imageBackground.setImageURI(result.data?.data)
+//            }
+//        }
+//    private val requestPermission: ActivityResultLauncher<Array<String>> =
+//        registerForActivityResult(
+//            ActivityResultContracts.RequestMultiplePermissions()
+//        ) { permission ->
+//            permission.entries.forEach {
+//                val permissionName = it.key
+//                val isGranted = it.value
+//                if (isGranted) {
+//                    Toast.makeText(
+//                        this@Notes,
+//                        "Permission granted for read storage",
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//
+//                    val pickIntent =
+//                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+//                    openGalleryLauncher.launch(pickIntent)
+//
+//                } else {
+//                    if (permissionName == Manifest.permission.READ_EXTERNAL_STORAGE) {
+//                        Toast.makeText(
+//                            this,
+//                            "Permission denied for read storage",
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    }
+//
+//                }
+//            }
+//
+//
+//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +88,7 @@ class Notes : AppCompatActivity() {
 
 
         binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes, About::class.java)
+            val intent = Intent(this@Notes,About::class.java )
             startActivity(intent)
             overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_rigth);
 
@@ -135,7 +135,7 @@ class Notes : AppCompatActivity() {
 //        val addImage = PoemDialog.findViewById<ImageView>(R.id.ib_gallery)
 
 
-//
+
 //        addImage.setOnClickListener {
 //            requestStoragePermission()
 //        }
@@ -188,33 +188,33 @@ class Notes : AppCompatActivity() {
 
     }
 
-    private fun requestStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(
-                this, Manifest.permission.READ_EXTERNAL_STORAGE
-            )
-        ) {
-            showRationalDialog(
-                "Kids Drawing App",
-                "Kids Drawing App " + "needs to Access your External Storage"
-            )
-        } else {
-            requestPermission.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
+//    private fun requestStoragePermission() {
+//        if (ActivityCompat.shouldShowRequestPermissionRationale(
+//                this, Manifest.permission.READ_EXTERNAL_STORAGE
+//            )
+//        ) {
+//            showRationalDialog(
+//                "Kids Drawing App",
+//                "Kids Drawing App " + "needs to Access your External Storage"
+//            )
+//        } else {
+//            requestPermission.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
+//
+//        }
+//    }
 
-        }
-    }
-
-    private fun showRationalDialog(
-        title: String,
-        message: String,
-    ) {
-        val builder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(this)
-        builder.setTitle(title)
-            .setMessage(message)
-            .setPositiveButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-        builder.create().show()
-    }
+//    private fun showRationalDialog(
+//        title: String,
+//        message: String,
+//    ) {
+//        val builder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(this)
+//        builder.setTitle(title)
+//            .setMessage(message)
+//            .setPositiveButton("Cancel") { dialog, _ ->
+//                dialog.dismiss()
+//            }
+//        builder.create().show()
+//    }
 
 
 

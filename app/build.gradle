@@ -87,4 +87,5 @@ dependencies {
     // for acitvity open transition
 //    implementation 'com.github.AtifSayings:Animatoo:1.0.1'
 
+    implementation 'com.github.medyo:android-about-page:1.2.6'
 }

@@ -22,4 +22,5 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete_record">Delete Record</string>
+    <string name="appVersion">v.1.1.0</string>
 </resources>
