@@ -1,19 +1,17 @@
 package com.google.mynotes
 
 import  android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.LocaleList
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.*
-import com.google.mynotes.databinding.ActivityMainBinding
 import com.google.mynotes.databinding.ActivitySettingBinding
+import com.google.mynotes.databinding.DialogSourceCdeBinding
 import java.util.*
 
 open class Setting : AppCompatActivity() {
@@ -49,6 +47,10 @@ open class Setting : AppCompatActivity() {
 
         binding?.llLanguage?.setOnClickListener {
             showChangeLang()
+        }
+
+        binding?.tvSourceCode?.setOnClickListener {
+            sourceCode()
         }
 
 //        binding?.switchTheme?.setOnCheckedChangeListener{ buttonView,isChecked ->
@@ -111,6 +113,34 @@ open class Setting : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun sourceCode(){
+        val sourceCodeDialog = Dialog(this)
+        sourceCodeDialog.setCancelable(false)
+        val binding = DialogSourceCdeBinding.inflate(layoutInflater)
+        sourceCodeDialog.setContentView(binding.root)
+
+
+
+
+        binding?.closePopup?.setOnClickListener {
+            sourceCodeDialog.dismiss()
+        }
+        binding?.popupShareBtn?.setOnClickListener {
+            share()
+        }
+
+        sourceCodeDialog.setCancelable(true)
+        sourceCodeDialog.show()
+    }
+
+
+    private fun share() {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_subject))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)))
     }
 
 }

@@ -24,4 +24,6 @@
     <string name="no">नहीं</string>
     <string name="delete_record">रिकॉर्ड हटाएं</string>
     <string name="appVersion">v.1.1.0</string>
+    <string name="share_subject">Hey, Go and check out this cool application</string>
+    <string name="share_title">Share Via</string>
 </resources>

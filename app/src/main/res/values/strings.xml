@@ -23,4 +23,10 @@
     <string name="no">No</string>
     <string name="delete_record">Delete Record</string>
     <string name="appVersion">v.1.1.0</string>
+    <string name="share_subject">Hey, Go and check out this cool application. Go to this link to download.\n\n
+
+        Link: https://github.com/Suryansh1720001/Taaveez#taaveez\n\n
+
+    </string>
+    <string name="share_title">Share Via</string>
 </resources>
