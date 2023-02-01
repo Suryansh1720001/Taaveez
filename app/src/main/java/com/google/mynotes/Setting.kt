@@ -62,6 +62,10 @@ open class Setting : AppCompatActivity() {
             share()
         }
 
+        binding?.llfeedback?.setOnClickListener {
+            feedback()
+        }
+
 
 
 //        binding?.switchTheme?.setOnCheckedChangeListener{ buttonView,isChecked ->
@@ -74,6 +78,13 @@ open class Setting : AppCompatActivity() {
 ////                reset()
 //            }
 //        }
+    }
+
+    private fun feedback() {
+        val url = "https://suryansh1720001.github.io/index.html#contact"
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        startActivity(i)
     }
 
     private fun aboutDeveloper() {
