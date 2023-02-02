@@ -38,7 +38,7 @@
         android:layout_margin="20dp"
         android:src="@drawable/iv_setting"
         app:layout_constraintTop_toBottomOf="@id/flheadingSetting"
-        app:layout_constraintBottom_toTopOf="@id/llpreference"
+        app:layout_constraintBottom_toTopOf="@id/tv_preference"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/iv_settingImage"
@@ -328,7 +328,6 @@
         android:text="@string/back"
         android:padding="12dp"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-
         android:textSize="19sp"
         android:layout_margin="12dp"
         />
