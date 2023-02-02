@@ -42,6 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/iv_settingImage"
+        android:contentDescription="@string/Setting_Image"
         />
 
 
@@ -62,29 +63,19 @@
             android:orientation="vertical"
             >
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/iv_settingImage"
-        app:layout_constraintBottom_toTopOf="@+id/llLanguage"
-        android:id="@+id/llpreference"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
         <TextView
+            app:layout_constraintTop_toBottomOf="@id/iv_settingImage"
+            app:layout_constraintBottom_toTopOf="@+id/llLanguage"
+            android:id="@+id/tv_preference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Preferences"
+            android:text="@string/Preferences"
             android:textSize="31sp"
             app:layout_constraintStart_toStartOf="parent"
             android:textColor="#F5F5F5"
             android:layout_marginStart="4dp"
             />
 
-
-    </LinearLayout>
 
 
 
@@ -186,7 +177,7 @@
                 android:id="@+id/tv_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Share"
+                android:text="@string/Share"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 />
@@ -222,7 +213,7 @@
                 android:id="@+id/tv_feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Feedback"
+                android:text="@string/Feedback"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 />
@@ -236,7 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/llLanguage"
-        android:text="Developement"
+        android:text="@string/Development"
         android:textSize="31sp"
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="#F5F5F5"
@@ -275,7 +266,7 @@
             android:id="@+id/tv_developer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Developer"
+            android:text="@string/Developer"
             android:textColor="@color/white"
             android:textSize="22sp"
             />
@@ -311,7 +302,7 @@
             android:id="@+id/tv_sourceCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Source Code"
+            android:text="@string/Source_Code"
             android:textColor="@color/white"
             android:textSize="22sp"
             />

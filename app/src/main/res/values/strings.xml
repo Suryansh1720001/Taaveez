@@ -29,4 +29,11 @@
 
     </string>
     <string name="share_title">Share Via</string>
+    <string name="Setting_Image">SettingImage</string>
+    <string name="Preferences">Preferences</string>
+    <string name="Share">Share</string>
+    <string name="Feedback">Feedback</string>
+    <string name="Development">Development</string>
+    <string name="Developer">Developer</string>
+    <string name="Source_Code">Source Code</string>
 </resources>

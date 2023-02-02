@@ -24,6 +24,16 @@
     <string name="no">नहीं</string>
     <string name="delete_record">रिकॉर्ड हटाएं</string>
     <string name="appVersion">v.1.1.0</string>
-    <string name="share_subject">Hey, Go and check out this cool application</string>
-    <string name="share_title">Share Via</string>
+    <string name="share_subject">हे, जाओ और इस शानदार एप्लिकेशन को देखें। डाउनलोड करने के लिए इस लिंक पर जाएं। \n\n
+
+        यहां दबाएं: https://github.com/Suryansh1720001/Taaveez#taaveez\n\n
+</string>
+    <string name="share_title">के माध्यम से बाँटे</string>
+    <string name="Feedback">प्रतिक्रिया</string>
+    <string name="Setting_Image">सेटिंग छवि</string>
+    <string name="Preferences">पसंद</string>
+    <string name="Share">साझा करना</string>
+    <string name="Development">विकास क्षेत्र</string>
+    <string name="Developer">डेवलपर</string>
+    <string name="Source_Code">सोर्स कोड</string>
 </resources>
