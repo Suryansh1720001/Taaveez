@@ -1,4 +1,4 @@
-# Taaveez - तावीज़ - تَعْوِیذ
+![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
 
 # 📜App Description
  
@@ -47,9 +47,9 @@ It is available in 2 languages - Hindi and English.
 <br>
 
 
-# Contribution 👏
+# <h1 align=center>CONTRIBUTION 👏</h1>
 
-##  <h1 align=center>🧑‍💻 About the Maintainer</h1>
+## 🧑‍💻 About the Maintainer
 
 | Maintainer   | 
 | :----------: | 
