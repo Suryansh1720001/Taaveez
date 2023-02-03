@@ -33,9 +33,15 @@ It is available in 2 languages - Hindi and English.
 
 ## <h1 align=center>Screenshots 📸</h1>
 
-.<img src= "https://user-images.githubusercontent.com/85965606/210632198-6166daec-286a-4dfa-b7ca-20194e550a94.png" width="250" height="505">
-.<img src= "https://user-images.githubusercontent.com/85965606/210632141-966cdd86-429d-43bd-8cae-35672ca4cda9.png" width="250" height="505">
-.<img src= "https://user-images.githubusercontent.com/85965606/210632093-87010c8a-f534-4bea-8652-0c3c0b21bdcf.png" width="250" height="505">
+
+||||
+|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
+| <img src= "https://user-images.githubusercontent.com/85965606/216627853-5cd7a91a-1a4b-495d-b119-70e9b1561cfa.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216627908-5238956b-2d2a-47c2-8997-9bbecd1ecdf3.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628101-136e5478-e405-489c-bbf8-fceb95ca11b5.jpg" width="250" height="505"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/216628014-15426018-e5e9-452e-92b3-d995a4fd7b8a.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628123-30f0716d-273c-4156-a4a7-8d2d7225be8f.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628220-12403e46-058c-4f37-81cc-4b694fd2fb67.jpg" width="250" height="505"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/216628244-8a614afb-1d06-4ed4-a3ab-e41c9a936130.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628158-3fe004d1-4211-416c-8356-483cf8b4dddd.jpg" width="250" height="505"> |
+
+
+
 
 ## Tech
 
@@ -48,7 +54,7 @@ It is available in 2 languages - Hindi and English.
 
 
 ## Installation
-... (GooglePlay Store link available soon) ...
+GooglePlay Store link available soon
 
 <br>
 
