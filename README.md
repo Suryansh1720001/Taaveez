@@ -40,6 +40,8 @@ It is available in 2 languages - Hindi and English.
 - Android Studoid
 - Room database
 
+⭐ And of course Developer Quiz-App itself is open source with a [public repository](https://github.com/Suryansh1720001/Taaveez)
+
 
 ## Installation
 ... (GooglePlay Store link available soon) ...
@@ -166,6 +168,7 @@ Wait for your submission to be accepted and your PR to be merged by a maintainer
 ## Code of Conduct
 
 - [Code of Conduct](CODE_OF_CONDUCT.md)
+
 
 ## 🙏🏽 Support
 
