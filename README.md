@@ -1,8 +1,12 @@
 ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
 
+## 🤔 What is this App
+ 
+✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more cretaive content in a beautifully designed app.
+
 # 📜App Description
  
-## It provides a creative environment to people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
+It provides a creative environment to people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
 
 <img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
 
