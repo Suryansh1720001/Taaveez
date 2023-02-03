@@ -2,7 +2,7 @@
 
 ## 🤔 What is this App
  
-✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more cretaive content in a beautifully designed app.
+✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more creative content in a beautifully designed app.
 
 # 📜App Description
  
