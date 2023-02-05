@@ -11,8 +11,6 @@ It provides a creative environment to people who are fond of writing. This appli
 <img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
 
 
-
-
 ### Write poem and your stories in this application for the enhancement of your work. You can save all your stuff in one app.
 
 It is based on Kotlin language. Every content creator can write their material in a variety of genres.
@@ -71,7 +69,7 @@ GooglePlay Store link available soon
 
 # 🖱️ How to Contribute 
 
-If you think that you can add a new feature or want to fix a bug, we invite you to contribute to Calculator and make this project better. To start contributing, follow the below instructions:
+If you think that you can add a new feature or want to fix a bug, we invite you to contribute to Taaveez and make this project better. To start contributing, follow the below instructions:
 
 1. Create a folder at your desire location (usually at your desktop).
 
