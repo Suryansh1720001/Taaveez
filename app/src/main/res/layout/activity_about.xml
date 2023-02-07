@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
 
-       android:src="@drawable/iv_about_page"
+       android:src="@drawable/iv_setting"
         android:id="@+id/ivaboutImage"
         />
 
