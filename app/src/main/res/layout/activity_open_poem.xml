@@ -8,8 +8,6 @@
     tools:context=".OpenPoem">
 
 
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +52,6 @@
             android:orientation="vertical"
             >
 
-
         <TextView
             android:textColor="@color/white"
             android:id="@+id/tvPoemDes"
@@ -66,17 +63,6 @@
             tools:text="Poem DEs"
             android:textSize="22sp"
             />
-
-            // image will be visible when we added the image link in poem add button
-            <ImageView
-                android:layout_marginTop="5dp"
-                android:id="@+id/iv_poem_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:visibility="gone"
-                tools:src="@drawable/iv_delete_record"
-                />
 
         </LinearLayout>
     </ScrollView>

@@ -61,60 +61,12 @@
         android:gravity="center"
             android:layout_marginTop="3dp"
         />
-</LinearLayout>
 
+</LinearLayout>
 
 
     </LinearLayout>
 
-
-<!--    <LinearLayout-->
-<!--        android:background="#262c38"-->
-<!--        android:id="@+id/llButtons"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--android:gravity="center"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/tvtextTopic"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/lldate"-->
-<!--        >-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/ivEdit"-->
-<!--        android:layout_width="40dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:contentDescription="image"-->
-<!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--        android:scaleType="center"-->
-<!--        android:src="@drawable/ic_action_edit"-->
-<!--        />-->
-
-
-<!--        <ImageView-->
-
-<!--            android:id="@+id/ivShare"-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:contentDescription="image"-->
-<!--            android:foreground="?attr/selectableItemBackground"-->
-<!--            android:scaleType="center"-->
-<!--            android:src="@drawable/ic_share"-->
-<!--            />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/ivDelete"-->
-<!--        android:layout_width="40dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:contentDescription="image"-->
-<!--        android:foreground="?attr/selectableItemBackground"-->
-<!--        android:scaleType="center"-->
-<!--        android:src="@drawable/ic_action_delete"-->
-<!--        />-->
-
-
-<!--    </LinearLayout>-->
         <LinearLayout
             android:background="#262c38"
             android:layout_width="match_parent"
