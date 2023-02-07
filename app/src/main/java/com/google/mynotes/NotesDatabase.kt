@@ -31,8 +31,6 @@ abstract class NotesDatabase: RoomDatabase() {
                 }
                 return instance
             }
-
         }
-
     }
 }

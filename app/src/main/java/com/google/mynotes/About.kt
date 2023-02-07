@@ -1,5 +1,5 @@
 package com.google.mynotes
-//
+
 //import android.content.Intent
 //import android.graphics.Typeface
 //import android.net.Uri
@@ -36,7 +36,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import mehdi.sakout.aboutpage.AboutPage

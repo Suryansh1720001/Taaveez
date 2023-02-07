@@ -1,13 +1,9 @@
 package com.google.mynotes
 
-
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.mynotes.databinding.ItemPoemBinding
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -40,10 +36,6 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val item = items[position]
 
         holder.tvTopic.text = item.Topic
-
-
-
-
         holder.tvDate.text = item.Date
 
         holder.ivEdit.setOnClickListener{
@@ -64,6 +56,4 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
     override fun getItemCount(): Int {
        return items.size
     }
-
-
 }

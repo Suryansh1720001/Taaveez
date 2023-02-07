@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:layout_margin="20dp"
-        android:src="@drawable/iv_delete"
+        android:src="@drawable/iv_setting"
         app:layout_constraintTop_toBottomOf="@id/flheadingSetting"
         app:layout_constraintBottom_toTopOf="@id/tv_preference"
         app:layout_constraintStart_toStartOf="parent"

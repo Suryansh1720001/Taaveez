@@ -1,25 +1,16 @@
 package com.google.mynotes
 
-import android.Manifest
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Typeface
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.mynotes.databinding.ActivityNotesBinding
@@ -71,8 +62,6 @@ class Notes : AppCompatActivity() {
 //
 //                }
 //            }
-//
-//
 //        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -372,35 +361,6 @@ class Notes : AppCompatActivity() {
             }
             updateDialog.show()
         }
-
-//
-//        private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
-//            val builder = AlertDialog.Builder(this)
-//            builder.setTitle("Delete Record")
-//            builder.setIcon(android.R.drawable.ic_dialog_alert)
-//
-////        builder.setIcon(android)
-//
-//
-//            builder.setPositiveButton("Yes") { dialogInterface, _ ->
-//                lifecycleScope.launch {
-//                    employeeDao.delete(NotesEntity(id))
-//                    Toast.makeText(applicationContext,
-//                        "Record deleted successfully",
-//                        Toast.LENGTH_LONG).show()
-//                }
-//                dialogInterface.dismiss()
-//            }
-//
-//            builder.setNegativeButton("No") { dialogInterface, which ->
-//                dialogInterface.dismiss()
-//            }
-//
-//            val alertDialog: AlertDialog = builder.create()
-//            alertDialog.setCancelable(false)
-//            alertDialog.show()
-//        }
-//
 
 
     private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {

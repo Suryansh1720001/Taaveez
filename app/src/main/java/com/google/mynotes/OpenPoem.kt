@@ -1,6 +1,5 @@
 package com.google.mynotes
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +19,6 @@ class OpenPoem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOpenPoemBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
 
         binding?.tvTopic?.setText(PoemTopic)
         binding?.tvPoemDes?.setText(PoemDes)

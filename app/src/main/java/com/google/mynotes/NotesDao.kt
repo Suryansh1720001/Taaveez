@@ -21,6 +21,4 @@ interface NotesDao {
     @Query("select * from `Poem-table` where id=:id")
     fun fetchNotesById(id:Int):Flow<NotesEntity>
 
-
-
 }
