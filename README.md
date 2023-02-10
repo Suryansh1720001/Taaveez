@@ -11,7 +11,7 @@ It provides a creative environment to people who are fond of writing. This appli
 <img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
 
 
-### Write poem and your stories in this application for the enhancement of your work. You can save all your stuff in one app.
+### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
 
 It is based on Kotlin language. Every content creator can write their material in a variety of genres.
 - Poems - कविताएं
