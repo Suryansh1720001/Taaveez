@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

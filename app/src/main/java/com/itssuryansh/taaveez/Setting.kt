@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import  android.app.Activity
 import android.app.Dialog
@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.google.mynotes.databinding.ActivitySettingBinding
-import com.google.mynotes.databinding.DialogSourceCdeBinding
+import com.google.taaveez.R
+import com.google.taaveez.databinding.ActivitySettingBinding
+import com.google.taaveez.databinding.DialogSourceCdeBinding
 import java.util.*
 
 open class Setting : AppCompatActivity() {
@@ -42,9 +43,9 @@ open class Setting : AppCompatActivity() {
         binding?.tvNotesHeading?.typeface = typeface
 
         binding?.btnSettingBack?.setOnClickListener {
-           startActivity(Intent(this@Setting,Notes::class.java))
+           startActivity(Intent(this@Setting, Notes::class.java))
             finish()
-            overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 
         }
 

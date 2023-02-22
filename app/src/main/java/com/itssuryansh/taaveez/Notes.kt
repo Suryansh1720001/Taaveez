@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.app.Dialog
 import android.content.Intent
@@ -13,9 +13,10 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.mynotes.databinding.ActivityNotesBinding
-import com.google.mynotes.databinding.DeleteItemBinding
-import com.google.mynotes.databinding.UpdateNotesBinding
+import com.google.taaveez.R
+import com.google.taaveez.databinding.ActivityNotesBinding
+import com.google.taaveez.databinding.DeleteItemBinding
+import com.google.taaveez.databinding.UpdateNotesBinding
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -77,16 +78,16 @@ class Notes : AppCompatActivity() {
 
 
         binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes,About::class.java )
+            val intent = Intent(this@Notes, About::class.java )
             startActivity(intent)
-            overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_rigth);
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
 
         }
 
         binding?.tvSetting?.setOnClickListener {
             val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
-                overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+                overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 
         }
 
@@ -292,7 +293,7 @@ class Notes : AppCompatActivity() {
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
                     intent.putExtra(Constants.POEM_DES, PoemDes)
                     startActivity(intent)
-                    overridePendingTransition(R.drawable.slide_in_right,R.drawable.slide_out_left);
+                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
                 }
             }
 

@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

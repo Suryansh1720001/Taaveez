@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.2" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.2)" variant="fatal" version="7.2.2">
+
+    <issue
+        id="NotSibling"
+        message="`@id/iv_noData` is not a sibling in the same `ConstraintLayout`"
+        errorLine1="        app:layout_constraintBottom_toTopOf=&quot;@id/iv_noData&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_notes.xml"
+            line="96"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NotSibling"
+        message="`@id/tv_preference` is not a sibling in the same `ConstraintLayout`"
+        errorLine1="        app:layout_constraintBottom_toTopOf=&quot;@id/tv_preference&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_setting.xml"
+            line="41"
+            column="9"/>
+    </issue>
+
+</issues>

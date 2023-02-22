@@ -1,9 +1,10 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.mynotes.databinding.ActivityOpenPoemBinding
+import com.google.taaveez.R
+import com.google.taaveez.databinding.ActivityOpenPoemBinding
 
 
 class OpenPoem : AppCompatActivity() {
@@ -25,11 +26,11 @@ class OpenPoem : AppCompatActivity() {
 
         binding?.btnClose?.setOnClickListener {
 
-            val intent = Intent(this@OpenPoem,Notes::class.java)
+            val intent = Intent(this@OpenPoem, Notes::class.java)
             intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
-            overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_rigth);
+            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth);
 
         }
     }

@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.app.Application
 

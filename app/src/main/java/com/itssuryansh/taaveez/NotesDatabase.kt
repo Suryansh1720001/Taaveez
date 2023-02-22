@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.content.Context
 import androidx.room.Database
@@ -8,13 +8,13 @@ import androidx.room.RoomDatabase
 @Database(entities = [NotesEntity::class],version=1)
 abstract class NotesDatabase: RoomDatabase() {
 
-    abstract fun NotesDao():NotesDao
+    abstract fun NotesDao(): NotesDao
     companion object{
 
         @Volatile
         private var INSTANCE : NotesDatabase? = null
 
-        fun getInstance(context: Context): NotesDatabase{
+        fun getInstance(context: Context): NotesDatabase {
 
             synchronized(this){
                 var instance = INSTANCE

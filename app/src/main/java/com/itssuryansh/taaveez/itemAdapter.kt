@@ -1,15 +1,15 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.mynotes.databinding.ItemPoemBinding
+import com.google.taaveez.databinding.ItemPoemBinding
 import kotlin.collections.ArrayList
 
 
 class itemAdapter(private val items: ArrayList<NotesEntity>,
-                   private val updateListener:(id:Int)->Unit,
-                   private val deleteListener:(id:Int)->Unit,
+                  private val updateListener:(id:Int)->Unit,
+                  private val deleteListener:(id:Int)->Unit,
                   private val OpenListener:(id:Int)->Unit,
                   private val ShareListener:(id:Int)->Unit,
 )

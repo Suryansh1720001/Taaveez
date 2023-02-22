@@ -1,4 +1,4 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow

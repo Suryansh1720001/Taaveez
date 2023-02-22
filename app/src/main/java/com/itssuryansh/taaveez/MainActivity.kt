@@ -1,10 +1,11 @@
-package com.google.mynotes
+package com.itssuryansh.taaveez
 
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.mynotes.databinding.ActivityMainBinding
+import com.google.taaveez.R
+import com.google.taaveez.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
 
                     finish()
-                    overridePendingTransition(R.drawable.slide_in_left,R.drawable.slide_out_left);
+                    overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 
                 }
             }
