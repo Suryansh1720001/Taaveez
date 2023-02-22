@@ -1,9 +1,14 @@
 ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
 
+
 ## 🤔 What is this App
  
 ✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more creative content in a beautifully designed app.
 
+## 🔗 Download the App 
+
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="20%" /></a>
+ 
 # 📜App Description
  
 It provides a creative environment to people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
