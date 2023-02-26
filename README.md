@@ -39,11 +39,9 @@ It is available in 2 languages - Hindi and English.
 
 ||||
 |:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://user-images.githubusercontent.com/85965606/216627853-5cd7a91a-1a4b-495d-b119-70e9b1561cfa.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216627908-5238956b-2d2a-47c2-8997-9bbecd1ecdf3.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628101-136e5478-e405-489c-bbf8-fceb95ca11b5.jpg" width="250" height="505"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/216628014-15426018-e5e9-452e-92b3-d995a4fd7b8a.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628123-30f0716d-273c-4156-a4a7-8d2d7225be8f.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628220-12403e46-058c-4f37-81cc-4b694fd2fb67.jpg" width="250" height="505"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/216628244-8a614afb-1d06-4ed4-a3ab-e41c9a936130.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628158-3fe004d1-4211-416c-8356-483cf8b4dddd.jpg" width="250" height="505"> |
-
-
+| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/221394559-06f28f69-997d-46b8-9dde-916244b4a935.png" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="250" height="505"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="250" height="505"> |
+|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="250" height="505">  |
 
 
 ## Tech
