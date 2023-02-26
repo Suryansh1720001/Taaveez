@@ -51,7 +51,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 - Android Studoid
 - Room database
 
-⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [public repository].(https://github.com/Suryansh1720001/Taaveez)
+⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
 
 
 <br>
