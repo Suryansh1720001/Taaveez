@@ -8,6 +8,8 @@
 ## 🔗 Download the App 
 
 <a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="20%" /></a>
+
+<br>
  
 # 📜App Description
  
@@ -18,19 +20,15 @@ It provides a creative environment to people who are fond of writing. This appli
 
 ### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
 
-It is based on Kotlin language. Every content creator can write their material in a variety of genres.
-- Poems - कविताएं
-- Stories - कहानियां
-- Couplets - दोहे
-- and many more
+The foundation of this platform lies in the Kotlin language, empowering content creators to express their thoughts and ideas in an array of genres. 
+- From the eloquent beauty of **poems or कविताएं**, 
+- to the captivating narratives of **stories or कहानियां**, 
+- and even the profound wisdom of **couplets or दोहे**,
+- the possibilities for creativity are endless.
 
-## 💻Enhancement
+## 🌐Language
 
-<img src ="https://user-images.githubusercontent.com/85965606/210627863-5adeec15-ea0b-48d2-b7c8-7bb6cc8012c3.png" width="600" heigth="600">
-
-It is available in 2 languages - Hindi and English.
-- The content can be updated as often as you like.
-- Attractive Images used.
+Bilingual and dynamic, this platform offers unlimited updates and engaging visuals to elevate your content in **Hindi and English**.
 
 
 
@@ -39,23 +37,22 @@ It is available in 2 languages - Hindi and English.
 
 ||||
 |:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="70%" height="60%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394559-06f28f69-997d-46b8-9dde-916244b4a935.png" width="70%" height="60%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="70%" height="60%"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="70%" height="60%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="70%" height="60%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="70%" height="60%"> |
-|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="70%" height="60%">  |
+| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394559-06f28f69-997d-46b8-9dde-916244b4a935.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="80%" height="70%"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="80%" height="70%"> |
+|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="80%" height="70%">  |
 
 
-## Tech
+## 🖥️ Technology
+
+Under the umbrella of "Technology" lies a powerful combination of
 
 - Kotlin language
 - xml language
 - Android Studoid
 - Room database
 
-⭐ And of course Developer Quiz-App itself is open source with a [public repository](https://github.com/Suryansh1720001/Taaveez)
+⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [public repository].(https://github.com/Suryansh1720001/Taaveez)
 
-
-## Installation
-GooglePlay Store link available soon
 
 <br>
 
