@@ -42,6 +42,7 @@ Bilingual and dynamic, this platform offers unlimited updates and engaging visua
 |  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="80%" height="70%">  |
 
 
+
 ## 🖥️ Technology
 
 Under the umbrella of "Technology" lies a powerful combination of
@@ -53,18 +54,24 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 ⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
 
-
 <br>
 
+## 🔏 Privacy Policy
 
-# <h1 align=center>CONTRIBUTION 👏</h1>
+<a href="https://sites.google.com/view/taaveez/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
 
-## 🧑‍💻 About the Maintainer
+# <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
-| Maintainer   | 
-| :----------: | 
-|<a href="https://github.com/Suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width=150px height=150px /></a><br>Suryansh Prajapati<br><a href="https://www.linkedin.com/in/itssuryansh/"><img src="https://t0.gstatic.com/images?q=tbn:ANd9GcRMCA3j2A8hfLl9p5UAU5nd9lvqLlNZvqoU4xOsZ192uH4IYS6X" width="32px" height="32px"></a> |
-<br>
+<h1 align=center> Project Admin  🤵 </h1>
+
+  <p align="center">
+  <a href="https://github.com/suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width="17%" /></a>
+
+  <p align="center">
+  <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
 
 # 🖱️ How to Contribute 
