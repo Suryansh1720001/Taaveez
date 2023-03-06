@@ -91,6 +91,8 @@
 
                 >
 
+
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/idnotes"
                     android:layout_width="match_parent"
@@ -104,8 +106,9 @@
 
 
 
-                
-// add image in poem
+
+
+            // add image in poem
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->
@@ -165,6 +168,8 @@
             android:layout_marginBottom="5dp"
             android:orientation="horizontal"
             android:weightSum="2">
+
+
 
             <Button
                 android:foreground="?attr/selectableItemBackgroundBorderless"

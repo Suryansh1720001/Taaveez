@@ -91,4 +91,14 @@ dependencies {
 //    implementation 'com.github.AtifSayings:Animatoo:1.0.1'
 
     implementation 'com.github.medyo:android-about-page:1.2.6'
+
+ // for markdown language
+
+    implementation 'jp.wasabeef:richeditor-android:2.0.0'
+
+
+
+
+
+
 }

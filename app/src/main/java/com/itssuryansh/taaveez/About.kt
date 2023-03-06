@@ -33,6 +33,7 @@ package com.itssuryansh.taaveez
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -89,5 +90,11 @@ class About : AppCompatActivity() {
             ).show()
         }
         return copyright
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, Notes::class.java)
+        startActivity(intent)
+        finish()
     }
 }

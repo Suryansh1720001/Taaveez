@@ -3,6 +3,7 @@ package com.itssuryansh.taaveez
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.taaveez.R
 import com.google.taaveez.databinding.ActivityOpenPoemBinding
 
@@ -20,18 +21,25 @@ class OpenPoem : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOpenPoemBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
         binding?.tvTopic?.setText(PoemTopic)
         binding?.tvPoemDes?.setText(PoemDes)
 
         binding?.btnClose?.setOnClickListener {
-
-            val intent = Intent(this@OpenPoem, Notes::class.java)
-            intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth);
-
+            openNotesActivity()
         }
     }
+
+    override fun onBackPressed() {
+        openNotesActivity()
+    }
+
+    fun openNotesActivity(){
+        val intent = Intent(this@OpenPoem, Notes::class.java)
+        intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
+        finish()
+    }
+
+
 }

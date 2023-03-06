@@ -154,8 +154,6 @@ open class Setting : AppCompatActivity() {
         sourceCodeDialog.setContentView(binding.root)
 
 
-
-
         binding?.closePopup?.setOnClickListener {
             sourceCodeDialog.dismiss()
         }
@@ -173,6 +171,12 @@ open class Setting : AppCompatActivity() {
         shareIntent.type = "text/plain"
         shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_subject))
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)))
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, Notes::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }
