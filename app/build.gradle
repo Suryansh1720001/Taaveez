@@ -98,6 +98,9 @@ dependencies {
 
 
 
+    implementation 'com.github.AppIntro:AppIntro:6.2.0'
+
+
 
 
 

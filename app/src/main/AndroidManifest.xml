@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.google.taaveez">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:name="com.itssuryansh.taaveez.NotesApp"
         android:allowBackup="true"
@@ -15,6 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyNotes"
         tools:targetApi="31">
+        <activity
+            android:name="com.itssuryansh.taaveez.IntroActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.itssuryansh.taaveez.Setting"
             android:exported="false" />
@@ -29,13 +40,7 @@
             android:exported="false" />
         <activity
             android:name="com.itssuryansh.taaveez.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
     </application>
 
 </manifest>
