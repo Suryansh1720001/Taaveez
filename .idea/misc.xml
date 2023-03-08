@@ -54,19 +54,27 @@
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable-v21/bg_sourcecode_doalgo.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable-v21/ic_close.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable-v24/background_dialog_source_code.xml" value="0.185" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/app_intro_first_bg.xml" value="0.185" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/app_intro_second_bg.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/bottom_bg.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/custom_button.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/front_ui.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/heading_bg.xml" value="0.185" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/heading_bg_dialog.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_action_delete.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_add.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_launcher_background.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_about.xml" value="0.2128623188405797" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_notes.xml" value="0.2128623188405797" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_open_poem.xml" value="0.2128623188405797" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_setting.xml" value="0.2128623188405797" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_splash.xml" value="0.2128623188405797" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/delete_item.xml" value="0.2128623188405797" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/dialog_source_cde.xml" value="0.2128623188405797" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/item_poem.xml" value="0.2128623188405797" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/notes_add_dialog.xml" value="0.2128623188405797" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/update_notes.xml" value="0.2128623188405797" />
       </map>
     </option>
   </component>

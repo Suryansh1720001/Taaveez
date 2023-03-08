@@ -5,15 +5,15 @@ import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.taaveez.R
-import com.google.taaveez.databinding.ActivityMainBinding
+import com.google.taaveez.databinding.ActivitySplashBinding
 
 
-class MainActivity : AppCompatActivity() {
-    private var binding:ActivityMainBinding?=null
+class SplashActivity : AppCompatActivity() {
+    private var binding:ActivitySplashBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding =  ActivityMainBinding.inflate(layoutInflater)
+        binding =  ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
 
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
-                    val intent = Intent(this@MainActivity ,
+                    val intent = Intent(this@SplashActivity ,
                         Notes::class.java)
                     startActivity(intent)
 

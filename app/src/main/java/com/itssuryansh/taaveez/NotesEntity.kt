@@ -9,5 +9,6 @@ data class NotesEntity(
     val id: Int =0,
     val Topic: String="",
     val Poem: String="",
-    val Date:String=""
+    val Date:String="",
+
 )

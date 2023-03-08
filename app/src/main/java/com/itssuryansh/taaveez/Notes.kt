@@ -1,6 +1,7 @@
 package com.itssuryansh.taaveez
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +68,7 @@ class Notes : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -282,12 +284,14 @@ class Notes : AppCompatActivity() {
 //        OpenDialog.setContentView(binding.root)
         var Topic = ""
         var PoemDes = ""
+        var CreatedDate = ""
 
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Poem
+
 
                     val intent = Intent(this@Notes, OpenPoem::class.java)
                     intent.putExtra(Constants.POEM_TOPIC, Topic)

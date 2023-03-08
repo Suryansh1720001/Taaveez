@@ -18,7 +18,7 @@
         android:theme="@style/Theme.MyNotes"
         tools:targetApi="31">
         <activity
-            android:name="com.itssuryansh.taaveez.IntroActivity"
+            android:name="com.itssuryansh.taaveez.OneTimeIntroActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             android:name="com.itssuryansh.taaveez.Notes"
             android:exported="false" />
         <activity
-            android:name="com.itssuryansh.taaveez.MainActivity"
+            android:name="com.itssuryansh.taaveez.SplashActivity"
             android:exported="false"/>
     </application>
 

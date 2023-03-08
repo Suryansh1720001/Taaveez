@@ -51,6 +51,8 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
             ShareListener.invoke(item.id)
         }
 
+
+
     }
 
     override fun getItemCount(): Int {
