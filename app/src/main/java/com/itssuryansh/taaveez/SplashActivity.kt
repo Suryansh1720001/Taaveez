@@ -16,7 +16,6 @@ class SplashActivity : AppCompatActivity() {
         binding =  ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-
 //     Glide.with(this@MainActivity).load(R.drawable.gif_book).into(binding?.ivBookGif!!)     // For GIF
         val typeface: Typeface =
             Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
@@ -25,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         val thread: Thread = object : Thread() {
             override fun run() {
                 try {
-                    sleep(2000)
+                    sleep(1000)
                 }
                 catch (e: Exception) {
                     e.printStackTrace()
