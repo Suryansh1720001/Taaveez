@@ -52,16 +52,41 @@
             android:orientation="vertical"
             >
 
+
             <TextView
                 android:textColor="@color/white"
                 android:id="@+id/tvPoemCreatedDate"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="10dp"
                 tools:text="Created Date : "
-                android:textSize="15sp"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:background="@drawable/updated_date_bg"
+
+                 />
+
+            <TextView
+                android:textColor="@color/white"
+                android:id="@+id/tvPoemUpdatedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="4dp"
+                tools:text="Updated Date : "
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:background="@drawable/created_date_bg"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+                android:background="#0f1521"
                 />
 
         <TextView
@@ -71,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             tools:text="Poem DEs"
             android:textSize="22sp"
             />
