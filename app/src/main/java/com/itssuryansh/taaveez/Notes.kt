@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -136,6 +138,26 @@ class Notes : AppCompatActivity() {
         val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
         val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
         val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
+        val btn_addLink = PoemDialog.findViewById<ImageButton>(R.id.btn_add_link)
+
+
+        btn_addLink.setOnClickListener{
+                val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
+                val dialog = AlertDialog.Builder(this)
+                    .setTitle("Insert Link")
+                    .setView(dialogView)
+                    .setPositiveButton("OK") { _, _ ->
+                        val urlEditText = dialogView.findViewById<EditText>(R.id.url_edit_text)
+                        val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
+                        val url = urlEditText.text.toString()
+                        val title = titleEditText.text.toString()
+                        PoemDes.insertLink(url, title)
+                    }
+                    .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+                    .create()
+                dialog.show()
+
+        }
 //        val PoemDes = PoemDialog.findViewById<EditText>(R.id.idnotes)
 
 
@@ -343,10 +365,14 @@ class Notes : AppCompatActivity() {
         updateDialog.setContentView(binding.root)
 
         val PoemDes: RichEditor = updateDialog.findViewById(R.id.etUpdatePoem)
-        PoemDes.setEditorHeight(200)
+        PoemDes.setEditorHeight(2000)
         PoemDes.setEditorFontSize(22)
         PoemDes.setPadding(10, 10, 10, 10)
 
+        val btnBold : ImageButton= updateDialog.findViewById(R.id.btn_update_bold)
+        btnBold.setOnClickListener { PoemDes?.setBold() }
+        val btnItalic : ImageButton?= updateDialog.findViewById(R.id.btn_update_italic)
+        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
 
         var CreatedDate:String=""
 //        var PoemDes :RichEditor?

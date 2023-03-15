@@ -19,15 +19,12 @@
         android:orientation="vertical"
         >
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/llupdateheading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/heading_bg_dialog"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         >
 
         <TextView
@@ -47,7 +44,7 @@
             android:textSize="25sp"
             android:textAlignment="center"
             />
-    </LinearLayout>
+    </FrameLayout>
 
         <ImageView
             android:layout_width="match_parent"
@@ -98,7 +95,7 @@
                 android:layout_weight="1"
                 />
             <ImageButton
-                android:id="@+id/btn_udpate_italic"
+                android:id="@+id/btn_update_italic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_italic"
@@ -143,7 +140,7 @@
             android:padding="5dp"
             android:id="@+id/etUpdatePoem"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="100dp"/>
 
 
 
@@ -154,7 +151,6 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_margin="5dp"
-
         >
         <Button
             android:layout_width="0dp"
@@ -184,4 +180,5 @@
 
     </LinearLayout>
     </ScrollView>
+
 </androidx.cardview.widget.CardView>

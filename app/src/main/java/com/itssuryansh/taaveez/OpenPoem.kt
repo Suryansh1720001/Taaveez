@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import com.google.taaveez.R
 import com.google.taaveez.databinding.ActivityOpenPoemBinding
+import kotlinx.android.synthetic.main.activity_open_poem.*
 import javax.sql.StatementEvent
 
 
@@ -31,6 +33,7 @@ class OpenPoem : AppCompatActivity() {
 
         binding?.tvTopic?.setText(PoemTopic)
         binding?.tvPoemDes?.text = Html.fromHtml(PoemDes)
+        tvPoemDes?.movementMethod = LinkMovementMethod.getInstance() // make links clickable
 //        binding?.tvPoemDes?.setText(PoemDes)
 
 
