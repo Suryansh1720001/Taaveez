@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
+
         <LinearLayout
             android:gravity="center_vertical"
             android:layout_width="match_parent"
@@ -18,34 +19,31 @@
             android:orientation="vertical"
             android:background="#3C4048"
             >
-
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/heading_bg_dialog"
                 android:layout_marginBottom="8dp"
                 >
+                <TextView
+                    android:id="@+id/tvPoem"
+                    android:text="@string/add_the_poem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/tvPoem"
-                android:text="@string/add_the_poem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginBottom="4dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textAlignment="center"
-                />
-            </LinearLayout>
-
+            </FrameLayout>
 
 
             <ImageView
@@ -79,36 +77,80 @@
 
 
 
-            <com.google.android.material.textfield.TextInputLayout
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                app:hintTextColor="@color/black"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--               android:layout_margin="8dp"-->
+<!--                android:id="@+id/etNotes"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+
+<!--                >-->
+
+
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/idnotes"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:hint="@string/write_here"-->
+<!--                    android:textColorHint="@color/black"-->
+<!--                    android:textSize="15sp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                app:hintTextColor="@color/black"
-                android:layout_marginTop="20dp"
-               android:layout_margin="8dp"
-                android:id="@+id/etNotes"
-                app:layout_constraintEnd_toEndOf="parent"
-
+                android:gravity="end"
+                android:layout_gravity="end"
+                android:layout_margin="3dp"
+                android:orientation="horizontal"
+                android:weightSum="3"
                 >
-
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idnotes"
+                <ImageButton
+                    android:id="@+id/btn_bold"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:textColor="@color/black"
-                    android:hint="@string/write_here"
-                    android:textColorHint="@color/black"
-                    android:textSize="15sp" />
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bold"
+                    android:layout_weight="1"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_italic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_italic"
+                    android:layout_weight="1"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_add_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_link"
+                    android:layout_weight="1"
+                    />
 
-            </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
 
+<!--            <jp.wasabeef.richeditor.RichEditor-->
+<!--                android:layout_margin="5dp"-->
+<!--                android:padding="5dp"-->
+<!--                android:id="@+id/idnotes"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="300dp"/>-->
+
+            <jp.wasabeef.richeditor.RichEditor
+                android:id="@+id/idnotes"
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
 
 
-
-            // add image in poem
+<!--            // add image in poem-->
 
 <!--            <LinearLayout-->
 <!--                android:layout_width="match_parent"-->

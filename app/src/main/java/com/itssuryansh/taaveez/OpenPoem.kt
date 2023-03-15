@@ -3,6 +3,7 @@ package com.itssuryansh.taaveez
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.widget.Toast
 import com.google.taaveez.R
 import com.google.taaveez.databinding.ActivityOpenPoemBinding
@@ -23,11 +24,14 @@ class OpenPoem : AppCompatActivity() {
         CreatedDate = intent.getStringExtra(Constants.CREATED_DATE)
         UpdatedDate = intent.getStringExtra(Constants.UPDATED_DATE)
 
+
         super.onCreate(savedInstanceState)
         binding = ActivityOpenPoemBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
         binding?.tvTopic?.setText(PoemTopic)
-        binding?.tvPoemDes?.setText(PoemDes)
+        binding?.tvPoemDes?.text = Html.fromHtml(PoemDes)
+//        binding?.tvPoemDes?.setText(PoemDes)
 
 
         binding?.tvPoemCreatedDate?.setText("Created Date : " +CreatedDate)

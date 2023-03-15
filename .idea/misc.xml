@@ -64,6 +64,8 @@
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/heading_bg_dialog.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_action_delete.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_add.xml" value="0.185" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_add_link.xml" value="0.185" />
+        <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_bold.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/ic_launcher_background.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/drawable/updated_date_bg.xml" value="0.185" />
         <entry key="..\:/AndroidStudioProjects/Taaveez/app/src/main/res/layout/activity_about.xml" value="0.2128623188405797" />
@@ -80,7 +82,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

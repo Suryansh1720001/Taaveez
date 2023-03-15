@@ -2,6 +2,7 @@ package com.itssuryansh.taaveez
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import jp.wasabeef.richeditor.RichEditor
 
 @Entity(tableName = "Poem-table")
 data class NotesEntity(

@@ -1,7 +1,6 @@
 package com.itssuryansh.taaveez
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -9,15 +8,15 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
+import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.taaveez.R
 import com.google.taaveez.databinding.ActivityNotesBinding
 import com.google.taaveez.databinding.DeleteItemBinding
 import com.google.taaveez.databinding.UpdateNotesBinding
+import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -112,22 +111,35 @@ class Notes : AppCompatActivity() {
 
     private fun NewPoemDialog(NotesDao: NotesDao) {
 
-        overridePendingTransition(androidx.constraintlayout.widget.R.anim.abc_popup_enter,
-            androidx.appcompat.R.anim.abc_popup_exit)
+//      overridePendingTransition(androidx.constraintlayout.widget.R.anim.abc_popup_enter, androidx.appcompat.R.anim.abc_popup_exit)
         val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
         PoemDialog.setContentView(R.layout.notes_add_dialog)
+
+        val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
+
+
+
+        PoemDes.setPlaceholder("Enter text here...")
+        PoemDes.setEditorHeight(200)
+        PoemDes.setEditorFontSize(22)
+        PoemDes.setPadding(10, 10, 10, 10)
+
+        val btnBold : ImageButton?= PoemDialog.findViewById(R.id.btn_bold)
+        btnBold?.setOnClickListener { PoemDes?.setBold() }
+        val btnItalic : ImageButton?= PoemDialog.findViewById(R.id.btn_italic)
+        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+
 
 
 
         val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
         val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
         val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
-        val PoemDes = PoemDialog.findViewById<EditText>(R.id.idnotes)
+//        val PoemDes = PoemDialog.findViewById<EditText>(R.id.idnotes)
+
+
 //        val addImage = PoemDialog.findViewById<ImageView>(R.id.ib_gallery)
-
-
-
 //        addImage.setOnClickListener {
 //            requestStoragePermission()
 //        }
@@ -139,7 +151,8 @@ class Notes : AppCompatActivity() {
 
         addBtn.setOnClickListener {
             var itemTopic: String = itemTopic.text.toString()
-            val PoemDes: String = PoemDes.text.toString()
+//            val PoemDes: String = PoemDes.toString()
+            val htmlContentPoemDes= PoemDes.html.toString()
 //            val Image : ImageView? = addImage
 
 
@@ -152,25 +165,31 @@ class Notes : AppCompatActivity() {
 
 
 
-            if (!(TextUtils.isEmpty(PoemDes.trim { it <= ' ' }))) {
+
+            if (!(htmlContentPoemDes.isEmpty())) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date, CreatedDate = date))
+                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
                     }
-                    PoemDialog.dismiss()
+
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = PoemDes, Date = date,CreatedDate = date ))
+                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date ))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
+
                     }
-                    PoemDialog.dismiss()
+
                 }
+                PoemDialog.dismiss()
+                Toast.makeText(this, "$htmlContentPoemDes", Toast.LENGTH_LONG).show()
+
             } else {
                 Toast.makeText(this, "field cannot be blank", Toast.LENGTH_LONG).show()
             }
@@ -180,6 +199,8 @@ class Notes : AppCompatActivity() {
         PoemDialog.show()
 
     }
+
+
 
 //    private fun requestStoragePermission() {
 //        if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -250,14 +271,15 @@ class Notes : AppCompatActivity() {
 
     private fun ShareNotes(id: Int, NotesDao: NotesDao) {
 
-        var Topic: String = "hs"
-        var PoemDes = String()
+        var Topic: String?
+        var PoemDes : String?
 
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Poem
+//                    val HtmlConte
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
@@ -300,7 +322,7 @@ class Notes : AppCompatActivity() {
 
                     val intent = Intent(this@Notes, OpenPoem::class.java)
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
-                    intent.putExtra(Constants.POEM_DES, PoemDes)
+                    intent.putExtra(Constants.POEM_DES,PoemDes)
                     intent.putExtra(Constants.CREATED_DATE,CreatedDate)
                     intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
                     startActivity(intent)
@@ -320,13 +342,24 @@ class Notes : AppCompatActivity() {
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
+        val PoemDes: RichEditor = updateDialog.findViewById(R.id.etUpdatePoem)
+        PoemDes.setEditorHeight(200)
+        PoemDes.setEditorFontSize(22)
+        PoemDes.setPadding(10, 10, 10, 10)
+
+
         var CreatedDate:String=""
+//        var PoemDes :RichEditor?
 
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
-                    binding.etUpdatePoem.setText(it.Poem)
+//                    binding.etUpdatePoem.setText(it.Poem)
+//                    val html = (it.Poem).html
+                    binding.etUpdatePoem.setHtml(it.Poem)
+//                    val richEditor = RichEditor(context)
+//                    richEditor.html = htmlContent
                     CreatedDate = it.CreatedDate
 
                 }
@@ -335,7 +368,9 @@ class Notes : AppCompatActivity() {
         }
         binding.btnUpdatePoem.setOnClickListener {
             var Topic = binding.etPoemTopic.text.toString()
-            val Poem = binding.etUpdatePoem.text.toString()
+            var Poem = binding.etUpdatePoem.html
+
+            
 
             val c = Calendar.getInstance()
             val dateTime = c.time
@@ -345,7 +380,7 @@ class Notes : AppCompatActivity() {
             Log.e("Formatted Date: ", "" + date)
 
 
-            if (!(TextUtils.isEmpty(Poem.trim { it <= ' ' }))) {
+            if (!(Poem.isEmpty())) {
                 if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         NotesDao.update(NotesEntity(id, Topic, Poem, date,CreatedDate))
@@ -391,7 +426,7 @@ class Notes : AppCompatActivity() {
         }
         binding?.btnDeleteYes?.setOnClickListener {
             lifecycleScope.launch {
-                    employeeDao.delete(NotesEntity(id))
+                employeeDao.delete(NotesEntity(id))
                     Toast.makeText(applicationContext,
                         "Record deleted successfully",
                         Toast.LENGTH_LONG).show()

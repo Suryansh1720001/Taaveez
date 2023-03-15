@@ -5,8 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
-
    >
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -83,29 +83,67 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            >
+            <ImageButton
+                android:id="@+id/btn_update_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bold"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/btn_udpate_italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_italic"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/btn_update_addLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_link"
+                android:layout_weight="1"
+                />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idUpdatePoem"
-        android:textColorHint="@color/black"
-        app:hintTextColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:layout_margin="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        </LinearLayout>
 
-        >
 
-        <com.google.android.material.textfield.TextInputEditText
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/idUpdatePoem"-->
+<!--        android:textColorHint="@color/black"-->
+<!--        app:hintTextColor="@color/black"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+
+<!--        >-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/etUpdatePoem"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textColorHint="@color/black"-->
+<!--            android:textSize="15sp" />-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+        <jp.wasabeef.richeditor.RichEditor
+            android:layout_margin="5dp"
+            android:padding="5dp"
             android:id="@+id/etUpdatePoem"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="15sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="50dp"/>
 
 
 
@@ -142,8 +180,6 @@
             android:text="@string/cancel"
             android:textAllCaps="false"
             />
-
-
     </LinearLayout>
 
     </LinearLayout>
