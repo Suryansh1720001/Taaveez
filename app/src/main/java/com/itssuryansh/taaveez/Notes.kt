@@ -371,22 +371,33 @@ class Notes : AppCompatActivity() {
         btnBold?.setOnClickListener { PoemDes?.setBold() }
         val btnItalic : ImageButton? = updateDialog.findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
-//        val btnUnderline : ImageButton? = updateDialog.findViewById(R.id.btn_update_underline)
-//        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
-
+        val btn_addLink = updateDialog.findViewById<ImageButton>(R.id.btn_update_addLink)
+        btn_addLink.setOnClickListener{
+            val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Insert Link")
+                .setView(dialogView)
+                .setPositiveButton("OK") { _, _ ->
+                    val urlEditText = dialogView.findViewById<EditText>(R.id.url_edit_text)
+                    val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
+                    val url = urlEditText.text.toString()
+                    val title = titleEditText.text.toString()
+                    PoemDes.insertLink(url, title)
+                }
+                .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+                .create()
+            dialog.show()
+        }
+        val btnUnderline : ImageButton? = updateDialog.findViewById(R.id.btn_update_underline)
+        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
         var CreatedDate:String=""
-//        var PoemDes :RichEditor?
 
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
-//                    binding.etUpdatePoem.setText(it.Poem)
-//                    val html = (it.Poem).html
                     binding.etUpdatePoem.setHtml(it.Poem)
-//                    val richEditor = RichEditor(context)
-//                    richEditor.html = htmlContent
                     CreatedDate = it.CreatedDate
 
                 }
