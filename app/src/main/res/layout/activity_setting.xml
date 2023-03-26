@@ -308,11 +308,11 @@
             />
 
     </LinearLayout>
-            
+
         </LinearLayout>
 
-    </ScrollView>
 
+    </ScrollView>
 
     <Button
         android:id="@+id/btnSettingBack"

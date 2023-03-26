@@ -5,15 +5,21 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.graphics.Typeface
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.FileProvider
 import com.google.taaveez.R
 import com.google.taaveez.databinding.ActivitySettingBinding
 import com.google.taaveez.databinding.DialogSourceCdeBinding
+import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
 open class Setting : AppCompatActivity() {
@@ -167,10 +173,31 @@ open class Setting : AppCompatActivity() {
 
 
     private fun share() {
+        val i : ImageView = ImageView(applicationContext)
+        i.setImageResource(R.drawable.banner)
+        val bitmapDrawable = i.drawable as BitmapDrawable
+        val bitmap = bitmapDrawable.bitmap
+        val uri: Uri = getImageToShare(bitmap)
         val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_subject))
+        shareIntent.setType("image/*")
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject))
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, getPackageName()))
+        shareIntent.putExtra(Intent.EXTRA_STREAM,uri)
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)))
+    }
+
+    private fun getImageToShare(bitmap: Bitmap): Uri {
+        val folder : File = File(cacheDir,"images")
+        folder.mkdirs()
+        val file: File = File(folder,"shared_image.jpg")
+        val fileOutputStream: FileOutputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream)
+        fileOutputStream.flush()
+        fileOutputStream.close()
+
+        val uri: Uri = FileProvider.getUriForFile(applicationContext,"com.itssuryansh.taaveez",file)
+        return uri
+
     }
 
     override fun onBackPressed() {

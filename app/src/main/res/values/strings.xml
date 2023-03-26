@@ -28,6 +28,12 @@
         Link: https://github.com/Suryansh1720001/Taaveez#taaveez\n\n
 
     </string>
+
+    <string name="share_text">Hey, I have just found an amazing and beautifully designed taaveez for Content creator. I will recommend you to go and check it out once.\n\n
+
+        Link: https://suryansh1720001.github.io\n\n
+        Download it from here: https://play.google.com/store/apps/details?id=%1$s
+    </string>
     <string name="share_title">Share Via</string>
     <string name="Setting_Image">SettingImage</string>
     <string name="Preferences">Preferences</string>

@@ -27,59 +27,15 @@ import kotlin.collections.ArrayList
 
 class Notes : AppCompatActivity() {
 
-
     private var binding: ActivityNotesBinding? = null
-
-//    val openGalleryLauncher: ActivityResultLauncher<Intent> =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == RESULT_OK && result.data != null) {
-////                val imageBackground: ImageView = findViewById(R.id.iv_background)
-////                imageBackground.setImageURI(result.data?.data)
-//            }
-//        }
-//    private val requestPermission: ActivityResultLauncher<Array<String>> =
-//        registerForActivityResult(
-//            ActivityResultContracts.RequestMultiplePermissions()
-//        ) { permission ->
-//            permission.entries.forEach {
-//                val permissionName = it.key
-//                val isGranted = it.value
-//                if (isGranted) {
-//                    Toast.makeText(
-//                        this@Notes,
-//                        "Permission granted for read storage",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//
-//                    val pickIntent =
-//                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//                    openGalleryLauncher.launch(pickIntent)
-//
-//                } else {
-//                    if (permissionName == Manifest.permission.READ_EXTERNAL_STORAGE) {
-//                        Toast.makeText(
-//                            this,
-//                            "Permission denied for read storage",
-//                            Toast.LENGTH_LONG
-//                        ).show()
-//                    }
-//
-//                }
-//            }
-//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-        val typeface: Typeface =
-            Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        val typeface: Typeface = Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
-
-
 
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes, About::class.java )
@@ -108,7 +64,6 @@ class Notes : AppCompatActivity() {
                 setupListOfDateINtoRecycleVIew(list, NotesDao)
             }
         }
-
     }
 
 
@@ -118,7 +73,6 @@ class Notes : AppCompatActivity() {
         PoemDialog.setContentView(R.layout.notes_add_dialog)
 
         val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
-
         PoemDes.setPlaceholder("Enter text here...")
         PoemDes.setEditorHeight(200)
         PoemDes.setEditorFontSize(22)
@@ -131,13 +85,10 @@ class Notes : AppCompatActivity() {
         val btnUnderline : ImageButton? = PoemDialog.findViewById(R.id.btn_underline)
         btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
-
-
         val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
         val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
         val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
         val btn_addLink = PoemDialog.findViewById<ImageButton>(R.id.btn_add_link)
-
 
         btn_addLink.setOnClickListener{
                 val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
@@ -156,13 +107,6 @@ class Notes : AppCompatActivity() {
                 dialog.show()
 
         }
-//        val PoemDes = PoemDialog.findViewById<EditText>(R.id.idnotes)
-
-
-//        val addImage = PoemDialog.findViewById<ImageView>(R.id.ib_gallery)
-//        addImage.setOnClickListener {
-//            requestStoragePermission()
-//        }
 
         cancelBtn.setOnClickListener {
             PoemDialog.dismiss()
@@ -171,20 +115,15 @@ class Notes : AppCompatActivity() {
 
         addBtn.setOnClickListener {
             var itemTopic: String = itemTopic.text.toString()
-//            val PoemDes: String = PoemDes.toString()
             val htmlContentPoemDes= PoemDes.html.toString()
-//            val Image : ImageView? = addImage
 
-
+            // setup the date
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
             val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
-
-
-
 
             if (!(htmlContentPoemDes.isEmpty())) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
@@ -215,42 +154,8 @@ class Notes : AppCompatActivity() {
             }
 
         }
-
         PoemDialog.show()
-
     }
-
-
-
-//    private fun requestStoragePermission() {
-//        if (ActivityCompat.shouldShowRequestPermissionRationale(
-//                this, Manifest.permission.READ_EXTERNAL_STORAGE
-//            )
-//        ) {
-//            showRationalDialog(
-//                "Kids Drawing App",
-//                "Kids Drawing App " + "needs to Access your External Storage"
-//            )
-//        } else {
-//            requestPermission.launch(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
-//
-//        }
-//    }
-
-//    private fun showRationalDialog(
-//        title: String,
-//        message: String,
-//    ) {
-//        val builder: androidx.appcompat.app.AlertDialog.Builder = androidx.appcompat.app.AlertDialog.Builder(this)
-//        builder.setTitle(title)
-//            .setMessage(message)
-//            .setPositiveButton("Cancel") { dialog, _ ->
-//                dialog.dismiss()
-//            }
-//        builder.create().show()
-//    }
-
-
 
 
     private fun setupListOfDateINtoRecycleVIew(
@@ -299,7 +204,6 @@ class Notes : AppCompatActivity() {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Poem
-//                    val HtmlConte
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
@@ -313,18 +217,11 @@ class Notes : AppCompatActivity() {
 
                 }
             }
-
         }
-
-
     }
 
 
     private fun openNotes(id: Int, NotesDao: NotesDao) {
-//        val OpenDialog = Dialog(this)
-//        OpenDialog.setCancelable(false)
-//        val binding = OpenNotesBinding.inflate(layoutInflater)
-//        OpenDialog.setContentView(binding.root)
         var Topic :String?
         var PoemDes :String?
         var CreatedDate :String?
@@ -338,7 +235,6 @@ class Notes : AppCompatActivity() {
                     PoemDes = it.Poem
                     CreatedDate = it.CreatedDate
                     UpdatedDate = it.Date
-
 
                     val intent = Intent(this@Notes, OpenPoem::class.java)
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
@@ -457,8 +353,6 @@ class Notes : AppCompatActivity() {
         val binding = DeleteItemBinding.inflate(layoutInflater)
         deleteDialog.setContentView(binding.root)
 
-
-
         binding?.btnDeleteNo?.setOnClickListener {
             deleteDialog.dismiss()
         }
@@ -474,12 +368,7 @@ class Notes : AppCompatActivity() {
         }
 
         deleteDialog.show()
-
-
-
     }
-
-
 }
 
 
