@@ -90,10 +90,11 @@ open class Setting : AppCompatActivity() {
     }
 
     private fun feedback() {
-        val url = "https://suryansh1720001.github.io/index.html#contact"
-        val i = Intent(Intent.ACTION_VIEW)
-        i.data = Uri.parse(url)
-        startActivity(i)
+
+        Toast.makeText(this@Setting ,getString(R.string.scroll_down_for_rating), Toast.LENGTH_LONG).show()
+
+        val playStoreIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+getPackageName()))
+        startActivity(playStoreIntent)
     }
 
     private fun aboutDeveloper() {
