@@ -5,180 +5,195 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
-   >
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-    <LinearLayout
-        android:background="#3C4048"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-    <FrameLayout
-        android:id="@+id/llupdateheading"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/heading_bg_dialog"
-        >
-
-        <TextView
-            android:id="@+id/tvPoem"
-            android:text="@string/update_poem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textAlignment="center"
-            />
-    </FrameLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="7dp"
-            android:src="@drawable/iv_update_poem"
-            android:id="@+id/iv_update"
-            tools:visibility="visible"
-            android:visibility="visible"
-            android:layout_marginBottom="5dp"
-            />
-
-
-        <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idPoemTopic"
-        android:textColorHint="@color/black"
-        android:layout_marginTop="20dp"
-        app:hintTextColor="@color/black"
-        android:layout_margin="5dp"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/etPoemTopic"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="15sp"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
         <LinearLayout
+            android:background="#3C4048"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:orientation="horizontal"
-            android:weightSum="3"
+            android:orientation="vertical"
             >
-            <ImageButton
-                android:id="@+id/btn_update_bold"
+
+            <FrameLayout
+                android:id="@+id/llupdateheading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_bold"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/btn_update_italic"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/heading_bg_dialog"
+                >
+
+                <TextView
+                    android:id="@+id/tvPoem"
+                    android:text="@string/update_poem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    />
+            </FrameLayout>
+
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_italic"
-                android:layout_weight="1"
-                />
-            <ImageButton
-                android:id="@+id/btn_update_addLink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_add_link"
-                android:layout_weight="1"
+                android:layout_height="190dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/iv_update_poem"
+                android:id="@+id/iv_update"
+                tools:visibility="visible"
+                android:visibility="visible"
+                android:layout_marginBottom="5dp"
                 />
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/idPoemTopic"
+                android:textColorHint="@color/black"
+                android:layout_marginTop="20dp"
+                app:hintTextColor="@color/black"
+                android:layout_margin="5dp"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/etPoemTopic"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="15sp"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                >
+                <ImageButton
+                    android:id="@+id/btn_update_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_bold"
+                    android:layout_weight="1"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_update_italic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_italic"
+                    android:layout_weight="1"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_update_underline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_underline"
+                    android:layout_weight="1"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_update_addLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_link"
+                    android:layout_weight="1"
+                    />
+
+
+            </LinearLayout>
+            </HorizontalScrollView>
+
+
+            <!--    <com.google.android.material.textfield.TextInputLayout-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:id="@+id/idUpdatePoem"-->
+            <!--        android:textColorHint="@color/black"-->
+            <!--        app:hintTextColor="@color/black"-->
+            <!--        android:layout_marginTop="20dp"-->
+            <!--        android:layout_margin="5dp"-->
+            <!--        app:layout_constraintEnd_toEndOf="parent"-->
+
+            <!--        >-->
+
+            <!--        <com.google.android.material.textfield.TextInputEditText-->
+            <!--            android:id="@+id/etUpdatePoem"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="200dp"-->
+            <!--            android:textColor="@color/black"-->
+            <!--            android:textColorHint="@color/black"-->
+            <!--            android:textSize="15sp" />-->
+
+            <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+            <jp.wasabeef.richeditor.RichEditor
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:id="@+id/etUpdatePoem"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+
+
+
+            <LinearLayout
+                android:id="@+id/llbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_margin="5dp"
+                >
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    android:id="@+id/btnUpdatePoem"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/update"
+                    android:textAllCaps="false"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+
+                    />
+                <Button
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    android:id="@+id/btnCancelPoem"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
 
-
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/idUpdatePoem"-->
-<!--        android:textColorHint="@color/black"-->
-<!--        app:hintTextColor="@color/black"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:layout_margin="5dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-
-<!--        >-->
-
-<!--        <com.google.android.material.textfield.TextInputEditText-->
-<!--            android:id="@+id/etUpdatePoem"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textColorHint="@color/black"-->
-<!--            android:textSize="15sp" />-->
-
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
-
-        <jp.wasabeef.richeditor.RichEditor
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:id="@+id/etUpdatePoem"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-
-
-
-    <LinearLayout
-        android:id="@+id/llbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_margin="5dp"
-        >
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:id="@+id/btnUpdatePoem"
-            android:background="@drawable/custom_button"
-            android:text="@string/update"
-            android:textAllCaps="false"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-
-            />
-        <Button
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:id="@+id/btnCancelPoem"
-            android:background="@drawable/custom_button"
-            android:text="@string/cancel"
-            android:textAllCaps="false"
-            />
-    </LinearLayout>
-
-    </LinearLayout>
     </ScrollView>
 
 </androidx.cardview.widget.CardView>

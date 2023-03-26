@@ -1,6 +1,6 @@
 package com.itssuryansh.taaveez
 
-import android.app.Dialog
+import  android.app.Dialog
 import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class Notes : AppCompatActivity() {
 
@@ -112,15 +113,11 @@ class Notes : AppCompatActivity() {
 
 
     private fun NewPoemDialog(NotesDao: NotesDao) {
-
-//      overridePendingTransition(androidx.constraintlayout.widget.R.anim.abc_popup_enter, androidx.appcompat.R.anim.abc_popup_exit)
         val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
         PoemDialog.setContentView(R.layout.notes_add_dialog)
 
         val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
-
-
 
         PoemDes.setPlaceholder("Enter text here...")
         PoemDes.setEditorHeight(200)
@@ -131,7 +128,8 @@ class Notes : AppCompatActivity() {
         btnBold?.setOnClickListener { PoemDes?.setBold() }
         val btnItalic : ImageButton?= PoemDialog.findViewById(R.id.btn_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
-
+        val btnUnderline : ImageButton? = PoemDialog.findViewById(R.id.btn_underline)
+        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
 
 
@@ -369,10 +367,13 @@ class Notes : AppCompatActivity() {
         PoemDes.setEditorFontSize(22)
         PoemDes.setPadding(10, 10, 10, 10)
 
-        val btnBold : ImageButton= updateDialog.findViewById(R.id.btn_update_bold)
-        btnBold.setOnClickListener { PoemDes?.setBold() }
-        val btnItalic : ImageButton?= updateDialog.findViewById(R.id.btn_update_italic)
+        val btnBold : ImageButton? = updateDialog.findViewById(R.id.btn_update_bold)
+        btnBold?.setOnClickListener { PoemDes?.setBold() }
+        val btnItalic : ImageButton? = updateDialog.findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+//        val btnUnderline : ImageButton? = updateDialog.findViewById(R.id.btn_update_underline)
+//        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
+
 
         var CreatedDate:String=""
 //        var PoemDes :RichEditor?
