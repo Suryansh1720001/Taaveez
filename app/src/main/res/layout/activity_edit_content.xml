@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/bg"
+    tools:context=".Edit_Content">
+
+
+    <FrameLayout
+        android:id="@+id/fl_header_image"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/heading_bg_dialog_alter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ll_add_new_content"
+        >
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_update_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" >
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inventive work"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <Button
+            android:id="@+id/btnUpdatePoem"
+            android:text="@string/update"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_gravity="end"
+            android:background="@drawable/custom_button"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/ll_update_content"
+        app:layout_constraintTop_toBottomOf="@id/fl_header_image"
+        >
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idPoemTopic"
+            android:textColorHint="?attr/text"
+            android:layout_marginTop="20dp"
+            app:hintTextColor="?attr/text"
+            android:hint="@string/Topic"
+            android:layout_margin="5dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/etPoemTopic"
+                android:textColor="?attr/text"
+
+                android:textColorHint="?attr/text"
+                android:textSize="18sp"
+                android:textCursorDrawable="@drawable/cursor_color"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/etUpdatePoem"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/hsv_update_buttons"
+        app:layout_constraintTop_toBottomOf="@id/ll_update_content"
+        />
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hsv_update_buttons"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idnotes"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            >
+            <ImageButton
+                android:id="@+id/btn_update_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_bold"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/btn_update_italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_italic"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:id="@+id/btn_update_underline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_underline"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_udpate_undo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_undo"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_update_redo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_redo"
+                android:layout_weight="1"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_update_addLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_link"
+                android:layout_weight="1"
+                />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.google.taaveez">
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    package="com.itssuryansh.taaveez">
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.itssuryansh.taaveez.NotesApp"
+        android:name=".NotesApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,8 +18,17 @@
         android:theme="@style/Theme.MyNotes"
         tools:targetApi="31">
         <activity
-            android:name="com.itssuryansh.taaveez.OneTimeIntroActivity"
-            android:exported="true" >
+            android:name=".Edit_Content"
+            android:exported="false" />
+        <activity
+            android:name=".WebView"
+            android:exported="false" />
+        <activity
+            android:name=".Add_New_Content"
+            android:exported="true" />
+        <activity
+            android:name=".OneTimeIntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,28 +36,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.itssuryansh.taaveez.Setting"
+            android:name=".Setting"
             android:exported="false" />
         <activity
-            android:name="com.itssuryansh.taaveez.OpenPoem"
+            android:name=".OpenPoem"
             android:exported="false" />
         <activity
-            android:name="com.itssuryansh.taaveez.About"
+            android:name=".About"
             android:exported="false" />
         <activity
-            android:name="com.itssuryansh.taaveez.Notes"
+            android:name=".Notes"
             android:exported="false" />
         <activity
-            android:name="com.itssuryansh.taaveez.SplashActivity"
-            android:exported="false"/>
+            android:name=".SplashActivity"
+            android:exported="false" />
+
         <provider
-            android:authorities="com.itssuryansh.taaveez"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.itssuryansh.taaveez"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths"/>
+                android:resource="@xml/paths" />
         </provider>
     </application>
 

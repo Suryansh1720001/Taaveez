@@ -9,7 +9,7 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
     app:strokeWidth="6dp"
-    android:elevation="700dp"
+    android:elevation="10dp"
     app:strokeColor="@color/black"
     android:backgroundTint="?attr/item_topic_bottom_bg"
     >

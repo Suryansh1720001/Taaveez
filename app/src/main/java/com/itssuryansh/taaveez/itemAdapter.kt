@@ -3,7 +3,7 @@ package com.itssuryansh.taaveez
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.taaveez.databinding.ItemPoemBinding
+import com.itssuryansh.taaveez.databinding.ItemPoemBinding
 import kotlin.collections.ArrayList
 
 
@@ -16,7 +16,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
     :RecyclerView.Adapter<itemAdapter.ViewHolder>() {
 
 
-    class ViewHolder(binding:ItemPoemBinding): RecyclerView.ViewHolder(binding.root){
+    class ViewHolder(binding: ItemPoemBinding): RecyclerView.ViewHolder(binding.root){
         val CVMain = binding.CVMain
         val tvTopic = binding.tvtextTopic
         val ivEdit = binding.ivEdit

@@ -4,12 +4,12 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.taaveez.R
-import com.google.taaveez.databinding.ActivitySplashBinding
+
+import com.itssuryansh.taaveez.databinding.ActivitySplashBinding
 
 
 class SplashActivity : AppCompatActivity() {
-    private var binding:ActivitySplashBinding?=null
+    private var binding: ActivitySplashBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,6 +35,8 @@ class SplashActivity : AppCompatActivity() {
 
                     finish()
                     overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
+//                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+
 
                 }
             }

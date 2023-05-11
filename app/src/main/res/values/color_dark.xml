@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple1_200">#000000</color>
+    <color name="purple_1500">#000000</color>
+    <color name="purple_7100">#000000</color>
+    <color name="teal_2001">#000000</color>
+    <color name="teal_7001">#000000</color>
+    <color name="black1">#000000</color>
+    <color name="white_light">#FFFFFF</color>
+    <color name="blue_s1hade_2">#000000</color>
+    <color name="blue_sh1ade_1">#000000</color>
+    <color name="bg_dark">#3C4048</color>
+    <color name="item_topic_bg_dark">#0f1521</color>
+    <color name="item_topic_bottom_bg_dark">#16213E</color>
+    <color name="text_dark">#000000</color>
+    <color name="item_topic_bottom_cardview_bg_dark">#3C4048</color>
+    <color name="mainpage_bottom_nav_dark">#16213E</color>
+    <color name="pen_color_dark">#00A6FF</color>
+    <color name="share_icon_color_dark">#F7F5EB</color>
+    <color name="delete_btn_color_dark">#FF3600</color>
+    <color name="setting_icon_color_dark">#F7F5EB</color>
+    <color name="cursor_color_dark">#F7F5EB</color>
+    <color name="editor_bg_dark">#2e2e2e</color>
+    <color name="text_white_dark">#ffffff</color>
+
+</resources>

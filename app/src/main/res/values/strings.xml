@@ -31,7 +31,6 @@
 
     <string name="share_text">Hey, I have just found an amazing and beautifully designed taaveez for Content creator. I will recommend you to go and check it out once.\n\n
 
-        Link: https://suryansh1720001.github.io\n\n
         Download it from here: https://play.google.com/store/apps/details?id=%1$s
     </string>
     <string name="share_title">Share Via</string>
@@ -43,4 +42,11 @@
     <string name="Developer">Developer</string>
     <string name="Source_Code">Source Code</string>
     <string name="scroll_down_for_rating">↓ ↓ Scroll Down to Rate Us ↓ ↓</string>
+    <string name="Update_Check">Checking for an update.</string>
+    <string name="Already_update">App is already updated UP-TO date.</string>
+    <string name="Open_Play_store">Unable to update app from Inside. Opening Google PlayStore.</string>
+    <string name="Update_downloading">An update has just been downloaded.</string>
+    <string name="Update_completed">Update successfully cancelled.</string>
+    <string name="Field_not_blank">Field must be filled before saving.</string>
+
 </resources>

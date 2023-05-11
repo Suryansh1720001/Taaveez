@@ -1,21 +1,41 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyNotes_DarkTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MyNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/mainpage_bottom_nav_dark</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white_dark</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/mainpage_bottom_nav_dark</item>
+        <item name="colorSecondaryVariant">@color/mainpage_bottom_nav_dark</item>
+        <item name="colorOnSecondary">@color/white_dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="colorWhite">@color/white_dark</item>
+        <item name="bg">@color/bg_dark</item>
+        <item name="item_topic_bg">@color/item_topic_bg_dark</item>
+        <item name="item_topic_bottom_bg">@color/item_topic_bottom_bg_dark</item>
+        <item name="text">@color/text_light</item>
+        <item name="text_alter">@color/text_dark</item>
+        <item name="mainpage_bottom_nav">@color/mainpage_bottom_nav_dark</item>
+        <item name="item_topic_bottom_cardview_bg">@color/item_topic_bottom_cardview_bg_dark</item>
+        <item name="pen_color">@color/pen_color_dark</item>
+        <item name="share_icon_color">@color/share_icon_color_dark</item>
+        <item name="delete_btn_color">@color/delete_btn_color_dark</item>
+        <item name="setting_icon_color">@color/setting_icon_color_dark</item>
+        <item name="cursor_color">@color/cursor_color_dark</item>
+        <item name="editor_bg">@color/editor_bg_dark</item>
+        <item name="text_white">@color/text_white_dark</item>
+
     </style>
 
     <style name="TextInputEditTextTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">#1363DF</item>
         <item name="boxStrokeWidth">1dp</item>
+    </style>
+
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@color/bg_dark</item>
     </style>
 </resources>

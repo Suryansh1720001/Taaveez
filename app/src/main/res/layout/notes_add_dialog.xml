@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#3C4048"
+            android:background="?attr/bg"
             >
             <FrameLayout
                 android:layout_width="match_parent"
@@ -60,17 +60,16 @@
         android:layout_margin="5dp"
         android:hint="@string/Topic"
         android:padding="5dp"
-        android:textColorHint="@color/black"
-        app:hintTextColor="@color/black">
+        android:textColorHint="?attr/text"
+        app:hintTextColor="?attr/text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/idTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:textColor="@color/black"
-
-            android:textColorHint="@color/black"
+            android:textColor="?attr/text"
+            android:textColorHint="?attr/text"
             android:textSize="14sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -155,10 +154,16 @@
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="300dp"/>-->
 
-            <jp.wasabeef.richeditor.RichEditor
-                android:id="@+id/idnotes"
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
+<!--            <jp.wasabeef.richeditor.RichEditor-->
+<!--                android:id="@+id/idnotes"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:textColorHint="?attr/text"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                app:hintTextColor="?attr/text"-->
+<!--                android:background="?attr/editor_bg"-->
+<!--                />-->
 
 
 <!--            // add image in poem-->
@@ -226,13 +231,12 @@
 
             <Button
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-
                 android:id="@+id/idBtnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@drawable/custom_button"
+              android:background="@drawable/custom_button"
                 android:text="@string/cancel"
                 android:textAllCaps="false" />
 

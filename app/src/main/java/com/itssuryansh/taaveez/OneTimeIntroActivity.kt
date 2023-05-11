@@ -3,18 +3,14 @@ package com.itssuryansh.taaveez
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroPageTransformerType
-import com.google.taaveez.R
 
 
 class OneTimeIntroActivity : AppIntro(){
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -90,6 +86,5 @@ class OneTimeIntroActivity : AppIntro(){
         startActivity(intent)
         finish()
     }
-
 
 }

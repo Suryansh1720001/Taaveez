@@ -6,7 +6,21 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="white_dark">#FFFFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_shade_2">#47B5FF</color>
     <color name="blue_shade_1">#DFF6FF</color>
+    <color name="bg_light">#F7F5EB</color>
+    <color name="item_topic_bg_light">#0081C9</color>
+    <color name="item_topic_bottom_bg_light">#0F57AF</color>
+    <color name="text_light">#ffffff</color>
+    <color name="item_topic_bottom_cardview_bg_light">#F7F5EB</color>
+    <color name="mainpage_bottom_nav_light">#0F57AF</color>
+    <color name="pen_color_light">#000000</color>
+    <color name="share_icon_color_light">#000000</color>
+    <color name="delete_btn_color_light">#000000</color>
+    <color name="setting_icon_color_light">#000000</color>
+    <color name="cursor_color_light">#000000</color>
+    <color name="editor_bg_light">#e0e0e0</color>
+    <color name="text_white_light">#ffffff</color>
 </resources>

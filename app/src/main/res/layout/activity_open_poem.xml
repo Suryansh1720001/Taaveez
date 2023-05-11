@@ -4,31 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3C4048"
+    android:background="?attr/bg"
     tools:context="com.itssuryansh.taaveez.OpenPoem">
 
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/flheading"
-        android:background="@drawable/heading_bg">
+        android:background="@drawable/heading_bg"
+        >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_add_new_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+
+        >
+    </androidx.appcompat.widget.Toolbar>
 
         <TextView
             android:id="@+id/tvTopic"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
             tools:text="@string/Poem"
-            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/white"
             android:layout_marginTop="5dp"
-           android:layout_marginBottom="5dp"
+            android:layout_marginBottom="5dp"
             android:textSize="28sp"
+            android:gravity="center"
             />
+
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/menu_icon"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"/>
 
     </FrameLayout>
 
@@ -39,66 +59,32 @@
         android:id="@+id/scPoemDes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnClose"
+        app:layout_constraintBottom_toBottomOf="parent"
+
 
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+
             >
 
-
-            <TextView
-                android:textColor="@color/white"
-                android:id="@+id/tvPoemCreatedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginTop="10dp"
-                tools:text="Created Date : "
-                android:textSize="14sp"
-                android:padding="5dp"
-                android:background="@drawable/updated_date_bg"
-
-                 />
-
-            <TextView
-                android:textColor="@color/white"
-                android:id="@+id/tvPoemUpdatedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginTop="4dp"
-                tools:text="Updated Date : "
-                android:textSize="14sp"
-                android:padding="5dp"
-                android:background="@drawable/created_date_bg"
-                />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:layout_marginTop="10dp"
-                android:background="#0f1521"
-                />
-
         <TextView
-            android:textColor="@color/white"
+            android:textColor="?attr/text"
             android:id="@+id/tvPoemDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             tools:text="Poem DEs"
             android:textSize="22sp"
+            android:layout_marginBottom="10dp"
             />
 
         </LinearLayout>
@@ -106,20 +92,20 @@
 
 
 
-    <Button
-        android:id="@+id/btnClose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"
-        android:text="@string/back"
-        android:padding="12dp"
-        android:textSize="19sp"
-        android:layout_margin="12dp"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
+<!--    <Button-->
+<!--        android:id="@+id/btnClose"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/custom_button"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:text="@string/back"-->
+<!--        android:padding="12dp"-->
+<!--        android:textSize="19sp"-->
+<!--        android:layout_margin="12dp"-->
+<!--        android:foreground="?attr/selectableItemBackgroundBorderless"-->
 
-        />
+<!--        />-->
 
 
 

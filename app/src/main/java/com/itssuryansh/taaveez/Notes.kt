@@ -1,60 +1,78 @@
 package com.itssuryansh.taaveez
 
-import  android.app.Dialog
+import android.app.Activity
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.text.TextUtils
+import android.text.*
 import android.util.Log
+import android.util.TypedValue
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.taaveez.R
-import com.google.taaveez.databinding.ActivityNotesBinding
-import com.google.taaveez.databinding.DeleteItemBinding
-import com.google.taaveez.databinding.UpdateNotesBinding
+import com.bumptech.glide.Glide.init
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+
+import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
+import com.itssuryansh.taaveez.databinding.DeleteItemBinding
+import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
-
+    private var PoemDesUpdate: RichEditor ?=null
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        loadLocate()
+        loadDayNight()
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-
-        val typeface: Typeface = Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
+        val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
-
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes, About::class.java )
             startActivity(intent)
             overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+            finish()
 
         }
-
         binding?.tvSetting?.setOnClickListener {
             val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
                 overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
+            finish()
 
         }
 
 
         val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
-            NewPoemDialog(NotesDao)
+//            NewPoemDialog(NotesDao)
+            val intent = Intent(this@Notes, Add_New_Content::class.java)
+            startActivity(intent)
+
         }
 
 
@@ -67,16 +85,25 @@ class Notes : AppCompatActivity() {
     }
 
 
+
+
+
+
+
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun NewPoemDialog(NotesDao: NotesDao) {
+
         val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
         PoemDialog.setContentView(R.layout.notes_add_dialog)
 
         val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
-        PoemDes.setPlaceholder("Enter text here...")
+        PoemDes.setPlaceholder(getString(R.string.write_here))
         PoemDes.setEditorHeight(200)
         PoemDes.setEditorFontSize(22)
         PoemDes.setPadding(10, 10, 10, 10)
+        PoemDes.setVerticalScrollBarEnabled(true)
+        PoemDes.setTextColor(Color.WHITE);
 
         val btnBold : ImageButton?= PoemDialog.findViewById(R.id.btn_bold)
         btnBold?.setOnClickListener { PoemDes?.setBold() }
@@ -89,6 +116,7 @@ class Notes : AppCompatActivity() {
         val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
         val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
         val btn_addLink = PoemDialog.findViewById<ImageButton>(R.id.btn_add_link)
+
 
         btn_addLink.setOnClickListener{
                 val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
@@ -105,12 +133,10 @@ class Notes : AppCompatActivity() {
                     .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
                     .create()
                 dialog.show()
-
         }
 
         cancelBtn.setOnClickListener {
             PoemDialog.dismiss()
-
         }
 
         addBtn.setOnClickListener {
@@ -125,7 +151,7 @@ class Notes : AppCompatActivity() {
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 
-            if (!(htmlContentPoemDes.isEmpty())) {
+            if (!(PoemDes.html.isNullOrEmpty())) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
@@ -160,7 +186,7 @@ class Notes : AppCompatActivity() {
 
     private fun setupListOfDateINtoRecycleVIew(
         NotesList: ArrayList<NotesEntity>,
-        NotesDao: NotesDao
+        NotesDao: NotesDao,
     ) {
         if (NotesList.isNotEmpty()) {
             val itemAdapter = itemAdapter(
@@ -207,9 +233,9 @@ class Notes : AppCompatActivity() {
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
-                    val body = "The Poem Topic is = ${Topic}\n" +
+                    val body = "Topic = ${Topic}\n" +
                             "--------------------------------\n" +
-                            "${PoemDes}"
+                            "${Html.fromHtml(PoemDes)}"
                     sendIntent.putExtra(Intent.EXTRA_TEXT, body)
                     Intent.createChooser(sendIntent, "Share using")
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -227,7 +253,6 @@ class Notes : AppCompatActivity() {
         var CreatedDate :String?
         var UpdatedDate : String?
 
-
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
@@ -236,13 +261,17 @@ class Notes : AppCompatActivity() {
                     CreatedDate = it.CreatedDate
                     UpdatedDate = it.Date
 
+
+
                     val intent = Intent(this@Notes, OpenPoem::class.java)
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
                     intent.putExtra(Constants.POEM_DES,PoemDes)
                     intent.putExtra(Constants.CREATED_DATE,CreatedDate)
                     intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
+                    intent.putExtra(Constants.ID,id)
                     startActivity(intent)
-                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
+//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
+
                 }
             }
 
@@ -252,22 +281,51 @@ class Notes : AppCompatActivity() {
     }
 
 
+
+    //    Handle the backspace button to undo the last action: in update dialog
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        PoemDesUpdate = findViewById(R.id.etUpdatePoem)
+        if (keyCode == KeyEvent.KEYCODE_DEL && PoemDesUpdate != null) {
+            PoemDesUpdate?.undo()
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
     private fun updateRecordDialog(id: Int, NotesDao: NotesDao) {
         val updateDialog = Dialog(this)
         updateDialog.setCancelable(false)
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
+        // color acc to the theme - text and background color
+        val typedValue = TypedValue()
+        theme.resolveAttribute(R.attr.editor_bg, typedValue, true)
+        val backgroundColor = typedValue.data
+        theme.resolveAttribute(R.attr.text, typedValue, true)
+        val textColor = typedValue.data
+        binding.etUpdatePoem?.setTextColor(textColor)
+
+
         val PoemDes: RichEditor = updateDialog.findViewById(R.id.etUpdatePoem)
-        PoemDes.setEditorHeight(2000)
-        PoemDes.setEditorFontSize(22)
+        PoemDes.setEditorFontSize(20)
+        PoemDes?.setEditorBackgroundColor(backgroundColor)
+        PoemDes?.setEditorFontColor(textColor)
         PoemDes.setPadding(10, 10, 10, 10)
+      PoemDes.setVerticalScrollBarEnabled(true);
 
         val btnBold : ImageButton? = updateDialog.findViewById(R.id.btn_update_bold)
         btnBold?.setOnClickListener { PoemDes?.setBold() }
         val btnItalic : ImageButton? = updateDialog.findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
         val btn_addLink = updateDialog.findViewById<ImageButton>(R.id.btn_update_addLink)
+        binding?.btnUdpateUndo?.setOnClickListener {
+            PoemDes?.undo()
+        }
+
+        binding?.btnUpdateRedo?.setOnClickListener {
+            PoemDes?.redo()
+        }
         btn_addLink.setOnClickListener{
             val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
             val dialog = AlertDialog.Builder(this)
@@ -287,7 +345,11 @@ class Notes : AppCompatActivity() {
         val btnUnderline : ImageButton? = updateDialog.findViewById(R.id.btn_update_underline)
         btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
+
+
         var CreatedDate:String=""
+
+
 
         lifecycleScope.launch {
             NotesDao.fetchNotesById(id).collect {
@@ -300,6 +362,38 @@ class Notes : AppCompatActivity() {
             }
 
         }
+
+
+
+
+        // edit text  - topic lenght size limit
+        val maxLength = 21
+        val filterArray = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
+        binding?.etPoemTopic?.filters = filterArray
+
+        // Add a TextWatcher to the TextInputEditText view
+        binding?.etPoemTopic?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                // Do nothing
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Do nothing
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Check if the length of the text is equal to the maximum length
+                if (s?.length == maxLength) {
+                    // Show a toast message
+                    val message = "Maximum length of $maxLength characters exceeded"
+//                    Snackbar.make(binding?.etPoemTopic!!, message, Snackbar.LENGTH_LONG).show()
+                    Toast.makeText(this@Notes,message,Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+
+
+
         binding.btnUpdatePoem.setOnClickListener {
             var Topic = binding.etPoemTopic.text.toString()
             var Poem = binding.etUpdatePoem.html
@@ -368,6 +462,51 @@ class Notes : AppCompatActivity() {
         }
 
         deleteDialog.show()
+    }
+
+    private fun setLocate(Lang: String) {
+        val locale = Locale(Lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+        val editor = getSharedPreferences("Setting", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang",Lang)
+        editor.apply()
+    }
+
+    private fun loadLocate(){
+        val sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE)
+        val language= sharedPreferences.getString("My_Lang","MyLang")
+        if (language != null) {
+            setLocate(language)
+        }
+    }
+
+
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun loadDayNight(){
+        val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
+        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
+        if (DayNight != null) {
+            setDayNight(DayNight)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun setDayNight(daynightMode: String) {
+        val editor = getSharedPreferences("DayNight",Context.MODE_PRIVATE).edit()
+        editor.putString("My_DayNight",daynightMode)
+        editor.apply()
+        if(daynightMode=="yes"){
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+        else{
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
     }
 }
 

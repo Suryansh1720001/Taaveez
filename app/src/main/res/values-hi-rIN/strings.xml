@@ -30,7 +30,7 @@
 </string>
     <string name="share_text">Hey, I have just found an amazing and beautifully designed taaveez for Content creator. I will recommend you to go and check it out once.\n\n
 
-        Link: https://calculator.mrayush.me\n\n
+
         Download it from here: https://play.google.com/store/apps/details?id=%1$s
     </string>
     <string name="share_title">के माध्यम से बाँटे</string>
@@ -42,5 +42,11 @@
     <string name="Developer">डेवलपर</string>
     <string name="Source_Code">सोर्स कोड</string>
     <string name="scroll_down_for_rating">↓ ↓ Scroll Down to Rate Us ↓ ↓</string>
+    <string name="Update_Check">Checking for an update.</string>
+    <string name="Already_update">App is already updated UP-TO date.</string>
+    <string name="Open_Play_store">Unable to update app from Inside. Opening Google PlayStore.</string>
+    <string name="Update_downloading">An update has just been downloaded.</string>
+    <string name="Update_completed">Update successfully cancelled.</string>
+    <string name="Field_not_blank">सेव करने से पहले फील्ड भरना जरूरी है।</string>
 
 </resources>

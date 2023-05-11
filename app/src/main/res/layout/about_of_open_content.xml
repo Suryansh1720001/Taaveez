@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center_vertical"
+
+    >
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+   >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       android:background="?attr/bg"
+
+        >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/flheading"
+        android:background="@drawable/heading_bg_dialog"
+        >
+
+        <TextView
+            android:id="@+id/tvTopic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="About"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="25sp"
+            android:gravity="center"
+            />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tv_created_on"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Created Date:"
+        android:textColor="?attr/text"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:textColor="?attr/text"
+        android:id="@+id/tvPoemCreatedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="14sp"
+        android:padding="5dp"
+        android:background="@drawable/updated_date_bg"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_updated_on"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Updated Date:"
+        android:textColor="?attr/text"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:textStyle="bold"
+        android:textColor="?attr/text"
+        android:id="@+id/tvPoemUpdatedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="22dp"
+        android:textSize="14sp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/created_date_bg"
+
+        />
+
+
+        <Button
+            android:id="@+id/btnAboutOpenContentBack"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_button"
+            android:layout_marginBottom="20dp"
+            android:text="Close"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:textSize="18sp"
+            android:layout_margin="12dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>

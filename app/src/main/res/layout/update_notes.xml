@@ -13,7 +13,7 @@
         >
 
         <LinearLayout
-            android:background="#3C4048"
+            android:background="?attr/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -62,9 +62,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/idPoemTopic"
-                android:textColorHint="@color/black"
+                android:textColorHint="?attr/text"
                 android:layout_marginTop="20dp"
-                app:hintTextColor="@color/black"
+                app:hintTextColor="?attr/text"
                 android:layout_margin="5dp"
                 >
 
@@ -72,9 +72,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/etPoemTopic"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="15sp"
+                    android:textColor="?attr/text"
+                    android:textColorHint="?attr/text"
+                    android:textSize="18sp"
+                    android:textCursorDrawable="@drawable/cursor_color"
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -114,6 +115,22 @@
                     android:src="@drawable/ic_underline"
                     android:layout_weight="1"
                     />
+
+                <ImageButton
+                    android:id="@+id/btn_udpate_undo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_undo"
+                    android:layout_weight="1"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btn_update_redo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_redo"
+                    android:layout_weight="1"
+                    />
                 <ImageButton
                     android:id="@+id/btn_update_addLink"
                     android:layout_width="match_parent"
@@ -150,11 +167,11 @@
             <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
             <jp.wasabeef.richeditor.RichEditor
-                android:layout_margin="5dp"
-                android:padding="5dp"
+                android:layout_margin="10dp"
                 android:id="@+id/etUpdatePoem"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"/>
+                android:layout_height="150dp"
+                />
 
 
 

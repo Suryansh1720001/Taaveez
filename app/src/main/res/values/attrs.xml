@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorWhite" format="color" />
+    <attr name="bg" format="color" />
+    <attr name="item_topic_bg" format="color" />
+    <attr name="item_topic_bottom_bg" format="color" />
+    <attr name="text" format="color" />
+    <attr name="text_alter" format="color" />
+    <attr name="item_topic_bottom_cardview_bg" format="color" />
+    <attr name="mainpage_bottom_nav" format="color" />
+    <attr name="pen_color" format="color" />
+    <attr name="share_icon_color" format="color" />
+    <attr name="delete_btn_color" format="color" />
+    <attr name="setting_icon_color" format="color" />
+    <attr name="cursor_color" format="color" />
+    <attr name="editor_bg" format="color" />
+    <attr name="text_white" format="color" />
+
+
+
+</resources>

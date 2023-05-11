@@ -1,13 +1,21 @@
 package com.itssuryansh.taaveez
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.google.taaveez.R
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
+
+
 import mehdi.sakout.aboutpage.AboutPage
 import mehdi.sakout.aboutpage.Element
 import java.util.*
@@ -15,9 +23,11 @@ import java.util.*
 class About : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        loadDayNight()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
         Element()
+
         val aboutPage: View = AboutPage(this)
             .isRTL(false)
             .setCustomFont("museo.ttf")
@@ -37,8 +47,14 @@ class About : AppCompatActivity() {
 //            .addPlayStore(packageName) //Replace all this with your package name
             .addInstagram("_its_s.u.r.y.a.n.s.h") //Your instagram id
             .addItem(createCopyright())
+
             .create()
+
+
         setContentView(aboutPage)
+
+
+
     }
 
     private fun createCopyright(): Element {
@@ -65,4 +81,28 @@ class About : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun loadDayNight(){
+        val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
+        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
+        if (DayNight != null) {
+            setDayNight(DayNight)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun setDayNight(daynightMode: String) {
+        val editor = getSharedPreferences("DayNight", Context.MODE_PRIVATE).edit()
+        editor.putString("My_DayNight",daynightMode)
+        editor.apply()
+        if(daynightMode=="yes"){
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+        else{
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
+    }
+
 }

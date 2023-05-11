@@ -1,23 +1,30 @@
 package com.itssuryansh.taaveez
 
+import android.annotation.SuppressLint
 import  android.app.Activity
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
-import com.google.taaveez.R
-import com.google.taaveez.databinding.ActivitySettingBinding
-import com.google.taaveez.databinding.DialogSourceCdeBinding
+import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
+import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
@@ -25,17 +32,14 @@ import java.util.*
 open class Setting : AppCompatActivity() {
 
 
-    private var binding :ActivitySettingBinding?=null
+    private var binding : ActivitySettingBinding?=null
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
-
-//        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES ){
-//            setTheme(R.style.Theme_MyNotes_DarkTheme)
-//        }else{
-//            setTheme(R.style.Theme_MyNotes)
-//        }
-
+        loadswithtoRightMode()
+//        binding?.switchTheme?.setChecked(true)
+        loadLocate()
+        loadDayNight()
         super.onCreate(savedInstanceState)
-       loadLocate()
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
@@ -63,8 +67,12 @@ open class Setting : AppCompatActivity() {
             sourceCode()
         }
 
-        binding?.llDeveloper?.setOnClickListener{
-            aboutDeveloper()
+        binding?.llOpenSourceLibrary?.setOnClickListener{
+            val link = "https://sites.google.com/view/taaveez-open-source-library/home"
+            val intent = Intent(this@Setting,WebView::class.java)
+            intent.putExtra(Constants.LINK, link)
+            startActivity(intent)
+
         }
 
         binding?.llshare?.setOnClickListener {
@@ -75,18 +83,25 @@ open class Setting : AppCompatActivity() {
             feedback()
         }
 
+        binding?.llPrivacyPolicy?.setOnClickListener {
+            val link = "https://sites.google.com/view/taaveez-privacy-policy/home"
+            val intent = Intent(this@Setting,WebView::class.java)
+            intent.putExtra(Constants.LINK, link)
+            startActivity(intent)
+
+        }
 
 
-//        binding?.switchTheme?.setOnCheckedChangeListener{ buttonView,isChecked ->
-//            if(isChecked){
-//                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-////                reset()
-//            }
-//            else{
-//                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-////                reset()
-//            }
-//        }
+        daynight()
+
+    }
+
+    private fun loadswithtoRightMode() {
+        if(Constants.Theme == "1" ){
+            binding?.switchTheme?.setChecked(true)
+        }else{
+            binding?.switchTheme?.setChecked(false)
+        }
     }
 
     private fun feedback() {
@@ -104,11 +119,6 @@ open class Setting : AppCompatActivity() {
         startActivity(i)
     }
 
-//    private fun reset() {
-//        val intent=Intent(this@Setting   ,Setting::class.java)
-//        startActivity(intent)
-//        finish()
-//    }
 
     private  fun showChangeLang() {
         val listItems = arrayOf("English","हिन्दी")
@@ -131,27 +141,22 @@ open class Setting : AppCompatActivity() {
 
 
     private fun setLocate(Lang: String) {
-
     val locale = Locale(Lang)
         Locale.setDefault(locale)
         val config =Configuration()
         config.locale = locale
         baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
-        val editor = getSharedPreferences("Setting",Context.MODE_PRIVATE).edit()
+        val editor = getSharedPreferences("Setting", MODE_PRIVATE).edit()
         editor.putString("My_Lang",Lang)
         editor.apply()
-
     }
 
     private fun loadLocate(){
-        val sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE)
-        val language= sharedPreferences.getString("My_Lang","")
-
+        val sharedPreferences=getSharedPreferences("Setting", MODE_PRIVATE)
+        val language= sharedPreferences.getString("My_Lang","MyLang")
         if (language != null) {
             setLocate(language)
         }
-
-
     }
 
     private fun sourceCode(){
@@ -170,6 +175,50 @@ open class Setting : AppCompatActivity() {
 
         sourceCodeDialog.setCancelable(true)
         sourceCodeDialog.show()
+    }
+
+
+
+    // load Dark night after open the app
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun loadDayNight(){
+        val sharedPreferences=getSharedPreferences("DayNight", MODE_PRIVATE)
+        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
+        if (DayNight != null) {
+            setDayNight(DayNight)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun setDayNight(daynightMode: String) {
+        val editor = getSharedPreferences("DayNight", MODE_PRIVATE).edit()
+        editor.putString("My_DayNight",daynightMode)
+        editor.apply()
+        if(daynightMode=="yes"){
+              // set for dark mode
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else{
+
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    // load DayNight actually
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun daynight(){
+        val switch: Switch
+        switch = findViewById(R.id.switchTheme)
+        switch.setOnCheckedChangeListener { compoundButton, b ->
+            if(switch.isChecked) {
+                setDayNight("yes")
+                Constants.Theme = "1"
+            }
+            else {
+                setDayNight("no")
+                Constants.Theme = "0"
+            }
+        }
     }
 
 
@@ -195,7 +244,6 @@ open class Setting : AppCompatActivity() {
         bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream)
         fileOutputStream.flush()
         fileOutputStream.close()
-
         val uri: Uri = FileProvider.getUriForFile(applicationContext,"com.itssuryansh.taaveez",file)
         return uri
 
@@ -206,5 +254,9 @@ open class Setting : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+
+
 
 }

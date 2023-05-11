@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3C4048"
+    android:background="?attr/bg"
     android:orientation="vertical"
     tools:context="com.itssuryansh.taaveez.Notes">
 
 
     <FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="?attr/actionBarSize"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -32,11 +32,10 @@
             android:layout_height="wrap_content"
             android:text="तावीज़"
             android:textSize="30sp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/white"
-
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="3dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="20dp"
             />
@@ -48,10 +47,9 @@
         android:layout_height="wrap_content"
         android:text="@string/taaveez"
         android:textSize="40sp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:textColor="@color/white"
-        android:layout_marginTop="5dp"
         />
 
             <TextView
@@ -60,10 +58,10 @@
                 android:layout_height="wrap_content"
                 android:text="تَعْوِیذ"
                 android:textSize="30sp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
                 />
@@ -123,31 +121,33 @@
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/no_data_available"
-        android:textColor="@color/white"
+        android:textColor="?attr/text"
         android:textSize="18sp"
         android:visibility="visible"
         android:textStyle="bold"
-
         tools:visibility="visible" />
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/idFABAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="#088ed7"
-        android:src="@drawable/ic_add"
-        android:background="@color/white"
-        />
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/idFABAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="?attr/mainpage_bottom_nav"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@null"
+            />
 
 
 
@@ -173,18 +173,17 @@
 
 
                 <TextView
+                    android:id="@+id/tvSetting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/setting"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
-
-                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
-                    android:id="@+id/tvSetting"
-                    android:textSize="25sp"
-                    android:textColor="@color/white"/>
+                    android:text="@string/setting"
+                    android:textColor="?attr/text_white"
+                    android:textSize="25sp" />
 
 
                 <TextView
@@ -194,42 +193,12 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
                     android:text="@string/about"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/text_white"
                     android:textSize="25sp" />
 
-
-
-                <!--            <TextView-->
-<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--                android:id="@+id/tvSetting"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginBottom="10dp"-->
-<!--                android:layout_marginStart="60dp"-->
-<!--                android:text="@string/setting"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textStyle="bold"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textSize="25sp" />-->
-
-<!--            <TextView-->
-<!--                android:layout_weight="1"-->
-<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
-<!--                android:id="@+id/tvabout"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--                android:layout_marginEnd="60dp"-->
-<!--          android:layout_gravity="right"-->
-<!--            android:text="@string/about"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="25sp" />-->
             </LinearLayout>
         </FrameLayout>
 

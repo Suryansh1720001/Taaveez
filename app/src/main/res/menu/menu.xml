@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/edit_data"
+        android:title="Edit"
+        android:icon="@drawable/ic_edit_menu"
+        />
+    <item android:id="@+id/copy_data"
+        android:title="Copy"
+        android:icon="@drawable/copy_data"
+        />
+    <item android:id="@+id/share_data"
+        android:title="Share"
+        android:icon="@drawable/ic_share"
+        />
+    <item android:id="@+id/about_data"
+        android:title="About"
+        android:icon="@drawable/info_icon"
+        />
+</menu>
