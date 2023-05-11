@@ -1,8 +1,16 @@
 ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
 
-## 🤔 What is this App
+
+## 🤔 What is this App?
  
 ✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more creative content in a beautifully designed app.
+
+## 🔗 Download the App 
+
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="30%" /></a>
+
+<br>
+
 
 # 📜App Description
  
@@ -13,19 +21,15 @@ It provides a creative environment to people who are fond of writing. This appli
 
 ### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
 
-It is based on Kotlin language. Every content creator can write their material in a variety of genres.
-- Poems - कविताएं
-- Stories - कहानियां
-- Couplets - दोहे
-- and many more
+The foundation of this platform lies in the Kotlin language, empowering content creators to express their thoughts and ideas in an array of genres. 
+- From the eloquent beauty of **poems or कविताएं**, 
+- to the captivating narratives of **stories or कहानियां**, 
+- and even the profound wisdom of **couplets or दोहे**,
+- the possibilities for creativity are endless.
 
-## Enhancement
+## 🌐Language
 
-<img src ="https://user-images.githubusercontent.com/85965606/210627863-5adeec15-ea0b-48d2-b7c8-7bb6cc8012c3.png" width="600" heigth="600">
-
-It is available in 2 languages - Hindi and English.
-- The content can be updated as often as you like.
-- Attractive Images used.
+Bilingual and dynamic, this platform offers unlimited updates and engaging visuals to elevate your content in **Hindi and English**.
 
 
 
@@ -34,37 +38,41 @@ It is available in 2 languages - Hindi and English.
 
 ||||
 |:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://user-images.githubusercontent.com/85965606/216627853-5cd7a91a-1a4b-495d-b119-70e9b1561cfa.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216627908-5238956b-2d2a-47c2-8997-9bbecd1ecdf3.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628101-136e5478-e405-489c-bbf8-fceb95ca11b5.jpg" width="250" height="505"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/216628014-15426018-e5e9-452e-92b3-d995a4fd7b8a.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628123-30f0716d-273c-4156-a4a7-8d2d7225be8f.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628220-12403e46-058c-4f37-81cc-4b694fd2fb67.jpg" width="250" height="505"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/216628244-8a614afb-1d06-4ed4-a3ab-e41c9a936130.jpg" width="250" height="505"> | <img src= "https://user-images.githubusercontent.com/85965606/216628158-3fe004d1-4211-416c-8356-483cf8b4dddd.jpg" width="250" height="505"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/222893516-51d1eb82-2f43-4d66-987d-54f111c155f4.png" width="80%" height="70%"> |
+| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="80%" height="70%"> |
+|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="80%" height="70%">  |
 
 
 
+## 🖥️ Technology
 
-## Tech
+Under the umbrella of "Technology" lies a powerful combination of
 
 - Kotlin language
 - xml language
 - Android Studoid
 - Room database
 
-⭐ And of course Developer Quiz-App itself is open source with a [public repository](https://github.com/Suryansh1720001/Taaveez)
-
-
-## Installation
-GooglePlay Store link available soon
+⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
 
 <br>
 
+## 🔏 Privacy Policy
 
-# <h1 align=center>CONTRIBUTION 👏</h1>
+<a href="https://sites.google.com/view/taaveez/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
 
-## 🧑‍💻 About the Maintainer
+# <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
-| Maintainer   | 
-| :----------: | 
-|<a href="https://github.com/Suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width=150px height=150px /></a><br>Suryansh Prajapati<br><a href="https://www.linkedin.com/in/itssuryansh/"><img src="https://t0.gstatic.com/images?q=tbn:ANd9GcRMCA3j2A8hfLl9p5UAU5nd9lvqLlNZvqoU4xOsZ192uH4IYS6X" width="32px" height="32px"></a> |
-<br>
+<h1 align=center> Project Admin  🤵 </h1>
+
+  <p align="center">
+  <a href="https://github.com/suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width="17%" /></a>
+
+  <p align="center">
+  <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
 
 # 🖱️ How to Contribute 
