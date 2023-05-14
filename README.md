@@ -59,7 +59,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 ## 🔏 Privacy Policy
 
-<a href="https://sites.google.com/view/taaveez/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
+<a href="https://sites.google.com/view/taaveez-privacy-policy/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
 
 # <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
