@@ -59,7 +59,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 ## 🔏 Privacy Policy
 
-<a href="https://sites.google.com/view/taaveez/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
+<a href="https://sites.google.com/view/taaveez-privacy-policy/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
 
 # <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
@@ -70,7 +70,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
   <p align="center">
   <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<!--   <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
   <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
