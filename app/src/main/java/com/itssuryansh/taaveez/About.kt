@@ -14,8 +14,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-
-
 import mehdi.sakout.aboutpage.AboutPage
 import mehdi.sakout.aboutpage.Element
 import java.util.*
@@ -47,12 +45,9 @@ class About : AppCompatActivity() {
 //            .addPlayStore(packageName) //Replace all this with your package name
             .addInstagram("_its_s.u.r.y.a.n.s.h") //Your instagram id
             .addItem(createCopyright())
-
             .create()
 
-
         setContentView(aboutPage)
-
 
 
     }
@@ -97,11 +92,9 @@ class About : AppCompatActivity() {
         editor.apply()
         if(daynightMode=="yes"){
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
         }
         else{
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
         }
     }
 

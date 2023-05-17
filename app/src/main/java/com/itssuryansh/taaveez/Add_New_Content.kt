@@ -1,33 +1,25 @@
 package com.itssuryansh.taaveez
+
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.*
-import android.text.style.ImageSpan
 import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
@@ -47,8 +39,6 @@ class Add_New_Content : AppCompatActivity() {
         loadDayNight()
         super.onCreate(savedInstanceState)
 
-
-
         binding = ActivityAddNewContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
@@ -66,7 +56,7 @@ class Add_New_Content : AppCompatActivity() {
 
      fun AddContent(NotesDao: NotesDao) {
 
-        // baground color change of richeditor
+        // bacground color change of richeditor
         val typedValue = TypedValue()
         theme.resolveAttribute(R.attr.editor_bg, typedValue, true)
         val backgroundColor = typedValue.data
@@ -96,7 +86,6 @@ class Add_New_Content : AppCompatActivity() {
         binding?.btnRedo?.setOnClickListener {
             PoemDes?.redo()
         }
-
 
 
 
@@ -247,7 +236,6 @@ class Add_New_Content : AppCompatActivity() {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
-
 
 
     private fun BackData() {

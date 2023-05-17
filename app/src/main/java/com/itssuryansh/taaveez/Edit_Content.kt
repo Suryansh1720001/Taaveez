@@ -25,7 +25,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
-import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
@@ -72,7 +71,6 @@ class Edit_Content : AppCompatActivity() {
         PoemDes.setVerticalScrollBarEnabled(true);
 
 
-
         val btnBold : ImageButton? = findViewById(R.id.btn_update_bold)
         btnBold?.setOnClickListener { PoemDes?.setBold() }
         val btnItalic : ImageButton? = findViewById(R.id.btn_update_italic)
@@ -105,13 +103,6 @@ class Edit_Content : AppCompatActivity() {
         val btnUnderline : ImageButton? = findViewById(R.id.btn_update_underline)
         btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
-
-
-
-
-
-
-
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
 
@@ -125,7 +116,6 @@ class Edit_Content : AppCompatActivity() {
             }
 
         }
-
 
         // edit text  - topic lenght size limit
         val maxLength = 21
@@ -152,9 +142,6 @@ class Edit_Content : AppCompatActivity() {
                 }
             }
         })
-
-
-
 
 
         binding?.btnUpdatePoem?.setOnClickListener {
@@ -295,7 +282,5 @@ class Edit_Content : AppCompatActivity() {
         // Call your desired method here
         BackData()
     }
-
-
 
 }
