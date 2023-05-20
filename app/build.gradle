@@ -10,12 +10,12 @@ android {
     lint{
         baseline = file("lint-baseline.xml")
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.itssuryansh.taaveez'
         minSdk 16
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "v1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
