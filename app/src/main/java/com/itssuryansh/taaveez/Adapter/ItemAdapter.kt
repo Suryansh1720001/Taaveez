@@ -1,14 +1,15 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.itssuryansh.taaveez.Model.NotesEntity
 import com.itssuryansh.taaveez.databinding.ItemPoemBinding
 import kotlin.collections.ArrayList
 
 
-class itemAdapter(private val items: ArrayList<NotesEntity>,
+class itemAdapter(private var items: ArrayList<NotesEntity>,
                   private val updateListener:(id:Int)->Unit,
                   private val deleteListener:(id:Int)->Unit,
                   private val OpenListener:(id:Int)->Unit,
@@ -26,6 +27,7 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
         val  ivShare= binding.ivShare
         val tvDate = binding.tvDate
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -59,4 +61,40 @@ class itemAdapter(private val items: ArrayList<NotesEntity>,
     override fun getItemCount(): Int {
        return items.size
     }
+
+
+    fun submitList(newList:List<NotesEntity>){
+        val oldList = items
+        val diffResult : DiffUtil.DiffResult = DiffUtil.calculateDiff(
+            NotesItemDiffCallback(
+                oldList,
+                newList
+            )
+        )
+        items = ArrayList(newList)
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    class NotesItemDiffCallback(
+        val oldList:List<NotesEntity>,
+        val newList : List<NotesEntity>
+    ):DiffUtil.Callback(){
+        override fun getOldListSize(): Int {
+           return oldList.size
+        }
+
+        override fun getNewListSize(): Int {
+           return newList.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList.get(oldItemPosition).id == newList.get(newItemPosition).id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList.get(oldItemPosition).hashCode() == newList.get(newItemPosition).hashCode()
+        }
+
+    }
+
 }

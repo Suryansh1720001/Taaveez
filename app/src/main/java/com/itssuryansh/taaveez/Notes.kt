@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.itssuryansh.taaveez.Adapter.itemAdapter
 import com.itssuryansh.taaveez.Data.NotesApp
 import com.itssuryansh.taaveez.Data.NotesDao
 import com.itssuryansh.taaveez.Model.NotesEntity
@@ -43,7 +44,6 @@ class Notes : AppCompatActivity() {
     private lateinit var binding: ActivityNotesBinding
     private var PoemDesUpdate: RichEditor ?=null
     private  lateinit var  notesViewModel: NotesViewModel
-
 
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -224,12 +224,12 @@ class Notes : AppCompatActivity() {
 
 
     private fun setupListOfDateINtoRecycleVIew(
-        NotesList: ArrayList<NotesEntity>,
+        newList: ArrayList<NotesEntity>,
         NotesDao: NotesDao,
     ) {
-        if (NotesList.isNotEmpty()) {
+        if (newList.isNotEmpty()) {
             val itemAdapter = itemAdapter(
-                NotesList,
+                newList,
                 { updateId ->
                     updateRecordDialog(updateId)
                 },
@@ -246,9 +246,14 @@ class Notes : AppCompatActivity() {
 
             binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
             binding?.rvItemsPoem?.adapter = itemAdapter
+
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
             binding?.ivNoData?.visibility = View.GONE
+            itemAdapter.submitList(newList)
+
+
+
         } else {
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
@@ -399,15 +404,7 @@ class Notes : AppCompatActivity() {
                      CreatedDate = notesEntity.CreatedDate
                 }
             }
-            /*
-            NotesDao.fetchNotesById(id).collect {
-                if (it != null) {
-                    binding.etPoemTopic.setText(it.Topic)
-                    binding.etUpdatePoem.setHtml(it.Poem)
-                    CreatedDate = it.CreatedDate
 
-                }
-            }*/
 
         }
 
