@@ -1,6 +1,7 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.Data
 
 import androidx.room.*
+import com.itssuryansh.taaveez.Model.NotesEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,5 +21,8 @@ interface NotesDao {
 
     @Query("select * from `Poem-table` where id=:id")
     fun fetchNotesById(id:Int):Flow<NotesEntity>
+
+    @Query("DELETE FROM `Poem-table`")
+    suspend fun deleteAll()
 
 }

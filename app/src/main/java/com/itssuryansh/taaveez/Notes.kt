@@ -20,18 +20,19 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.view.isEmpty
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide.init
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-
+import com.itssuryansh.taaveez.Data.NotesApp
+import com.itssuryansh.taaveez.Data.NotesDao
+import com.itssuryansh.taaveez.Model.NotesEntity
+import com.itssuryansh.taaveez.ViewModels.NotesViewModel
+import com.itssuryansh.taaveez.ViewModels.NotesViewModelFactory
 import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,8 +40,12 @@ import java.util.*
 
 class Notes : AppCompatActivity() {
 
-    private var binding: ActivityNotesBinding? = null
+    private lateinit var binding: ActivityNotesBinding
     private var PoemDesUpdate: RichEditor ?=null
+    private  lateinit var  notesViewModel: NotesViewModel
+
+
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -48,7 +53,18 @@ class Notes : AppCompatActivity() {
         loadDayNight()
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(binding.root)
+
+        val notesRepository = (application as NotesApp).repository
+
+        Log.d("tag", "view model created")
+
+        notesViewModel = ViewModelProvider(this,NotesViewModelFactory(notesRepository))
+            .get(NotesViewModel::class.java)
+
+        Log.d("tag", "view model done")
+
+
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
         binding?.tvabout?.setOnClickListener {
@@ -58,6 +74,7 @@ class Notes : AppCompatActivity() {
             finish()
 
         }
+
         binding?.tvSetting?.setOnClickListener {
             val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
@@ -67,9 +84,13 @@ class Notes : AppCompatActivity() {
         }
 
 
+
         val NotesDao = (application as NotesApp).db.NotesDao()
+
+
         binding?.idFABAdd?.setOnClickListener {
 //            NewPoemDialog(NotesDao)
+            Log.d("tag", "clicked on fab button")
             val intent = Intent(this@Notes, Add_New_Content::class.java)
             startActivity(intent)
 
@@ -77,16 +98,15 @@ class Notes : AppCompatActivity() {
 
 
         lifecycleScope.launch {
-            NotesDao.fetchAllNotes().collect {
-                val list = ArrayList(it)
-                setupListOfDateINtoRecycleVIew(list, NotesDao)
-            }
+            Log.d("tag", "onCreate fetching response to UI")
+                /* val list = ArrayList(responseList)
+                setupListOfDateINtoRecycleVIew(list , NotesDao)*/
+          notesViewModel.getAllNotesFromViewModel().observe(this@Notes, androidx.lifecycle.Observer { resList->
+              val resultList = ArrayList(resList)
+              setupListOfDateINtoRecycleVIew(resultList,NotesDao)
+          })
         }
     }
-
-
-
-
 
 
 
@@ -153,18 +173,37 @@ class Notes : AppCompatActivity() {
 
             if (!(PoemDes.html.isNullOrEmpty())) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
+
+                    val notesEntity = NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                        CreatedDate = date )
+
                     lifecycleScope.launch {
+                        notesViewModel.insertNewNotesToViewModel(notesEntity)
+
+                        Toast.makeText(applicationContext,
+                            getString(R.string.Record_saved),
+                            Toast.LENGTH_LONG).show()
+                        /*
                         NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
+                        */
                     }
 
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date ))
+
+                        val notesEntity = NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        /*NotesDao.insert(
+                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        )*/
+
+                        notesViewModel.insertNewNotesToViewModel(notesEntity)
+
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -192,10 +231,10 @@ class Notes : AppCompatActivity() {
             val itemAdapter = itemAdapter(
                 NotesList,
                 { updateId ->
-                    updateRecordDialog(updateId, NotesDao)
+                    updateRecordDialog(updateId)
                 },
                 { deleteId ->
-                    deleteRecordAlertDialog(deleteId, NotesDao)
+                    deleteRecordAlertDialog(deleteId)
                 },
                 { OpenId ->
                     openNotes(OpenId, NotesDao)
@@ -292,15 +331,17 @@ class Notes : AppCompatActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
-    private fun updateRecordDialog(id: Int, NotesDao: NotesDao) {
+    private fun updateRecordDialog(notesId: Int) {
         val updateDialog = Dialog(this)
         updateDialog.setCancelable(false)
+
         val binding = UpdateNotesBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
         // color acc to the theme - text and background color
         val typedValue = TypedValue()
         theme.resolveAttribute(R.attr.editor_bg, typedValue, true)
+
         val backgroundColor = typedValue.data
         theme.resolveAttribute(R.attr.text, typedValue, true)
         val textColor = typedValue.data
@@ -312,12 +353,14 @@ class Notes : AppCompatActivity() {
         PoemDes?.setEditorBackgroundColor(backgroundColor)
         PoemDes?.setEditorFontColor(textColor)
         PoemDes.setPadding(10, 10, 10, 10)
-      PoemDes.setVerticalScrollBarEnabled(true);
+        PoemDes.setVerticalScrollBarEnabled(true);
 
         val btnBold : ImageButton? = updateDialog.findViewById(R.id.btn_update_bold)
         btnBold?.setOnClickListener { PoemDes?.setBold() }
+
         val btnItalic : ImageButton? = updateDialog.findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+
         val btn_addLink = updateDialog.findViewById<ImageButton>(R.id.btn_update_addLink)
         binding?.btnUdpateUndo?.setOnClickListener {
             PoemDes?.undo()
@@ -326,6 +369,7 @@ class Notes : AppCompatActivity() {
         binding?.btnUpdateRedo?.setOnClickListener {
             PoemDes?.redo()
         }
+
         btn_addLink.setOnClickListener{
             val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
             val dialog = AlertDialog.Builder(this)
@@ -345,13 +389,17 @@ class Notes : AppCompatActivity() {
         val btnUnderline : ImageButton? = updateDialog.findViewById(R.id.btn_update_underline)
         btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
 
-
-
-        var CreatedDate:String=""
-
-
+        var CreatedDate:String = ""
 
         lifecycleScope.launch {
+            notesViewModel.getUniqueNoteFromViewModel(notesId).collect(){notesEntity->
+                if(notesEntity != null){
+                    binding.etPoemTopic.setText(notesEntity.Topic)
+                    binding.etUpdatePoem.setHtml(notesEntity.Poem)
+                     CreatedDate = notesEntity.CreatedDate
+                }
+            }
+            /*
             NotesDao.fetchNotesById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
@@ -359,7 +407,7 @@ class Notes : AppCompatActivity() {
                     CreatedDate = it.CreatedDate
 
                 }
-            }
+            }*/
 
         }
 
@@ -411,16 +459,23 @@ class Notes : AppCompatActivity() {
             if (!(Poem.isEmpty())) {
                 if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
+
+                        notesViewModel.updateNotesToViewModel(NotesEntity(notesId, Topic, Poem, date,CreatedDate))
+                        /* val notesEntity = (NotesEntity(id, Topic, Poem, date,CreatedDate)
                         NotesDao.update(NotesEntity(id, Topic, Poem, date,CreatedDate))
+                        */
+
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
+
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         updateDialog.dismiss()
                     }
                 } else {
                     Topic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.update(NotesEntity(id, Topic, Poem, date, CreatedDate))
+                        notesViewModel.updateNotesToViewModel(NotesEntity(notesId, Topic, Poem, date, CreatedDate))
+                       // NotesDao.update(NotesEntity(id, Topic, Poem, date, CreatedDate))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -440,19 +495,23 @@ class Notes : AppCompatActivity() {
         }
 
 
-    private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
+    private fun deleteRecordAlertDialog(notesId: Int) {
 
         val deleteDialog = Dialog(this)
         deleteDialog.setCancelable(false)
+
         val binding = DeleteItemBinding.inflate(layoutInflater)
         deleteDialog.setContentView(binding.root)
 
         binding?.btnDeleteNo?.setOnClickListener {
             deleteDialog.dismiss()
         }
+
         binding?.btnDeleteYes?.setOnClickListener {
             lifecycleScope.launch {
-                employeeDao.delete(NotesEntity(id))
+
+                notesViewModel.deleteUniqueNoteFromViewModel(NotesEntity(notesId))
+
                     Toast.makeText(applicationContext,
                         "Record deleted successfully",
                         Toast.LENGTH_LONG).show()

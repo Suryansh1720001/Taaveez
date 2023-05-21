@@ -24,6 +24,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.itssuryansh.taaveez.Data.NotesApp
+import com.itssuryansh.taaveez.Data.NotesDao
+import com.itssuryansh.taaveez.Model.NotesEntity
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
 import jp.wasabeef.richeditor.RichEditor

@@ -3,6 +3,7 @@ package com.itssuryansh.taaveez
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.itssuryansh.taaveez.Model.NotesEntity
 import com.itssuryansh.taaveez.databinding.ItemPoemBinding
 import kotlin.collections.ArrayList
 

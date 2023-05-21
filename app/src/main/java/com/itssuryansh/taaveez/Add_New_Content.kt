@@ -19,8 +19,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.itssuryansh.taaveez.Data.NotesApp
+import com.itssuryansh.taaveez.Data.NotesDao
+import com.itssuryansh.taaveez.Model.NotesEntity
+import com.itssuryansh.taaveez.ViewModels.NotesViewModel
+import com.itssuryansh.taaveez.ViewModels.NotesViewModelFactory
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
 import jp.wasabeef.richeditor.RichEditor
@@ -31,6 +37,9 @@ import java.util.*
 class Add_New_Content : AppCompatActivity() {
 
     private var binding: ActivityAddNewContentBinding? = null
+
+    private lateinit var notesViewModel: NotesViewModel
+
     private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -41,6 +50,10 @@ class Add_New_Content : AppCompatActivity() {
 
         binding = ActivityAddNewContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        val notesRepository = (application as NotesApp).repository
+        notesViewModel = ViewModelProvider(this, NotesViewModelFactory(notesRepository))
+            .get(NotesViewModel::class.java)
 
         setupActionBar()
         val NotesDao = (application as NotesApp).db.NotesDao()
@@ -145,8 +158,12 @@ class Add_New_Content : AppCompatActivity() {
 
             if (PoemDes?.html!!.isNotEmpty()) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
+
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
+
+                        val notesEntity = NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date)
+                        notesViewModel.insertNewNotesToViewModel(notesEntity)
+                       // NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -154,8 +171,13 @@ class Add_New_Content : AppCompatActivity() {
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date ))
+                        val notesEntity =  NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        notesViewModel.insertNewNotesToViewModel(notesEntity)
+                       /* NotesDao.insert(
+                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        )*/
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
