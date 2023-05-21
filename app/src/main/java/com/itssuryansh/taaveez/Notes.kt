@@ -26,13 +26,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.itssuryansh.taaveez.Data.NotesApp
 import com.itssuryansh.taaveez.Data.NotesDao
 import com.itssuryansh.taaveez.Model.NotesEntity
+import com.itssuryansh.taaveez.Util.Setting
 import com.itssuryansh.taaveez.ViewModels.NotesViewModel
 import com.itssuryansh.taaveez.ViewModels.NotesViewModelFactory
 import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,12 +1,7 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.Util
 
-import android.annotation.SuppressLint
-import  android.app.Activity
 import android.app.Dialog
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Typeface
@@ -15,7 +10,6 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
@@ -23,8 +17,19 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.util.Util
+import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.Data.NotesApp
+import com.itssuryansh.taaveez.Notes
+import com.itssuryansh.taaveez.R
+import com.itssuryansh.taaveez.ViewModels.NotesViewModel
+import com.itssuryansh.taaveez.ViewModels.NotesViewModelFactory
+import com.itssuryansh.taaveez.WebView
 import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
 import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
@@ -33,15 +38,22 @@ open class Setting : AppCompatActivity() {
 
 
     private var binding : ActivitySettingBinding?=null
+    private lateinit var notesViewModel:NotesViewModel
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         loadswithtoRightMode()
 //        binding?.switchTheme?.setChecked(true)
         loadLocate()
         loadDayNight()
+
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        val repository = (application as NotesApp).repository
+        notesViewModel = ViewModelProvider(this,NotesViewModelFactory(repository))
+            .get(NotesViewModel::class.java)
 
         if (supportActionBar != null){
             Toast.makeText(this@Setting,"back setting",Toast.LENGTH_LONG).show()
@@ -67,9 +79,19 @@ open class Setting : AppCompatActivity() {
             sourceCode()
         }
 
+        //adding the delete all feature.
+        binding?.lldeleteAll?.setOnClickListener{view->
+
+
+            lifecycleScope.launch{
+                val dialogBoxBuilder = AlertBoxBuilder.DialogBoxBuilder(this@Setting,notesViewModel)
+                dialogBoxBuilder.show()
+            }
+        }
+
         binding?.llOpenSourceLibrary?.setOnClickListener{
             val link = "https://sites.google.com/view/taaveez-open-source-library/home"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -85,7 +107,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llPrivacyPolicy?.setOnClickListener {
             val link = "https://sites.google.com/view/taaveez-privacy-policy/home"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 

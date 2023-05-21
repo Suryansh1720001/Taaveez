@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/bg"
-    tools:context="com.itssuryansh.taaveez.Setting">
+    tools:context="com.itssuryansh.taaveez.Util.Setting">
 
 
     <FrameLayout
@@ -176,6 +177,38 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/lldeleteAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/llshare">
+
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_action_delete" />
+
+
+                <TextView
+                    android:id="@+id/tv_deleteAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deleteAllText"
+                    android:textColor="?attr/text"
+                    android:textSize="22sp" />
+
+
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/llfeedback"
                 android:layout_width="wrap_content"

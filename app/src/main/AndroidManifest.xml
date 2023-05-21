@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Setting"
+            android:name=".Util.Setting"
             android:exported="false" />
         <activity
             android:name=".OpenPoem"
