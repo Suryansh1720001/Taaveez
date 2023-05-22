@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.lottie.LottieAnimationView
 import com.itssuryansh.taaveez.Data.NotesApp
 import com.itssuryansh.taaveez.Data.NotesDao
 import com.itssuryansh.taaveez.Model.NotesEntity
@@ -43,7 +44,7 @@ class Notes : AppCompatActivity() {
     private lateinit var binding: ActivityNotesBinding
     private var PoemDesUpdate: RichEditor ?=null
     private  lateinit var  notesViewModel: NotesViewModel
-
+    private lateinit var noDataAnimation: LottieAnimationView
 
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -56,6 +57,8 @@ class Notes : AppCompatActivity() {
         setContentView(binding.root)
 
         val notesRepository = (application as NotesApp).repository
+
+        noDataAnimation = findViewById(R.id.recyclerViewAnimation)
 
         Log.d("tag", "view model created")
 
@@ -103,7 +106,16 @@ class Notes : AppCompatActivity() {
                 setupListOfDateINtoRecycleVIew(list , NotesDao)*/
           notesViewModel.getAllNotesFromViewModel().observe(this@Notes, androidx.lifecycle.Observer { resList->
               val resultList = ArrayList(resList)
-              setupListOfDateINtoRecycleVIew(resultList,NotesDao)
+              if(resultList.isEmpty()){
+                  if(noDataAnimation.visibility == View.GONE){
+                      noDataAnimation.visibility = View.VISIBLE
+                      noDataAnimation.playAnimation()
+                  }
+              }else{
+                  noDataAnimation.cancelAnimation()
+                  noDataAnimation.visibility = View.GONE
+                  setupListOfDateINtoRecycleVIew(resultList,NotesDao)
+              }
           })
         }
     }
@@ -248,11 +260,14 @@ class Notes : AppCompatActivity() {
             binding?.rvItemsPoem?.adapter = itemAdapter
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
-            binding?.ivNoData?.visibility = View.GONE
+            //binding?.ivNoData?.visibility = View.GONE
+
         } else {
+
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
-            binding?.ivNoData?.visibility = View.VISIBLE
+
+            //binding?.ivNoData?.visibility = View.VISIBLE
 
         }
     }
