@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide.init
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -41,14 +42,20 @@ class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
+    private lateinit var noDataAnimationView: LottieAnimationView
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
         loadLocate()
         loadDayNight()
+
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        noDataAnimationView = findViewById(R.id.lottieAnimationId)
+
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
         binding?.tvabout?.setOnClickListener {
@@ -209,11 +216,16 @@ class Notes : AppCompatActivity() {
             binding?.rvItemsPoem?.adapter = itemAdapter
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
-            binding?.ivNoData?.visibility = View.GONE
+            //binding?.ivNoData?.visibility = View.GONE
+            if(noDataAnimationView.isAnimating && View.VISIBLE == noDataAnimationView.visibility){
+                noDataAnimationView.cancelAnimation()
+                noDataAnimationView.visibility = View.GONE
+            }
         } else {
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
-            binding?.ivNoData?.visibility = View.VISIBLE
+            //binding?.ivNoData?.visibility = View.VISIBLE
+            if(View.GONE==noDataAnimationView.visibility) noDataAnimationView.playAnimation()
 
         }
     }

@@ -103,6 +103,7 @@ dependencies {
     implementation 'androidx.webkit:webkit:1.4.0'
 
 
-
+    //lottie animation dependency.
+    implementation 'com.airbnb.android:lottie:6.0.0'
 
 }

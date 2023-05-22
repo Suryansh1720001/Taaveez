@@ -91,27 +91,32 @@
         android:id="@+id/llnoData"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/iv_noData"
+        app:layout_constraintBottom_toTopOf="@id/lottieAnimationId"
         app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
         android:gravity="center_vertical"
-
-
         >
 
-
-
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationId"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:src="@drawable/iv_no_data"
-        android:id="@+id/iv_noData"
-        tools:visibility="visible"
-        android:visibility="visible"
-        android:layout_marginBottom="5dp"
-        />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_gravity="center"
+        app:lottie_rawRes="@raw/animation_recycler_view"
+        android:layout_height="280dp"/>
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:src="@drawable/iv_no_data"-->
+<!--        android:id="@+id/iv_noData"-->
+<!--        tools:visibility="visible"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        />-->
 
 
     <TextView
