@@ -8,12 +8,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import mehdi.sakout.aboutpage.AboutPage
 import mehdi.sakout.aboutpage.Element
 import java.util.*
@@ -31,13 +29,15 @@ class About : AppCompatActivity() {
             .setCustomFont("museo.ttf")
             .setImage(R.mipmap.ic_launcher)
             .setDescription(getString(R.string.about_poem))
-            .addItem(Element().setTitle("Current Version : "+getString(R.string.appVersion)).setGravity(Gravity.CENTER).setOnClickListener {
-                Toast.makeText(
-                    this@About,
-                    "Current version of App is : " + getString(R.string.appVersion),
-                    Toast.LENGTH_LONG
-                ).show()
-            })
+            .addItem(
+                Element().setTitle("Current Version : " + getString(R.string.appVersion))
+                    .setGravity(Gravity.CENTER).setOnClickListener {
+                    Toast.makeText(
+                        this@About,
+                        "Current version of App is : " + getString(R.string.appVersion),
+                        Toast.LENGTH_LONG
+                    ).show()
+                })
             .addGroup("CONNECT WITH US!")
             .addEmail("itssuryanshprajapati@gmail.com")
             .addWebsite("https://suryansh1720001.github.io")
@@ -71,15 +71,17 @@ class About : AppCompatActivity() {
         return copyright
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val intent = Intent(this, Notes::class.java)
         startActivity(intent)
         finish()
     }
 
-    private fun loadDayNight(){
-        val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
-        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun loadDayNight() {
+        val sharedPreferences = getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
+        val DayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
         if (DayNight != null) {
             setDayNight(DayNight)
         }
@@ -88,13 +90,12 @@ class About : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun setDayNight(daynightMode: String) {
         val editor = getSharedPreferences("DayNight", Context.MODE_PRIVATE).edit()
-        editor.putString("My_DayNight",daynightMode)
+        editor.putString("My_DayNight", daynightMode)
         editor.apply()
-        if(daynightMode=="yes"){
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-        else{
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        if (daynightMode == "yes") {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_YES
+        } else {
+            delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_NO
         }
     }
 

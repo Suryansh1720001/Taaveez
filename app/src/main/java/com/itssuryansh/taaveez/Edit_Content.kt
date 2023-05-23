@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputFilter
@@ -21,6 +20,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
@@ -64,24 +64,24 @@ class Edit_Content : AppCompatActivity() {
 
         val PoemDes: RichEditor = findViewById(R.id.etUpdatePoem)
         PoemDes.setEditorFontSize(20)
-        PoemDes?.setPlaceholder(getString(R.string.write_here))
-        PoemDes?.setEditorBackgroundColor(backgroundColor)
-        PoemDes?.setEditorFontColor(textColor)
+        PoemDes.setPlaceholder(getString(R.string.write_here))
+        PoemDes.setEditorBackgroundColor(backgroundColor)
+        PoemDes.setEditorFontColor(textColor)
         PoemDes.setPadding(10, 10, 10, 10)
         PoemDes.setVerticalScrollBarEnabled(true);
 
 
         val btnBold : ImageButton? = findViewById(R.id.btn_update_bold)
-        btnBold?.setOnClickListener { PoemDes?.setBold() }
+        btnBold?.setOnClickListener { PoemDes.setBold() }
         val btnItalic : ImageButton? = findViewById(R.id.btn_update_italic)
-        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+        btnItalic?.setOnClickListener { PoemDes.setItalic() }
 
         binding?.btnUdpateUndo?.setOnClickListener {
-            PoemDes?.undo()
+            PoemDes.undo()
         }
 
         binding?.btnUpdateRedo?.setOnClickListener {
-            PoemDes?.redo()
+            PoemDes.redo()
         }
         val btn_addLink =findViewById<ImageButton>(R.id.btn_update_addLink)
         btn_addLink.setOnClickListener{
@@ -101,18 +101,16 @@ class Edit_Content : AppCompatActivity() {
             dialog.show()
         }
         val btnUnderline : ImageButton? = findViewById(R.id.btn_update_underline)
-        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
+        btnUnderline?.setOnClickListener { PoemDes.setUnderline() }
 
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
 
             NotesDao.fetchNotesById(id!!).collect {
-                if (it != null) {
-                    binding?.etPoemTopic?.setText(it.Topic)
-                    binding?.etUpdatePoem?.setHtml(it.Poem)
-                    CreatedDate = it.CreatedDate
+                binding?.etPoemTopic?.setText(it.Topic)
+                binding?.etUpdatePoem?.setHtml(it.Poem)
+                CreatedDate = it.CreatedDate
 
-                }
             }
 
         }
@@ -164,7 +162,7 @@ class Edit_Content : AppCompatActivity() {
 
     private fun updateData() {
         var Topic = binding?.etPoemTopic?.text.toString()
-        var Poem = binding?.etUpdatePoem?.html
+        val Poem = binding?.etUpdatePoem?.html
 
 
 
@@ -268,10 +266,10 @@ class Edit_Content : AppCompatActivity() {
         BackDialog.setCancelable(false)
         val binding = DialogBackAddNewContentBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
-        binding?.btnBackNo?.setOnClickListener {
+        binding.btnBackNo.setOnClickListener {
             BackDialog.dismiss()
         }
-        binding?.btnBackYes?.setOnClickListener {
+        binding.btnBackYes.setOnClickListener {
             BackDialog.dismiss()
             super.onBackPressed()
         }

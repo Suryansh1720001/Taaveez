@@ -33,7 +33,6 @@ class Add_New_Content : AppCompatActivity() {
     private var binding: ActivityAddNewContentBinding? = null
     private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         loadLocate()
         loadDayNight()
@@ -48,6 +47,7 @@ class Add_New_Content : AppCompatActivity() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         // Call your desired method here
        BackData()
