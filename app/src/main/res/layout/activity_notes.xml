@@ -78,7 +78,7 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/flbottom"
         app:layout_constraintEnd_toEndOf="parent"
-
+        android:layoutAnimation="@anim/recycler_layout_animation"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
 
