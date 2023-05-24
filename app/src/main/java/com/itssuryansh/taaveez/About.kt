@@ -20,6 +20,7 @@ import java.util.*
 
 class About : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         loadDayNight()
         super.onCreate(savedInstanceState)
@@ -77,6 +78,7 @@ class About : AppCompatActivity() {
         finish()
     }
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun loadDayNight(){
         val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
         val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")

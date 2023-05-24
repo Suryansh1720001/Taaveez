@@ -18,9 +18,17 @@ class AlertBoxBuilder {
                 .setTitle("Warning")
                 .setMessage("Do you want to delete all of your notes ?")
                 .setPositiveButton("YES",DialogInterface.OnClickListener { dialogInterface, i ->
-                    notesViewModel.deleteAllFromViewModel()
-                    Toast.makeText(context,"All records deleted !",Toast.LENGTH_SHORT)
-                        .show()
+                    if(notesViewModel.getAllNotesFromViewModel().value!!.isEmpty()){
+                        //no item to delete on recycler view
+                        Toast.makeText(context,"No Records to delete, Make sure you add the notes.",Toast.LENGTH_LONG)
+                            .show()
+                    }else{
+                        //if there is atleast one list item on recycler view.
+                        notesViewModel.deleteAllFromViewModel()
+                        Toast.makeText(context,"All records deleted !",Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
                 })
                 .setNegativeButton("NO",DialogInterface.OnClickListener { dialogInterface, i ->
                     dialogInterface.dismiss()
