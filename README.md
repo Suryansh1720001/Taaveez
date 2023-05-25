@@ -3,7 +3,7 @@
 
 ## 🤔 What is this App?
  
-✍️ This will basically provide simple and advanced functions for saving your poetry, stories and many more creative content in a beautifully designed app.
+✍️ This app will essentially provide simple and advanced functions for saving your poetry, stories, and other creative content in a beautifully designed interface.
 
 ## 🔗 Download the App 
 
@@ -14,7 +14,7 @@
 
 # 📜App Description
  
-It provides a creative environment to people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
+It provides a creative environment for people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
 
 <img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
 
