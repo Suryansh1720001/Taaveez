@@ -7,6 +7,8 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
+import android.media.AudioAttributes
+import android.media.SoundPool
 import android.os.Build
 import android.os.Bundle
 import android.text.*
@@ -34,7 +36,10 @@ import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,7 +50,8 @@ class Notes : AppCompatActivity() {
     private var PoemDesUpdate: RichEditor ?=null
     private  lateinit var  notesViewModel: NotesViewModel
     private lateinit var noDataAnimation: LottieAnimationView
-
+    private lateinit var soundPoolInstance: SoundPool
+    private var soundId = -1
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +61,24 @@ class Notes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //setting the attributes of sound Pool
+        val soundPoolAttributes = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+
+        } else {
+            TODO("VERSION.SDK_INT < LOLLIPOP")
+        }
+
+        soundPoolInstance = SoundPool.Builder()
+            .setAudioAttributes(soundPoolAttributes)
+            .build()
+
+        soundId = soundPoolInstance.load(this,R.raw.saveaudio,1)
+
 
         val notesRepository = (application as NotesApp).repository
 
@@ -497,6 +521,16 @@ class Notes : AppCompatActivity() {
                         updateDialog.dismiss()
                     }
                 }
+
+                //implement sound pool as update has happened.
+                //play the sound pool as update is triggered.
+                MainScope().launch {
+                    //play the soundpool in the coroutine , as it may take long time to end.
+                    //Thus avoiding main thread to delay.
+                    withContext(Dispatchers.Main){
+                        soundPoolInstance.play(soundId,0.8f,0.8f,0,0,0.8f)
+                    }
+                }
             } else{
                     Toast.makeText(applicationContext, "filed cannot be blank", Toast.LENGTH_LONG)
                         .show()
@@ -581,6 +615,11 @@ class Notes : AppCompatActivity() {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         }
+    }
+
+    override fun onDestroy() {
+        soundPoolInstance.release()
+        super.onDestroy()
     }
 }
 

@@ -38,4 +38,9 @@ class NotesRepository(private val dbInstance:NotesDatabase) {
         return dbInstance.NotesDao().fetchNotesById(id)
     }
 
+    suspend fun uploadThumbnail(){
+        //upload the data to cloud fire-store.
+        //then upload the data into the Room database.
+
+    }
 }

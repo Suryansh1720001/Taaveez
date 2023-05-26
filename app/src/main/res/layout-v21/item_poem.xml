@@ -70,6 +70,8 @@
 
     </LinearLayout>
 
+
+
         <LinearLayout
             android:background="?attr/item_topic_bg"
             android:layout_width="match_parent"
@@ -89,7 +91,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="5"
-
             >
 
 

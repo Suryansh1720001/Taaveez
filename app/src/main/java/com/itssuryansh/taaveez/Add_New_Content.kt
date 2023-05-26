@@ -6,6 +6,8 @@ import android.app.Dialog
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.SoundPool
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,7 +32,10 @@ import com.itssuryansh.taaveez.ViewModels.NotesViewModelFactory
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,6 +44,8 @@ class Add_New_Content : AppCompatActivity() {
     private var binding: ActivityAddNewContentBinding? = null
 
     private lateinit var notesViewModel: NotesViewModel
+    private lateinit var soundPoolInstance: SoundPool
+    private var soundId = -1
 
     private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value
 
@@ -50,6 +57,25 @@ class Add_New_Content : AppCompatActivity() {
 
         binding = ActivityAddNewContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+        //setting the attributes of sound Pool
+        val soundPoolAttributes = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+
+        } else {
+            TODO("VERSION.SDK_INT < LOLLIPOP")
+        }
+
+        soundPoolInstance = SoundPool.Builder()
+            .setAudioAttributes(soundPoolAttributes)
+            .build()
+
+        //proper sound Id will be assigned.Thus it will not be -1.
+        soundId = soundPoolInstance.load(this,R.raw.saveaudio,1)
+
 
         val notesRepository = (application as NotesApp).repository
         notesViewModel = ViewModelProvider(this, NotesViewModelFactory(notesRepository))
@@ -183,6 +209,17 @@ class Add_New_Content : AppCompatActivity() {
                             Toast.LENGTH_LONG).show()
                     }
                 }
+
+                //play the sound pool as insert is triggered.
+                MainScope().launch {
+                    //play the soundpool in the coroutine , as it may take long time to end.
+                    //Thus avoids main thread to delay.
+                        withContext(Dispatchers.Main){
+                            soundPoolInstance.play(soundId,0.8f,0.8f,0,0,0.8f)
+                        }
+                }
+
+
                 super.onBackPressed()
             } else {
                 val mess = getString(R.string.Field_not_blank)
@@ -275,5 +312,12 @@ class Add_New_Content : AppCompatActivity() {
         BackDialog.show()
     }
 
+    override fun onDestroy() {
+        //clear the sound pool resources.
+
+        soundPoolInstance.release()
+        super.onDestroy()
+
+    }
 
 }
