@@ -91,7 +91,7 @@
         android:id="@+id/llnoData"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/recyclerViewAnimation"
+        app:layout_constraintBottom_toTopOf="@id/iv_noData"
         app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,15 +100,14 @@
         >
 
 
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/recyclerViewAnimation"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="270dp"
-            app:lottie_autoPlay="true"
-            android:visibility="gone"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/recycler_view_lottie_animation"
+            android:layout_height="250dp"
+            android:src="@drawable/iv_no_data"
+            android:id="@+id/iv_noData"
+            tools:visibility="visible"
+            android:visibility="visible"
+            android:layout_marginBottom="5dp"
             />
 
 
