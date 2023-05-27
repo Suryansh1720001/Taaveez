@@ -82,7 +82,6 @@ open class Setting : AppCompatActivity() {
         //adding the delete all feature.
         binding?.lldeleteAll?.setOnClickListener{view->
 
-
             lifecycleScope.launch{
                 val dialogBoxBuilder = AlertBoxBuilder.DialogBoxBuilder(this@Setting,notesViewModel)
                 dialogBoxBuilder.show()

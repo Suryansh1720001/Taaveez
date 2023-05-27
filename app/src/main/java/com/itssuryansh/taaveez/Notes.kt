@@ -106,16 +106,7 @@ class Notes : AppCompatActivity() {
                 setupListOfDateINtoRecycleVIew(list , NotesDao)*/
           notesViewModel.getAllNotesFromViewModel().observe(this@Notes, androidx.lifecycle.Observer { resList->
               val resultList = ArrayList(resList)
-              if(resultList.isEmpty()){
-                  if(noDataAnimation.visibility == View.GONE){
-                      noDataAnimation.visibility = View.VISIBLE
-                      noDataAnimation.playAnimation()
-                  }
-              }else{
-                  noDataAnimation.cancelAnimation()
-                  noDataAnimation.visibility = View.GONE
-                  setupListOfDateINtoRecycleVIew(resultList,NotesDao)
-              }
+              setupListOfDateINtoRecycleVIew(resultList,NotesDao)
           })
         }
     }

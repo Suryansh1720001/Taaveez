@@ -4,8 +4,16 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
+import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import com.itssuryansh.taaveez.Data.NotesDao
+import com.itssuryansh.taaveez.Model.NotesEntity
 import com.itssuryansh.taaveez.ViewModels.NotesViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AlertBoxBuilder {
 
@@ -18,16 +26,15 @@ class AlertBoxBuilder {
                 .setTitle("Warning")
                 .setMessage("Do you want to delete all of your notes ?")
                 .setPositiveButton("YES",DialogInterface.OnClickListener { dialogInterface, i ->
-                    if(notesViewModel.getAllNotesFromViewModel().value!!.isEmpty()){
-                        //no item to delete on recycler view
-                        Toast.makeText(context,"No Records to delete, Make sure you add the notes.",Toast.LENGTH_LONG)
-                            .show()
-                    }else{
+
+              //  var notesList = notesViewModel.getAllNotesFromViewModel().value
+
                         //if there is atleast one list item on recycler view.
-                        notesViewModel.deleteAllFromViewModel()
-                        Toast.makeText(context,"All records deleted !",Toast.LENGTH_SHORT)
-                            .show()
-                    }
+                        MainScope().launch {
+                            withContext(Dispatchers.IO) {
+                                notesViewModel.deleteAllFromViewModel()
+                            }
+                        }
 
                 })
                 .setNegativeButton("NO",DialogInterface.OnClickListener { dialogInterface, i ->
