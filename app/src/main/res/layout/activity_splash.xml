@@ -1,52 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="?attr/colorWhite"
+    android:background="@drawable/screenshot_2023_05_31_at_10_45_17_pm"
+
     tools:context="com.itssuryansh.taaveez.SplashActivity">
 
 
-    <ImageView
-        android:id="@+id/ivBook"
+    <TextView
+        android:id="@+id/tvNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/front_ui_image"
-        app:layout_constraintBottom_toTopOf="@+id/flheadingMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:textStyle="bold"
+        android:layout_weight="1"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Taaveez"
+        android:layout_marginTop="300dp"
+        android:textColor="@color/white"
+        android:textSize="90dp" />
 
-
-        <FrameLayout
-            android:id="@+id/flheadingMain"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@drawable/front_ui"
-            android:foregroundGravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
-
-
-            <TextView
-                android:id="@+id/tvNotes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:fontFamily="serif"
-                android:text="@string/app_name"
-                android:textColor="#e1e8ed"
-                android:textSize="60sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </FrameLayout>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
