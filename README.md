@@ -16,7 +16,7 @@
  
 It provides a creative environment for people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
 
-<img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
+<img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" height="600">
 
 
 ### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
@@ -50,7 +50,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 - Kotlin language
 - xml language
-- Android Studoid
+- Android Studio
 - Room database
 
 ⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
