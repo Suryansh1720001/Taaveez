@@ -23,4 +23,6 @@
     <color name="cursor_color_light">#000000</color>
     <color name="editor_bg_light">#e0e0e0</color>
     <color name="text_white_light">#ffffff</color>
+    <color name="lightPink">#ff99c8</color>
+    <color name="navyBluelight">#3a86ff</color>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/bg"
+    android:background="#232323"
     android:orientation="vertical"
     tools:context="com.itssuryansh.taaveez.Notes">
 
@@ -91,7 +91,7 @@
         android:id="@+id/llnoData"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/iv_noData"
+
         app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +121,7 @@
         android:fontFamily="casual"
         android:gravity="center"
         android:text="@string/no_data_available"
-        android:textColor="?attr/text"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:visibility="visible"
         android:textStyle="bold"

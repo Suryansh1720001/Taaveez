@@ -98,6 +98,8 @@ dependencies {
 
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
 
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 
     implementation 'jp.wasabeef:richeditor-android:2.0.0'
     implementation 'androidx.webkit:webkit:1.4.0'
