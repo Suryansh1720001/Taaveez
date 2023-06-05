@@ -14,6 +14,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -51,20 +52,37 @@ class Notes : AppCompatActivity() {
         setContentView(binding?.root)
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
-        binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes, About::class.java )
-            startActivity(intent)
-            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
-            finish()
+        binding?.bottomNavigationView?.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.settings -> {
+                    val intent = Intent(this@Notes, Setting::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
+                    finish()
+                    true
+                }
+                R.id.about -> {
+                    val intent = Intent(this@Notes, About::class.java )
+                    startActivity(intent)
+                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+                    finish()
+                    true
+                }
 
+                else -> {false}
+            }
         }
-        binding?.tvSetting?.setOnClickListener {
-            val intent = Intent(this@Notes, Setting::class.java)
-            startActivity(intent)
-                overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
-            finish()
 
-        }
+
+
+//        binding?.tvabout?.setOnClickListener {
+
+//
+//        }
+//        binding?.tvSetting?.setOnClickListener {
+//
+//
+//        }
 
 
         val NotesDao = (application as NotesApp).db.NotesDao()

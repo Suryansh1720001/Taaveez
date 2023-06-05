@@ -3,19 +3,19 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'kotlin-android-extensions'
+//    id 'kotlin-android-extensions'
 }
 
 android {
-    lint{
+    lint {
         baseline = file("lint-baseline.xml")
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.itssuryansh.taaveez'
         minSdk 16
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "v1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -38,10 +38,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
-
 
 
 }
@@ -78,7 +77,7 @@ dependencies {
     // Testing
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
-    androidTestImplementation ("androidx.test.espresso:espresso-core:$rootProject.espressoVersion", {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestImplementation "androidx.test.ext:junit:$rootProject.androidxJunitVersion"
@@ -93,16 +92,19 @@ dependencies {
 
     implementation 'com.github.medyo:android-about-page:1.2.6'
 
- // for markdown language
+    // for markdown language
 
 
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
+// Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
 
     implementation 'jp.wasabeef:richeditor-android:2.0.0'
     implementation 'androidx.webkit:webkit:1.4.0'
-
-
 
 
 }
