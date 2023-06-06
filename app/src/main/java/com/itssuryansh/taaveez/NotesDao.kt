@@ -21,4 +21,8 @@ interface NotesDao {
     @Query("select * from `Poem-table` where id=:id")
     fun fetchNotesById(id:Int):Flow<NotesEntity>
 
+    // get all notes with label entered
+    @Query("select * from `Poem-table` where Labels like :label")
+    fun fetchNotesByLabel(label:String):Flow<List<NotesEntity>>
+
 }

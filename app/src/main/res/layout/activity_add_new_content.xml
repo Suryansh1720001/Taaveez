@@ -149,6 +149,12 @@
                 android:src="@drawable/ic_add_link"
                 android:layout_weight="1"
                 />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add_label"
+                android:id="@+id/btn_add_label" />
 
         </LinearLayout>
     </HorizontalScrollView>

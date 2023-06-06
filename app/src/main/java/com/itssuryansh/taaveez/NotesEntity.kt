@@ -11,5 +11,6 @@ data class NotesEntity(
     val Topic: String="",
     val Poem: String="",
     val Date:String="",
-    val CreatedDate:String=""
+    val CreatedDate:String="",
+    val Labels:String=""
 )

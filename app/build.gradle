@@ -54,6 +54,8 @@ dependencies {
     // Dependencies for working with Architecture components
     // You'll probably have to update the version numbers in build.gradle (Project)
 
+    implementation 'com.google.android:flexbox:2.0.1'
+
     // Room components
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     implementation 'com.google.android.play:app-update-ktx:2.0.1'
