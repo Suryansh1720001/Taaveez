@@ -12,7 +12,6 @@
     app:chipCornerRadius="16dp"
     app:chipEndPadding="8dp"
     app:chipStartPadding="8dp"
-    app:chipText="@{item}"
     app:closeIconSize="24dp"
     app:closeIcon="@drawable/ic_close"
     android:layout_marginRight="8dp" />
