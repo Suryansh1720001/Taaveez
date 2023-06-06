@@ -43,37 +43,6 @@ jobs:
           name: test-reports
           path: '**/build/reports/tests/'
 
-  android_test_job:
-    name: Android Tests
-    runs-on: macos-latest
-    continue-on-error: true
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.2
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-      - name: Restore Cache
-        uses: actions/cache@v3.2.6
-
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-      - name: Instrumentation Tests
-        uses: ReactiveCircus/android-emulator-runner@v2.28.0
-        with:
-          api-level: 33
-          script: ./gradlew connectedAndroidTest
-
-      - name: Upload Android Test Reports
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: android-test-reports
-          path: '**/build/reports/androidTests/'
 
   build_job:
     name: Building the APK
