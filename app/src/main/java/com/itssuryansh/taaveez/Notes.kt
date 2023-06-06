@@ -20,14 +20,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide.init
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-
 import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
@@ -72,9 +66,7 @@ class Notes : AppCompatActivity() {
 //            NewPoemDialog(NotesDao)
             val intent = Intent(this@Notes, Add_New_Content::class.java)
             startActivity(intent)
-
         }
-
 
         lifecycleScope.launch {
             NotesDao.fetchAllNotes().collect {

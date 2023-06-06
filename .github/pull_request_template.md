@@ -29,6 +29,10 @@
 
 <!-- Add all the screenshots which support your changes -->
 
+## Demo video
+
+<!-- Add the demo video which support your changes -->
+
 ## Note to reviewers
 
 <!-- Add notes to reviewers if applicable -->
