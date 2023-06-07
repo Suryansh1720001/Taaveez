@@ -50,7 +50,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 - Kotlin language
 - xml language
-- Android Studoi
+- Android Studio
 - Room database
 
 ⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
