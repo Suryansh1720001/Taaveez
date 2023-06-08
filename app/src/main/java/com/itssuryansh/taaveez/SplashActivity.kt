@@ -37,7 +37,6 @@ class SplashActivity : AppCompatActivity() {
                     overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 //                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
-
                 }
             }
         };thread.start()
