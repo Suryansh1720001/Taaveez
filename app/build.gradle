@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName "v1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
