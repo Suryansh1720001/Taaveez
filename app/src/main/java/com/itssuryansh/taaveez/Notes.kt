@@ -26,25 +26,38 @@ import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
+    private var adapter_:itemAdapter ?= null//creating an instance of ItemAdapter
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
+
         loadLocate()
         loadDayNight()
+
         super.onCreate(savedInstanceState)
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+
+
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
+
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@Notes, About::class.java )
             startActivity(intent)
@@ -52,6 +65,7 @@ class Notes : AppCompatActivity() {
             finish()
 
         }
+
         binding?.tvSetting?.setOnClickListener {
             val intent = Intent(this@Notes, Setting::class.java)
             startActivity(intent)
@@ -69,14 +83,12 @@ class Notes : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            NotesDao.fetchAllNotes().collect {
-                val list = ArrayList(it)
-                setupListOfDateINtoRecycleVIew(list, NotesDao)
+                NotesDao.fetchAllNotes().collect {
+                    val list = ArrayList(it)
+                    setupListOfDateINtoRecycleVIew(list, NotesDao)
+                }
             }
         }
-    }
-
-
 
 
 
@@ -180,8 +192,14 @@ class Notes : AppCompatActivity() {
         NotesList: ArrayList<NotesEntity>,
         NotesDao: NotesDao,
     ) {
-        if (NotesList.isNotEmpty()) {
-            val itemAdapter = itemAdapter(
+
+        if(adapter_ == null){
+            //checking if adapter is null
+            /*
+            if adapter is null , then we initialize the adapter by invoking its constructor.
+            This if-condition is invoked only once.
+            * */
+            adapter_ = itemAdapter(
                 NotesList,
                 { updateId ->
                     updateRecordDialog(updateId, NotesDao)
@@ -196,12 +214,22 @@ class Notes : AppCompatActivity() {
                     ShareNotes(ShareId, NotesDao)
                 },
             )
-
+        }
+        if (NotesList.isNotEmpty()) {
+            //this if-condition is invoked if the list is not empty.
+            /*
+            * Also , this if condition is also invoked for every new update in the notesList.
+            * */
             binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
-            binding?.rvItemsPoem?.adapter = itemAdapter
+            binding?.rvItemsPoem?.adapter = adapter_
+            /*for every new update in the new noteslist this below function will be invoked
+             , which optimizes the performance of recycler view. */
+            adapter_?.initiateDiffUtilCallback(NotesList)
+
             binding?.rvItemsPoem?.visibility = View.VISIBLE
             binding?.tvNoDataAvailable?.visibility = View.GONE
             binding?.ivNoData?.visibility = View.GONE
+
         } else {
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
