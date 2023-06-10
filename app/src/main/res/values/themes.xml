@@ -38,5 +38,11 @@
     <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/bg_light</item>
     </style>
+    <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+
+
 
 </resources>

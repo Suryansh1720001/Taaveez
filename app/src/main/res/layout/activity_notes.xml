@@ -125,20 +125,24 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp">
+            android:layout_height="136dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bottomAppBar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fabCradleMargin="30dp"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom"
+                app:fabCradleMargin="30dp">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/bottomNavigationView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00008B"
+                    app:itemIconTint="@color/white"
+                    app:itemTextColor="@color/white"
                     app:menu="@menu/bottomnav_menu" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>
