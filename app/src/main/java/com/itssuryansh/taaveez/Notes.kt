@@ -39,7 +39,8 @@ class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
-    private var adapter_:itemAdapter ?= null//creating an instance of ItemAdapter
+    private lateinit var adapterInstance: itemAdapter
+
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +54,7 @@ class Notes : AppCompatActivity() {
         binding = ActivityNotesBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        initiateRecyclerView()
 
 
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
@@ -84,14 +86,53 @@ class Notes : AppCompatActivity() {
 
         lifecycleScope.launch {
                 NotesDao.fetchAllNotes().collect {
-                    val list = ArrayList(it)
-                    setupListOfDateINtoRecycleVIew(list, NotesDao)
+                    /*
+                    Log.e("ray", "onCreate submit list: $it")
+
+                    Log.e("ray", "onCreate size status: ${it.size}")
+                    Log.e("ray", "onCreate list-empty status: ${it.isEmpty()}")*/
+
+                    if(it.isNotEmpty()){
+                        Log.d("ray", "onCreate: if executed")
+                        adapterInstance.submitList(it)
+                        binding?.rvItemsPoem?.visibility = View.VISIBLE
+                        binding?.tvNoDataAvailable?.visibility = View.GONE
+                        binding?.ivNoData?.visibility = View.GONE
+                    }else{
+                        Log.d("ray", "onCreate: else executed")
+                        binding?.rvItemsPoem?.visibility = View.GONE
+                        binding?.tvNoDataAvailable?.visibility = View.VISIBLE
+                        binding?.ivNoData?.visibility = View.VISIBLE
+                    }
                 }
             }
         }
 
+    private fun initiateRecyclerView() {
+        val daoInstance = (application as NotesApp).db.NotesDao()
 
+        binding?.rvItemsPoem?.setHasFixedSize(true)
+        val manager = LinearLayoutManager(this)
+        manager.orientation = LinearLayoutManager.VERTICAL
+        binding?.rvItemsPoem?.layoutManager = manager
 
+        adapterInstance  = itemAdapter(
+            { updateId ->
+                updateRecordDialog(updateId, daoInstance)
+            },
+            { deleteId ->
+                deleteRecordAlertDialog(deleteId, daoInstance)
+            },
+            { OpenId ->
+                openNotes(OpenId, daoInstance)
+            },
+            { ShareId ->
+                ShareNotes(ShareId, daoInstance)
+            },
+        )
+        binding?.rvItemsPoem?.adapter = adapterInstance
+        //Log.e("ray", "initiateRecyclerView: adapter initialized $adapterInstance")
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -188,55 +229,6 @@ class Notes : AppCompatActivity() {
     }
 
 
-    private fun setupListOfDateINtoRecycleVIew(
-        NotesList: ArrayList<NotesEntity>,
-        NotesDao: NotesDao,
-    ) {
-
-        if(adapter_ == null){
-            //checking if adapter is null
-            /*
-            if adapter is null , then we initialize the adapter by invoking its constructor.
-            This if-condition is invoked only once.
-            * */
-            adapter_ = itemAdapter(
-                NotesList,
-                { updateId ->
-                    updateRecordDialog(updateId, NotesDao)
-                },
-                { deleteId ->
-                    deleteRecordAlertDialog(deleteId, NotesDao)
-                },
-                { OpenId ->
-                    openNotes(OpenId, NotesDao)
-                },
-                { ShareId ->
-                    ShareNotes(ShareId, NotesDao)
-                },
-            )
-        }
-        if (NotesList.isNotEmpty()) {
-            //this if-condition is invoked if the list is not empty.
-            /*
-            * Also , this if condition is also invoked for every new update in the notesList.
-            * */
-            binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
-            binding?.rvItemsPoem?.adapter = adapter_
-            /*for every new update in the new noteslist this below function will be invoked
-             , which optimizes the performance of recycler view. */
-            adapter_?.initiateDiffUtilCallback(NotesList)
-
-            binding?.rvItemsPoem?.visibility = View.VISIBLE
-            binding?.tvNoDataAvailable?.visibility = View.GONE
-            binding?.ivNoData?.visibility = View.GONE
-
-        } else {
-            binding?.rvItemsPoem?.visibility = View.GONE
-            binding?.tvNoDataAvailable?.visibility = View.VISIBLE
-            binding?.ivNoData?.visibility = View.VISIBLE
-
-        }
-    }
 
 
 

@@ -1,22 +1,21 @@
 package com.itssuryansh.taaveez
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.DiffUtil.ItemCallback
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.itssuryansh.taaveez.Tools.RecyclerViewDiffUtil
 import com.itssuryansh.taaveez.databinding.ItemPoemBinding
-import kotlin.collections.ArrayList
 
 
-class itemAdapter(private var oldItems: ArrayList<NotesEntity>,
+class itemAdapter(
+    /*private var oldItems: ArrayList<NotesEntity>,*/
                   private val updateListener:(id:Int)->Unit,
                   private val deleteListener:(id:Int)->Unit,
                   private val OpenListener:(id:Int)->Unit,
                   private val ShareListener:(id:Int)->Unit,
 )
-    :RecyclerView.Adapter<itemAdapter.ViewHolder>() {
+    :ListAdapter<NotesEntity,itemAdapter.ViewHolder>(DiffUtil()) {
 
 
     class ViewHolder(binding: ItemPoemBinding): RecyclerView.ViewHolder(binding.root){
@@ -34,9 +33,11 @@ class itemAdapter(private var oldItems: ArrayList<NotesEntity>,
         return ViewHolder(ItemPoemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
+
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int)  {
         val context = holder.itemView.context
-        val item = oldItems[position]
+        val item = getItem(position)
 
         holder.tvTopic.text = item.Topic
         holder.tvDate.text = item.Date
@@ -58,18 +59,22 @@ class itemAdapter(private var oldItems: ArrayList<NotesEntity>,
 
     }
 
-    override fun getItemCount(): Int {
-       return oldItems.size
-    }
 
-    fun initiateDiffUtilCallback(newItems:ArrayList<NotesEntity>){
-        val diffUtilInstance  = RecyclerViewDiffUtil(newItems,oldItems)
+   class DiffUtil : ItemCallback<NotesEntity>(){
+       override fun areItemsTheSame(oldItem: NotesEntity, newItem: NotesEntity): Boolean {
+           return oldItem.id == newItem.id
+       }
 
-        val diffResult = DiffUtil.calculateDiff(diffUtilInstance)
-        val start = System.currentTimeMillis()
-        oldItems = newItems
-        diffResult.dispatchUpdatesTo(this)
-        val end = System.currentTimeMillis()
-        Log.d("time", "initiateDiffUtilCallback- update time : ${(end-start)}ms")
-    }
+       override fun areContentsTheSame(oldItem: NotesEntity, newItem: NotesEntity): Boolean {
+            return when{
+                oldItem.id != newItem.id ->{ false }
+                oldItem.CreatedDate != newItem.CreatedDate -> {false}
+                oldItem.Poem != newItem.Poem -> {false}
+                oldItem.Topic != newItem.Topic -> {false}
+                oldItem.Date != newItem.Date -> {false}
+                else->true
+            }
+       }
+
+   }
 }

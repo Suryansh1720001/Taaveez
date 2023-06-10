@@ -22,8 +22,5 @@ interface NotesDao {
     fun fetchNotesById(id:Int):Flow<NotesEntity>
 
 
-    //used in diffutil callback implementation of recycler view
-    @Query("select * from `Poem-table`")
-    suspend fun getAllNotesSynchronously():List<NotesEntity>
 
 }
