@@ -150,10 +150,6 @@ class Add_New_Content : AppCompatActivity() {
         binding?.btnRedo?.setOnClickListener {
             PoemDes?.redo()
         }
-//        val intent = Intent(this, Chipchip::class.java)
-//        startActivity(intent)
-
-
         binding?.btnAddLink?.setOnClickListener{
                 val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
                 val dialog = AlertDialog.Builder(this)
@@ -200,8 +196,6 @@ class Add_New_Content : AppCompatActivity() {
         binding?.saveContent?.setOnClickListener {
 
             val allLabels = selectedLabels.joinToString(", ")
-            Log.d("Labels", allLabels)
-
             var itemTopic: String = binding?.idTopic?.text.toString()
             val htmlContentPoemDes= PoemDes?.html.toString()
             // setup the date
@@ -330,13 +324,10 @@ class Add_New_Content : AppCompatActivity() {
         chip.setOnCloseIconClickListener {
             chipGroup.removeView(chip)
             selectedLabels.remove(label)
-            Log.d("Selected Labels", selectedLabels.toString())
         }
-
         if (!selectedLabels.contains(label)) {
             chipGroup.addView(chip)
             selectedLabels.add(label)
-            Log.d("Selected Labels", selectedLabels.toString())
         }
     }
 }

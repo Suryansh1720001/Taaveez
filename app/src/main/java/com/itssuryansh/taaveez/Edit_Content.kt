@@ -373,13 +373,11 @@ class Edit_Content : AppCompatActivity() {
         chip.setOnCloseIconClickListener {
             chipGroup.removeView(chip)
             selectedLabels.remove(label)
-            Log.d("Selected Labels", selectedLabels.toString())
         }
 
         if (!selectedLabels.contains(label)) {
             chipGroup.addView(chip)
             selectedLabels.add(label)
-            Log.d("Selected Labels", selectedLabels.toString())
         }
     }
 }

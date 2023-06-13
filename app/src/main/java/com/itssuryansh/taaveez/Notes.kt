@@ -20,13 +20,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
-import androidx.core.view.isEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide.init
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 
 import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
@@ -43,6 +38,7 @@ class Notes : AppCompatActivity() {
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
     private lateinit var labelSuggestions: MutableList<String>
+    private lateinit var notesDao: NotesDao
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -74,7 +70,7 @@ class Notes : AppCompatActivity() {
 
         }
 
-        val NotesDao = (application as NotesApp).db.NotesDao()
+        notesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
 //            NewPoemDialog(NotesDao)
             val intent = Intent(this@Notes, Add_New_Content::class.java)
@@ -93,48 +89,14 @@ class Notes : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val label = parent?.getItemAtPosition(position).toString()
-                lifecycleScope.launch {
-                    NotesDao.fetchAllNotes().collect {
-                        val list = ArrayList(it)
-                        if (label == "All") {
-                            setupListOfDateINtoRecycleVIew(list, NotesDao)
-                        }
-                        else {
-                            val finalList = ArrayList<NotesEntity>()
-                            for (NotesEntity in list) {
-                                val hash_set = HashSet<String>()
-                                hash_set.addAll(NotesEntity.Labels.split(", "))
-                                if (hash_set.contains(label)) {
-                                    finalList.add(NotesEntity)
-                                }
-
-                            }
-                            setupListOfDateINtoRecycleVIew(finalList, NotesDao)
-                        }
-                    }
-                }
+                filter_content(label)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Do nothing
             }
         }
-
-        //////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
     }
-
-
-
-
-
-
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun NewPoemDialog(NotesDao: NotesDao) {
@@ -552,6 +514,29 @@ class Notes : AppCompatActivity() {
         else{
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        }
+    }
+
+    private fun filter_content(label: String) {
+        lifecycleScope.launch {
+            notesDao.fetchAllNotes().collect {
+                val list = ArrayList(it)
+                if (label == "All") {
+                    setupListOfDateINtoRecycleVIew(list, notesDao)
+                }
+                else {
+                    val finalList = ArrayList<NotesEntity>()
+                    for (NotesEntity in list) {
+                        val hash_set = HashSet<String>()
+                        hash_set.addAll(NotesEntity.Labels.split(", "))
+                        if (hash_set.contains(label)) {
+                            finalList.add(NotesEntity)
+                        }
+
+                    }
+                    setupListOfDateINtoRecycleVIew(finalList, notesDao)
+                }
+            }
         }
     }
 }
