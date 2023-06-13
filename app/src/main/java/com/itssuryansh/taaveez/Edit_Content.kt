@@ -38,7 +38,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class Edit_Content : AppCompatActivity() {
-    private var firstTimeOpened: Boolean = true
     private var binding:ActivityEditContentBinding?=null
     private lateinit var NotesDao: NotesDao
     private lateinit var allLabels: String

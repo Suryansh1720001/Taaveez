@@ -83,7 +83,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/flheading"
-        app:layout_constraintBottom_toTopOf="@id/rvItemsPoem"
         android:background="@drawable/spinner_bg"
         />
     <androidx.recyclerview.widget.RecyclerView

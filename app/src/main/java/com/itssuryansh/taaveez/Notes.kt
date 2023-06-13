@@ -35,6 +35,7 @@ import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.HashSet
 
 
 class Notes : AppCompatActivity() {
@@ -73,6 +74,14 @@ class Notes : AppCompatActivity() {
 
         }
 
+        val NotesDao = (application as NotesApp).db.NotesDao()
+        binding?.idFABAdd?.setOnClickListener {
+//            NewPoemDialog(NotesDao)
+            val intent = Intent(this@Notes, Add_New_Content::class.java)
+            startActivity(intent)
+
+        }
+
         val spinner = findViewById<Spinner>(R.id.spinnerFilter)
         val adapter = ArrayAdapter(
             this,
@@ -84,6 +93,25 @@ class Notes : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val label = parent?.getItemAtPosition(position).toString()
+                lifecycleScope.launch {
+                    NotesDao.fetchAllNotes().collect {
+                        val list = ArrayList(it)
+                        if (label == "All") {
+                            setupListOfDateINtoRecycleVIew(list, NotesDao)
+                        }
+                        else {
+                            val finalList = ArrayList<NotesEntity>()
+                            for (NotesEntity in list) {
+                                val hash_set = HashSet<String>()
+                                hash_set.addAll(NotesEntity.Labels.split(","))
+                                if (hash_set.contains(label)) {
+                                    finalList.add(NotesEntity)
+                                }
+                            }
+                            setupListOfDateINtoRecycleVIew(finalList, NotesDao)
+                        }
+                    }
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -93,21 +121,10 @@ class Notes : AppCompatActivity() {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        val NotesDao = (application as NotesApp).db.NotesDao()
-        binding?.idFABAdd?.setOnClickListener {
-//            NewPoemDialog(NotesDao)
-            val intent = Intent(this@Notes, Add_New_Content::class.java)
-            startActivity(intent)
-
-        }
 
 
-        lifecycleScope.launch {
-            NotesDao.fetchAllNotes().collect {
-                val list = ArrayList(it)
-                setupListOfDateINtoRecycleVIew(list, NotesDao)
-            }
-        }
+
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////
     }
