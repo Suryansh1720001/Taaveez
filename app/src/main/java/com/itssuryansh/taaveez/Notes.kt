@@ -41,8 +41,15 @@ class Notes : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
+    private lateinit var labelSuggestions: MutableList<String>
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        labelSuggestions = mutableListOf()
+        labelSuggestions.add("All")
+        labelSuggestions.add("Label 1")
+        labelSuggestions.add("Label 2")
+        labelSuggestions.add("Label 3")
 
         loadLocate()
         loadDayNight()
@@ -66,6 +73,25 @@ class Notes : AppCompatActivity() {
 
         }
 
+        val spinner = findViewById<Spinner>(R.id.spinnerFilter)
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            labelSuggestions
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val label = parent?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Do nothing
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
@@ -82,6 +108,8 @@ class Notes : AppCompatActivity() {
                 setupListOfDateINtoRecycleVIew(list, NotesDao)
             }
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
     }
 
 

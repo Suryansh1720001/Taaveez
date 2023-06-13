@@ -16,13 +16,19 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import com.google.android.flexbox.FlexboxLayout
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
@@ -32,8 +38,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class Edit_Content : AppCompatActivity() {
+    private var firstTimeOpened: Boolean = true
     private var binding:ActivityEditContentBinding?=null
     private lateinit var NotesDao: NotesDao
+    private lateinit var allLabels: String
+
+    private lateinit var selectedLabels: HashSet<String>
+    private lateinit var labelSuggestions: MutableList<String>
 
 
     var CreatedDate:String=""
@@ -46,12 +57,22 @@ class Edit_Content : AppCompatActivity() {
         loadDayNight()
         id = intent.getIntExtra(Constants.ID,0)
         super.onCreate(savedInstanceState)
+
+        // Selected Labels
+        selectedLabels = HashSet()
+
+        // Label Suggestions
+        labelSuggestions = mutableListOf()
+        labelSuggestions.add("Label 1")
+        labelSuggestions.add("Label 2")
+        labelSuggestions.add("Label 3")
+
+
         binding = ActivityEditContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         setupActionBar()
 
         NotesDao = (application as NotesApp).db.NotesDao()
-
 
 
         // color acc to the theme - text and background color
@@ -75,6 +96,9 @@ class Edit_Content : AppCompatActivity() {
         btnBold?.setOnClickListener { PoemDes?.setBold() }
         val btnItalic : ImageButton? = findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+
+        val btnUpdateLabels : ImageButton? = findViewById(R.id.btn_update_label)
+        btnUpdateLabels?.setOnClickListener {updateLabels()}
 
         binding?.btnUdpateUndo?.setOnClickListener {
             PoemDes?.undo()
@@ -111,7 +135,8 @@ class Edit_Content : AppCompatActivity() {
                     binding?.etPoemTopic?.setText(it.Topic)
                     binding?.etUpdatePoem?.setHtml(it.Poem)
                     CreatedDate = it.CreatedDate
-
+                    allLabels = it.Labels
+                    selectedLabels.addAll(it.Labels.split(","))
                 }
             }
 
@@ -163,6 +188,9 @@ class Edit_Content : AppCompatActivity() {
 
 
     private fun updateData() {
+
+        val updatedLabels = selectedLabels.joinToString(",")
+
         var Topic = binding?.etPoemTopic?.text.toString()
         var Poem = binding?.etUpdatePoem?.html
 
@@ -179,7 +207,7 @@ class Edit_Content : AppCompatActivity() {
         if (!(Poem!!.isEmpty())) {
             if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date,CreatedDate))
+                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date,CreatedDate, updatedLabels))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -188,7 +216,7 @@ class Edit_Content : AppCompatActivity() {
             } else {
                 Topic = "दुआ"
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date, CreatedDate))
+                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date, CreatedDate, updatedLabels))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -283,4 +311,74 @@ class Edit_Content : AppCompatActivity() {
         BackData()
     }
 
+    private fun updateLabels() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.diaglog_insert_label, null)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Insert Label")
+            .setView(dialogView)
+            .setNegativeButton("Done") { dialog, _ -> dialog.dismiss() }
+            .create()
+
+        val spinner = dialogView.findViewById<Spinner>(R.id.labelDropdown)
+        val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
+
+        for (label in selectedLabels) {
+            if (label == "") {
+                continue
+            }
+            val chip = Chip(this)
+            chip.text = label
+            chip.isCloseIconVisible = true
+            chip.setOnCloseIconClickListener {
+                chipGroup.removeView(chip)
+                selectedLabels.remove(label)
+            }
+            chipGroup.addView(chip)
+        }
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            labelSuggestions
+        )
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val label = parent?.getItemAtPosition(position).toString()
+                addChip(label, chipGroup)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Do nothing
+            }
+        }
+        dialog.show()
+    }
+    private fun addChip(label: String, chipGroup: FlexboxLayout) {
+        val chip = Chip(this)
+        chip.text = label
+        chip.isCloseIconVisible = true
+
+        chip.setOnCloseIconClickListener {
+            chipGroup.removeView(chip)
+            selectedLabels.remove(label)
+            Log.d("Selected Labels", selectedLabels.toString())
+        }
+
+        if (!selectedLabels.contains(label)) {
+            chipGroup.addView(chip)
+            selectedLabels.add(label)
+            Log.d("Selected Labels", selectedLabels.toString())
+        }
+    }
 }

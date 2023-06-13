@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/ic_add_label"
-                android:id="@+id/btn_add_label" />
+                android:id="@+id/btn_update_label" />
 
 
         </LinearLayout>

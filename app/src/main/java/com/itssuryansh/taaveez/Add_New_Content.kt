@@ -35,10 +35,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import com.google.android.material.chip.Chip
 import kotlinx.coroutines.flow.toList
+import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 class Add_New_Content : AppCompatActivity() {
 
-    private lateinit var selectedLabels: MutableList<String>
+    private lateinit var selectedLabels: HashSet<String>
     private lateinit var labelSuggestions: MutableList<String>
 
     private var binding: ActivityAddNewContentBinding? = null
@@ -49,11 +51,10 @@ class Add_New_Content : AppCompatActivity() {
         loadLocate()
         loadDayNight()
         super.onCreate(savedInstanceState)
-        selectedLabels = mutableListOf()
+        selectedLabels = HashSet()
 
         // Label Suggestions
         labelSuggestions = mutableListOf()
-        labelSuggestions.add("Unlabeled")
         labelSuggestions.add("Label 1")
         labelSuggestions.add("Label 2")
         labelSuggestions.add("Label 3")
@@ -101,18 +102,26 @@ class Add_New_Content : AppCompatActivity() {
             PoemDes?.undo()
         }
         binding?.btnAddLabel?.setOnClickListener {
-            // Create a new instance of the dialog fragment and show it
             val dialogView = LayoutInflater.from(this).inflate(R.layout.diaglog_insert_label, null)
             val dialog = AlertDialog.Builder(this)
                 .setTitle("Insert Label")
                 .setView(dialogView)
-                .setPositiveButton("OK") {_, _ ->}
-                .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton("Done") { dialog, _ -> dialog.dismiss() }
                 .create()
 
             val spinner = dialogView.findViewById<Spinner>(R.id.labelDropdown)
             val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
 
+            for (label in selectedLabels) {
+                val chip = Chip(this)
+                chip.text = label
+                chip.isCloseIconVisible = true
+                chip.setOnCloseIconClickListener {
+                    chipGroup.removeView(chip)
+                    selectedLabels.remove(label)
+                }
+                chipGroup.addView(chip)
+            }
             val adapter = ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -121,18 +130,17 @@ class Add_New_Content : AppCompatActivity() {
 
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
+
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     val label = parent?.getItemAtPosition(position).toString()
-                    addChip(label, chipGroup, adapter)
+                    addChip(label, chipGroup)
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                     // Do nothing
                 }
             }
-
-
             dialog.show()
         }
 
@@ -188,6 +196,10 @@ class Add_New_Content : AppCompatActivity() {
 
 
         binding?.saveContent?.setOnClickListener {
+
+            val allLabels = selectedLabels.joinToString(", ")
+            Log.d("Labels", allLabels)
+
             var itemTopic: String = binding?.idTopic?.text.toString()
             val htmlContentPoemDes= PoemDes?.html.toString()
             // setup the date
@@ -201,7 +213,7 @@ class Add_New_Content : AppCompatActivity() {
             if (PoemDes?.html!!.isNotEmpty()) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
+                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date, Labels = allLabels))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -210,7 +222,7 @@ class Add_New_Content : AppCompatActivity() {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
                         NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date ))
+                            CreatedDate = date, Labels = allLabels ))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -308,7 +320,7 @@ class Add_New_Content : AppCompatActivity() {
         BackDialog.show()
     }
 
-    private fun addChip(label: String, chipGroup: FlexboxLayout, adapter: ArrayAdapter<String>) {
+    private fun addChip(label: String, chipGroup: FlexboxLayout) {
         val chip = Chip(this)
         chip.text = label
         chip.isCloseIconVisible = true
@@ -319,9 +331,10 @@ class Add_New_Content : AppCompatActivity() {
             Log.d("Selected Labels", selectedLabels.toString())
         }
 
-        chipGroup.addView(chip)
-        selectedLabels.add(label)
-        Log.d("Selected Labels", selectedLabels.toString())
-
+        if (!selectedLabels.contains(label)) {
+            chipGroup.addView(chip)
+            selectedLabels.add(label)
+            Log.d("Selected Labels", selectedLabels.toString())
+        }
     }
 }
