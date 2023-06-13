@@ -8,6 +8,7 @@ Below you will find the process and workflow used to review and merge your chang
 
 ## Step 1 : Find an issue
 - Take a look at the Existing issues or create your **own** issues!
+- To discover new issues, you have two options. Firstly, you can download the "Taaveez app" from the Play Store using the provided [Link](https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez). Alternatively, you can fork the code from Step 2 and run the app on an emulator.
 - Wait for the issue to be assigned to you after which you can start working on it.
 
 ## Step 2 : Fork the Project

@@ -1,0 +1,96 @@
+name: Bug Report
+description: Create a report to help us improve
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: How do you trigger this bug? Please walk us through it step by step.
+      placeholder: |
+        Steps to reproduce the behavior:
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+        ...
+      value: |
+        Steps to reproduce the behavior:
+
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: expect
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of our app are you running?
+      options:
+        - 1.1.0 (Default)
+        - 1.0.0 (Old)
+    validations:
+      required: true
+  - type: input
+    id: cversion
+    attributes:
+      label: Version (If not available above)
+      description: What version of our app are you running?
+      placeholder: vX.X.X
+  - type: dropdown
+    id: devices
+    attributes:
+      label: What devices are you seeing the problem on?
+      multiple: true
+      options:
+        - Mobile
+        - Tablet
+    validations:
+      required: true
+  - type: input
+    id: deviceName
+    attributes:
+      label: Device Name, Android Version and Screen Size
+      description: What Device, Android Version & Screen Size are you seeing the problem on?
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/Suryansh1720001/Taaveez/blob/master/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
