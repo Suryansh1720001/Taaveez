@@ -53,7 +53,7 @@ class Add_New_Content : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         selectedLabels = HashSet()
 
-        // Label Suggestions
+        // Label Suggestions for user to select from
         labelSuggestions = mutableListOf()
         labelSuggestions.add("Label 1")
         labelSuggestions.add("Label 2")
@@ -101,6 +101,8 @@ class Add_New_Content : AppCompatActivity() {
         binding?.btnUndo?.setOnClickListener {
             PoemDes?.undo()
         }
+
+        // Function to select labels
         binding?.btnAddLabel?.setOnClickListener {
             val dialogView = LayoutInflater.from(this).inflate(R.layout.diaglog_insert_label, null)
             val dialog = AlertDialog.Builder(this)
@@ -108,6 +110,8 @@ class Add_New_Content : AppCompatActivity() {
                 .setView(dialogView)
                 .setNegativeButton("Done") { dialog, _ -> dialog.dismiss() }
                 .create()
+
+
 
             val spinner = dialogView.findViewById<Spinner>(R.id.labelDropdown)
             val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
@@ -316,7 +320,7 @@ class Add_New_Content : AppCompatActivity() {
         BackDialog.show()
     }
 
-    private fun addChip(label: String, chipGroup: FlexboxLayout) {
+    private fun addChip(label: String, chipGroup: FlexboxLayout) { // Adding the Chip dynamically into the ChipGroup
         val chip = Chip(this)
         chip.text = label
         chip.isCloseIconVisible = true

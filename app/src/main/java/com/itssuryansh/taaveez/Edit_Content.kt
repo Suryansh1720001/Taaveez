@@ -57,10 +57,10 @@ class Edit_Content : AppCompatActivity() {
         id = intent.getIntExtra(Constants.ID,0)
         super.onCreate(savedInstanceState)
 
-        // Selected Labels
+        // Selected Labels by user will be taken from dataset initially then user can edit them later
         selectedLabels = HashSet()
 
-        // Label Suggestions
+        // Label Suggestions for the user
         labelSuggestions = mutableListOf()
         labelSuggestions.add("Label 1")
         labelSuggestions.add("Label 2")
@@ -96,7 +96,7 @@ class Edit_Content : AppCompatActivity() {
         val btnItalic : ImageButton? = findViewById(R.id.btn_update_italic)
         btnItalic?.setOnClickListener { PoemDes?.setItalic() }
 
-        val btnUpdateLabels : ImageButton? = findViewById(R.id.btn_update_label)
+        val btnUpdateLabels : ImageButton? = findViewById(R.id.btn_update_label)  // update the labels
         btnUpdateLabels?.setOnClickListener {updateLabels()}
 
         binding?.btnUdpateUndo?.setOnClickListener {
@@ -312,7 +312,7 @@ class Edit_Content : AppCompatActivity() {
         BackData()
     }
 
-    private fun updateLabels() {
+    private fun updateLabels() {  // function to update labels
         val dialogView = LayoutInflater.from(this).inflate(R.layout.diaglog_insert_label, null)
         val dialog = AlertDialog.Builder(this)
             .setTitle("Insert Label")
@@ -323,7 +323,7 @@ class Edit_Content : AppCompatActivity() {
         val spinner = dialogView.findViewById<Spinner>(R.id.labelDropdown)
         val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
 
-        for (label in selectedLabels) {
+        for (label in selectedLabels) { // add chips for already selected labels
             if (label == "") {
                 continue
             }
@@ -337,7 +337,7 @@ class Edit_Content : AppCompatActivity() {
             chipGroup.addView(chip)
         }
 
-        val adapter = ArrayAdapter(
+        val adapter = ArrayAdapter( // add suggestions to dropdown
             this,
             android.R.layout.simple_spinner_item,
             labelSuggestions
@@ -348,7 +348,7 @@ class Edit_Content : AppCompatActivity() {
 
 
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener { // add chips for selected label
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -365,7 +365,7 @@ class Edit_Content : AppCompatActivity() {
         }
         dialog.show()
     }
-    private fun addChip(label: String, chipGroup: FlexboxLayout) {
+    private fun addChip(label: String, chipGroup: FlexboxLayout) { // function to add chips
         val chip = Chip(this)
         chip.text = label
         chip.isCloseIconVisible = true

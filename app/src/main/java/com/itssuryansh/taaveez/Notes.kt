@@ -42,6 +42,8 @@ class Notes : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
+        // Label Suggestions to filter content
         labelSuggestions = mutableListOf()
         labelSuggestions.add("All")
         labelSuggestions.add("Label 1")
@@ -78,6 +80,7 @@ class Notes : AppCompatActivity() {
 
         }
 
+        // Spinner for filtering content
         val spinner = findViewById<Spinner>(R.id.spinnerFilter)
         val adapter = ArrayAdapter(
             this,
@@ -89,7 +92,7 @@ class Notes : AppCompatActivity() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val label = parent?.getItemAtPosition(position).toString()
-                filter_content(label)
+                filter_content(label) // Filter content based on label
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -517,14 +520,14 @@ class Notes : AppCompatActivity() {
         }
     }
 
-    private fun filter_content(label: String) {
+    private fun filter_content(label: String) { // filter content by label
         lifecycleScope.launch {
             notesDao.fetchAllNotes().collect {
                 val list = ArrayList(it)
-                if (label == "All") {
+                if (label == "All") { // if label is all then show all notes
                     setupListOfDateINtoRecycleVIew(list, notesDao)
                 }
-                else {
+                else { // else show notes by label selected by user
                     val finalList = ArrayList<NotesEntity>()
                     for (NotesEntity in list) {
                         val hash_set = HashSet<String>()
