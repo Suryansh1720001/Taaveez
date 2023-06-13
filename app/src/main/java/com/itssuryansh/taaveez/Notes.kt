@@ -103,7 +103,7 @@ class Notes : AppCompatActivity() {
                             val finalList = ArrayList<NotesEntity>()
                             for (NotesEntity in list) {
                                 val hash_set = HashSet<String>()
-                                hash_set.addAll(NotesEntity.Labels.split(","))
+                                hash_set.addAll(NotesEntity.Labels.split(", "))
                                 if (hash_set.contains(label)) {
                                     finalList.add(NotesEntity)
                                 }
