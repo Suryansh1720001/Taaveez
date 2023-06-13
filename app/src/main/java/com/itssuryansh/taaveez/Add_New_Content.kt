@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
@@ -14,12 +15,17 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
@@ -27,8 +33,13 @@ import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import com.google.android.material.chip.Chip
+import kotlinx.coroutines.flow.toList
 
 class Add_New_Content : AppCompatActivity() {
+
+    private lateinit var selectedLabels: MutableList<String>
+    private lateinit var labelSuggestions: MutableList<String>
 
     private var binding: ActivityAddNewContentBinding? = null
     private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value
@@ -38,6 +49,14 @@ class Add_New_Content : AppCompatActivity() {
         loadLocate()
         loadDayNight()
         super.onCreate(savedInstanceState)
+        selectedLabels = mutableListOf()
+
+        // Label Suggestions
+        labelSuggestions = mutableListOf()
+        labelSuggestions.add("Unlabeled")
+        labelSuggestions.add("Label 1")
+        labelSuggestions.add("Label 2")
+        labelSuggestions.add("Label 3")
 
         binding = ActivityAddNewContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -81,12 +100,48 @@ class Add_New_Content : AppCompatActivity() {
         binding?.btnUndo?.setOnClickListener {
             PoemDes?.undo()
         }
+        binding?.btnAddLabel?.setOnClickListener {
+            // Create a new instance of the dialog fragment and show it
+            val dialogView = LayoutInflater.from(this).inflate(R.layout.diaglog_insert_label, null)
+            val dialog = AlertDialog.Builder(this)
+                .setTitle("Insert Label")
+                .setView(dialogView)
+                .setPositiveButton("OK") {_, _ ->}
+                .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+                .create()
+
+            val spinner = dialogView.findViewById<Spinner>(R.id.labelDropdown)
+            val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
+
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                labelSuggestions
+            )
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    val label = parent?.getItemAtPosition(position).toString()
+                    addChip(label, chipGroup, adapter)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Do nothing
+                }
+            }
+
+
+            dialog.show()
+        }
 
 
         binding?.btnRedo?.setOnClickListener {
             PoemDes?.redo()
         }
-
+//        val intent = Intent(this, Chipchip::class.java)
+//        startActivity(intent)
 
 
         binding?.btnAddLink?.setOnClickListener{
@@ -253,5 +308,20 @@ class Add_New_Content : AppCompatActivity() {
         BackDialog.show()
     }
 
+    private fun addChip(label: String, chipGroup: FlexboxLayout, adapter: ArrayAdapter<String>) {
+        val chip = Chip(this)
+        chip.text = label
+        chip.isCloseIconVisible = true
 
+        chip.setOnCloseIconClickListener {
+            chipGroup.removeView(chip)
+            selectedLabels.remove(label)
+            Log.d("Selected Labels", selectedLabels.toString())
+        }
+
+        chipGroup.addView(chip)
+        selectedLabels.add(label)
+        Log.d("Selected Labels", selectedLabels.toString())
+
+    }
 }

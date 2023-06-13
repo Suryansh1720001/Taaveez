@@ -21,7 +21,9 @@ interface NotesDao {
     @Query("select * from `Poem-table` where id=:id")
     fun fetchNotesById(id:Int):Flow<NotesEntity>
 
-    @Query("select * from `Poem-table` where Labels like :label")
-    fun fetchNotesByLabel(label:String):Flow<List<NotesEntity>>
+    @Query("select Labels from `Poem-table`")
+    fun fetchAllLabels(): Flow<String>
 
+    @Query("update `Poem-table` set Labels=:labels where id=:id")
+    fun updateLabels(labels:String, id:Int)
 }
