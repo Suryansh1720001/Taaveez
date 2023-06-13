@@ -113,6 +113,7 @@ class Add_New_Content : AppCompatActivity() {
             val chipGroup = dialogView.findViewById<FlexboxLayout>(R.id.chipGroup)
 
             for (label in selectedLabels) {
+
                 val chip = Chip(this)
                 chip.text = label
                 chip.isCloseIconVisible = true
@@ -120,6 +121,7 @@ class Add_New_Content : AppCompatActivity() {
                     chipGroup.removeView(chip)
                     selectedLabels.remove(label)
                 }
+
                 chipGroup.addView(chip)
             }
             val adapter = ArrayAdapter(

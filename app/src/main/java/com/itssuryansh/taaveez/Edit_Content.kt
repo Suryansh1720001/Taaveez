@@ -119,6 +119,7 @@ class Edit_Content : AppCompatActivity() {
                     val title = titleEditText.text.toString()
                     PoemDes.insertLink(url, title)
                 }
+
                 .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
                 .create()
             dialog.show()
@@ -134,6 +135,7 @@ class Edit_Content : AppCompatActivity() {
                     binding?.etPoemTopic?.setText(it.Topic)
                     binding?.etUpdatePoem?.setHtml(it.Poem)
                     CreatedDate = it.CreatedDate
+
                     allLabels = it.Labels
                     selectedLabels.addAll(it.Labels.split(","))
                 }

@@ -107,6 +107,7 @@ class Notes : AppCompatActivity() {
                                 if (hash_set.contains(label)) {
                                     finalList.add(NotesEntity)
                                 }
+
                             }
                             setupListOfDateINtoRecycleVIew(finalList, NotesDao)
                         }
@@ -119,7 +120,7 @@ class Notes : AppCompatActivity() {
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////
 
 
 
