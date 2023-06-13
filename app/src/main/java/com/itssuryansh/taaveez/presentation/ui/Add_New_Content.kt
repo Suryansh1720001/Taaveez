@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.presentation.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -21,8 +21,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.itssuryansh.taaveez.NotesApp
+import com.itssuryansh.taaveez.R
+import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
+import com.itssuryansh.taaveez.domain.model.NotesEntity
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -154,8 +158,10 @@ class Add_New_Content : AppCompatActivity() {
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date ))
+                        NotesDao.insert(
+                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        )
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()

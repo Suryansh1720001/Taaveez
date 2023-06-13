@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

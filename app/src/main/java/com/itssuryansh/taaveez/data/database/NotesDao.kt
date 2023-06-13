@@ -1,11 +1,11 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.data.database
 
 import androidx.room.*
+import com.itssuryansh.taaveez.domain.model.NotesEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NotesDao {
-
     @Insert
     suspend fun insert(NotesEntity : NotesEntity)
 

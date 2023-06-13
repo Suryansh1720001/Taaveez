@@ -1,9 +1,10 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.presentation.ui
 
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.itssuryansh.taaveez.R
 
 import com.itssuryansh.taaveez.databinding.ActivitySplashBinding
 

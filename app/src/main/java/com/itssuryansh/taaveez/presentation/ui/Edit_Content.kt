@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.presentation.ui
 
 import android.app.Activity
 import android.app.Dialog
@@ -24,8 +24,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.itssuryansh.taaveez.NotesApp
+import com.itssuryansh.taaveez.R
+import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
+import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.utilities.Constants
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat

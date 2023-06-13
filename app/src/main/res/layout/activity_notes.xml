@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/bg"
     android:orientation="vertical"
-    tools:context="com.itssuryansh.taaveez.Notes">
+    tools:context="com.itssuryansh.taaveez.presentation.ui.Notes">
 
 
     <FrameLayout

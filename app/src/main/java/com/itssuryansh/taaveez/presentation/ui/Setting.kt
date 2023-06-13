@@ -1,12 +1,7 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.presentation.ui
 
-import android.annotation.SuppressLint
-import  android.app.Activity
 import android.app.Dialog
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Typeface
@@ -15,7 +10,6 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
@@ -23,8 +17,11 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
+import com.itssuryansh.taaveez.R
+import com.itssuryansh.taaveez.WebView
 import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
 import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
+import com.itssuryansh.taaveez.utilities.Constants
 import java.io.File
 import java.io.FileOutputStream
 import java.util.*
@@ -69,7 +66,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llOpenSourceLibrary?.setOnClickListener{
             val link = "https://sites.google.com/view/taaveez-open-source-library/home"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -85,7 +82,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llPrivacyPolicy?.setOnClickListener {
             val link = "https://sites.google.com/view/taaveez-privacy-policy/home"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 

@@ -1,9 +1,10 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.data.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.itssuryansh.taaveez.domain.model.NotesEntity
 
 @Database(entities = [NotesEntity::class],version=2)
 abstract class NotesDatabase: RoomDatabase() {

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -14,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId 'com.itssuryansh.taaveez'
-        minSdk 16
+        minSdk 21
         targetSdk 33
         versionCode 1
         versionName "v1.1.1"
@@ -90,6 +91,12 @@ dependencies {
 
     //for gif
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    //Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt "com.google.dagger:hilt-android-compiler:2.37"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
+
 
     // for acitvity open transition
 //    implementation 'com.github.AtifSayings:Animatoo:1.0.1'

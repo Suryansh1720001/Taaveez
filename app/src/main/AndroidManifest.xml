@@ -18,16 +18,16 @@
         android:theme="@style/Theme.MyNotes"
         tools:targetApi="31">
         <activity
-            android:name=".Edit_Content"
+            android:name=".presentation.ui.Edit_Content"
             android:exported="false" />
         <activity
             android:name=".WebView"
             android:exported="false" />
         <activity
-            android:name=".Add_New_Content"
+            android:name=".presentation.ui.Add_New_Content"
             android:exported="true" />
         <activity
-            android:name=".OneTimeIntroActivity"
+            android:name=".presentation.ui.OneTimeIntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,19 +36,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Setting"
+            android:name=".presentation.ui.Setting"
             android:exported="false" />
         <activity
-            android:name=".OpenPoem"
+            android:name=".presentation.ui.OpenPoem"
             android:exported="false" />
         <activity
-            android:name=".About"
+            android:name=".presentation.ui.About"
             android:exported="false" />
         <activity
-            android:name=".Notes"
+            android:name=".presentation.ui.Notes"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.ui.SplashActivity"
             android:exported="false" />
 
         <provider

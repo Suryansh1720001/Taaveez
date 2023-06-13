@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3C4048"
-    tools:context="com.itssuryansh.taaveez.About">
+    tools:context="com.itssuryansh.taaveez.presentation.ui.About">
 
 
     <FrameLayout

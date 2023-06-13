@@ -1,44 +1,28 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.presentation.ui
 
 import android.app.Activity
 import android.app.Dialog
 import android.content.ClipData
-import android.content.ClipData.Item
 import android.content.ClipboardManager
 import android.content.Context
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.TextPaint
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.URLSpan
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.appcompat.view.menu.MenuPopupHelper
-import androidx.appcompat.widget.ThemeUtils
-import androidx.core.content.ContextCompat
+import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.AboutOfOpenContentBinding
 
 import com.itssuryansh.taaveez.databinding.ActivityOpenPoemBinding
-import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
+import com.itssuryansh.taaveez.utilities.Constants
 import kotlinx.android.synthetic.main.activity_open_poem.*
-
-import javax.sql.StatementEvent
-
-
 
 
 class OpenPoem : AppCompatActivity() {
@@ -101,7 +85,7 @@ class OpenPoem : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.edit_data -> {
-                    val intent = Intent(this@OpenPoem,Edit_Content::class.java)
+                    val intent = Intent(this@OpenPoem, Edit_Content::class.java)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
                     true

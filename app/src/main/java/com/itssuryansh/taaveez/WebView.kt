@@ -1,17 +1,14 @@
 package com.itssuryansh.taaveez
 
-import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebResourceError
-import android.webkit.WebResourceRequest
 import android.webkit.WebViewClient
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.itssuryansh.taaveez.databinding.ActivityWebViewBinding
+import com.itssuryansh.taaveez.utilities.Constants
 
 class WebView : AppCompatActivity() {
     private lateinit var webView: WebView
