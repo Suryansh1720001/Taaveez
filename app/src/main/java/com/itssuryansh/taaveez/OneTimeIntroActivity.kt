@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroPageTransformerType
-import kotlinx.android.synthetic.main.activity_edit_content.*
 
 
 class OneTimeIntroActivity : AppIntro(){
@@ -46,7 +45,7 @@ class OneTimeIntroActivity : AppIntro(){
         addSlide(AppIntroFragment.createInstance(
             title = "वो दुआएं, वो गीत, वो किस्से-कहानियां जो अधूरी रह गई वो सब आप इस तावीज़ में रख सकते हैं जाने कब कौन सी दुआ क़ुबूल हो जाए।\n",
             description = "Say hello to Taaveez...",
-            backgroundDrawable = R.drawable.screenshot_2023_05_31_at_9_36_41_pm,
+            backgroundDrawable = R.drawable.onetimeactivity,
             titleColorRes = R.color.black,
             descriptionColorRes = R.color.black,
             ))
@@ -58,7 +57,7 @@ class OneTimeIntroActivity : AppIntro(){
                     "Taaveez unlocks their artistic expertise,\n" +
                     "Great content flows with effortless ease.",
             description = "The innovative and thrilling application tailored for artists and entertainers :)",
-            backgroundDrawable = R.drawable.screenshot_2023_05_31_at_9_36_41_pm,
+            backgroundDrawable = R.drawable.onetimeactivity,
             titleColorRes = R.color.black,
             descriptionColorRes = R.color.black,
             backgroundColorRes = R.color.black,
