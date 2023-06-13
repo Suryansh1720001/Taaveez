@@ -6,7 +6,6 @@ import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.data.database.NotesDatabase
 import com.itssuryansh.taaveez.data.repository.NotesRepositoryImpl
 import com.itssuryansh.taaveez.domain.repository.NotesRepository
-import com.itssuryansh.taaveez.domain.use_cases.GetAllNotesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,16 +24,6 @@ object AppModule {
     fun provideNotesDao(database: NotesDatabase): NotesDao {
         return database.NotesDao()
     }
-    @Provides
-    fun provideGetAllNotesUseCase(notesRepository: NotesRepository): GetAllNotesUseCase {
-        return GetAllNotesUseCase(notesRepository)
-    }
-
-    @Singleton
-    @Provides
-    fun provideNotesRepository(dao: NotesDao): NotesRepository {
-        return NotesRepositoryImpl(dao)
-    }
 
     @Provides
     fun provideCoroutineDispatcher(): CoroutineDispatcher {
@@ -49,6 +38,11 @@ object AppModule {
             NotesDatabase::class.java,
             "notes_database"
         ).build()
+    }
+    @Singleton
+    @Provides
+    fun provideNotesRepository(dao: NotesDao): NotesRepository {
+        return NotesRepositoryImpl(dao)
     }
 
 

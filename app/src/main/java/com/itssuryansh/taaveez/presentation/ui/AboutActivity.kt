@@ -17,7 +17,7 @@ import mehdi.sakout.aboutpage.AboutPage
 import mehdi.sakout.aboutpage.Element
 import java.util.*
 
-class About : AppCompatActivity() {
+class AboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadDayNight()
@@ -25,14 +25,14 @@ class About : AppCompatActivity() {
         setContentView(R.layout.activity_about)
         Element()
 
-        val aboutPage: View = AboutPage(this)
+        val aboutActivityPage: View = AboutPage(this)
             .isRTL(false)
             .setCustomFont("museo.ttf")
             .setImage(R.mipmap.ic_launcher)
             .setDescription(getString(R.string.about_poem))
             .addItem(Element().setTitle("Current Version : "+getString(R.string.appVersion)).setGravity(Gravity.CENTER).setOnClickListener {
                 Toast.makeText(
-                    this@About,
+                    this@AboutActivity,
                     "Current version of App is : " + getString(R.string.appVersion),
                     Toast.LENGTH_LONG
                 ).show()
@@ -46,7 +46,7 @@ class About : AppCompatActivity() {
             .addItem(createCopyright())
             .create()
 
-        setContentView(aboutPage)
+        setContentView(aboutActivityPage)
 
 
     }
@@ -62,7 +62,7 @@ class About : AppCompatActivity() {
         copyright.gravity = Gravity.CENTER
         copyright.onClickListener = View.OnClickListener {
             Toast.makeText(
-                this@About,
+                this@AboutActivity,
                 copyrightString,
                 Toast.LENGTH_SHORT
             ).show()
@@ -71,7 +71,7 @@ class About : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, Notes::class.java)
+        val intent = Intent(this, NotesActivity::class.java)
         startActivity(intent)
         finish()
     }

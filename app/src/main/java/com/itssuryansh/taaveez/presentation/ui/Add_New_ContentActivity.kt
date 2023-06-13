@@ -26,13 +26,13 @@ import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Add_New_Content : AppCompatActivity() {
+class Add_New_ContentActivity : AppCompatActivity() {
 
     private var binding: ActivityAddNewContentBinding? = null
     private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value

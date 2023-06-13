@@ -1,10 +1,10 @@
-package com.itssuryansh.taaveez.adapter
+package com.itssuryansh.taaveez.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.itssuryansh.taaveez.databinding.ItemPoemBinding
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
 import kotlin.collections.ArrayList
 
 

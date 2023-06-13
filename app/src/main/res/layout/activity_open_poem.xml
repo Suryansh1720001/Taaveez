@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/bg"
-    tools:context="com.itssuryansh.taaveez.presentation.ui.OpenPoem">
+    tools:context="com.itssuryansh.taaveez.presentation.ui.OpenPoemActivity">
 
 
     <FrameLayout

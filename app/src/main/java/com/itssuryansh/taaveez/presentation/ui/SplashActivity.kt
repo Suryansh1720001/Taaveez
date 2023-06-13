@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
                     e.printStackTrace()
                 } finally {
                     val intent = Intent(this@SplashActivity ,
-                        Notes::class.java)
+                        NotesActivity::class.java)
                     startActivity(intent)
 
                     finish()

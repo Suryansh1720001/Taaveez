@@ -1,7 +1,6 @@
 package com.itssuryansh.taaveez.domain.repository
 
-import com.itssuryansh.taaveez.data.database.NotesDao
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
 import kotlinx.coroutines.flow.Flow
 
 interface NotesRepository {

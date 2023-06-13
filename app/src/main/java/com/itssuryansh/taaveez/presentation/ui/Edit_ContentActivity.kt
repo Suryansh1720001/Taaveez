@@ -29,14 +29,14 @@ import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
 import com.itssuryansh.taaveez.utilities.Constants
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Edit_Content : AppCompatActivity() {
+class Edit_ContentActivity : AppCompatActivity() {
     private var binding:ActivityEditContentBinding?=null
     private lateinit var NotesDao: NotesDao
 

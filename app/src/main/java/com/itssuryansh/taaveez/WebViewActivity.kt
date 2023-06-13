@@ -10,8 +10,8 @@ import androidx.annotation.RequiresApi
 import com.itssuryansh.taaveez.databinding.ActivityWebViewBinding
 import com.itssuryansh.taaveez.utilities.Constants
 
-class WebView : AppCompatActivity() {
-    private lateinit var webView: WebView
+class WebViewActivity : AppCompatActivity() {
+    private lateinit var webViewActivity: WebViewActivity
     private var binding: ActivityWebViewBinding? = null
     private var Link:String?=null
 

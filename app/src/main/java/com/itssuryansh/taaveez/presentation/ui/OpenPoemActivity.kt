@@ -25,7 +25,7 @@ import com.itssuryansh.taaveez.utilities.Constants
 import kotlinx.android.synthetic.main.activity_open_poem.*
 
 
-class OpenPoem : AppCompatActivity() {
+class OpenPoemActivity : AppCompatActivity() {
 
     private var binding : ActivityOpenPoemBinding?=null
     private var PoemTopic: String? =null
@@ -85,7 +85,7 @@ class OpenPoem : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.edit_data -> {
-                    val intent = Intent(this@OpenPoem, Edit_Content::class.java)
+                    val intent = Intent(this@OpenPoemActivity, Edit_ContentActivity::class.java)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
                     true
@@ -165,7 +165,7 @@ class OpenPoem : AppCompatActivity() {
     }
 
     fun openNotesActivity(){
-        val intent = Intent(this@OpenPoem, Notes::class.java)
+        val intent = Intent(this@OpenPoemActivity, NotesActivity::class.java)
         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)

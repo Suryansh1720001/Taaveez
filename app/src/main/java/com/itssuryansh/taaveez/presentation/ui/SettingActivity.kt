@@ -18,7 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
 import com.itssuryansh.taaveez.R
-import com.itssuryansh.taaveez.WebView
+import com.itssuryansh.taaveez.WebViewActivity
 import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
 import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
 import com.itssuryansh.taaveez.utilities.Constants
@@ -26,7 +26,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.util.*
 
-open class Setting : AppCompatActivity() {
+open class SettingActivity : AppCompatActivity() {
 
 
     private var binding : ActivitySettingBinding?=null
@@ -41,7 +41,7 @@ open class Setting : AppCompatActivity() {
         setContentView(binding?.root)
 
         if (supportActionBar != null){
-            Toast.makeText(this@Setting,"back setting",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@SettingActivity,"back setting",Toast.LENGTH_LONG).show()
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
@@ -50,7 +50,7 @@ open class Setting : AppCompatActivity() {
         binding?.tvNotesHeading?.typeface = typeface
 
         binding?.btnSettingBack?.setOnClickListener {
-           startActivity(Intent(this@Setting, Notes::class.java))
+           startActivity(Intent(this@SettingActivity, NotesActivity::class.java))
             finish()
             overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 
@@ -66,7 +66,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llOpenSourceLibrary?.setOnClickListener{
             val link = "https://sites.google.com/view/taaveez-open-source-library/home"
-            val intent = Intent(this@Setting, WebView::class.java)
+            val intent = Intent(this@SettingActivity, WebViewActivity::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -82,7 +82,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llPrivacyPolicy?.setOnClickListener {
             val link = "https://sites.google.com/view/taaveez-privacy-policy/home"
-            val intent = Intent(this@Setting, WebView::class.java)
+            val intent = Intent(this@SettingActivity, WebViewActivity::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -103,7 +103,7 @@ open class Setting : AppCompatActivity() {
 
     private fun feedback() {
 
-        Toast.makeText(this@Setting ,getString(R.string.scroll_down_for_rating), Toast.LENGTH_LONG).show()
+        Toast.makeText(this@SettingActivity ,getString(R.string.scroll_down_for_rating), Toast.LENGTH_LONG).show()
 
         val playStoreIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+getPackageName()))
         startActivity(playStoreIntent)
@@ -119,7 +119,7 @@ open class Setting : AppCompatActivity() {
 
     private  fun showChangeLang() {
         val listItems = arrayOf("English","हिन्दी")
-        val mBuilder = AlertDialog.Builder(this@Setting)
+        val mBuilder = AlertDialog.Builder(this@SettingActivity)
         mBuilder.setTitle("Choose Language")
         mBuilder.setSingleChoiceItems(listItems,-1){dialog,which->
         if( which ==0){
@@ -247,7 +247,7 @@ open class Setting : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, Notes::class.java)
+        val intent = Intent(this, NotesActivity::class.java)
         startActivity(intent)
         finish()
     }

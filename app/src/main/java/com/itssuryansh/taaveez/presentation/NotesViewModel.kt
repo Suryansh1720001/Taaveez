@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.itssuryansh.taaveez.data.database.NotesDao
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
+import com.itssuryansh.taaveez.domain.repository.NotesRepository
 import com.itssuryansh.taaveez.domain.use_cases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -17,11 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotesViewModel @Inject constructor(
-    private val createNoteUseCase: CreateNoteUseCase,
-    private val deleteNoteUseCase: DeleteNoteUseCase,
-    private val getAllNotesUseCase: GetAllNotesUseCase,
-    private val getNoteByIdUseCase: GetNoteByIdUseCase,
-    private val updateNoteUseCase: UpdateNoteUseCase,
+   private val notesRepository: NotesRepository,
     private val notesDao: NotesDao
 ) : ViewModel() {
     private val _notesList = MutableStateFlow<List<NotesEntity>>(emptyList())
@@ -30,36 +27,30 @@ class NotesViewModel @Inject constructor(
     val notesLiveData: LiveData<NotesEntity> = _notesLiveData
     fun createNotes(notesEntity: NotesEntity) {
         viewModelScope.launch {
-            createNoteUseCase
+            notesRepository.insert(notesEntity)
         }
     }
 
     fun updateNotes(notesEntity: NotesEntity) {
         viewModelScope.launch {
-            updateNoteUseCase
+            notesRepository.update(notesEntity)
         }
     }
 
     fun deleteNotes(notesEntity: NotesEntity) {
         viewModelScope.launch {
-            deleteNoteUseCase
+            notesRepository.delete(notesEntity)
         }
     }
 
     fun getAllNotes() {
         viewModelScope.launch {
-            val notes = getAllNotesUseCase.invoke().first()
+            val notes = notesRepository.fetchAllNotes().first()
             _notesList.value = notes
         }
     }
 
-//    fun getNotesById(id: Int) {
-//        viewModelScope.launch {
-//            notesDao.fetchNotesById(id).collect {
-//                _notesLiveData.value = it
-//            }
-//        }
-//    }
+
 fun getNotesById(id: Int): Flow<NotesEntity?> {
     return notesDao.fetchNotesById(id)
 }

@@ -77,14 +77,14 @@ class OneTimeIntroActivity : AppIntro(){
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
         // Decide what to do when the user clicks on "Skip"
-        startActivity(Intent(this@OneTimeIntroActivity, Notes::class.java ))
+        startActivity(Intent(this@OneTimeIntroActivity, NotesActivity::class.java ))
         finish()
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         // Decide what to do when the user clicks on "Done"
-        val intent = Intent(this@OneTimeIntroActivity, Notes::class.java)
+        val intent = Intent(this@OneTimeIntroActivity, NotesActivity::class.java)
         startActivity(intent)
         finish()
     }

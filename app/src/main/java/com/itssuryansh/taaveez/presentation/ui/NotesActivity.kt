@@ -21,17 +21,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.itssuryansh.taaveez.NotesApp
 import com.itssuryansh.taaveez.R
-import com.itssuryansh.taaveez.adapter.itemAdapter
+import com.itssuryansh.taaveez.presentation.adapter.itemAdapter
 import com.itssuryansh.taaveez.data.database.NotesDao
 import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
-import com.itssuryansh.taaveez.domain.model.NotesEntity
+import com.itssuryansh.taaveez.data.database.NotesEntity
 import com.itssuryansh.taaveez.presentation.NotesViewModel
 import com.itssuryansh.taaveez.utilities.Constants
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +40,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class Notes : AppCompatActivity() {
+class NotesActivity : AppCompatActivity() {
 
     private var binding: ActivityNotesBinding? = null
     private var PoemDesUpdate: RichEditor? = null
@@ -58,14 +57,14 @@ class Notes : AppCompatActivity() {
         val typeface: Typeface = Typeface.createFromAsset(assets, "arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
         binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes, About::class.java)
+            val intent = Intent(this@NotesActivity, AboutActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
             finish()
 
         }
         binding?.tvSetting?.setOnClickListener {
-            val intent = Intent(this@Notes, Setting::class.java)
+            val intent = Intent(this@NotesActivity, SettingActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
             finish()
@@ -76,13 +75,12 @@ class Notes : AppCompatActivity() {
         val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
 //            NewPoemDialog(NotesDao)
-            val intent = Intent(this@Notes, Add_New_Content::class.java)
+            val intent = Intent(this@NotesActivity, Add_New_ContentActivity::class.java)
             startActivity(intent)
         }
 
         lifecycleScope.launch {
             NotesDao.fetchAllNotes().collect {
-                Log.d("Notesapp","Here are the notes : $it")
                 val list = ArrayList(it)
                 setupListOfDateINtoRecycleVIew(list, NotesDao)
             }
@@ -279,7 +277,7 @@ private fun openNotes(id: Int, NotesDao: NotesDao) {
                 UpdatedDate = notesEntity.Date
 
 
-                val intent = Intent(this@Notes, OpenPoem::class.java)
+                val intent = Intent(this@NotesActivity, OpenPoemActivity::class.java)
                 intent.putExtra(Constants.POEM_TOPIC, Topic)
                 intent.putExtra(Constants.POEM_DES, PoemDes)
                 intent.putExtra(Constants.CREATED_DATE, CreatedDate)
@@ -396,7 +394,7 @@ private fun updateRecordDialog(id: Int, NotesDao: NotesDao) {
                 // Show a toast message
                 val message = "Maximum length of $maxLength characters exceeded"
 //                    Snackbar.make(binding?.etPoemTopic!!, message, Snackbar.LENGTH_LONG).show()
-                Toast.makeText(this@Notes, message, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@NotesActivity, message, Toast.LENGTH_LONG).show()
             }
         }
     })
