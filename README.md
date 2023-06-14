@@ -33,15 +33,9 @@ Bilingual and dynamic, this platform offers unlimited updates and engaging visua
 
 
 
-## <h1 align=center>Screenshots 📸</h1>
+## <h1 align=center>Taaveez App Preview 📸</h1>
 
-
-||||
-|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/222893516-51d1eb82-2f43-4d66-987d-54f111c155f4.png" width="80%" height="70%"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="80%" height="70%"> |
-|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="80%" height="70%">  |
-
+![Taaveez Application Preview](assets/application_preview/taaveez_application_preview.png)
 
 
 ## 🖥️ Technology
