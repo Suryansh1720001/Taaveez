@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -33,7 +34,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
-        exclude 'META-INF/atomicfu.kotlin_module'
+        resources {
+            excludes += ['META-INF/atomicfu.kotlin_module']
+        }
     }
 
     kotlinOptions {
@@ -42,7 +45,7 @@ android {
     buildFeatures{
         viewBinding true
     }
-
+    namespace 'com.itssuryansh.taaveez'
 
 
 }
