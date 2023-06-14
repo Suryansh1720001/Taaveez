@@ -34,9 +34,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
-        resources {
-            excludes += ['META-INF/atomicfu.kotlin_module']
-        }
+        exclude 'META-INF/atomicfu.kotlin_module'
     }
 
     kotlinOptions {
@@ -45,7 +43,7 @@ android {
     buildFeatures{
         viewBinding true
     }
-    namespace 'com.itssuryansh.taaveez'
+
 
 
 }

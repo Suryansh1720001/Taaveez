@@ -9,13 +9,22 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
-import android.text.*
+
+import android.text.Editable
+import android.text.Html
+import android.text.InputFilter
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.*
+
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +37,8 @@ import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.Locale
 
 class Notes : AppCompatActivity() {
 
