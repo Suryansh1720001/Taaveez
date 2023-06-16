@@ -9,7 +9,6 @@ import com.itssuryansh.taaveez.databinding.ItemPoemBinding
 
 
 class itemAdapter(
-    /*private var oldItems: ArrayList<NotesEntity>,*/
                   private val updateListener:(id:Int)->Unit,
                   private val deleteListener:(id:Int)->Unit,
                   private val OpenListener:(id:Int)->Unit,
