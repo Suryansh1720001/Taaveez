@@ -79,18 +79,13 @@ class Notes : AppCompatActivity() {
 
         val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
-//            NewPoemDialog(NotesDao)
             val intent = Intent(this@Notes, Add_New_Content::class.java)
             startActivity(intent)
         }
 
         lifecycleScope.launch {
                 NotesDao.fetchAllNotes().collect {
-                    /*
-                    Log.e("ray", "onCreate submit list: $it")
 
-                    Log.e("ray", "onCreate size status: ${it.size}")
-                    Log.e("ray", "onCreate list-empty status: ${it.isEmpty()}")*/
 
                     if(it.isNotEmpty()){
                         Log.d("ray", "onCreate: if executed")
@@ -131,7 +126,6 @@ class Notes : AppCompatActivity() {
             },
         )
         binding?.rvItemsPoem?.adapter = adapterInstance
-        //Log.e("ray", "initiateRecyclerView: adapter initialized $adapterInstance")
     }
 
 
@@ -282,7 +276,6 @@ class Notes : AppCompatActivity() {
                     intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
-//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
 
                 }
             }
