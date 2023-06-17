@@ -29,3 +29,4 @@ jobs:
         with:
           kotlin_version: '1.5.21'
           files: 'src/**/*.kt'
+          rule_set: 'ktlint_ruleset.xml'
