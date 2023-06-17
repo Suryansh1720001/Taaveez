@@ -1,0 +1,31 @@
+name: Ktlint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  ktlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Run ktlint
+        uses: block42-blockchain-company/ktlint-action@v2.3
+        with:
+          kotlin_version: '1.5.21'
+          files: 'src/**/*.kt'
