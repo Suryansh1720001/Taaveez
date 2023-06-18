@@ -25,8 +25,6 @@ jobs:
           distribution: 'temurin'
 
       - name: Run ktlint
-        uses: block42-blockchain-company/ktlint-action@v2.3
-        with:
-          kotlin_version: '1.5.21'
-          files: 'src/**/*.kt'
-          rule_set: 'ktlint.xml'
+      # You may pin to the exact commit or the version.
+      # uses: lucasnlm/ktlint-action@6d01bcc1303a3bb6ce1c47b5bec1cd352f039989
+        uses: lucasnlm/ktlint-action@v1.0.1
