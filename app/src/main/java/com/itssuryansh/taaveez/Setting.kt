@@ -21,7 +21,7 @@ import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
 import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
+import java.util.Locale
 
 open class Setting : AppCompatActivity() {
 
