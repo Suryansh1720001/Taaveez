@@ -1,0 +1,36 @@
+name: Ktlint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs: 
+  ktlint:
+    runs-on: ubuntu-latest
+
+    steps:
+     - uses: actions/checkout@v2
+     - uses: musichin/ktlint-check@v2
+       continue-on-error: true
+       with:
+        ktlint-version: '0.49.1'
+        level: 'warning'
+
+         # ktlint
+        code-style: android_studio
+        relative: true
+        experimental: true
+       
+        reporter: |
+          plain,output=ktlint_report.txt
+          json,output=ktlint_report.json
+     
+        patterns: |
+         **/**.kt
+         !**/generated/**
