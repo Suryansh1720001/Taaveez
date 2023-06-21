@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lora:wght@500;600&family=Poppins:wght@400;500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #171420;
+    color: #fff;
+    padding: 5rem 3rem;
+}
+
+.taaveez__title {
+    text-align: center;
+    color: #6355c5;
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    padding: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.title {
+    text-align: center;
+    color: #6355c5;
+    font-family: "Poppins", sans-serif;
+    font-size: 60px;
+    padding: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.open-source-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.subtitle {
+    font-size: 40px;
+    color: #6355c5;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.other-info {
+    font-size: 25px;
+    font-family: 'Courier New', Courier, monospace;
+}
