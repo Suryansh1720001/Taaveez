@@ -68,7 +68,7 @@ open class Setting : AppCompatActivity() {
         }
 
         binding?.llOpenSourceLibrary?.setOnClickListener{
-            val link = "https://sites.google.com/view/taaveez-open-source-library/home"
+            val link = "https://taaveez.vercel.app/open-source/taaveez-open-source.html"
             val intent = Intent(this@Setting,WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
@@ -84,7 +84,7 @@ open class Setting : AppCompatActivity() {
         }
 
         binding?.llPrivacyPolicy?.setOnClickListener {
-            val link = "https://sites.google.com/view/taaveez-privacy-policy/home"
+            val link = "https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html"
             val intent = Intent(this@Setting,WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
