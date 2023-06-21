@@ -2,9 +2,9 @@
 
 ## Fixes Issue
 
-<!-- Remove this section if not applicable -->
+<!-- Please provide the issue number that you have resolved.  -->
 
-<!-- Example: Closes #31 -->
+<!-- Example: Fixes Issue #234 -->
 
 ## Changes proposed
 
