@@ -1,8 +1,7 @@
 # Taaveez Application Preview
 
 ## Screenshot of the application
-- The screenshots of the application are in this [folder](screenshots) 
-- The screenshots are taken directly by opening a live server on an iPad
+- The screenshots are taken using a Pixel device emulator
 
 ## Framing of the application
 - The framed screenshots of the application are in this [folder](screenshots_framed).
