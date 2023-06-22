@@ -285,7 +285,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/llsourceCode"
-
                 android:layout_marginLeft="15dp">
 
 
@@ -302,7 +301,7 @@
                     android:id="@+id/tv_developer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Open-Source Library"
+                    android:text="@string/open_source_library"
                     android:textColor="?attr/text"
                     android:textSize="22sp" />
 
@@ -338,7 +337,7 @@
                     android:id="@+id/tv_PrivacyPolicy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Privacy Policy"
+                    android:text="@string/privacy_policy"
                     android:textColor="?attr/text"
                     android:textSize="22sp" />
 
