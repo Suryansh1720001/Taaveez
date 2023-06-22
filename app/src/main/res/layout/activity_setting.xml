@@ -38,7 +38,7 @@
         android:layout_margin="20dp"
         android:src="@drawable/iv_setting"
         app:layout_constraintTop_toBottomOf="@id/flheadingSetting"
-        app:layout_constraintBottom_toTopOf="@id/tv_preference"
+        app:layout_constraintBottom_toTopOf="@id/sv_setting_icons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/iv_settingImage"
@@ -73,7 +73,8 @@
                 android:textSize="31sp"
                 app:layout_constraintBottom_toTopOf="@+id/llLanguage"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_settingImage" />
+                app:layout_constraintTop_toBottomOf="@id/iv_settingImage"
+                android:layout_marginLeft="4dp" />
 
 
             <LinearLayout
@@ -83,7 +84,8 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -91,7 +93,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_langage" />
+                    android:src="@drawable/ic_langage"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
@@ -118,7 +121,8 @@
                 android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llLanguage">
+                app:layout_constraintTop_toBottomOf="@id/llLanguage"
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -126,7 +130,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_theme" />
+                    android:src="@drawable/ic_theme"
+                    android:layout_marginRight="10dp" />
 
 
                 <Switch
@@ -153,7 +158,8 @@
                 android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lltheme">
+                app:layout_constraintTop_toBottomOf="@id/lltheme"
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -161,7 +167,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_share" />
+                    android:src="@drawable/ic_share"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
@@ -187,7 +194,8 @@
                 android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llshare">
+                app:layout_constraintTop_toBottomOf="@id/llshare"
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -195,7 +203,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_feedback" />
+                    android:src="@drawable/ic_feedback"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
@@ -220,7 +229,8 @@
                 android:textColor="?attr/text"
                 android:textSize="31sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/llLanguage" />
+                app:layout_constraintTop_toBottomOf="@id/llLanguage"
+                android:layout_marginLeft="4dp" />
 
 
 
@@ -236,7 +246,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_developement"
-                >
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -244,7 +254,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_code" />
+                    android:src="@drawable/ic_code"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
@@ -275,7 +286,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/llsourceCode"
 
-                >
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -283,7 +294,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_open_source_library" />
+                    android:src="@drawable/ic_open_source_library"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
@@ -309,7 +321,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_developer"
-                >
+                android:layout_marginLeft="15dp">
 
 
                 <ImageView
@@ -317,7 +329,8 @@
                     android:layout_height="25dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_privacy" />
+                    android:src="@drawable/ic_privacy"
+                    android:layout_marginRight="10dp" />
 
 
                 <TextView
