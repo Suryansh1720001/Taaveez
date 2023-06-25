@@ -10,23 +10,27 @@ on:
       - main
       - master
 
-jobs:
+jobs: 
   ktlint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+     - uses: actions/checkout@v2
+     - uses: musichin/ktlint-check@v2
+       continue-on-error: false
+       with:
+        ktlint-version: '0.49.1'
+        level: 'warning'
 
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'temurin'
-
-      - name: Run ktlint
-        uses: block42-blockchain-company/ktlint-action@v2.3
-        with:
-          kotlin_version: '1.5.21'
-          files: 'src/**/*.kt'
-          rule_set: 'ktlint.xml'
+         # ktlint
+        code-style: android_studio
+        relative: true
+        experimental: true
+       
+        reporter: |
+          plain,output=ktlint_report.txt
+          json,output=ktlint_report.json
+     
+        patterns: |
+         **/**.kt
+         !**/generated/**
