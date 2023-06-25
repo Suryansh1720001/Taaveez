@@ -165,9 +165,9 @@ open class Setting : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun loadDayNight() {
         val sharedPreferences = getSharedPreferences("DayNight", MODE_PRIVATE)
-        val DayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
-        if (DayNight != null) {
-            setDayNight(DayNight)
+        val dayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
+        if (dayNight != null) {
+            setDayNight(dayNight)
         }
     }
 

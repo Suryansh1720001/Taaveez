@@ -32,11 +32,11 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-class Edit_Content : AppCompatActivity() {
+class EditContent : AppCompatActivity() {
     private var binding: ActivityEditContentBinding? = null
     private lateinit var NotesDao: NotesDao
 
-    var CreatedDate: String = ""
+    var createdDate: String = ""
 
     private var id: Int? = null
 
@@ -60,28 +60,28 @@ class Edit_Content : AppCompatActivity() {
         val textColor = typedValue.data
         binding?.etUpdatePoem?.setTextColor(textColor)
 
-        val PoemDes: RichEditor = findViewById(R.id.etUpdatePoem)
-        PoemDes.setEditorFontSize(20)
-        PoemDes?.setPlaceholder(getString(R.string.write_here))
-        PoemDes?.setEditorBackgroundColor(backgroundColor)
-        PoemDes?.setEditorFontColor(textColor)
-        PoemDes.setPadding(10, 10, 10, 10)
-        PoemDes.setVerticalScrollBarEnabled(true)
+        val poemDes: RichEditor = findViewById(R.id.etUpdatePoem)
+        poemDes.setEditorFontSize(20)
+        poemDes?.setPlaceholder(getString(R.string.write_here))
+        poemDes?.setEditorBackgroundColor(backgroundColor)
+        poemDes?.setEditorFontColor(textColor)
+        poemDes.setPadding(10, 10, 10, 10)
+        poemDes.setVerticalScrollBarEnabled(true)
 
         val btnBold: ImageButton? = findViewById(R.id.btn_update_bold)
-        btnBold?.setOnClickListener { PoemDes?.setBold() }
+        btnBold?.setOnClickListener { poemDes?.setBold() }
         val btnItalic: ImageButton? = findViewById(R.id.btn_update_italic)
-        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+        btnItalic?.setOnClickListener { poemDes?.setItalic() }
 
         binding?.btnUdpateUndo?.setOnClickListener {
-            PoemDes?.undo()
+            poemDes?.undo()
         }
 
         binding?.btnUpdateRedo?.setOnClickListener {
-            PoemDes?.redo()
+            poemDes?.redo()
         }
-        val btn_addLink = findViewById<ImageButton>(R.id.btn_update_addLink)
-        btn_addLink.setOnClickListener {
+        val btnAddlink = findViewById<ImageButton>(R.id.btn_update_addLink)
+        btnAddlink.setOnClickListener {
             val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
             val dialog = AlertDialog.Builder(this)
                 .setTitle("Insert Link")
@@ -91,14 +91,14 @@ class Edit_Content : AppCompatActivity() {
                     val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
                     val url = urlEditText.text.toString()
                     val title = titleEditText.text.toString()
-                    PoemDes.insertLink(url, title)
+                    poemDes.insertLink(url, title)
                 }
                 .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
                 .create()
             dialog.show()
         }
         val btnUnderline: ImageButton? = findViewById(R.id.btn_update_underline)
-        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
+        btnUnderline?.setOnClickListener { poemDes?.setUnderline() }
 
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
@@ -106,7 +106,7 @@ class Edit_Content : AppCompatActivity() {
                 if (it != null) {
                     binding?.etPoemTopic?.setText(it.Topic)
                     binding?.etUpdatePoem?.setHtml(it.Poem)
-                    CreatedDate = it.CreatedDate
+                    createdDate = it.CreatedDate
                 }
             }
         }
@@ -152,8 +152,8 @@ class Edit_Content : AppCompatActivity() {
     }
 
     private fun updateData() {
-        var Topic = binding?.etPoemTopic?.text.toString()
-        var Poem = binding?.etUpdatePoem?.html
+        var topic = binding?.etPoemTopic?.text.toString()
+        var poem = binding?.etUpdatePoem?.html
 
         val c = Calendar.getInstance()
         val dateTime = c.time
@@ -162,18 +162,18 @@ class Edit_Content : AppCompatActivity() {
         val date = sdf.format(dateTime)
         Log.e("Formatted Date: ", "" + date)
 
-        if (!(Poem!!.isEmpty())) {
-            if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
+        if (!(poem!!.isEmpty())) {
+            if (!(TextUtils.isEmpty(topic.trim { it <= ' ' }))) {
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date, CreatedDate))
+                    NotesDao.update(NotesEntity(id!!, topic, poem, date, createdDate))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 }
             } else {
-                Topic = "दुआ"
+                topic = "दुआ"
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date, CreatedDate))
+                    NotesDao.update(NotesEntity(id!!, topic, poem, date, createdDate))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -208,9 +208,9 @@ class Edit_Content : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun loadDayNight() {
         val sharedPreferences = getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
-        val DayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
-        if (DayNight != null) {
-            setDayNight(DayNight)
+        val dayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
+        if (dayNight != null) {
+            setDayNight(dayNight)
         }
     }
 
@@ -234,26 +234,26 @@ class Edit_Content : AppCompatActivity() {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
             actionBar.setTitle(0)
         }
-        binding?.toolbarUpdateContent?.setNavigationOnClickListener { BackData() }
+        binding?.toolbarUpdateContent?.setNavigationOnClickListener { backData() }
     }
 
-    private fun BackData() {
-        val BackDialog = Dialog(this)
-        BackDialog.setCancelable(false)
+    private fun backData() {
+        val backDialog = Dialog(this)
+        backDialog.setCancelable(false)
         val binding = DialogBackAddNewContentBinding.inflate(layoutInflater)
-        BackDialog.setContentView(binding.root)
+        backDialog.setContentView(binding.root)
         binding?.btnBackNo?.setOnClickListener {
-            BackDialog.dismiss()
+            backDialog.dismiss()
         }
         binding?.btnBackYes?.setOnClickListener {
-            BackDialog.dismiss()
+            backDialog.dismiss()
             super.onBackPressed()
         }
-        BackDialog.show()
+        backDialog.show()
     }
 
     override fun onBackPressed() {
         // Call your desired method here
-        BackData()
+        backData()
     }
 }

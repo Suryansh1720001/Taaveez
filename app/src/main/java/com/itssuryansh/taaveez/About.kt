@@ -79,9 +79,9 @@ class About : AppCompatActivity() {
 
     private fun loadDayNight() {
         val sharedPreferences = getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
-        val DayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
-        if (DayNight != null) {
-            setDayNight(DayNight)
+        val dayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
+        if (dayNight != null) {
+            setDayNight(dayNight)
         }
     }
 

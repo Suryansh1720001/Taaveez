@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itssuryansh.taaveez.databinding.ItemPoemBinding
 import kotlin.collections.ArrayList
 
-class itemAdapter(
+class ItemAdapter(
     private val items: ArrayList<NotesEntity>,
     private val updateListener: (id: Int) -> Unit,
     private val deleteListener: (id: Int) -> Unit,
     private val OpenListener: (id: Int) -> Unit,
     private val ShareListener: (id: Int) -> Unit,
 ) :
-    RecyclerView.Adapter<itemAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ItemPoemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val CVMain = binding.CVMain
+        val cardViewMain = binding.CVMain
         val tvTopic = binding.tvtextTopic
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete

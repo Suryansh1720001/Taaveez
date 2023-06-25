@@ -18,7 +18,7 @@
         android:theme="@style/Theme.MyNotes"
         tools:targetApi="31">
         <activity
-            android:name=".Edit_Content"
+            android:name=".EditContent"
             android:exported="false" />
         <activity
             android:name=".WebView"

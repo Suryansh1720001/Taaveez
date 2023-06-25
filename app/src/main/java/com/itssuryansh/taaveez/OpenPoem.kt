@@ -69,7 +69,7 @@ class OpenPoem : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.edit_data -> {
-                    val intent = Intent(this@OpenPoem, Edit_Content::class.java)
+                    val intent = Intent(this@OpenPoem, EditContent::class.java)
                     intent.putExtra(Constants.ID, id)
                     startActivity(intent)
                     true
@@ -87,7 +87,7 @@ class OpenPoem : AppCompatActivity() {
                 }
                 R.id.about_data -> {
                     // Handle about data action
-                    dialog_about_open_content()
+                    dialogAboutOpenContent()
                     true
                 }
                 else -> super.onOptionsItemSelected(item)
@@ -121,19 +121,19 @@ class OpenPoem : AppCompatActivity() {
         startActivity(sendIntent)
     }
 
-    private fun dialog_about_open_content() {
-        val AboutDialog = Dialog(this)
-        AboutDialog.setCancelable(false)
+    private fun dialogAboutOpenContent() {
+        val aboutDialog = Dialog(this)
+        aboutDialog.setCancelable(false)
         val binding = AboutOfOpenContentBinding.inflate(layoutInflater)
-        AboutDialog.setContentView(binding.root)
+        aboutDialog.setContentView(binding.root)
 
         binding?.tvPoemCreatedDate?.text = CreatedDate
         binding?.tvPoemUpdatedDate?.text = UpdatedDate
 
         binding?.btnAboutOpenContentBack?.setOnClickListener {
-            AboutDialog.dismiss()
+            aboutDialog.dismiss()
         }
-        AboutDialog.show()
+        aboutDialog.show()
     }
 
     override fun onBackPressed() {
@@ -151,9 +151,9 @@ class OpenPoem : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun loadDayNight() {
         val sharedPreferences = getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
-        val DayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
-        if (DayNight != null) {
-            setDayNight(DayNight)
+        val dayNight = sharedPreferences.getString("My_DayNight", "MyDayNight")
+        if (dayNight != null) {
+            setDayNight(dayNight)
         }
     }
 
