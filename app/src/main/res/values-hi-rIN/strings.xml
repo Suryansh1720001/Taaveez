@@ -18,10 +18,13 @@
     <string name="Record_saved">Record saved</string>
     <string name="add_the_poem">डेटा जोड़ें</string>
     <string name="update_poem">अपडेट करें</string>
+    <string name="Content_heading">रचनात्मक कार्य</string>
+    <string name="Confirm_going_back">क्या आप अपने बदलाव को छोड़कर पीछे जाना चाहते हैं?</string>
     <string name="about_poem">क्रिएटिव के लिए एकदम सही ऐप तावीज़ के साथ अपनी कलात्मक अभिव्यक्ति को उजागर करें। अव्यवस्था को अलविदा कहें, आसानी से सहेजें, अपडेट करें और कुछ टैप के साथ अपना काम साझा करें। अपनी यात्रा को ट्रैक करें और अपने काम को कभी भी, कहीं भी परिशोधित करें। इसका उपयोग करें और अपनी रचनात्मक क्षमता का उपयोग करें!</string>
     <string name="taaveez">Taaveez</string>
     <string name="yes">हां</string>
     <string name="no">नहीं</string>
+    <string name="save_note">सेव करे</string>
     <string name="delete_record">रिकॉर्ड हटाएं</string>
     <string name="appVersion">v1.1.1</string>
     <string name="share_subject">हे, जाओ और इस शानदार एप्लिकेशन को देखें। डाउनलोड करने के लिए इस लिंक पर जाएं। \n\n
@@ -48,5 +51,7 @@
     <string name="Update_downloading">An update has just been downloaded.</string>
     <string name="Update_completed">Update successfully cancelled.</string>
     <string name="Field_not_blank">सेव करने से पहले फील्ड भरना जरूरी है।</string>
+    <string name="open_source_library">ओपन-सोर्स लाइब्रेरी</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
 
 </resources>

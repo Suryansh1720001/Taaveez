@@ -290,7 +290,7 @@
                     android:id="@+id/tv_developer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Open-Source Library"
+                    android:text="@string/open_source_library"
                     android:textColor="?attr/text"
                     android:textSize="22sp" />
 
@@ -321,11 +321,10 @@
 
 
                 <TextView
-
                     android:id="@+id/tv_PrivacyPolicy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Privacy Policy"
+                    android:text="@string/privacy_policy"
                     android:textColor="?attr/text"
                     android:textSize="22sp" />
 

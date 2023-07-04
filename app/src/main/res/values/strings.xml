@@ -17,10 +17,13 @@
     <string name="Record_saved">Record saved</string>
     <string name="add_the_poem">Add Data</string>
     <string name="update_poem">Update Data</string>
+    <string name="Confirm_going_back">Do you want to discard your changes and go back?</string>
+    <string name="Content_heading">Inventive Work</string>
     <string name="about_poem">Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps. Track your journey and refine your work anytime, anywhere. Use it and unleash your creative potential!</string>
     <string name="taaveez">Taaveez</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="save_note">Save</string>
     <string name="delete_record">Delete Record</string>
     <string name="appVersion">v1.1.1</string>
     <string name="share_subject">Hey, Go and check out this cool application. Go to this link to download.\n\n
@@ -48,5 +51,7 @@
     <string name="Update_downloading">An update has just been downloaded.</string>
     <string name="Update_completed">Update successfully cancelled.</string>
     <string name="Field_not_blank">Field must be filled before saving.</string>
+    <string name="open_source_library">Open-Source library</string>
+    <string name="privacy_policy">Privacy Policy</string>
 
 </resources>

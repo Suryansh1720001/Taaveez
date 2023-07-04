@@ -29,7 +29,7 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inventive work"
+                android:text="@string/Content_heading"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
