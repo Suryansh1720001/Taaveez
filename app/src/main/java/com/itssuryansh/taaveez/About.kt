@@ -38,7 +38,7 @@ class About : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             })
-            .addGroup("CONNECT WITH US!")
+            .addGroup(getString(R.string.connect))
             .addEmail("itssuryanshprajapati@gmail.com")
             .addWebsite("https://taaveez.vercel.app/")
             .addYoutube("UCdjJbti71WN9ILx9774q2PA") //Enter your youtube link here (replace with my channel link)
