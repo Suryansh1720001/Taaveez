@@ -39,7 +39,7 @@ class About : AppCompatActivity() {
             })
             .addGroup("CONNECT WITH US!")
             .addEmail("itssuryanshprajapati@gmail.com")
-            .addWebsite("https://suryansh1720001.github.io")
+            .addWebsite("https://taaveez.vercel.app/")
             .addYoutube("UCdjJbti71WN9ILx9774q2PA") //Enter your youtube link here (replace with my channel link)
 //            .addPlayStore(packageName) //Replace all this with your package name
             .addInstagram("_its_s.u.r.y.a.n.s.h") //Your instagram id
