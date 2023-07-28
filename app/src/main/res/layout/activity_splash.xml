@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorWhite"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.itssuryansh.taaveez.activity.SplashActivity">
 
 
     <ImageView
         android:id="@+id/ivBook"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/front_ui_image"
+        android:layout_height="350dp"
+        android:src="@drawable/splash_screen_image"
         app:layout_constraintBottom_toTopOf="@+id/flheadingMain"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+       android:layout_marginBottom="60dp"
+        />
 
 
-        <FrameLayout
-            android:id="@+id/flheadingMain"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@drawable/front_ui"
-            android:foregroundGravity="center_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
 
 
             <TextView
@@ -36,17 +27,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+
                 android:fontFamily="serif"
                 android:text="@string/app_name"
-                android:textColor="#e1e8ed"
-                android:textSize="60sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </FrameLayout>
+                android:textColor="@color/black"
+                android:textSize="85sp"
+                 />
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

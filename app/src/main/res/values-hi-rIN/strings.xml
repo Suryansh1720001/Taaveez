@@ -49,4 +49,10 @@
     <string name="Update_completed">Update successfully cancelled.</string>
     <string name="Field_not_blank">सेव करने से पहले फील्ड भरना जरूरी है।</string>
 
+    <string name="about_us">About Us</string>
+    <string name="our_mission">Our Mission</string>
+    <string name="our_vision">Our Vision</string>
+    <string name="desc_1_for_onetimeAcitivity">Experience the power of Taaveez: the ultimate app for artists to organize, showcase, and share their artwork effortlessly. Say goodbye to chaos and embrace streamlined productivity as you explore new creative horizons. Whether you\'re an established artist or just starting, Taaveez unlocks your full artistic potential in one accessible location. Elevate your artistry today.</string>
+    <string name="desc_2_for_onetimeActivity">Our mission is to bring together and collaborate with creative writers who are passionate about exploring and creating captivating content and stories. Join us to dive into the world of creative writing and unlock endless possibilities for your literary endeavors.</string>
+    <string name="desc_3_for_onetimeActivity">our vision is to revolutionize the creative world by providing artists and entertainers with an exhilarating mobile platform. We aim to empower individuals to effortlessly preserve their artistic expressions, capture captivating ideas, and track their progress.</string>
 </resources>
