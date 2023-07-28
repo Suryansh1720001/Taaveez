@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorWhite"
-    tools:context="com.itssuryansh.taaveez.SplashActivity">
+    tools:context="com.itssuryansh.taaveez.activity.SplashActivity">
 
 
     <ImageView

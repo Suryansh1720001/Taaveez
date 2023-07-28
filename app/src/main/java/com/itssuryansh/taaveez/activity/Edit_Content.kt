@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.activity
 
 import android.app.Activity
 import android.app.Dialog
@@ -24,6 +24,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
+import com.itssuryansh.taaveez.*
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
 import jp.wasabeef.richeditor.RichEditor

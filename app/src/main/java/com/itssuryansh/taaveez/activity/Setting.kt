@@ -1,12 +1,7 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.activity
 
-import android.annotation.SuppressLint
-import  android.app.Activity
 import android.app.Dialog
-import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Typeface
@@ -15,7 +10,6 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
@@ -23,6 +17,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.FileProvider
+import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.ActivitySettingBinding
 import com.itssuryansh.taaveez.databinding.DialogSourceCdeBinding
 import java.io.File
@@ -53,7 +49,7 @@ open class Setting : AppCompatActivity() {
         binding?.tvNotesHeading?.typeface = typeface
 
         binding?.btnSettingBack?.setOnClickListener {
-           startActivity(Intent(this@Setting, Notes::class.java))
+           startActivity(Intent(this@Setting, HomePage::class.java))
             finish()
             overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
 
@@ -69,7 +65,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llOpenSourceLibrary?.setOnClickListener{
             val link = "https://taaveez.vercel.app/open-source/taaveez-open-source.html"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -85,7 +81,7 @@ open class Setting : AppCompatActivity() {
 
         binding?.llPrivacyPolicy?.setOnClickListener {
             val link = "https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html"
-            val intent = Intent(this@Setting,WebView::class.java)
+            val intent = Intent(this@Setting, WebView::class.java)
             intent.putExtra(Constants.LINK, link)
             startActivity(intent)
 
@@ -250,7 +246,7 @@ open class Setting : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, Notes::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
         finish()
     }

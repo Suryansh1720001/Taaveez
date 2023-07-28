@@ -1,49 +1,32 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.activity
 
 import android.app.Activity
 import android.app.Dialog
 import android.content.ClipData
-import android.content.ClipData.Item
 import android.content.ClipboardManager
 import android.content.Context
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.TextPaint
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.URLSpan
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.appcompat.view.menu.MenuPopupHelper
-import androidx.appcompat.widget.ThemeUtils
-import androidx.core.content.ContextCompat
+import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.AboutOfOpenContentBinding
-
-import com.itssuryansh.taaveez.databinding.ActivityOpenPoemBinding
-import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
-import kotlinx.android.synthetic.main.activity_open_poem.*
-
-import javax.sql.StatementEvent
+import com.itssuryansh.taaveez.databinding.ActivityOpenContentBinding
 
 
 
+class Open_Content : AppCompatActivity() {
 
-class OpenPoem : AppCompatActivity() {
-
-    private var binding : ActivityOpenPoemBinding?=null
+    private var binding : ActivityOpenContentBinding?=null
     private var PoemTopic: String? =null
     private var PoemDes: String? =null
     private var CreatedDate :String?=null
@@ -65,7 +48,7 @@ class OpenPoem : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        binding = ActivityOpenPoemBinding.inflate(layoutInflater)
+        binding = ActivityOpenContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
      binding?.btnMenu?.setOnClickListener{
@@ -101,7 +84,7 @@ class OpenPoem : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.edit_data -> {
-                    val intent = Intent(this@OpenPoem,Edit_Content::class.java)
+                    val intent = Intent(this@Open_Content, Edit_Content::class.java)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
                     true
@@ -181,7 +164,7 @@ class OpenPoem : AppCompatActivity() {
     }
 
     fun openNotesActivity(){
-        val intent = Intent(this@OpenPoem, Notes::class.java)
+        val intent = Intent(this@Open_Content, HomePage::class.java)
         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)

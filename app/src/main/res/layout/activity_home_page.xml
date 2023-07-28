@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/bg"
     android:orientation="vertical"
-    tools:context="com.itssuryansh.taaveez.Notes">
+    tools:context="com.itssuryansh.taaveez.activity.HomePage">
 
 
     <FrameLayout
@@ -76,13 +76,13 @@
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintBottom_toTopOf="@+id/flbottom"
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@id/flheading"
         app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 

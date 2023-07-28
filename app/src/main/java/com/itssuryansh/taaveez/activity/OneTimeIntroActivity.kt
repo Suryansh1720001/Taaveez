@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
 import com.github.appintro.AppIntroPageTransformerType
+import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.R
 
 
 class OneTimeIntroActivity : AppIntro(){
@@ -23,7 +25,7 @@ class OneTimeIntroActivity : AppIntro(){
         val introShown = sharedPreferences.getBoolean(Constants.introShown, false)    // it is false initially
         if (introShown) {
             // The intro screen has already been shown, so just finish this activity
-            startActivity(Intent(this@OneTimeIntroActivity,SplashActivity::class.java))
+            startActivity(Intent(this@OneTimeIntroActivity, SplashActivity::class.java))
             finish()
             return
         }
@@ -75,14 +77,14 @@ class OneTimeIntroActivity : AppIntro(){
     override fun onSkipPressed(currentFragment: Fragment?) {
         super.onSkipPressed(currentFragment)
         // Decide what to do when the user clicks on "Skip"
-        startActivity(Intent(this@OneTimeIntroActivity,Notes::class.java ))
+        startActivity(Intent(this@OneTimeIntroActivity, HomePage::class.java ))
         finish()
     }
 
     override fun onDonePressed(currentFragment: Fragment?) {
         super.onDonePressed(currentFragment)
         // Decide what to do when the user clicks on "Done"
-        val intent = Intent(this@OneTimeIntroActivity,Notes::class.java)
+        val intent = Intent(this@OneTimeIntroActivity, HomePage::class.java)
         startActivity(intent)
         finish()
     }

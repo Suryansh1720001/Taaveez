@@ -1,4 +1,4 @@
-package com.itssuryansh.taaveez
+package com.itssuryansh.taaveez.activity
 
 import android.app.Activity
 import android.app.Dialog
@@ -22,7 +22,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.itssuryansh.taaveez.databinding.ActivityNotesBinding
+import com.itssuryansh.taaveez.*
+import com.itssuryansh.taaveez.adapter.itemAdapter
+import com.itssuryansh.taaveez.databinding.ActivityHomePageBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
 import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
 import jp.wasabeef.richeditor.RichEditor
@@ -31,9 +33,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class Notes : AppCompatActivity() {
+class HomePage : AppCompatActivity() {
 
-    private var binding: ActivityNotesBinding? = null
+    private var binding: ActivityHomePageBinding? = null
     private var PoemDesUpdate: RichEditor ?=null
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,19 +43,19 @@ class Notes : AppCompatActivity() {
         loadLocate()
         loadDayNight()
         super.onCreate(savedInstanceState)
-        binding = ActivityNotesBinding.inflate(layoutInflater)
+        binding =ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
         binding?.tvNotesHeading?.typeface = typeface
         binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@Notes, About::class.java )
+            val intent = Intent(this@HomePage, About::class.java )
             startActivity(intent)
             overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
             finish()
 
         }
         binding?.tvSetting?.setOnClickListener {
-            val intent = Intent(this@Notes, Setting::class.java)
+            val intent = Intent(this@HomePage, Setting::class.java)
             startActivity(intent)
                 overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
             finish()
@@ -64,7 +66,7 @@ class Notes : AppCompatActivity() {
         val NotesDao = (application as NotesApp).db.NotesDao()
         binding?.idFABAdd?.setOnClickListener {
 //            NewPoemDialog(NotesDao)
-            val intent = Intent(this@Notes, Add_New_Content::class.java)
+            val intent = Intent(this@HomePage, Add_New_Content::class.java)
             startActivity(intent)
         }
 
@@ -155,8 +157,10 @@ class Notes : AppCompatActivity() {
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date ))
+                        NotesDao.insert(
+                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                            CreatedDate = date )
+                        )
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -255,7 +259,7 @@ class Notes : AppCompatActivity() {
 
 
 
-                    val intent = Intent(this@Notes, OpenPoem::class.java)
+                    val intent = Intent(this@HomePage, Open_Content::class.java)
                     intent.putExtra(Constants.POEM_TOPIC, Topic)
                     intent.putExtra(Constants.POEM_DES,PoemDes)
                     intent.putExtra(Constants.CREATED_DATE,CreatedDate)
@@ -379,7 +383,7 @@ class Notes : AppCompatActivity() {
                     // Show a toast message
                     val message = "Maximum length of $maxLength characters exceeded"
 //                    Snackbar.make(binding?.etPoemTopic!!, message, Snackbar.LENGTH_LONG).show()
-                    Toast.makeText(this@Notes,message,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@HomePage,message,Toast.LENGTH_LONG).show()
                 }
             }
         })
