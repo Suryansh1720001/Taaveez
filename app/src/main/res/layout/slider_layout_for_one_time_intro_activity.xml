@@ -16,7 +16,7 @@
         android:layout_height="250dp"
         android:layout_marginTop="40dp"
         tools:src="@drawable/one_time_activity_image_1"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="25dp"
         />
 
 
@@ -28,7 +28,7 @@
         android:elevation="10dp"
 app:cardCornerRadius="35dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="#E52165"
+        android:backgroundTint="#0008C1"
       >
 
         <LinearLayout
@@ -58,7 +58,8 @@ app:cardCornerRadius="35dp"
             android:layout_marginBottom="10dp"
             android:textAlignment="textStart"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:gravity="start" />
 
 
 

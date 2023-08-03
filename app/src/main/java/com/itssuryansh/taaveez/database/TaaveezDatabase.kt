@@ -4,19 +4,19 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.itssuryansh.taaveez.NotesDao
-import com.itssuryansh.taaveez.NotesEntity
+import com.itssuryansh.taaveez.TaaveezDao
+import com.itssuryansh.taaveez.TaaveezEntity
 
-@Database(entities = [NotesEntity::class],version=2)
-abstract class NotesDatabase: RoomDatabase() {
+@Database(entities = [TaaveezEntity::class],version=3)
+abstract class TaaveezDatabase: RoomDatabase() {
 
-    abstract fun NotesDao(): NotesDao
+    abstract fun TaaveezDao(): TaaveezDao
     companion object{
 
         @Volatile
-        private var INSTANCE : NotesDatabase? = null
+        private var INSTANCE : TaaveezDatabase? = null
 
-        fun getInstance(context: Context): NotesDatabase {
+        fun getInstance(context: Context): TaaveezDatabase {
 
             synchronized(this){
                 var instance = INSTANCE
@@ -24,8 +24,8 @@ abstract class NotesDatabase: RoomDatabase() {
                 if(instance==null){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        NotesDatabase::class.java,
-                        "notes_database"
+                        TaaveezDatabase::class.java,
+                        "taaveez_database"
                     ).fallbackToDestructiveMigration()
                         .build()
 

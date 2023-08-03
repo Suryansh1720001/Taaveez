@@ -19,16 +19,15 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import com.itssuryansh.taaveez.Constants
 import com.itssuryansh.taaveez.R
-import com.itssuryansh.taaveez.databinding.AboutOfOpenContentBinding
 import com.itssuryansh.taaveez.databinding.ActivityOpenContentBinding
-
+import com.itssuryansh.taaveez.databinding.DialogAboutOfOpenContentBinding
 
 
 class Open_Content : AppCompatActivity() {
 
     private var binding : ActivityOpenContentBinding?=null
-    private var PoemTopic: String? =null
-    private var PoemDes: String? =null
+    private var Content_Topic: String? =null
+    private var Content_Description: String? =null
     private var CreatedDate :String?=null
     private var UpdatedDate :String?=null
     private var textToCopy : String? = null
@@ -37,8 +36,8 @@ class Open_Content : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         loadDayNight()
-        PoemTopic = intent.getStringExtra(Constants.POEM_TOPIC)
-        PoemDes = intent.getStringExtra(Constants.POEM_DES)
+        Content_Topic = intent.getStringExtra(Constants.TAAVEEZ_CONTENT_TOPIC)
+        Content_Description = intent.getStringExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION)
         CreatedDate = intent.getStringExtra(Constants.CREATED_DATE)
         UpdatedDate = intent.getStringExtra(Constants.UPDATED_DATE)
         id = intent.getIntExtra(Constants.ID,0)
@@ -56,16 +55,31 @@ class Open_Content : AppCompatActivity() {
 
      }
 
-        binding?.tvTopic?.text = PoemTopic
-        binding?.tvPoemDes?.text = Html.fromHtml(PoemDes)
+        setupActionBar()
+
+        binding?.tvTopic?.text = Content_Topic
+
+
+        binding?.tvPoemDes?.text = Html.fromHtml(Content_Description)
 
         binding?.tvPoemDes?.movementMethod = LinkMovementMethod.getInstance() // enable link clicking
         binding?.tvPoemDes?.setTextIsSelectable(true) // enable text selection
 
-        textToCopy = Html.fromHtml(PoemDes).toString()
+        textToCopy = Html.fromHtml(Content_Description).toString()
     }
 
 
+
+    private fun setupActionBar() {
+        setSupportActionBar(binding?.toolbarOpenContent)
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+            actionBar.setTitle(0)
+        }
+        binding?.toolbarOpenContent?.setNavigationOnClickListener { openNotesActivity() }
+    }
 
     private fun popup() {
         val popupMenu = PopupMenu(this, binding?.btnMenu)
@@ -132,9 +146,9 @@ class Open_Content : AppCompatActivity() {
         val sendIntent = Intent()
         sendIntent.type = "text/plain"
         sendIntent.action = Intent.ACTION_SEND
-        val body = "Topic = ${PoemTopic}\n" +
+        val body = "Topic = ${Content_Topic}\n" +
                 "--------------------------------\n" +
-                "${Html.fromHtml(PoemDes)}"
+                "${Html.fromHtml(Content_Description)}"
         sendIntent.putExtra(Intent.EXTRA_TEXT, body)
         Intent.createChooser(sendIntent, "Share using")
         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -144,7 +158,7 @@ class Open_Content : AppCompatActivity() {
     private fun dialog_about_open_content() {
         val AboutDialog = Dialog(this)
         AboutDialog.setCancelable(false)
-        val binding = AboutOfOpenContentBinding.inflate(layoutInflater)
+        val binding = DialogAboutOfOpenContentBinding.inflate(layoutInflater)
         AboutDialog.setContentView(binding.root)
 
 

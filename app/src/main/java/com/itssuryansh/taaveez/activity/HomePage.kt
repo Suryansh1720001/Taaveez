@@ -1,5 +1,6 @@
 package com.itssuryansh.taaveez.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -26,7 +27,7 @@ import com.itssuryansh.taaveez.*
 import com.itssuryansh.taaveez.adapter.itemAdapter
 import com.itssuryansh.taaveez.databinding.ActivityHomePageBinding
 import com.itssuryansh.taaveez.databinding.DeleteItemBinding
-import com.itssuryansh.taaveez.databinding.UpdateNotesBinding
+import com.itssuryansh.taaveez.databinding.UpdateContentBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -36,7 +37,12 @@ import java.util.*
 class HomePage : AppCompatActivity() {
 
     private var binding: ActivityHomePageBinding? = null
-    private var PoemDesUpdate: RichEditor ?=null
+    private var Content_Description_Update: RichEditor ?=null
+
+private var isDetailedViewMode = true // Initialize the view mode to false (normal view)
+
+
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,7 +52,11 @@ class HomePage : AppCompatActivity() {
         binding =ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
+
         binding?.tvNotesHeading?.typeface = typeface
+
+
+
         binding?.tvabout?.setOnClickListener {
             val intent = Intent(this@HomePage, About::class.java )
             startActivity(intent)
@@ -62,20 +72,80 @@ class HomePage : AppCompatActivity() {
 
         }
 
+        binding?.btnHomePageMenu?.setOnClickListener{
+            popup()
+        }
 
-        val NotesDao = (application as NotesApp).db.NotesDao()
+        val TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
         binding?.idFABAdd?.setOnClickListener {
 //            NewPoemDialog(NotesDao)
             val intent = Intent(this@HomePage, Add_New_Content::class.java)
             startActivity(intent)
         }
 
+
         lifecycleScope.launch {
-            NotesDao.fetchAllNotes().collect {
+            TaaveezDao.fetchAllContents().collect {
                 val list = ArrayList(it)
-                setupListOfDateINtoRecycleVIew(list, NotesDao)
+                setupListOfDateINtoRecycleVIew(list, TaaveezDao, isDetailedViewMode)
             }
         }
+
+
+
+    }
+
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun popup() {
+        val popupMenu = PopupMenu(this, binding?.btnHomePageMenu)
+        popupMenu.inflate(R.menu.home_page_menu)
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+
+                R.id.normal_view -> {
+                   Toast.makeText(this@HomePage,"normal view",Toast.LENGTH_LONG).show()
+
+
+                    isDetailedViewMode = false
+
+
+
+                    true
+                }
+
+                R.id.detailed_view -> {
+                    Toast.makeText(this@HomePage,"detailed view",Toast.LENGTH_LONG).show()
+                    isDetailedViewMode = true
+                    // Notify the adapter that the data has changed
+//                    if (::itemAdapter.isInitialized) {
+//                        itemAdapter.notifyDataSetChanged()
+//                    }
+
+                    true
+
+                }
+                else -> super.onOptionsItemSelected(item)
+            }
+
+        }
+
+        try {
+            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+            fieldMPopup.isAccessible = true
+            val mPopup = fieldMPopup.get(popupMenu)
+            mPopup.javaClass
+                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                .invoke(mPopup, true)
+        } catch (e: Exception){
+            Log.e("Main", "Error showing menu icons.", e)
+        } finally {
+            popupMenu.show()
+        }
+
+
     }
 
 
@@ -85,7 +155,7 @@ class HomePage : AppCompatActivity() {
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun NewPoemDialog(NotesDao: NotesDao) {
+    private fun NewPoemDialog(TaaveezDao: TaaveezDao) {
 
         val PoemDialog = Dialog(this)
         PoemDialog.setCancelable(false)
@@ -148,7 +218,7 @@ class HomePage : AppCompatActivity() {
             if (!(PoemDes.html.isNullOrEmpty())) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
+                        TaaveezDao.insert(TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date, CreatedDate = date))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -157,8 +227,8 @@ class HomePage : AppCompatActivity() {
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(
-                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
+                        TaaveezDao.insert(
+                            TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date,
                             CreatedDate = date )
                         )
                         Toast.makeText(applicationContext,
@@ -181,31 +251,38 @@ class HomePage : AppCompatActivity() {
 
 
     private fun setupListOfDateINtoRecycleVIew(
-        NotesList: ArrayList<NotesEntity>,
-        NotesDao: NotesDao,
+        NotesList: ArrayList<TaaveezEntity>,
+        TaaveezDao: TaaveezDao,
+        detailedViewMode:Boolean
+
     ) {
         if (NotesList.isNotEmpty()) {
-            val itemAdapter = itemAdapter(
-                NotesList,
-                { updateId ->
-                    updateRecordDialog(updateId, NotesDao)
-                },
-                { deleteId ->
-                    deleteRecordAlertDialog(deleteId, NotesDao)
-                },
-                { OpenId ->
-                    openNotes(OpenId, NotesDao)
-                },
-                { ShareId ->
-                    ShareNotes(ShareId, NotesDao)
-                },
-            )
 
-            binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
-            binding?.rvItemsPoem?.adapter = itemAdapter
-            binding?.rvItemsPoem?.visibility = View.VISIBLE
-            binding?.tvNoDataAvailable?.visibility = View.GONE
-            binding?.ivNoData?.visibility = View.GONE
+
+            val itemAdapter = itemAdapter(
+                    NotesList,
+                    { updateId ->
+                        updateRecordDialog(updateId, TaaveezDao)
+                    },
+                    { deleteId ->
+                        deleteRecordAlertDialog(deleteId, TaaveezDao)
+                    },
+                    { OpenId ->
+                        openContent(OpenId, TaaveezDao)
+                    },
+                    { ShareId ->
+                        ShareContent(ShareId, TaaveezDao)
+                    },
+
+                        mdetailedViewMode = isDetailedViewMode
+
+
+                )
+                binding?.rvItemsPoem?.layoutManager = LinearLayoutManager(this)
+                binding?.rvItemsPoem?.adapter = itemAdapter
+                binding?.rvItemsPoem?.visibility = View.VISIBLE
+                binding?.tvNoDataAvailable?.visibility = View.GONE
+                binding?.ivNoData?.visibility = View.GONE
         } else {
             binding?.rvItemsPoem?.visibility = View.GONE
             binding?.tvNoDataAvailable?.visibility = View.VISIBLE
@@ -216,16 +293,16 @@ class HomePage : AppCompatActivity() {
 
 
 
-    private fun ShareNotes(id: Int, NotesDao: NotesDao) {
+    private fun ShareContent(id: Int, TaaveezDao: TaaveezDao) {
 
         var Topic: String?
         var PoemDes : String?
 
         lifecycleScope.launch {
-            NotesDao.fetchNotesById(id).collect {
+            TaaveezDao.fetchContentsById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
-                    PoemDes = it.Poem
+                    PoemDes = it.Content
                     val sendIntent = Intent()
                     sendIntent.type = "text/plain"
                     sendIntent.action = Intent.ACTION_SEND
@@ -243,29 +320,30 @@ class HomePage : AppCompatActivity() {
     }
 
 
-    private fun openNotes(id: Int, NotesDao: NotesDao) {
-        var Topic :String?
-        var PoemDes :String?
+    private fun openContent(id: Int, TaaveezDao: TaaveezDao) {
+        var Content_Topic :String?
+        var Content_Description :String?
         var CreatedDate :String?
         var UpdatedDate : String?
 
         lifecycleScope.launch {
-            NotesDao.fetchNotesById(id).collect {
+            TaaveezDao.fetchContentsById(id).collect {
                 if (it != null) {
-                    Topic = it.Topic
-                    PoemDes = it.Poem
+                    Content_Topic = it.Topic
+                    Content_Description = it.Content
                     CreatedDate = it.CreatedDate
                     UpdatedDate = it.Date
 
 
 
                     val intent = Intent(this@HomePage, Open_Content::class.java)
-                    intent.putExtra(Constants.POEM_TOPIC, Topic)
-                    intent.putExtra(Constants.POEM_DES,PoemDes)
+                    intent.putExtra(Constants.TAAVEEZ_CONTENT_TOPIC, Content_Topic)
+                    intent.putExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION,Content_Description)
                     intent.putExtra(Constants.CREATED_DATE,CreatedDate)
                     intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
+                   
 //                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
 
                 }
@@ -280,18 +358,18 @@ class HomePage : AppCompatActivity() {
 
     //    Handle the backspace button to undo the last action: in update dialog
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        PoemDesUpdate = findViewById(R.id.etUpdatePoem)
-        if (keyCode == KeyEvent.KEYCODE_DEL && PoemDesUpdate != null) {
-            PoemDesUpdate?.undo()
+        Content_Description_Update = findViewById(R.id.etUpdatePoem)
+        if (keyCode == KeyEvent.KEYCODE_DEL && Content_Description_Update != null) {
+            Content_Description_Update?.undo()
             return true
         }
         return super.onKeyDown(keyCode, event)
     }
 
-    private fun updateRecordDialog(id: Int, NotesDao: NotesDao) {
+    private fun updateRecordDialog(id: Int, TaaveezDao: TaaveezDao) {
         val updateDialog = Dialog(this)
         updateDialog.setCancelable(false)
-        val binding = UpdateNotesBinding.inflate(layoutInflater)
+        val binding = UpdateContentBinding.inflate(layoutInflater)
         updateDialog.setContentView(binding.root)
 
         // color acc to the theme - text and background color
@@ -348,10 +426,10 @@ class HomePage : AppCompatActivity() {
 
 
         lifecycleScope.launch {
-            NotesDao.fetchNotesById(id).collect {
+            TaaveezDao.fetchContentsById(id).collect {
                 if (it != null) {
                     binding.etPoemTopic.setText(it.Topic)
-                    binding.etUpdatePoem.setHtml(it.Poem)
+                    binding.etUpdatePoem.setHtml(it.Content)
                     CreatedDate = it.CreatedDate
 
                 }
@@ -407,7 +485,7 @@ class HomePage : AppCompatActivity() {
             if (!(Poem.isEmpty())) {
                 if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        NotesDao.update(NotesEntity(id, Topic, Poem, date,CreatedDate))
+                        TaaveezDao.update(TaaveezEntity(id, Topic, Poem, date,CreatedDate))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -416,7 +494,7 @@ class HomePage : AppCompatActivity() {
                 } else {
                     Topic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.update(NotesEntity(id, Topic, Poem, date, CreatedDate))
+                        TaaveezDao.update(TaaveezEntity(id, Topic, Poem, date, CreatedDate))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -436,7 +514,31 @@ class HomePage : AppCompatActivity() {
         }
 
 
-    private fun deleteRecordAlertDialog(id: Int, employeeDao: NotesDao) {
+//    private fun Noraml_detailed_view(view : String) {
+//
+//
+//
+//        if(view.equals("Noraml_view")){
+//
+//        }
+//        binding?.btnDeleteYes?.setOnClickListener {
+//            lifecycleScope.launch {
+//                employeeDao.delete(NotesEntity(id))
+//                Toast.makeText(applicationContext,
+//                    "Record deleted successfully",
+//                    Toast.LENGTH_LONG).show()
+//            }
+//            deleteDialog.dismiss()
+//
+//        }
+//
+//        deleteDialog.show()
+//    }
+
+
+
+
+    private fun deleteRecordAlertDialog(id: Int, employeeDao: TaaveezDao) {
 
         val deleteDialog = Dialog(this)
         deleteDialog.setCancelable(false)
@@ -448,7 +550,7 @@ class HomePage : AppCompatActivity() {
         }
         binding?.btnDeleteYes?.setOnClickListener {
             lifecycleScope.launch {
-                employeeDao.delete(NotesEntity(id))
+                employeeDao.delete(TaaveezEntity(id))
                     Toast.makeText(applicationContext,
                         "Record deleted successfully",
                         Toast.LENGTH_LONG).show()
@@ -504,6 +606,9 @@ class HomePage : AppCompatActivity() {
 
         }
     }
+
+
+
 }
 
 

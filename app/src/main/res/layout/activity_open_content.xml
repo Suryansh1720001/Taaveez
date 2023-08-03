@@ -19,7 +19,7 @@
         >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_add_new_content"
+        android:id="@+id/toolbar_open_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"

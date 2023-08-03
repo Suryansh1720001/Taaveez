@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 //     Glide.with(this@MainActivity).load(R.drawable.gif_book).into(binding?.ivBookGif!!)     // For GIF
         val typeface: Typeface =
             Typeface.createFromAsset(assets,"arabian_onenighjtstand.ttf")
-        binding?.tvNotes?.typeface = typeface
+        binding?.tvTaaveezHeading?.typeface = typeface
 
         val thread: Thread = object : Thread() {
             override fun run() {

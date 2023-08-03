@@ -34,7 +34,7 @@ import java.util.*
 
 class Edit_Content : AppCompatActivity() {
     private var binding:ActivityEditContentBinding?=null
-    private lateinit var NotesDao: NotesDao
+    private lateinit var TaaveezDao: TaaveezDao
 
 
     var CreatedDate:String=""
@@ -51,7 +51,7 @@ class Edit_Content : AppCompatActivity() {
         setContentView(binding?.root)
         setupActionBar()
 
-        NotesDao = (application as NotesApp).db.NotesDao()
+        TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
 
 
 
@@ -107,11 +107,12 @@ class Edit_Content : AppCompatActivity() {
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
 
-            NotesDao.fetchNotesById(id!!).collect {
+            TaaveezDao.fetchContentsById(id!!).collect {
                 if (it != null) {
                     binding?.etPoemTopic?.setText(it.Topic)
-                    binding?.etUpdatePoem?.setHtml(it.Poem)
+                    binding?.etUpdatePoem?.setHtml(it.Content)
                     CreatedDate = it.CreatedDate
+
 
                 }
             }
@@ -165,9 +166,10 @@ class Edit_Content : AppCompatActivity() {
 
     private fun updateData() {
         var Topic = binding?.etPoemTopic?.text.toString()
-        var Poem = binding?.etUpdatePoem?.html
+        var Description = binding?.etUpdatePoem?.html
 
-
+        var smalldes :String?=null
+        // setup the date
 
         val c = Calendar.getInstance()
         val dateTime = c.time
@@ -176,11 +178,19 @@ class Edit_Content : AppCompatActivity() {
         val date = sdf.format(dateTime)
         Log.e("Formatted Date: ", "" + date)
 
+//          add new line here on 29 july
+        if(Description.toString().length <=20){
+            smalldes = Description + "..."
+        }else{
+            smalldes =  "..."
+        }
+        Toast.makeText(this,"$smalldes",Toast.LENGTH_LONG).show()
 
-        if (!(Poem!!.isEmpty())) {
+
+        if (!(Description!!.isEmpty())) {
             if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date,CreatedDate))
+                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date,CreatedDate, favorite=false,smalldes))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -189,7 +199,7 @@ class Edit_Content : AppCompatActivity() {
             } else {
                 Topic = "दुआ"
                 lifecycleScope.launch {
-                    NotesDao.update(NotesEntity(id!!, Topic, Poem, date, CreatedDate))
+                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date, CreatedDate, favorite=false,smalldes))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

@@ -21,9 +21,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.itssuryansh.taaveez.NotesApp
-import com.itssuryansh.taaveez.NotesDao
-import com.itssuryansh.taaveez.NotesEntity
+import com.itssuryansh.taaveez.TaaveezApp
+import com.itssuryansh.taaveez.TaaveezDao
+import com.itssuryansh.taaveez.TaaveezEntity
 import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
@@ -35,7 +35,9 @@ import java.util.*
 class Add_New_Content : AppCompatActivity() {
 
     private var binding: ActivityAddNewContentBinding? = null
-    private val IMAGE_PICKER_REQUEST_CODE = 1001 // or any other unique value
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,9 +49,39 @@ class Add_New_Content : AppCompatActivity() {
         setContentView(binding?.root)
 
         setupActionBar()
-        val NotesDao = (application as NotesApp).db.NotesDao()
+        val NotesDao = (application as TaaveezApp).db.TaaveezDao()
         AddContent(NotesDao)
+        binding?.tvAddImage?.setOnClickListener{
+            val pictureDialog = android.app.AlertDialog.Builder(this)
+            pictureDialog.setTitle("Select Action")
+            val pickerDialogItem = arrayOf("Select photo from Gallery",
+                "Capture photo from camera")
+
+            pictureDialog.setItems(pickerDialogItem){
+                    dialog,which->
+                when(which){
+                    0 -> choosePhotoFromGallery()
+                    1 -> choosePhotoFromGallery()
+
+                }
+            }
+            pictureDialog.show()
+        }
     }
+
+    private fun takePhotoFromCamera() {
+        Toast.makeText(this@Add_New_Content,"Choose photo from camera",Toast.LENGTH_LONG).show()
+    }
+
+    private fun choosePhotoFromGallery() {
+//        requestStoragePermission()
+        Toast.makeText(this@Add_New_Content,"Choose photo from gallery",Toast.LENGTH_LONG).show()
+
+    }
+
+
+
+
 
 
     override fun onBackPressed() {
@@ -58,7 +90,7 @@ class Add_New_Content : AppCompatActivity() {
     }
     @SuppressLint("ResourceType")
 
-     fun AddContent(NotesDao: NotesDao) {
+     fun AddContent(TaaveezDao: TaaveezDao) {
 
         // bacground color change of richeditor
         val typedValue = TypedValue()
@@ -139,7 +171,9 @@ class Add_New_Content : AppCompatActivity() {
         binding?.saveContent?.setOnClickListener {
             var itemTopic: String = binding?.idTopic?.text.toString()
             val htmlContentPoemDes= PoemDes?.html.toString()
+             var smalldes :String?=null
             // setup the date
+
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
@@ -147,10 +181,18 @@ class Add_New_Content : AppCompatActivity() {
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 
+//          add new line here on 29 july
+            if(htmlContentPoemDes.length <= 20){
+                smalldes = htmlContentPoemDes + "..."
+            }else{
+                smalldes =  "..."
+            }
+            Toast.makeText(this,"$smalldes",Toast.LENGTH_LONG).show()
+
             if (PoemDes?.html!!.isNotEmpty()) {
                 if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        NotesDao.insert(NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date, CreatedDate = date))
+                        TaaveezDao.insert(TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date, CreatedDate = date, SmallDes = smalldes))
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),
                             Toast.LENGTH_LONG).show()
@@ -158,9 +200,9 @@ class Add_New_Content : AppCompatActivity() {
                 } else {
                     itemTopic = "दुआ"
                     lifecycleScope.launch {
-                        NotesDao.insert(
-                            NotesEntity(Topic = itemTopic, Poem = htmlContentPoemDes, Date = date,
-                            CreatedDate = date )
+                        TaaveezDao.insert(
+                            TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date,
+                            CreatedDate = date, SmallDes = smalldes )
                         )
                         Toast.makeText(applicationContext,
                             getString(R.string.Record_saved),

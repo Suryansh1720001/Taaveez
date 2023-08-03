@@ -27,7 +27,7 @@
             android:text="Skip"
             android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_margin="8dp"
+            android:layout_margin="7dp"
 
             />
 

@@ -81,13 +81,49 @@
     </LinearLayout>
 
 
+    <ImageView
+        android:id="@+id/iv_place_image"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_image_view_border"
+        android:padding="2dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/add_screen_image_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_add_new_content"
+        android:layout_width="200dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/tv_add_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="ADD IMAGE"
+        android:textColor="@color/purple_200"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/idnotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toEndOf="@+id/iv_place_image"
+        app:layout_constraintTop_toBottomOf="@+id/ll_add_new_content"
+        app:layout_constraintVertical_bias="0.019" />
+
+
+
             <jp.wasabeef.richeditor.RichEditor
                 android:id="@+id/idnotes"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/hsv_buttons"
-                app:layout_constraintTop_toBottomOf="@id/ll_add_new_content"
+                app:layout_constraintTop_toBottomOf="@id/iv_place_image"
                 />
 
     <HorizontalScrollView
