@@ -26,7 +26,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.*
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
-import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
+import com.itssuryansh.taaveez.databinding.DialogBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -35,7 +35,7 @@ import java.util.*
 class Edit_Content : AppCompatActivity() {
     private var binding:ActivityEditContentBinding?=null
     private lateinit var TaaveezDao: TaaveezDao
-
+    private var isContentCompleteStatus: Boolean? = null
 
     var CreatedDate:String=""
 
@@ -54,6 +54,9 @@ class Edit_Content : AppCompatActivity() {
         TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
 
 
+        binding?.UpdateisComplete?.setOnClickListener{
+            openDialogForStatus()
+        }
 
         // color acc to the theme - text and background color
         val typedValue = TypedValue()
@@ -63,26 +66,26 @@ class Edit_Content : AppCompatActivity() {
         val textColor = typedValue.data
         binding?.etUpdatePoem?.setTextColor(textColor)
 
-        val PoemDes: RichEditor = findViewById(R.id.etUpdatePoem)
-        PoemDes.setEditorFontSize(20)
-        PoemDes?.setPlaceholder(getString(R.string.write_here))
-        PoemDes?.setEditorBackgroundColor(backgroundColor)
-        PoemDes?.setEditorFontColor(textColor)
-        PoemDes.setPadding(10, 10, 10, 10)
-        PoemDes.setVerticalScrollBarEnabled(true);
+        val Content_Description: RichEditor = findViewById(R.id.etUpdatePoem)
+        Content_Description.setEditorFontSize(20)
+        Content_Description?.setPlaceholder(getString(R.string.write_here))
+        Content_Description?.setEditorBackgroundColor(backgroundColor)
+        Content_Description?.setEditorFontColor(textColor)
+        Content_Description.setPadding(10, 10, 10, 10)
+        Content_Description.setVerticalScrollBarEnabled(true);
 
 
         val btnBold : ImageButton? = findViewById(R.id.btn_update_bold)
-        btnBold?.setOnClickListener { PoemDes?.setBold() }
+        btnBold?.setOnClickListener { Content_Description?.setBold() }
         val btnItalic : ImageButton? = findViewById(R.id.btn_update_italic)
-        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+        btnItalic?.setOnClickListener { Content_Description?.setItalic() }
 
         binding?.btnUdpateUndo?.setOnClickListener {
-            PoemDes?.undo()
+            Content_Description?.undo()
         }
 
         binding?.btnUpdateRedo?.setOnClickListener {
-            PoemDes?.redo()
+            Content_Description?.redo()
         }
         val btn_addLink =findViewById<ImageButton>(R.id.btn_update_addLink)
         btn_addLink.setOnClickListener{
@@ -95,14 +98,14 @@ class Edit_Content : AppCompatActivity() {
                     val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
                     val url = urlEditText.text.toString()
                     val title = titleEditText.text.toString()
-                    PoemDes.insertLink(url, title)
+                    Content_Description.insertLink(url, title)
                 }
                 .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
                 .create()
             dialog.show()
         }
         val btnUnderline : ImageButton? = findViewById(R.id.btn_update_underline)
-        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
+        btnUnderline?.setOnClickListener { Content_Description?.setUnderline() }
 
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
@@ -111,8 +114,8 @@ class Edit_Content : AppCompatActivity() {
                 if (it != null) {
                     binding?.etPoemTopic?.setText(it.Topic)
                     binding?.etUpdatePoem?.setHtml(it.Content)
+                    isContentCompleteStatus = it.isComplete
                     CreatedDate = it.CreatedDate
-
 
                 }
             }
@@ -154,6 +157,35 @@ class Edit_Content : AppCompatActivity() {
 
     }
 
+
+
+
+    private fun openDialogForStatus() {
+        val BackDialog = Dialog(this)
+        BackDialog.setCancelable(false)
+        val binding = DialogBinding.inflate(layoutInflater)
+        BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
+        binding?.tvDialogHeading?.text = "Select Status for Content"
+        binding?.btnBackNo?.text = "Complete"
+        binding?.btnBackYes?.text = "Panding"
+
+
+        binding?.btnBackNo?.setOnClickListener {
+            isContentCompleteStatus = true
+            BackDialog.dismiss()
+
+        }
+        binding?.btnBackYes?.setOnClickListener {
+            isContentCompleteStatus = false
+            BackDialog.dismiss()
+        }
+        BackDialog.show()
+    }
+
+
+
     //    Handle the backspace button to undo the last action:
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_DEL && binding?.etUpdatePoem != null) {
@@ -174,23 +206,23 @@ class Edit_Content : AppCompatActivity() {
         val c = Calendar.getInstance()
         val dateTime = c.time
         Log.e("Date: ", "" + dateTime)
-        val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+        val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         val date = sdf.format(dateTime)
         Log.e("Formatted Date: ", "" + date)
 
-//          add new line here on 29 july
-        if(Description.toString().length <=20){
-            smalldes = Description + "..."
+
+        if(Description.toString().length <=25){
+            smalldes = "$Description..."
         }else{
-            smalldes =  "..."
+            smalldes =  Description.toString().substring(0,25)+ "..."
         }
-        Toast.makeText(this,"$smalldes",Toast.LENGTH_LONG).show()
+
 
 
         if (!(Description!!.isEmpty())) {
             if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                 lifecycleScope.launch {
-                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date,CreatedDate, favorite=false,smalldes))
+                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date,CreatedDate, smalldes, isComplete = isContentCompleteStatus!!,favorite=false))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -199,14 +231,16 @@ class Edit_Content : AppCompatActivity() {
             } else {
                 Topic = "दुआ"
                 lifecycleScope.launch {
-                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date, CreatedDate, favorite=false,smalldes))
+                    TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date, CreatedDate, smalldes,isComplete = isContentCompleteStatus!!,favorite=false))
                     Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 }
             }
+
             super.onBackPressed()
+            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
         } else{
             val mess = getString(R.string.Field_not_blank)
             Snackbar.make(binding?.etUpdatePoem!!, mess, Snackbar.LENGTH_LONG).show()
@@ -277,7 +311,7 @@ class Edit_Content : AppCompatActivity() {
     private fun BackData() {
         val BackDialog = Dialog(this)
         BackDialog.setCancelable(false)
-        val binding = DialogBackAddNewContentBinding.inflate(layoutInflater)
+        val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
         binding?.btnBackNo?.setOnClickListener {
             BackDialog.dismiss()
@@ -285,6 +319,7 @@ class Edit_Content : AppCompatActivity() {
         binding?.btnBackYes?.setOnClickListener {
             BackDialog.dismiss()
             super.onBackPressed()
+            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
         }
         BackDialog.show()
     }

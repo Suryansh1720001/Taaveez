@@ -11,8 +11,10 @@ data class TaaveezEntity(
     val Content: String="",
     val Date:String="",
     val CreatedDate:String="",
-    val favorite:Boolean=false,
     val SmallDes : String?=null,
+    val isComplete : Boolean =false,
+    val favorite:Boolean=false,
     val image : String?=null
+
 
 )

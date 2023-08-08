@@ -31,7 +31,7 @@ open class Setting : AppCompatActivity() {
     private var binding : ActivitySettingBinding?=null
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
-        loadswithtoRightMode()
+//        loadswithtoRightMode()
 //        binding?.switchTheme?.setChecked(true)
         loadLocate()
         loadDayNight()
@@ -92,13 +92,13 @@ open class Setting : AppCompatActivity() {
 
     }
 
-    private fun loadswithtoRightMode() {
-        if(Constants.Theme == "1" ){
-            binding?.switchTheme?.setChecked(true)
-        }else{
-            binding?.switchTheme?.setChecked(false)
-        }
-    }
+//    private fun loadswithtoRightMode() {
+//        if(Constants.Theme == "1" ){
+//            binding?.switchTheme?.setChecked(true)
+//        }else{
+//            binding?.switchTheme?.setChecked(false)
+//        }
+//    }
 
     private fun feedback() {
 

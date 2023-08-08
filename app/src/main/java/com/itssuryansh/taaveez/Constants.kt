@@ -9,10 +9,9 @@ object Constants {
     const val MyPrefs : String = "MyPrefss"
     const val introShown : String = "introShown"
     const val LINK : String = "link"
-    const val NORMAL_VIEW : String = "Normal_View"
-    const val DETAILED_VIEW: String = "Detailed_View"
     const val ID = "id"
+    const val IS_CONTENT_COMPLETE_STATUS : String = "is_content_complete_status"
     var Theme : String = "0"
-
+    const val IS_DETAILED_VIEW = "myBooleanValue" // Key for the boolean value
 
 }

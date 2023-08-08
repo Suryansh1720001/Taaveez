@@ -71,8 +71,8 @@ class About : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
+        super.onBackPressed()
+        overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
         finish()
     }
 

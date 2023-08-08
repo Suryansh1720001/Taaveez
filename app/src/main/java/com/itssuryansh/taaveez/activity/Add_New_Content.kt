@@ -1,24 +1,33 @@
 package com.itssuryansh.taaveez.activity
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.*
 import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.isNotEmpty
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.TaaveezApp
@@ -26,7 +35,7 @@ import com.itssuryansh.taaveez.TaaveezDao
 import com.itssuryansh.taaveez.TaaveezEntity
 import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding
-import com.itssuryansh.taaveez.databinding.DialogBackAddNewContentBinding
+import com.itssuryansh.taaveez.databinding.DialogBinding
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -36,6 +45,7 @@ class Add_New_Content : AppCompatActivity() {
 
     private var binding: ActivityAddNewContentBinding? = null
 
+    private var isContentCompleteStatus : Boolean = false
 
 
 
@@ -51,22 +61,36 @@ class Add_New_Content : AppCompatActivity() {
         setupActionBar()
         val NotesDao = (application as TaaveezApp).db.TaaveezDao()
         AddContent(NotesDao)
-        binding?.tvAddImage?.setOnClickListener{
-            val pictureDialog = android.app.AlertDialog.Builder(this)
-            pictureDialog.setTitle("Select Action")
-            val pickerDialogItem = arrayOf("Select photo from Gallery",
-                "Capture photo from camera")
-
-            pictureDialog.setItems(pickerDialogItem){
-                    dialog,which->
-                when(which){
-                    0 -> choosePhotoFromGallery()
-                    1 -> choosePhotoFromGallery()
-
-                }
-            }
-            pictureDialog.show()
+        binding?.isComplete?.setOnClickListener{
+            openDialogForStatus()
         }
+
+    }
+
+
+
+    private fun openDialogForStatus() {
+        val BackDialog = Dialog(this)
+        BackDialog.setCancelable(false)
+        val binding = DialogBinding.inflate(layoutInflater)
+        BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
+        binding?.tvDialogHeading?.text = "Select Status for Content"
+        binding?.btnBackNo?.text = "Complete"
+        binding?.btnBackYes?.text = "Panding"
+
+
+        binding?.btnBackNo?.setOnClickListener {
+            isContentCompleteStatus = true
+            BackDialog.dismiss()
+
+        }
+        binding?.btnBackYes?.setOnClickListener {
+            isContentCompleteStatus = false
+            BackDialog.dismiss()
+        }
+        BackDialog.show()
     }
 
     private fun takePhotoFromCamera() {
@@ -101,26 +125,26 @@ class Add_New_Content : AppCompatActivity() {
         theme.resolveAttribute(R.attr.text, typedValue, true)
         val textColor = typedValue.data
 
-
-        val PoemDes : RichEditor? = findViewById(R.id.idnotes)
-        PoemDes?.setPlaceholder(getString(R.string.write_here))
-        PoemDes?.setEditorBackgroundColor(backgroundColor)
-        PoemDes?.setEditorFontColor(textColor)
-        PoemDes?.setEditorFontSize(20)
-        PoemDes?.setPadding(10, 10, 10, 10)
-        PoemDes?.isVerticalScrollBarEnabled = true
-        PoemDes?.setTextColor(Color.WHITE)
-
-        binding?.btnBold?.setOnClickListener { PoemDes?.setBold() }
-        binding?. btnItalic?.setOnClickListener { PoemDes?.setItalic() }
-        binding?. btnUnderline?.setOnClickListener { PoemDes?.setUnderline()}
+        val emptyText=""
+        val Content_Description : RichEditor? = findViewById(R.id.idnotes)
+        Content_Description?.setPlaceholder(getString(R.string.write_here))
+        Content_Description?.setEditorBackgroundColor(backgroundColor)
+        Content_Description?.setEditorFontColor(textColor)
+        Content_Description?.setEditorFontSize(20)
+        Content_Description?.html = emptyText    // this is used only for isEmpty not running correctly
+        Content_Description?.setPadding(10, 10, 10, 10)
+        Content_Description?.isVerticalScrollBarEnabled = true
+        Content_Description?.setTextColor(Color.WHITE)
+        binding?.btnBold?.setOnClickListener { Content_Description?.setBold() }
+        binding?. btnItalic?.setOnClickListener { Content_Description?.setItalic() }
+        binding?. btnUnderline?.setOnClickListener { Content_Description?.setUnderline()}
         binding?.btnUndo?.setOnClickListener {
-            PoemDes?.undo()
+            Content_Description?.undo()
         }
 
 
         binding?.btnRedo?.setOnClickListener {
-            PoemDes?.redo()
+            Content_Description?.redo()
         }
 
 
@@ -135,12 +159,14 @@ class Add_New_Content : AppCompatActivity() {
                         val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
                         val url = urlEditText.text.toString()
                         val title = titleEditText.text.toString()
-                        PoemDes?.insertLink(url, title)
+                        Content_Description?.insertLink(url, title)
                     }
                     .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
                     .create()
                 dialog.show()
         }
+
+
 
 
         val maxLength = 21
@@ -168,49 +194,75 @@ class Add_New_Content : AppCompatActivity() {
         })
 
 
+
+
+
+
+//        dd MMM yyyy HH:mm:ss
         binding?.saveContent?.setOnClickListener {
-            var itemTopic: String = binding?.idTopic?.text.toString()
-            val htmlContentPoemDes= PoemDes?.html.toString()
+            var Content_Topic: String = binding?.idTopic?.text.toString()
+            val html_Content_Description= Content_Description?.html.toString()
              var smalldes :String?=null
             // setup the date
 
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
-            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 
-//          add new line here on 29 july
-            if(htmlContentPoemDes.length <= 20){
-                smalldes = htmlContentPoemDes + "..."
-            }else{
-                smalldes =  "..."
-            }
-            Toast.makeText(this,"$smalldes",Toast.LENGTH_LONG).show()
 
-            if (PoemDes?.html!!.isNotEmpty()) {
-                if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
-                    lifecycleScope.launch {
-                        TaaveezDao.insert(TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date, CreatedDate = date, SmallDes = smalldes))
-                        Toast.makeText(applicationContext,
-                            getString(R.string.Record_saved),
-                            Toast.LENGTH_LONG).show()
-                    }
-                } else {
-                    itemTopic = "दुआ"
+            if(html_Content_Description.toString().length <=25){
+                smalldes = "$html_Content_Description..."
+            }else{
+                smalldes =  html_Content_Description.toString().substring(0,25)+ "..."
+            }
+
+
+
+            if (Content_Description?.html!!.isNotEmpty()) {
+                if (!(TextUtils.isEmpty(Content_Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         TaaveezDao.insert(
-                            TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date,
-                            CreatedDate = date, SmallDes = smalldes )
+                            TaaveezEntity(
+                                Topic = Content_Topic,
+                                Content = html_Content_Description,
+                                Date = date,
+                                CreatedDate = date,
+                                SmallDes = smalldes,
+                                isComplete = isContentCompleteStatus
+                            )
                         )
-                        Toast.makeText(applicationContext,
+                        Toast.makeText(
+                            applicationContext,
                             getString(R.string.Record_saved),
-                            Toast.LENGTH_LONG).show()
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                } else {
+                    Content_Topic = "दुआ"
+                    lifecycleScope.launch {
+                        TaaveezDao.insert(
+                            TaaveezEntity(
+                                Topic = Content_Topic,
+                                Content = html_Content_Description,
+                                Date = date,
+                                CreatedDate = date,
+                                SmallDes = smalldes,
+                                isComplete = isContentCompleteStatus
+                            )
+                        )
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.Record_saved),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
                 super.onBackPressed()
-            } else {
+                overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
+            }else {
                 val mess = getString(R.string.Field_not_blank)
                 Snackbar.make(binding?.idTopic!!, mess, Snackbar.LENGTH_LONG).show()
             }
@@ -289,7 +341,7 @@ class Add_New_Content : AppCompatActivity() {
     private fun BackData() {
         val BackDialog = Dialog(this)
         BackDialog.setCancelable(false)
-        val binding = DialogBackAddNewContentBinding.inflate(layoutInflater)
+        val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
         binding?.btnBackNo?.setOnClickListener {
             BackDialog.dismiss()
@@ -297,6 +349,7 @@ class Add_New_Content : AppCompatActivity() {
         binding?.btnBackYes?.setOnClickListener {
             BackDialog.dismiss()
             super.onBackPressed()
+            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
         }
         BackDialog.show()
     }

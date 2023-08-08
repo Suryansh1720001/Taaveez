@@ -27,6 +27,8 @@
         <item name="cursor_color">@color/cursor_color_light</item>
         <item name="editor_bg">@color/editor_bg_light</item>
         <item name="text_white">@color/text_white_light</item>
+
+
     </style>
 
 
@@ -38,5 +40,7 @@
     <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/bg_light</item>
     </style>
+
+
 
 </resources>

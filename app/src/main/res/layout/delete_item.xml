@@ -49,7 +49,7 @@
                 android:layout_height="190dp"
                 android:layout_margin="9dp"
                 android:src="@drawable/iv_delete"
-                android:id="@+id/iv_update"
+                android:id="@+id/dialog_image"
                 tools:visibility="visible"
                 android:visibility="visible"
                 />

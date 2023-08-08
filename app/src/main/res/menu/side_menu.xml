@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/bg"
+    >
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/chooseLanguage"
+            android:icon="@drawable/ic_langage"
+            android:title="@string/ChooseLanguage" />
+
+        <item android:id="@+id/switchTheme"
+            android:icon="@drawable/ic_theme"
+            android:title="@string/Theme" />
+
+        <item android:id="@+id/share"
+            android:icon="@drawable/ic_share"
+            android:title="@string/Share"
+           />
+
+        <item android:id="@+id/feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/Feedback" />
+
+<!--    <item android:id="@+id/preferences"-->
+<!--            android:icon="@drawable/ic_baseline_settings_24"-->
+<!--            android:title="Preferences" /> -->
+
+<!--        <item android:id="@+id/update"-->
+<!--            android:icon="@drawable/ic_update"-->
+<!--            android:title="Update" />-->
+
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="@string/Development">
+            <menu>
+                <item android:id="@+id/report_bug"
+                    android:icon="@drawable/ic_bug"
+                    android:title="Report_bug" />
+
+                <item android:id="@+id/source_code"
+                    android:icon="@drawable/ic_code"
+                    android:title="@string/Source_Code" />
+
+                <item android:id="@+id/open_source_library"
+                    android:icon="@drawable/ic_open_source_library"
+                    android:title="Open-Source Library" />
+
+                <item android:id="@+id/PrivacyPolicy"
+                    android:icon="@drawable/ic_privacy"
+                    android:title="Privacy Policy" />
+
+            </menu>
+        </item>
+    </group>
+    <item android:id="@+id/about_us"
+        android:title="@string/about"
+        android:icon="@drawable/ic_person" />
+
+    <item android:id="@+id/appVersionOption"
+        android:title="@string/appVersion"
+        android:icon="@drawable/version_icon"
+        />
+</menu>

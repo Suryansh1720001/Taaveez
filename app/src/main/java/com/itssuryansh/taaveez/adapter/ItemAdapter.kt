@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.TaaveezEntity
 import com.itssuryansh.taaveez.databinding.ItemContentBinding
 import kotlin.collections.ArrayList
@@ -18,7 +19,11 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
                   private var mdetailedViewMode: Boolean // Add view mode parameter
 
 )
+
+
     :RecyclerView.Adapter<itemAdapter.ViewHolder>() {
+
+
 
 
     class ViewHolder(binding: ItemContentBinding): RecyclerView.ViewHolder(binding.root){
@@ -32,6 +37,7 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
         val  ivShare= binding.ivShare
         val tvDate = binding.tvDate
         val tvSmallDes = binding.tvSmallDes
+        val isComplete = binding.ivIsContentComplete
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,11 +53,20 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
         holder.tvTopic.text = item.Topic
         holder.tvDate.text = item.Date
 
+
+        if(item.isComplete){
+            holder.isComplete.setImageResource(R.drawable.ic_complete)
+        }else{
+            holder.isComplete.setImageResource(R.drawable.ic_incomplete)
+        }
+
         if(mdetailedViewMode==false){
             holder.tvSmallDes.visibility = View.GONE
+            holder.isComplete.visibility = View.GONE
 
         }else{
             holder.tvSmallDes.visibility = View.VISIBLE
+            holder.isComplete.visibility = View.VISIBLE
 
         }
 
@@ -82,14 +97,6 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
 
 
 
-    // Add this method to update the data and view mode
-    // Add this method to update the data and view mode
-    // Add this method to update the data and view mode
-    fun updateData(newItems: ArrayList<TaaveezEntity>, newDetailedViewMode: Boolean) {
-        items = newItems
-        mdetailedViewMode = newDetailedViewMode
-        notifyDataSetChanged()
-    }
 
 
 }

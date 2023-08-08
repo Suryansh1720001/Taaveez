@@ -29,7 +29,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/llsmallDes"
-            android:weightSum="5"
+            android:weightSum="6"
             >
 
             <ImageView
@@ -67,13 +67,23 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/iv_isContentComplete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_incomplete"
+                android:layout_weight="1"
+
+                />
+
+
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llsmallDes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/llTopic"
@@ -87,11 +97,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                tools:text="Date"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:id="@+id/tv_smallDes"
                 android:gravity="center"
                 android:layout_margin="6dp"
                 android:textColor="?attr/text"
+                android:layout_gravity="center_horizontal"
                 />
         </LinearLayout>
 

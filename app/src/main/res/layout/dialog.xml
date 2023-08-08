@@ -25,7 +25,7 @@
             >
 
             <TextView
-                android:id="@+id/tvBack"
+                android:id="@+id/tv_dialog_heading"
                 android:text="Do you want to discard your changes and go back?"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textAlignment="center"
                 />
         </LinearLayout>
@@ -47,7 +47,7 @@
             android:layout_height="190dp"
             android:layout_margin="9dp"
             android:src="@drawable/iv_delete"
-            android:id="@+id/iv_update"
+            android:id="@+id/dialog_image"
             tools:visibility="visible"
             android:visibility="visible"
             />

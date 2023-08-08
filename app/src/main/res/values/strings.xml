@@ -57,4 +57,8 @@
     <string name="desc_2_for_onetimeActivity">Our mission is to bring together and collaborate with creative writers who are passionate about exploring and creating captivating content and stories. Join us to dive into the world of creative writing and unlock endless possibilities for your literary endeavors.</string>
     <string name="desc_3_for_onetimeActivity">our vision is to revolutionize the creative world by providing artists and entertainers with an exhilarating mobile platform. We aim to empower individuals to effortlessly preserve their artistic expressions, capture captivating ideas, and track their progress.</string>
 
+
+    <string name="navigation_open">Open Navigation Drawer</string>
+    <string name="navigation_close">Close Navigation Drawer</string>
+    <string name="About_version">Current version of App is : </string>
 </resources>

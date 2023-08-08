@@ -5,11 +5,16 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.text.*
 import android.util.Log
 import android.util.TypedValue
@@ -18,18 +23,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.FileProvider
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.navigation.NavigationView
 import com.itssuryansh.taaveez.*
 import com.itssuryansh.taaveez.adapter.itemAdapter
-import com.itssuryansh.taaveez.databinding.ActivityHomePageBinding
-import com.itssuryansh.taaveez.databinding.DeleteItemBinding
-import com.itssuryansh.taaveez.databinding.UpdateContentBinding
+import com.itssuryansh.taaveez.databinding.*
 import jp.wasabeef.richeditor.RichEditor
+import kotlinx.android.synthetic.main.activity_add_new_content.*
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,9 +51,13 @@ class HomePage : AppCompatActivity() {
     private var binding: ActivityHomePageBinding? = null
     private var Content_Description_Update: RichEditor ?=null
 
-private var isDetailedViewMode = true // Initialize the view mode to false (normal view)
 
+    private var isDetailedViewMode = false // Initialize the view mode to false (normal view)
 
+// drawable
+lateinit var drawerlayout : DrawerLayout
+    lateinit var navigationView : NavigationView
+    lateinit var toolbar : Toolbar
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +67,56 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
         super.onCreate(savedInstanceState)
         binding =ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
+
         val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
 
         binding?.tvNotesHeading?.typeface = typeface
+
+
+        // Retrieve the boolean value from SharedPreferences
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val savedBooleanValue = prefs.getBoolean(Constants.IS_DETAILED_VIEW, false) // "false" is the default value if the key is not found
+        isDetailedViewMode = savedBooleanValue
+
+
+
+        // drawable
+        drawerlayout = findViewById(R.id.menu_drawer)
+        navigationView = findViewById(R.id.navigation_menu)
+        toolbar = findViewById(R.id.menuButton)
+        setSupportActionBar(toolbar)
+        val actionBar = supportActionBar
+        if (actionBar!= null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_menu)
+            actionBar.setTitle(0)
+        }
+
+        val toggle : ActionBarDrawerToggle = ActionBarDrawerToggle(this, drawerlayout, toolbar, R.string.navigation_open, R.string.navigation_close)
+
+//        drawerlayout.addDrawerListener(toggle)
+//        toggle.isDrawerIndicatorEnabled = true
+//        toggle.syncState()
+
+        navigationView = findViewById<View>(R.id.navigation_menu) as NavigationView
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.chooseLanguage -> showChangeLang()
+                R.id.switchTheme -> showChangeTheme()
+                R.id.share ->  share()
+                R.id.feedback -> feedback()
+                R.id.report_bug -> ReportBug()
+                R.id.source_code -> sourceCode()
+                R.id.open_source_library -> openSourceLibrary()
+                R.id.PrivacyPolicy -> PrivacyPolicy()
+                R.id.about_us -> About()
+                R.id.appVersionOption -> AppVersionOption()
+
+            }
+            closeDrawer()
+            false
+        }
 
 
 
@@ -72,15 +135,16 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
 
         }
 
+
         binding?.btnHomePageMenu?.setOnClickListener{
             popup()
         }
 
         val TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
         binding?.idFABAdd?.setOnClickListener {
-//            NewPoemDialog(NotesDao)
             val intent = Intent(this@HomePage, Add_New_Content::class.java)
             startActivity(intent)
+            overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
         }
 
 
@@ -96,21 +160,265 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
     }
 
 
+    // This function can be called when the user interacts with your app, like when clicking a button.
+    private fun saveBooleanValue(value: Boolean) {
+        val editor: SharedPreferences.Editor = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        editor.putBoolean(Constants.IS_DETAILED_VIEW.toString(), value)
+        editor.apply() // Use apply() to save the changes asynchronously, or use commit() for synchronous save.
+    }
+
+
+    private fun closeDrawer() {
+        val drawer = findViewById<DrawerLayout>(R.id.menu_drawer)
+        drawer.closeDrawer(GravityCompat.START)
+    }
+
+
+
+    // ALL OPTIONS FOR NAVIGATION BAR
+
+    private fun showChangeLang() {
+        val BackDialog = Dialog(this)
+        BackDialog.setCancelable(false)
+        val binding = DialogBinding.inflate(layoutInflater)
+        BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.choose_language_pic)
+        binding?.tvDialogHeading?.text = "Choose Language"
+        binding?.btnBackNo?.text = "English"
+        binding?.btnBackYes?.text = "Hindi"
+
+        binding?.btnBackNo?.setOnClickListener {
+            setLocate("en")
+            recreate()
+            BackDialog.dismiss()
+
+        }
+        binding?.btnBackYes?.setOnClickListener {
+            setLocate("hi")
+            recreate()
+            BackDialog.dismiss()
+        }
+
+        BackDialog.show()
+    }
+
+
+    private fun setLocate(Lang: String) {
+        val locale = Locale(Lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+        val editor = getSharedPreferences("Setting", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang",Lang)
+        editor.apply()
+    }
+
+    private fun loadLocate(){
+        val sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE)
+        val language= sharedPreferences.getString("My_Lang","MyLang")
+        if (language != null) {
+            setLocate(language)
+        }
+    }
+
+
+
+    // load Dark night after open the app
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun loadDayNight(){
+        val sharedPreferences=getSharedPreferences("DayNight", MODE_PRIVATE)
+        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
+        if (DayNight != null) {
+            setDayNight(DayNight)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun setDayNight(daynightMode: String) {
+        val editor = getSharedPreferences("DayNight", MODE_PRIVATE).edit()
+        editor.putString("My_DayNight",daynightMode)
+        editor.apply()
+        if(daynightMode=="yes"){
+            // set for dark mode
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else{
+
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    private fun showChangeTheme() {
+        val BackDialog = Dialog(this)
+        BackDialog.setCancelable(false)
+        val binding = DialogBinding.inflate(layoutInflater)
+        BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.theme_pic)
+        binding?.tvDialogHeading?.text = "Select Theme"
+        binding?.btnBackNo?.text = "Dark"
+        binding?.btnBackYes?.text = "Light"
+
+
+        binding?.btnBackNo?.setOnClickListener {
+            setDayNight("yes")
+            Constants.Theme = "1"
+            BackDialog.dismiss()
+
+        }
+        binding?.btnBackYes?.setOnClickListener {
+            setDayNight("no")
+            Constants.Theme = "0"
+            BackDialog.dismiss()
+        }
+        BackDialog.show()
+    }
+
+
+
+
+    // FOR BUTTON SHARE
+    private fun share() {
+        val i : ImageView = ImageView(applicationContext)
+        i.setImageResource(R.drawable.banner)
+        val bitmapDrawable = i.drawable as BitmapDrawable
+        val bitmap = bitmapDrawable.bitmap
+        val uri: Uri = getImageToShare(bitmap)
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("image/*")
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject))
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, getPackageName()))
+        shareIntent.putExtra(Intent.EXTRA_STREAM,uri)
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)))
+    }
+
+    private fun getImageToShare(bitmap: Bitmap): Uri {
+        val folder : File = File(cacheDir,"images")
+        folder.mkdirs()
+        val file: File = File(folder,"shared_image.jpg")
+        val fileOutputStream: FileOutputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream)
+        fileOutputStream.flush()
+        fileOutputStream.close()
+        val uri: Uri = FileProvider.getUriForFile(applicationContext,"com.itssuryansh.taaveez",file)
+        return uri
+
+    }
+
+
+
+    // For FEEDBACK button
+    private fun feedback() {
+        Toast.makeText(this@HomePage ,getString(R.string.scroll_down_for_rating), Toast.LENGTH_LONG).show()
+        val playStoreIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+getPackageName()))
+        startActivity(playStoreIntent)
+    }
+
+
+
+     // For REPORT BUG
+     private fun ReportBug() {
+         val recipient = "itssuryanshprajapati@gmail.com"
+         val subject = "Report for the Bug - Taaveez Application"
+         val message = "Email message body"
+
+         val intent = Intent(Intent.ACTION_SENDTO).apply {
+             data = Uri.parse("mailto:")
+             putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
+             putExtra(Intent.EXTRA_SUBJECT, subject)
+             putExtra(Intent.EXTRA_TEXT, message)
+         }
+         startActivity(intent)
+     }
+
+
+    // For Source Code Button
+
+    private fun sourceCode(){
+        val sourceCodeDialog = Dialog(this)
+        sourceCodeDialog.setCancelable(false)
+        val binding = DialogSourceCdeBinding.inflate(layoutInflater)
+        sourceCodeDialog.setContentView(binding.root)
+
+
+        binding?.closePopup?.setOnClickListener {
+            sourceCodeDialog.dismiss()
+        }
+        binding?.popupShareBtn?.setOnClickListener {
+            share()
+        }
+
+        sourceCodeDialog.setCancelable(true)
+        sourceCodeDialog.show()
+    }
+
+
+
+    // For Open-Source Library Button
+    private fun openSourceLibrary(){
+        val link = "https://taaveez.vercel.app/open-source/taaveez-open-source.html"
+        val intent = Intent(this@HomePage, WebView::class.java)
+        intent.putExtra(Constants.LINK, link)
+        startActivity(intent)
+    }
+
+    // For Privacy Policy Button
+    private fun PrivacyPolicy(){
+        val link = "https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html"
+        val intent = Intent(this@HomePage, WebView::class.java)
+        intent.putExtra(Constants.LINK, link)
+        startActivity(intent)
+    }
+
+
+    //For ABout Button
+
+    private fun About(){
+        val intent = Intent(this@HomePage, About::class.java )
+        startActivity(intent)
+        overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+    }
+
+
+// For APplication version
+
+    private fun AppVersionOption(){
+
+        Toast.makeText(this@HomePage,getString(R.string.About_version) + getString(R.string.appVersion),Toast.LENGTH_LONG).show()
+    }
+
+
+
+
+
+
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     private fun popup() {
         val popupMenu = PopupMenu(this, binding?.btnHomePageMenu)
         popupMenu.inflate(R.menu.home_page_menu)
+        val TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
 
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
 
                 R.id.normal_view -> {
                    Toast.makeText(this@HomePage,"normal view",Toast.LENGTH_LONG).show()
-
-
                     isDetailedViewMode = false
+                    saveBooleanValue(isDetailedViewMode)
 
+                    lifecycleScope.launch {
+                        TaaveezDao.fetchAllContents().collect {
+                            val list = ArrayList(it)
+                            setupListOfDateINtoRecycleVIew(list, TaaveezDao, isDetailedViewMode)
+                        }
+                    }
 
 
                     true
@@ -119,16 +427,21 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                 R.id.detailed_view -> {
                     Toast.makeText(this@HomePage,"detailed view",Toast.LENGTH_LONG).show()
                     isDetailedViewMode = true
-                    // Notify the adapter that the data has changed
-//                    if (::itemAdapter.isInitialized) {
-//                        itemAdapter.notifyDataSetChanged()
-//                    }
+                    saveBooleanValue(isDetailedViewMode)
+                    lifecycleScope.launch {
+                        TaaveezDao.fetchAllContents().collect {
+                            val list = ArrayList(it)
+                            setupListOfDateINtoRecycleVIew(list, TaaveezDao, isDetailedViewMode)
+                        }
+                    }
 
                     true
 
                 }
+
                 else -> super.onOptionsItemSelected(item)
             }
+
 
         }
 
@@ -274,7 +587,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                         ShareContent(ShareId, TaaveezDao)
                     },
 
-                        mdetailedViewMode = isDetailedViewMode
+                 mdetailedViewMode = detailedViewMode
 
 
                 )
@@ -294,30 +607,32 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
 
 
     private fun ShareContent(id: Int, TaaveezDao: TaaveezDao) {
-
-        var Topic: String?
-        var PoemDes : String?
+        var Topic: String? = "Topic"
+        var PoemDes: String? = "Content_Description"
 
         lifecycleScope.launch {
             TaaveezDao.fetchContentsById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
                     PoemDes = it.Content
-                    val sendIntent = Intent()
-                    sendIntent.type = "text/plain"
-                    sendIntent.action = Intent.ACTION_SEND
+
                     val body = "Topic = ${Topic}\n" +
                             "--------------------------------\n" +
                             "${Html.fromHtml(PoemDes)}"
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, body)
-                    Intent.createChooser(sendIntent, "Share using")
-                    intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(sendIntent)
+
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, body)
+                    startActivity(
+                        Intent.createChooser(
+                            shareIntent,
+                            getString(R.string.share_title)
+                        )
+                    )
 
                 }
             }
-        }
-    }
+        }}
 
 
     private fun openContent(id: Int, TaaveezDao: TaaveezDao) {
@@ -325,6 +640,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
         var Content_Description :String?
         var CreatedDate :String?
         var UpdatedDate : String?
+        var isContentCompleteStatus : Boolean?
 
         lifecycleScope.launch {
             TaaveezDao.fetchContentsById(id).collect {
@@ -333,6 +649,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                     Content_Description = it.Content
                     CreatedDate = it.CreatedDate
                     UpdatedDate = it.Date
+                    isContentCompleteStatus = it.isComplete
 
 
 
@@ -341,10 +658,13 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                     intent.putExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION,Content_Description)
                     intent.putExtra(Constants.CREATED_DATE,CreatedDate)
                     intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
+                    intent.putExtra(Constants.IS_CONTENT_COMPLETE_STATUS,isContentCompleteStatus)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
-                   
-//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
+//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+
+                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
+                    finish()
 
                 }
             }
@@ -422,8 +742,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
 
 
         var CreatedDate:String=""
-
-
+        var isContentCompleteStatus : Boolean?=false
 
         lifecycleScope.launch {
             TaaveezDao.fetchContentsById(id).collect {
@@ -431,7 +750,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                     binding.etPoemTopic.setText(it.Topic)
                     binding.etUpdatePoem.setHtml(it.Content)
                     CreatedDate = it.CreatedDate
-
+                    isContentCompleteStatus = it.isComplete
                 }
             }
 
@@ -470,22 +789,33 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
 
         binding.btnUpdatePoem.setOnClickListener {
             var Topic = binding.etPoemTopic.text.toString()
-            var Poem = binding.etUpdatePoem.html
+            var Content_description = binding.etUpdatePoem.html
 
-            
+            var smalldes :String?=null
+
+            if(Content_description.toString().length <=25){
+                smalldes = "$Content_description..."
+            }else{
+                smalldes =  Content_description.toString().substring(0,25)+ "..."
+            }
+
+
+
+
+
 
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
-            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 
 
-            if (!(Poem.isEmpty())) {
+            if (!(Content_description.isEmpty())) {
                 if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
-                        TaaveezDao.update(TaaveezEntity(id, Topic, Poem, date,CreatedDate))
+                        TaaveezDao.update(TaaveezEntity(id, Topic, Content_description, date,CreatedDate,smalldes,isContentCompleteStatus!!))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -494,7 +824,7 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
                 } else {
                     Topic = "दुआ"
                     lifecycleScope.launch {
-                        TaaveezDao.update(TaaveezEntity(id, Topic, Poem, date, CreatedDate))
+                        TaaveezDao.update(TaaveezEntity(id, Topic, Content_description, date, CreatedDate,smalldes,isContentCompleteStatus!!))
                         Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -514,98 +844,63 @@ private var isDetailedViewMode = true // Initialize the view mode to false (norm
         }
 
 
-//    private fun Noraml_detailed_view(view : String) {
-//
-//
-//
-//        if(view.equals("Noraml_view")){
-//
-//        }
-//        binding?.btnDeleteYes?.setOnClickListener {
-//            lifecycleScope.launch {
-//                employeeDao.delete(NotesEntity(id))
-//                Toast.makeText(applicationContext,
-//                    "Record deleted successfully",
-//                    Toast.LENGTH_LONG).show()
-//            }
-//            deleteDialog.dismiss()
-//
-//        }
-//
-//        deleteDialog.show()
-//    }
+
 
 
 
 
     private fun deleteRecordAlertDialog(id: Int, employeeDao: TaaveezDao) {
-
         val deleteDialog = Dialog(this)
         deleteDialog.setCancelable(false)
-        val binding = DeleteItemBinding.inflate(layoutInflater)
+        val binding = DialogBinding.inflate(layoutInflater)
         deleteDialog.setContentView(binding.root)
 
-        binding?.btnDeleteNo?.setOnClickListener {
+        binding?.dialogImage?.setImageResource(R.drawable.iv_delete)
+        binding?.tvDialogHeading?.text = "Delete Record"
+
+
+        binding?.btnBackNo?.setOnClickListener {
             deleteDialog.dismiss()
+
         }
-        binding?.btnDeleteYes?.setOnClickListener {
+        binding?.btnBackYes?.setOnClickListener {
             lifecycleScope.launch {
                 employeeDao.delete(TaaveezEntity(id))
-                    Toast.makeText(applicationContext,
-                        "Record deleted successfully",
-                        Toast.LENGTH_LONG).show()
-                }
-                deleteDialog.dismiss()
+            }
+            deleteDialog.dismiss()
 
         }
-
         deleteDialog.show()
     }
 
-    private fun setLocate(Lang: String) {
-        val locale = Locale(Lang)
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
-        val editor = getSharedPreferences("Setting", Context.MODE_PRIVATE).edit()
-        editor.putString("My_Lang",Lang)
-        editor.apply()
-    }
-
-    private fun loadLocate(){
-        val sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE)
-        val language= sharedPreferences.getString("My_Lang","MyLang")
-        if (language != null) {
-            setLocate(language)
-        }
+    override fun onBackPressed() {
+        BackButton()
     }
 
 
+    private fun BackButton() {
+        val BackDialog = Dialog(this)
+        BackDialog.setCancelable(false)
+        val binding = DialogBinding.inflate(layoutInflater)
+        BackDialog.setContentView(binding.root)
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private fun loadDayNight(){
-        val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
-        val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
-        if (DayNight != null) {
-            setDayNight(DayNight)
+        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
+        binding?.tvDialogHeading?.text = "Want to stay more with Taaveez?"
+
+
+        binding?.btnBackNo?.setOnClickListener {
+            BackDialog.dismiss()
+            super.onBackPressed()
+
         }
+        binding?.btnBackYes?.setOnClickListener {
+            BackDialog.dismiss()
+        }
+        BackDialog.show()
     }
 
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    private fun setDayNight(daynightMode: String) {
-        val editor = getSharedPreferences("DayNight",Context.MODE_PRIVATE).edit()
-        editor.putString("My_DayNight",daynightMode)
-        editor.apply()
-        if(daynightMode=="yes"){
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
-        }
-        else{
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        }
-    }
 
 
 

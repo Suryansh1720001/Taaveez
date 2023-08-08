@@ -17,7 +17,7 @@
     <color name="mainpage_bottom_nav_dark">#16213E</color>
     <color name="pen_color_dark">#00A6FF</color>
     <color name="share_icon_color_dark">#F7F5EB</color>
-    <color name="delete_btn_color_dark">#FF3600</color>
+    <color name="delete_btn_color_dark">#F7F5EB</color>
     <color name="setting_icon_color_dark">#F7F5EB</color>
     <color name="cursor_color_dark">#F7F5EB</color>
     <color name="editor_bg_dark">#2e2e2e</color>

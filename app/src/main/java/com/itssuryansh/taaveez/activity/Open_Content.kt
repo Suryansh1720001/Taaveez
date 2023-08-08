@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +16,16 @@ import android.view.*
 import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 import com.itssuryansh.taaveez.Constants
 import com.itssuryansh.taaveez.R
+import com.itssuryansh.taaveez.TaaveezApp
+import com.itssuryansh.taaveez.TaaveezDao
 import com.itssuryansh.taaveez.databinding.ActivityOpenContentBinding
 import com.itssuryansh.taaveez.databinding.DialogAboutOfOpenContentBinding
+import kotlinx.android.synthetic.main.activity_add_new_content.*
+import kotlinx.coroutines.launch
+import java.util.ArrayList
 
 
 class Open_Content : AppCompatActivity() {
@@ -31,6 +36,7 @@ class Open_Content : AppCompatActivity() {
     private var CreatedDate :String?=null
     private var UpdatedDate :String?=null
     private var textToCopy : String? = null
+    private var isContentCompleteStatus: Boolean? = null
     private var id :Int? = null
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -40,7 +46,8 @@ class Open_Content : AppCompatActivity() {
         Content_Description = intent.getStringExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION)
         CreatedDate = intent.getStringExtra(Constants.CREATED_DATE)
         UpdatedDate = intent.getStringExtra(Constants.UPDATED_DATE)
-        id = intent.getIntExtra(Constants.ID,0)
+        isContentCompleteStatus = intent.getBooleanExtra(Constants.IS_CONTENT_COMPLETE_STATUS,false)
+        id = intent.getIntExtra(Constants.ID,0 )
 
 
 
@@ -50,7 +57,27 @@ class Open_Content : AppCompatActivity() {
         binding = ActivityOpenContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
-     binding?.btnMenu?.setOnClickListener{
+
+        val TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
+
+
+        lifecycleScope.launch {
+            TaaveezDao.fetchContentsById(id!!).collect {
+                if (it != null) {
+                    binding?.tvTopic?.text = it.Topic
+                    binding?.tvPoemDes?.text =  Html.fromHtml(it.Content)
+                    CreatedDate = it.CreatedDate
+                    UpdatedDate = it.Date // updated date
+                    isContentCompleteStatus = it.isComplete
+
+                }
+            }
+
+        }
+
+
+
+        binding?.btnMenu?.setOnClickListener{
         popup()
 
      }
@@ -63,7 +90,7 @@ class Open_Content : AppCompatActivity() {
         binding?.tvPoemDes?.text = Html.fromHtml(Content_Description)
 
         binding?.tvPoemDes?.movementMethod = LinkMovementMethod.getInstance() // enable link clicking
-        binding?.tvPoemDes?.setTextIsSelectable(true) // enable text selection
+//        binding?.tvPoemDes?.setTextIsSelectable(true) // enable text selection
 
         textToCopy = Html.fromHtml(Content_Description).toString()
     }
@@ -101,6 +128,7 @@ class Open_Content : AppCompatActivity() {
                     val intent = Intent(this@Open_Content, Edit_Content::class.java)
                     intent.putExtra(Constants.ID,id)
                     startActivity(intent)
+                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left);
                     true
                 }
 
@@ -161,6 +189,12 @@ class Open_Content : AppCompatActivity() {
         val binding = DialogAboutOfOpenContentBinding.inflate(layoutInflater)
         AboutDialog.setContentView(binding.root)
 
+        if(isContentCompleteStatus==true){
+            binding?.ivIsContentComplete?.setImageResource(R.drawable.ic_complete)
+        }else{
+            binding?.ivIsContentComplete?.setImageResource(R.drawable.ic_incomplete)
+        }
+
 
         binding?.tvPoemCreatedDate?.text = CreatedDate
         binding?.tvPoemUpdatedDate?.text = UpdatedDate
@@ -179,9 +213,12 @@ class Open_Content : AppCompatActivity() {
 
     fun openNotesActivity(){
         val intent = Intent(this@Open_Content, HomePage::class.java)
-        intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        lifecycleScope.launch {
+//            intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        }
         startActivity(intent)
         overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
+super.onBackPressed()
         finish()
     }
 

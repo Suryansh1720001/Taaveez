@@ -38,4 +38,6 @@
     <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@color/bg_dark</item>
     </style>
+
+
 </resources>
