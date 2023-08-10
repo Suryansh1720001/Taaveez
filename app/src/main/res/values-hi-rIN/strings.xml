@@ -3,11 +3,10 @@
     <string name="app_name">Taaveez</string>
     <string name="Poem">कविता</string>
     <string name="setting">सेटिंग</string>
-    <string name="ChooseLanguage">भाषा चुनें</string>
     <string name="back">पीछे</string>
     <string name="about">अबाउट</string>
     <string name="no_data_available">कोई डेटा मौजूद नहीं</string>
-    <string name="close">बंद करना</string>
+    <string name="close">बंद करें</string>
     <string name="write_poem">कविता लिखें</string>
     <string name="Theme">थीम</string>
     <string name="Topic">विषय</string>
@@ -15,25 +14,24 @@
     <string name="cancel">रद्द करें</string>
     <string name="add">जोड़ें</string>
     <string name="update">अपडेट करें</string>
-    <string name="Record_saved">Record saved</string>
-    <string name="add_the_poem">डेटा जोड़ें</string>
-    <string name="update_poem">अपडेट करें</string>
+    <string name="Record_saved">रिकॉर्ड सेव</string>
+    <string name="edit_content">एडिट करें</string>
     <string name="about_poem">क्रिएटिव के लिए एकदम सही ऐप तावीज़ के साथ अपनी कलात्मक अभिव्यक्ति को उजागर करें। अव्यवस्था को अलविदा कहें, आसानी से सहेजें, अपडेट करें और कुछ टैप के साथ अपना काम साझा करें। अपनी यात्रा को ट्रैक करें और अपने काम को कभी भी, कहीं भी परिशोधित करें। इसका उपयोग करें और अपनी रचनात्मक क्षमता का उपयोग करें!</string>
     <string name="taaveez">Taaveez</string>
     <string name="yes">हां</string>
     <string name="no">नहीं</string>
     <string name="delete_record">रिकॉर्ड हटाएं</string>
-    <string name="appVersion">v1.1.1</string>
+    <string name="appVersion">v1.1.2</string>
     <string name="share_subject">हे, जाओ और इस शानदार एप्लिकेशन को देखें। डाउनलोड करने के लिए इस लिंक पर जाएं। \n\n
 
         यहां दबाएं: https://github.com/Suryansh1720001/Taaveez#taaveez\n\n
-</string>
+    </string>
     <string name="share_text">Hey, I have just found an amazing and beautifully designed taaveez for Content creator. I will recommend you to go and check it out once.\n\n
 
 
         Download it from here: https://play.google.com/store/apps/details?id=%1$s
     </string>
-    <string name="share_title">के माध्यम से बाँटे</string>
+    <string name="share_title">के माध्यम से शेयर करे</string>
     <string name="Feedback">प्रतिक्रिया</string>
     <string name="Setting_Image">सेटिंग छवि</string>
     <string name="Preferences">पसंद</string>
@@ -41,7 +39,7 @@
     <string name="Development">विकास क्षेत्र</string>
     <string name="Developer">डेवलपर</string>
     <string name="Source_Code">सोर्स कोड</string>
-    <string name="scroll_down_for_rating">↓ ↓ Scroll Down to Rate Us ↓ ↓</string>
+    <string name="scroll_down_for_rating">↓ ↓ रेट करने के लिए नीचे स्क्रॉल करें ↓ ↓</string>
     <string name="Update_Check">Checking for an update.</string>
     <string name="Already_update">App is already updated UP-TO date.</string>
     <string name="Open_Play_store">Unable to update app from Inside. Opening Google PlayStore.</string>
@@ -58,9 +56,44 @@
 
 
 
-    <string name="navigation_open">Open Navigation Drawer</string>
-    <string name="navigation_close">Close Navigation Drawer</string>
 
-    <string name="About_version">Current version of App is : </string>
+
+
+    <string name="edit">एडिट</string>
+    <string name="copy">कॉपी</string>
+    <string name="share">शेयर</string>
+    <string name="about_content">कंटेंट के बारे में</string>
+    <string name="normal_view">सामान्य दृश्य</string>
+    <string name="detailed_view">विस्तृत दृश्य</string>
+    <string name="privacy_policy">प्राइवेसी पॉलिसी</string>
+    <string name="open_source_license">ओपन-सोर्स लाइसेंस</string>
+    <string name="report_bug">रिपोर्ट बग</string>
+
+
+    <string name="choose_langauge">भाषा चुनें</string>
+    <string name="english">अंग्रेज़ी</string>
+    <string name="hindi">हिंदी</string>
+    <string name="select_theme">थीम चुनें</string>
+    <string name="dark">डार्क मोड</string>
+    <string name="light">लाइट मोड</string>
+    <string name="select_status_for_content">कंटेंट के लिए स्थिति चुनें</string>
+    <string name="Complete">पूर्ण</string>
+    <string name="pending">लंबित</string>
+    <string name="normal_view_set">सामान्य दृश्य सेट</string>
+    <string name="detailed_view_set">विस्तृत दृश्य सेट</string>
+
+
+    <string name="new_content">नया कंटेंट</string>
+    <string name="status">स्थिति</string>
+    <string name="discard_changes">परिवर्तनों को निरस्त करें?</string>
+    <string name="add_new_content">+ नया कंटेंट</string>
+    <string name="delete_content">कंटेंट डिलीट करें</string>
+
+    <string name="field_cannot_be_blank">फ़ील्ड रिक्त नहीं हो सकती</string>
+    <string name="save">सेव करें</string>
+    <string name="complete_status">पूर्ण स्थिति : </string>
+    <string name="created_date">सृजित दिनांक:</string>
+    <string name="updated_date">अपडेट दिनांक:</string>
+    <string name="record_updated">रिकॉर्ड अपडेट</string>
 
 </resources>

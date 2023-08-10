@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -52,6 +51,7 @@ class HomePage : AppCompatActivity() {
     private var Content_Description_Update: RichEditor ?=null
 
 
+
     private var isDetailedViewMode = false // Initialize the view mode to false (normal view)
 
 // drawable
@@ -79,6 +79,13 @@ lateinit var drawerlayout : DrawerLayout
         val savedBooleanValue = prefs.getBoolean(Constants.IS_DETAILED_VIEW, false) // "false" is the default value if the key is not found
         isDetailedViewMode = savedBooleanValue
 
+
+        // Set the status bar color to white
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.statusBarColor = getColor(R.color.status_bar_color)
+            }
+        }
 
 
         // drawable
@@ -120,20 +127,20 @@ lateinit var drawerlayout : DrawerLayout
 
 
 
-        binding?.tvabout?.setOnClickListener {
-            val intent = Intent(this@HomePage, About::class.java )
-            startActivity(intent)
-            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
-            finish()
-
-        }
-        binding?.tvSetting?.setOnClickListener {
-            val intent = Intent(this@HomePage, Setting::class.java)
-            startActivity(intent)
-                overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
-            finish()
-
-        }
+//        binding?.tvabout?.setOnClickListener {
+//            val intent = Intent(this@HomePage, About::class.java )
+//            startActivity(intent)
+//            overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+//            finish()
+//
+//        }
+//        binding?.tvSetting?.setOnClickListener {
+//            val intent = Intent(this@HomePage, Setting::class.java)
+//            startActivity(intent)
+//                overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_left);
+//            finish()
+//
+//        }
 
 
         binding?.btnHomePageMenu?.setOnClickListener{
@@ -160,6 +167,11 @@ lateinit var drawerlayout : DrawerLayout
     }
 
 
+
+
+
+
+
     // This function can be called when the user interacts with your app, like when clicking a button.
     private fun saveBooleanValue(value: Boolean) {
         val editor: SharedPreferences.Editor = PreferenceManager.getDefaultSharedPreferences(this).edit()
@@ -177,31 +189,33 @@ lateinit var drawerlayout : DrawerLayout
 
     // ALL OPTIONS FOR NAVIGATION BAR
 
+
     private fun showChangeLang() {
-        val BackDialog = Dialog(this)
-        BackDialog.setCancelable(false)
+        val ChooseLangaugeDialog = Dialog(this)
         val binding = DialogBinding.inflate(layoutInflater)
-        BackDialog.setContentView(binding.root)
+        ChooseLangaugeDialog.setContentView(binding.root)
 
         binding?.dialogImage?.setImageResource(R.drawable.choose_language_pic)
-        binding?.tvDialogHeading?.text = "Choose Language"
-        binding?.btnBackNo?.text = "English"
-        binding?.btnBackYes?.text = "Hindi"
+        binding?.tvDialogHeading?.text =  getString(R.string.choose_langauge)
+        binding?.btnBackNo?.text = getString(R.string.english)
+        binding?.btnBackYes?.text = getString(R.string.hindi)
 
         binding?.btnBackNo?.setOnClickListener {
             setLocate("en")
             recreate()
-            BackDialog.dismiss()
+            ChooseLangaugeDialog.dismiss()
 
         }
         binding?.btnBackYes?.setOnClickListener {
             setLocate("hi")
             recreate()
-            BackDialog.dismiss()
+            ChooseLangaugeDialog.dismiss()
         }
 
-        BackDialog.show()
+        ChooseLangaugeDialog.show()
     }
+
+
 
 
     private fun setLocate(Lang: String) {
@@ -240,7 +254,9 @@ lateinit var drawerlayout : DrawerLayout
         val editor = getSharedPreferences("DayNight", MODE_PRIVATE).edit()
         editor.putString("My_DayNight",daynightMode)
         editor.apply()
+
         if(daynightMode=="yes"){
+
             // set for dark mode
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
@@ -253,29 +269,38 @@ lateinit var drawerlayout : DrawerLayout
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun showChangeTheme() {
-        val BackDialog = Dialog(this)
-        BackDialog.setCancelable(false)
+        val ChangeThemeDialog = Dialog(this)
         val binding = DialogBinding.inflate(layoutInflater)
-        BackDialog.setContentView(binding.root)
+        ChangeThemeDialog.setContentView(binding.root)
 
-        binding?.dialogImage?.setImageResource(R.drawable.theme_pic)
-        binding?.tvDialogHeading?.text = "Select Theme"
-        binding?.btnBackNo?.text = "Dark"
-        binding?.btnBackYes?.text = "Light"
+        binding.dialogImage?.setImageResource(R.drawable.theme_pic)
+        binding.tvDialogHeading?.text = getString(R.string.select_theme)
+        binding.btnBackNo?.text = getString(R.string.dark)
+        binding.btnBackYes?.text = getString(R.string.light)
 
 
         binding?.btnBackNo?.setOnClickListener {
+
+
             setDayNight("yes")
             Constants.Theme = "1"
-            BackDialog.dismiss()
+            ChangeThemeDialog.dismiss()
+
+
+
+
 
         }
         binding?.btnBackYes?.setOnClickListener {
+
+
+
             setDayNight("no")
             Constants.Theme = "0"
-            BackDialog.dismiss()
+            ChangeThemeDialog.dismiss()
+
         }
-        BackDialog.show()
+        ChangeThemeDialog.show()
     }
 
 
@@ -290,7 +315,7 @@ lateinit var drawerlayout : DrawerLayout
         val uri: Uri = getImageToShare(bitmap)
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("image/*")
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject))
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_subject))
         shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text, getPackageName()))
         shareIntent.putExtra(Intent.EXTRA_STREAM,uri)
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_title)))
@@ -322,9 +347,9 @@ lateinit var drawerlayout : DrawerLayout
 
      // For REPORT BUG
      private fun ReportBug() {
-         val recipient = "itssuryanshprajapati@gmail.com"
-         val subject = "Report for the Bug - Taaveez Application"
-         val message = "Email message body"
+         val recipient = getString(R.string.email)
+         val subject = getString(R.string.subject_for_email)
+         val message = getString(R.string.email_body)
 
          val intent = Intent(Intent.ACTION_SENDTO).apply {
              data = Uri.parse("mailto:")
@@ -388,6 +413,7 @@ lateinit var drawerlayout : DrawerLayout
 
     private fun AppVersionOption(){
 
+
         Toast.makeText(this@HomePage,getString(R.string.About_version) + getString(R.string.appVersion),Toast.LENGTH_LONG).show()
     }
 
@@ -409,7 +435,7 @@ lateinit var drawerlayout : DrawerLayout
             when (item.itemId) {
 
                 R.id.normal_view -> {
-                   Toast.makeText(this@HomePage,"normal view",Toast.LENGTH_LONG).show()
+                   Toast.makeText(this@HomePage,getString(R.string.normal_view_set),Toast.LENGTH_LONG).show()
                     isDetailedViewMode = false
                     saveBooleanValue(isDetailedViewMode)
 
@@ -425,7 +451,7 @@ lateinit var drawerlayout : DrawerLayout
                 }
 
                 R.id.detailed_view -> {
-                    Toast.makeText(this@HomePage,"detailed view",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@HomePage,getString(R.string.detailed_view_set),Toast.LENGTH_LONG).show()
                     isDetailedViewMode = true
                     saveBooleanValue(isDetailedViewMode)
                     lifecycleScope.launch {
@@ -466,101 +492,103 @@ lateinit var drawerlayout : DrawerLayout
 
 
 
+//
+//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+//    private fun NewPoemDialog(TaaveezDao: TaaveezDao) {
+//
+//        val PoemDialog = Dialog(this)
+//        PoemDialog.setCancelable(false)
+//        PoemDialog.setContentView(R.layout.notes_add_dialog)
+//
+//        val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
+//        PoemDes.setPlaceholder(getString(R.string.write_here))
+//        PoemDes.setEditorHeight(200)
+//        PoemDes.setEditorFontSize(22)
+//        PoemDes.setPadding(10, 10, 10, 10)
+//        PoemDes.setVerticalScrollBarEnabled(true)
+//        PoemDes.setTextColor(Color.WHITE);
+//
+//        val btnBold : ImageButton?= PoemDialog.findViewById(R.id.btn_bold)
+//        btnBold?.setOnClickListener { PoemDes?.setBold() }
+//        val btnItalic : ImageButton?= PoemDialog.findViewById(R.id.btn_italic)
+//        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
+//        val btnUnderline : ImageButton? = PoemDialog.findViewById(R.id.btn_underline)
+//        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
+//
+//        val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
+//        val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
+//        val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
+//        val btn_addLink = PoemDialog.findViewById<ImageButton>(R.id.btn_add_link)
+//
+//
+//        btn_addLink.setOnClickListener{
+//                val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
+//                val dialog = AlertDialog.Builder(this)
+//                    .setTitle("Insert Link")
+//                    .setView(dialogView)
+//                    .setPositiveButton("OK") { _, _ ->
+//                        val urlEditText = dialogView.findViewById<EditText>(R.id.url_edit_text)
+//                        val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
+//                        val url = urlEditText.text.toString()
+//                        val title = titleEditText.text.toString()
+//                        PoemDes.insertLink(url, title)
+//                    }
+//                    .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
+//                    .create()
+//                dialog.show()
+//        }
+//
+//        cancelBtn.setOnClickListener {
+//            PoemDialog.dismiss()
+//        }
+//
+//        addBtn.setOnClickListener {
+//            var itemTopic: String = itemTopic.text.toString()
+//            val htmlContentPoemDes= PoemDes.html.toString()
+//
+//            // setup the date
+//            val c = Calendar.getInstance()
+//            val dateTime = c.time
+////            Log.e("Date: ", "" + dateTime)
+//            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
+//            val date = sdf.format(dateTime)
+////            Log.e("Formatted Date: ", "" + date)
+//
+//            if (!(PoemDes.html.isNullOrEmpty())) {
+//                if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
+//                    lifecycleScope.launch {
+//                        TaaveezDao.insert(TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date, CreatedDate = date))
+//                        Toast.makeText(applicationContext,
+//                            getString(R.string.Record_saved),
+//                            Toast.LENGTH_LONG).show()
+//                    }
+//
+//                } else {
+//                    itemTopic = "दुआ"
+//                    lifecycleScope.launch {
+//                        TaaveezDao.insert(
+//                            TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date,
+//                            CreatedDate = date )
+//                        )
+//                        Toast.makeText(applicationContext,
+//                            getString(R.string.Record_saved),
+//                            Toast.LENGTH_LONG).show()
+//
+//                    }
+//
+//                }
+//                PoemDialog.dismiss()
+//                Toast.makeText(this, "$htmlContentPoemDes", Toast.LENGTH_LONG).show()
+//
+//            } else {
+//                Toast.makeText(this, getString(R.string.field_cannot_be_blank), Toast.LENGTH_LONG).show()
+//            }
+//
+//        }
+//        PoemDialog.show()
+//    }
+//
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun NewPoemDialog(TaaveezDao: TaaveezDao) {
-
-        val PoemDialog = Dialog(this)
-        PoemDialog.setCancelable(false)
-        PoemDialog.setContentView(R.layout.notes_add_dialog)
-
-        val PoemDes :RichEditor = PoemDialog.findViewById(R.id.idnotes)
-        PoemDes.setPlaceholder(getString(R.string.write_here))
-        PoemDes.setEditorHeight(200)
-        PoemDes.setEditorFontSize(22)
-        PoemDes.setPadding(10, 10, 10, 10)
-        PoemDes.setVerticalScrollBarEnabled(true)
-        PoemDes.setTextColor(Color.WHITE);
-
-        val btnBold : ImageButton?= PoemDialog.findViewById(R.id.btn_bold)
-        btnBold?.setOnClickListener { PoemDes?.setBold() }
-        val btnItalic : ImageButton?= PoemDialog.findViewById(R.id.btn_italic)
-        btnItalic?.setOnClickListener { PoemDes?.setItalic() }
-        val btnUnderline : ImageButton? = PoemDialog.findViewById(R.id.btn_underline)
-        btnUnderline?.setOnClickListener { PoemDes?.setUnderline() }
-
-        val cancelBtn = PoemDialog.findViewById<Button>(R.id.idBtnCancel)
-        val addBtn = PoemDialog.findViewById<Button>(R.id.idBtnAdd)
-        val itemTopic = PoemDialog.findViewById<EditText>(R.id.idTopic)
-        val btn_addLink = PoemDialog.findViewById<ImageButton>(R.id.btn_add_link)
-
-
-        btn_addLink.setOnClickListener{
-                val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_insert_link, null)
-                val dialog = AlertDialog.Builder(this)
-                    .setTitle("Insert Link")
-                    .setView(dialogView)
-                    .setPositiveButton("OK") { _, _ ->
-                        val urlEditText = dialogView.findViewById<EditText>(R.id.url_edit_text)
-                        val titleEditText = dialogView.findViewById<EditText>(R.id.title_edit_text)
-                        val url = urlEditText.text.toString()
-                        val title = titleEditText.text.toString()
-                        PoemDes.insertLink(url, title)
-                    }
-                    .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
-                    .create()
-                dialog.show()
-        }
-
-        cancelBtn.setOnClickListener {
-            PoemDialog.dismiss()
-        }
-
-        addBtn.setOnClickListener {
-            var itemTopic: String = itemTopic.text.toString()
-            val htmlContentPoemDes= PoemDes.html.toString()
-
-            // setup the date
-            val c = Calendar.getInstance()
-            val dateTime = c.time
-            Log.e("Date: ", "" + dateTime)
-            val sdf = SimpleDateFormat("dd MMM yyyy HH:mm:ss", Locale.getDefault())
-            val date = sdf.format(dateTime)
-            Log.e("Formatted Date: ", "" + date)
-
-            if (!(PoemDes.html.isNullOrEmpty())) {
-                if (!(TextUtils.isEmpty(itemTopic.trim { it <= ' ' }))) {
-                    lifecycleScope.launch {
-                        TaaveezDao.insert(TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date, CreatedDate = date))
-                        Toast.makeText(applicationContext,
-                            getString(R.string.Record_saved),
-                            Toast.LENGTH_LONG).show()
-                    }
-
-                } else {
-                    itemTopic = "दुआ"
-                    lifecycleScope.launch {
-                        TaaveezDao.insert(
-                            TaaveezEntity(Topic = itemTopic, Content = htmlContentPoemDes, Date = date,
-                            CreatedDate = date )
-                        )
-                        Toast.makeText(applicationContext,
-                            getString(R.string.Record_saved),
-                            Toast.LENGTH_LONG).show()
-
-                    }
-
-                }
-                PoemDialog.dismiss()
-                Toast.makeText(this, "$htmlContentPoemDes", Toast.LENGTH_LONG).show()
-
-            } else {
-                Toast.makeText(this, "field cannot be blank", Toast.LENGTH_LONG).show()
-            }
-
-        }
-        PoemDialog.show()
-    }
 
 
     private fun setupListOfDateINtoRecycleVIew(
@@ -608,69 +636,80 @@ lateinit var drawerlayout : DrawerLayout
 
     private fun ShareContent(id: Int, TaaveezDao: TaaveezDao) {
         var Topic: String? = "Topic"
-        var PoemDes: String? = "Content_Description"
+        var Content_Description: String? = "Content_Description"
+        var body:String?="Body"
 
         lifecycleScope.launch {
             TaaveezDao.fetchContentsById(id).collect {
                 if (it != null) {
                     Topic = it.Topic
-                    PoemDes = it.Content
-
-                    val body = "Topic = ${Topic}\n" +
-                            "--------------------------------\n" +
-                            "${Html.fromHtml(PoemDes)}"
-
-                    val shareIntent = Intent(Intent.ACTION_SEND)
-                    shareIntent.type = "text/plain"
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, body)
-                    startActivity(
-                        Intent.createChooser(
-                            shareIntent,
-                            getString(R.string.share_title)
-                        )
-                    )
-
-                }
-            }
-        }}
-
-
-    private fun openContent(id: Int, TaaveezDao: TaaveezDao) {
-        var Content_Topic :String?
-        var Content_Description :String?
-        var CreatedDate :String?
-        var UpdatedDate : String?
-        var isContentCompleteStatus : Boolean?
-
-        lifecycleScope.launch {
-            TaaveezDao.fetchContentsById(id).collect {
-                if (it != null) {
-                    Content_Topic = it.Topic
                     Content_Description = it.Content
-                    CreatedDate = it.CreatedDate
-                    UpdatedDate = it.Date
-                    isContentCompleteStatus = it.isComplete
-
-
-
-                    val intent = Intent(this@HomePage, Open_Content::class.java)
-                    intent.putExtra(Constants.TAAVEEZ_CONTENT_TOPIC, Content_Topic)
-                    intent.putExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION,Content_Description)
-                    intent.putExtra(Constants.CREATED_DATE,CreatedDate)
-                    intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
-                    intent.putExtra(Constants.IS_CONTENT_COMPLETE_STATUS,isContentCompleteStatus)
-                    intent.putExtra(Constants.ID,id)
-                    startActivity(intent)
-//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
-
-                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
-                    finish()
 
                 }
             }
 
         }
 
+
+        body = "Topic = ${Topic}\n" +
+                "--------------------------------\n" +
+                "${Html.fromHtml(Content_Description)}"
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, body)
+        startActivity(
+            Intent.createChooser(
+                shareIntent,
+                getString(R.string.share_title)
+            )
+        )
+
+
+
+
+    }
+
+
+
+
+
+
+
+    private fun openContent(id: Int, TaaveezDao: TaaveezDao) {
+
+//
+//        var Content_Topic :String? = null
+//        var Content_Description :String?  = "Content_Topic"
+//        var CreatedDate :String? = "Content_Topic"
+//        var UpdatedDate : String? = "Content_Topic"
+//        var isContentCompleteStatus : Boolean? = false
+
+//        lifecycleScope.launch {
+//            TaaveezDao.fetchContentsById(id).collect {
+//                if (it != null) {
+//                    Content_Topic = it.Topic
+//                    Content_Description = it.Content
+//                    CreatedDate = it.CreatedDate
+//                    UpdatedDate = it.Date
+//                    isContentCompleteStatus = it.isComplete
+//
+//
+//                }
+//            }
+//        }
+
+        val intent = Intent(this@HomePage, Open_Content::class.java)
+//        intent.putExtra(Constants.TAAVEEZ_CONTENT_TOPIC, Content_Topic)
+//        intent.putExtra(Constants.TAAVEEZ_CONTENT_DESCRIPTION,Content_Description)
+//        intent.putExtra(Constants.CREATED_DATE,CreatedDate)
+//        intent.putExtra(Constants.UPDATED_DATE,UpdatedDate)
+//        intent.putExtra(Constants.IS_CONTENT_COMPLETE_STATUS,isContentCompleteStatus)
+        intent.putExtra(Constants.ID,id)
+        startActivity(intent)
+//                    overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_rigth);
+
+        overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
 
     }
 
@@ -753,7 +792,6 @@ lateinit var drawerlayout : DrawerLayout
                     isContentCompleteStatus = it.isComplete
                 }
             }
-
         }
 
 
@@ -816,7 +854,7 @@ lateinit var drawerlayout : DrawerLayout
                 if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                     lifecycleScope.launch {
                         TaaveezDao.update(TaaveezEntity(id, Topic, Content_description, date,CreatedDate,smalldes,isContentCompleteStatus!!))
-                        Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, getString(R.string.record_updated), Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         updateDialog.dismiss()
@@ -825,14 +863,14 @@ lateinit var drawerlayout : DrawerLayout
                     Topic = "दुआ"
                     lifecycleScope.launch {
                         TaaveezDao.update(TaaveezEntity(id, Topic, Content_description, date, CreatedDate,smalldes,isContentCompleteStatus!!))
-                        Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                        Toast.makeText(applicationContext, getString(R.string.record_updated), Toast.LENGTH_LONG)
                             .show()
                         intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         updateDialog.dismiss()
                     }
                 }
             } else{
-                    Toast.makeText(applicationContext, "filed cannot be blank", Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, getString(R.string.field_cannot_be_blank), Toast.LENGTH_LONG)
                         .show()
                 }
             }
@@ -855,8 +893,8 @@ lateinit var drawerlayout : DrawerLayout
         val binding = DialogBinding.inflate(layoutInflater)
         deleteDialog.setContentView(binding.root)
 
-        binding?.dialogImage?.setImageResource(R.drawable.iv_delete)
-        binding?.tvDialogHeading?.text = "Delete Record"
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_2)
+        binding?.tvDialogHeading?.text = getString(R.string.delete_content)
 
 
         binding?.btnBackNo?.setOnClickListener {
@@ -884,7 +922,7 @@ lateinit var drawerlayout : DrawerLayout
         val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
 
-        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_1)
         binding?.tvDialogHeading?.text = "Want to stay more with Taaveez?"
 
 

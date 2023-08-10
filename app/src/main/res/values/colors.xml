@@ -11,8 +11,8 @@
     <color name="blue_shade_2">#47B5FF</color>
     <color name="blue_shade_1">#DFF6FF</color>
     <color name="bg_light">#F7F5EB</color>
-    <color name="item_topic_bg_light">#0081C9</color>
-    <color name="item_topic_bottom_bg_light">#0F57AF</color>
+    <color name="item_topic_bg_light">#1159B3</color>
+    <color name="item_topic_bottom_bg_light">#033B7E</color>
     <color name="text_light">#ffffff</color>
     <color name="item_topic_bottom_cardview_bg_light">#F7F5EB</color>
     <color name="mainpage_bottom_nav_light">#0F57AF</color>
@@ -24,4 +24,8 @@
     <color name="editor_bg_light">#e0e0e0</color>
     <color name="text_white_light">#ffffff</color>
     <color name="bg_heading_toolbar">#FD5DA8</color>
+    <color name="main_page_heading_dark_color">#0008C1</color>
+    <color name="main_page_heading_light_color">#226699</color>
+    <color name="status_bar_color">#1137ad</color>
+<!--   -->
 </resources>

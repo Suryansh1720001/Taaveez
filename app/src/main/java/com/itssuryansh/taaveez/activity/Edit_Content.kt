@@ -53,6 +53,12 @@ class Edit_Content : AppCompatActivity() {
 
         TaaveezDao = (application as TaaveezApp).db.TaaveezDao()
 
+        // Set the status bar color to white
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.statusBarColor = getColor(R.color.status_bar_color)
+            }
+        }
 
         binding?.UpdateisComplete?.setOnClickListener{
             openDialogForStatus()
@@ -109,7 +115,6 @@ class Edit_Content : AppCompatActivity() {
 
         // setUP the content in the editview and richeditor from the Database
         lifecycleScope.launch {
-
             TaaveezDao.fetchContentsById(id!!).collect {
                 if (it != null) {
                     binding?.etPoemTopic?.setText(it.Topic)
@@ -119,7 +124,6 @@ class Edit_Content : AppCompatActivity() {
 
                 }
             }
-
         }
 
         // edit text  - topic lenght size limit
@@ -166,10 +170,10 @@ class Edit_Content : AppCompatActivity() {
         val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
 
-        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
-        binding?.tvDialogHeading?.text = "Select Status for Content"
-        binding?.btnBackNo?.text = "Complete"
-        binding?.btnBackYes?.text = "Panding"
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_3)
+        binding?.tvDialogHeading?.text = getString(R.string.select_status_for_content)
+        binding?.btnBackNo?.text = getString(R.string.Complete)
+        binding?.btnBackYes?.text = getString(R.string.pending)
 
 
         binding?.btnBackNo?.setOnClickListener {
@@ -223,7 +227,7 @@ class Edit_Content : AppCompatActivity() {
             if (!(TextUtils.isEmpty(Topic.trim { it <= ' ' }))) {
                 lifecycleScope.launch {
                     TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date,CreatedDate, smalldes, isComplete = isContentCompleteStatus!!,favorite=false))
-                    Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, getString(R.string.record_updated), Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -232,7 +236,7 @@ class Edit_Content : AppCompatActivity() {
                 Topic = "दुआ"
                 lifecycleScope.launch {
                     TaaveezDao.update(TaaveezEntity(id!!, Topic, Description, date, CreatedDate, smalldes,isComplete = isContentCompleteStatus!!,favorite=false))
-                    Toast.makeText(applicationContext, "Record Updated", Toast.LENGTH_LONG)
+                    Toast.makeText(applicationContext, getString(R.string.record_updated), Toast.LENGTH_LONG)
                         .show()
                     intent.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -313,6 +317,11 @@ class Edit_Content : AppCompatActivity() {
         BackDialog.setCancelable(false)
         val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_5)
+        binding?.tvDialogHeading?.text = getString(R.string.discard_changes)
+
+
         binding?.btnBackNo?.setOnClickListener {
             BackDialog.dismiss()
         }
@@ -321,7 +330,9 @@ class Edit_Content : AppCompatActivity() {
             super.onBackPressed()
             overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth)
         }
+
         BackDialog.show()
+
     }
 
     override fun onBackPressed() {

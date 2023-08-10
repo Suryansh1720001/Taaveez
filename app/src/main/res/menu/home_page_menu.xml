@@ -2,12 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/normal_view"
-        android:title="Normal View"
+        android:title="@string/normal_view"
+            android:icon="@drawable/ic_normal_view"
 
         />
     <item android:id="@+id/detailed_view"
-        android:title="Detailed View"
+        android:title="@string/detailed_view"
+        android:icon="@drawable/ic_detailed_view"
 
         />
 </menu>
-    <!--        android:icon="@drawable/detailed_view_icon"-->

@@ -52,6 +52,7 @@ class SplashActivity : AppCompatActivity() {
 
                     finish()
                     overridePendingTransition(R.drawable.slide_in_left, R.drawable.slide_out_rigth);
+//                    overridePendingTransition(R.drawable.fade_in, R.drawable.fade_out)
 //                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 
                 }

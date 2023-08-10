@@ -77,7 +77,7 @@
 
         <TextView
             android:textColor="?attr/text"
-            android:id="@+id/tvPoemDes"
+            android:id="@+id/tvContentDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

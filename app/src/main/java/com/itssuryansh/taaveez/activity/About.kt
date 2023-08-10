@@ -3,7 +3,7 @@ package com.itssuryansh.taaveez.activity
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
@@ -21,8 +21,9 @@ class About : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         loadDayNight()
+        loadLocate()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
+//        setContentView(R.layout.activity_about)
         Element()
 
         val aboutPage: View = AboutPage(this)
@@ -31,19 +32,21 @@ class About : AppCompatActivity() {
             .setImage(R.mipmap.ic_launcher)
             .setDescription(getString(R.string.about_poem))
             .addItem(Element().setTitle("Current Version : "+getString(R.string.appVersion)).setGravity(Gravity.CENTER).setOnClickListener {
-                Toast.makeText(
-                    this@About,
-                    "Current version of App is : " + getString(R.string.appVersion),
-                    Toast.LENGTH_LONG
-                ).show()
+
+                Toast.makeText(this@About,getString(R.string.About_version) + getString(R.string.appVersion),Toast.LENGTH_LONG).show()
+
             })
             .addGroup("CONNECT WITH US!")
             .addEmail("itssuryanshprajapati@gmail.com")
             .addWebsite("https://taaveez.vercel.app/")
+            .addPlayStore(packageName)
+            .addTwitter("itssuryanshP")
             .addYoutube("UCdjJbti71WN9ILx9774q2PA") //Enter your youtube link here (replace with my channel link)
 //            .addPlayStore(packageName) //Replace all this with your package name
             .addInstagram("_its_s.u.r.y.a.n.s.h") //Your instagram id
+
             .addItem(createCopyright())
+
             .create()
 
         setContentView(aboutPage)
@@ -76,6 +79,7 @@ class About : AppCompatActivity() {
         finish()
     }
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     private fun loadDayNight(){
         val sharedPreferences=getSharedPreferences("DayNight", Activity.MODE_PRIVATE)
         val DayNight= sharedPreferences.getString("My_DayNight","MyDayNight")
@@ -96,5 +100,26 @@ class About : AppCompatActivity() {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
+
+
+    private fun loadLocate(){
+        val sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE)
+        val language= sharedPreferences.getString("My_Lang","MyLang")
+        if (language != null) {
+            setLocate(language)
+        }
+    }
+
+    private fun setLocate(Lang: String) {
+        val locale = Locale(Lang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        baseContext.resources.updateConfiguration(config,baseContext.resources.displayMetrics)
+        val editor = getSharedPreferences("Setting", Context.MODE_PRIVATE).edit()
+        editor.putString("My_Lang",Lang)
+        editor.apply()
+    }
+
 
 }

@@ -29,7 +29,7 @@
 
                 <TextView
                     android:id="@+id/tvPoem"
-                    android:text="@string/update_poem"
+                    android:text="@string/edit_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_marginTop="7dp"
-                android:src="@drawable/iv_update_poem"
+                android:src="@drawable/iv_image_4"
                 android:id="@+id/dialog_image"
                 tools:visibility="visible"
                 android:visibility="visible"

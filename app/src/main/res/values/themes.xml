@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MyNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#0F57AF</item>
+        <item name="colorPrimary">#033B7E</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white_light</item>
         <!-- Secondary brand color. -->

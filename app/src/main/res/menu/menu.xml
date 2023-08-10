@@ -4,19 +4,19 @@
 
     >
     <item android:id="@+id/edit_data"
-        android:title="Edit"
-        android:icon="@drawable/ic_edit_menu"
+        android:title="@string/edit"
+        android:icon="@drawable/ic_menu_edit"
         />
     <item android:id="@+id/copy_data"
-        android:title="Copy"
-        android:icon="@drawable/copy_data"
+        android:title="@string/copy"
+        android:icon="@drawable/ic_copy_data"
         />
     <item android:id="@+id/share_data"
-        android:title="Share"
+        android:title="@string/share"
         android:icon="@drawable/ic_share"
         />
     <item android:id="@+id/about_data"
-        android:title="About"
+        android:title="@string/about_content"
         android:icon="@drawable/info_icon"
         />
 </menu>

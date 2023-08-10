@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/chooseLanguage"
             android:icon="@drawable/ic_langage"
-            android:title="@string/ChooseLanguage" />
+            android:title="@string/choose_langauge" />
 
         <item android:id="@+id/switchTheme"
             android:icon="@drawable/ic_theme"
@@ -36,7 +36,7 @@
             <menu>
                 <item android:id="@+id/report_bug"
                     android:icon="@drawable/ic_bug"
-                    android:title="Report_bug" />
+                    android:title="@string/report_bug" />
 
                 <item android:id="@+id/source_code"
                     android:icon="@drawable/ic_code"
@@ -44,11 +44,11 @@
 
                 <item android:id="@+id/open_source_library"
                     android:icon="@drawable/ic_open_source_library"
-                    android:title="Open-Source Library" />
+                    android:title="@string/open_source_license" />
 
                 <item android:id="@+id/PrivacyPolicy"
                     android:icon="@drawable/ic_privacy"
-                    android:title="Privacy Policy" />
+                    android:title="@string/privacy_policy" />
 
             </menu>
         </item>

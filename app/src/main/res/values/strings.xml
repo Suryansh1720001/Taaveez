@@ -2,9 +2,8 @@
     <string name="app_name">Taaveez</string>
     <string name="Poem">Poem</string>
     <string name="setting">Setting</string>
-    <string name="ChooseLanguage">Choose Language</string>
     <string name="back">Back</string>
-    <string name="about">About</string>
+    <string name="about">About Us</string>
     <string name="no_data_available">NO DATA AVAILABLE</string>
     <string name="close">Close</string>
     <string name="write_poem">Write Poem</string>
@@ -15,14 +14,13 @@
     <string name="add">Add</string>
     <string name="update">Update</string>
     <string name="Record_saved">Record saved</string>
-    <string name="add_the_poem">Add Data</string>
-    <string name="update_poem">Update Data</string>
+    <string name="edit_content">Edit Content</string>
     <string name="about_poem">Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps. Track your journey and refine your work anytime, anywhere. Use it and unleash your creative potential!</string>
     <string name="taaveez">Taaveez</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete_record">Delete Record</string>
-    <string name="appVersion">v1.1.1</string>
+    <string name="appVersion">v1.1.2</string>
     <string name="share_subject">Hey, Go and check out this cool application. Go to this link to download.\n\n
 
         Link: https://github.com/Suryansh1720001/Taaveez#taaveez\n\n
@@ -58,7 +56,52 @@
     <string name="desc_3_for_onetimeActivity">our vision is to revolutionize the creative world by providing artists and entertainers with an exhilarating mobile platform. We aim to empower individuals to effortlessly preserve their artistic expressions, capture captivating ideas, and track their progress.</string>
 
 
-    <string name="navigation_open">Open Navigation Drawer</string>
-    <string name="navigation_close">Close Navigation Drawer</string>
-    <string name="About_version">Current version of App is : </string>
+    <string name="navigation_open" translatable="false">Open Navigation Drawer</string>
+    <string name="navigation_close" translatable="false">Close Navigation Drawer</string>
+    <string name="About_version" translatable="false">Current version of App is : </string>
+
+
+
+    <string name="edit">Edit</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="about_content">About</string>
+    <string name="normal_view">Normal View</string>
+    <string name="detailed_view">Detailed View</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="open_source_license">Open-Source License</string>
+    <string name="report_bug">Report Bug</string>
+    <string name="choose_langauge">Choose Language</string>
+    <string name="english">English</string>
+    <string name="hindi">Hindi</string>
+    <string name="select_theme">Select Theme</string>
+    <string name="dark">Dark</string>
+    <string name="light">Light</string>
+
+    <string name="email" translatable="false">itssuryanshprajapati@gmail.com</string>
+    <string name="subject_for_email" translatable="false">Report for the Bug - Taaveez Application</string>
+    <string name="email_body" translatable="false">Email message body</string>
+
+    <string name="normal_view_set">Normal View Set</string>
+    <string name="detailed_view_set">Detailed View Set</string>
+
+
+
+    <string name="select_status_for_content">Select Status for Content</string>
+    <string name="Complete">Complete</string>
+    <string name="pending">Pending</string>
+
+    <string name="new_content">New Content</string>
+    <string name="status">Status</string>
+    <string name="discard_changes">Discard changes?</string>
+    <string name="add_new_content">+ New Content</string>
+    <string name="delete_content">Delete Content</string>
+
+    <string name="field_cannot_be_blank">field cannot be blank</string>
+    <string name="save">Save</string>
+    <string name="complete_status">Complete Status :</string>
+    <string name="created_date">Created Date:</string>
+    <string name="updated_date">Updated Date:</string>
+    <string name="record_updated">Record Updated</string>
+
 </resources>

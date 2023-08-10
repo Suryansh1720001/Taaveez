@@ -1,33 +1,23 @@
 package com.itssuryansh.taaveez.activity
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.*
 import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.view.isNotEmpty
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.TaaveezApp
@@ -58,6 +48,14 @@ class Add_New_Content : AppCompatActivity() {
         binding = ActivityAddNewContentBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        // Set the status bar color to white
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.statusBarColor = getColor(R.color.status_bar_color)
+            }
+        }
+
+
         setupActionBar()
         val NotesDao = (application as TaaveezApp).db.TaaveezDao()
         AddContent(NotesDao)
@@ -75,11 +73,10 @@ class Add_New_Content : AppCompatActivity() {
         val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
 
-        binding?.dialogImage?.setImageResource(R.drawable.iv_setting)
-        binding?.tvDialogHeading?.text = "Select Status for Content"
-        binding?.btnBackNo?.text = "Complete"
-        binding?.btnBackYes?.text = "Panding"
-
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_3)
+        binding?.tvDialogHeading?.text = getString(R.string.select_status_for_content)
+        binding?.btnBackNo?.text = getString(R.string.Complete)
+        binding?.btnBackYes?.text = getString(R.string.pending)
 
         binding?.btnBackNo?.setOnClickListener {
             isContentCompleteStatus = true
@@ -93,15 +90,7 @@ class Add_New_Content : AppCompatActivity() {
         BackDialog.show()
     }
 
-    private fun takePhotoFromCamera() {
-        Toast.makeText(this@Add_New_Content,"Choose photo from camera",Toast.LENGTH_LONG).show()
-    }
 
-    private fun choosePhotoFromGallery() {
-//        requestStoragePermission()
-        Toast.makeText(this@Add_New_Content,"Choose photo from gallery",Toast.LENGTH_LONG).show()
-
-    }
 
 
 
@@ -339,10 +328,17 @@ class Add_New_Content : AppCompatActivity() {
 
 
     private fun BackData() {
+
+
         val BackDialog = Dialog(this)
         BackDialog.setCancelable(false)
         val binding = DialogBinding.inflate(layoutInflater)
         BackDialog.setContentView(binding.root)
+
+        binding?.dialogImage?.setImageResource(R.drawable.iv_image_5)
+        binding?.tvDialogHeading?.text = getString(R.string.discard_changes)
+
+
         binding?.btnBackNo?.setOnClickListener {
             BackDialog.dismiss()
         }
@@ -351,8 +347,8 @@ class Add_New_Content : AppCompatActivity() {
             super.onBackPressed()
             overridePendingTransition(R.drawable.slide_in_right, R.drawable.slide_out_left)
         }
+
         BackDialog.show()
     }
-
 
 }

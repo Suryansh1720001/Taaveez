@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:layout_margin="9dp"
-            android:src="@drawable/iv_delete"
+            android:src="@drawable/iv_image_2"
             android:id="@+id/dialog_image"
             tools:visibility="visible"
             android:visibility="visible"
