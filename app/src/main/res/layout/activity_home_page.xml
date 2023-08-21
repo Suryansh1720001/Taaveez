@@ -194,12 +194,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="18dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="18dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:background="@drawable/selector_option"
             android:elevation="50dp"
-        android:text="@string/add_new_content" />
+            android:text="+"
+            android:layout_marginRight="9dp" />
+
 
 
 <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
