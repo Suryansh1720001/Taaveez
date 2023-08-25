@@ -28,7 +28,7 @@
             android:name=".activity.Add_New_Content"
             android:exported="true" />
         <activity
-            android:name=".activity.OneTimeIntroActivity"
+            android:name=".activity.firstscreen.OneTimeIntroActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -47,7 +47,7 @@
             android:name=".activity.HomePage"
             android:exported="false" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.firstscreen.SplashActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
 

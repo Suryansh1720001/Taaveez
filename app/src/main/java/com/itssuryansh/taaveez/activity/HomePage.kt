@@ -35,7 +35,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.itssuryansh.taaveez.*
 import com.itssuryansh.taaveez.adapter.itemAdapter
+import com.itssuryansh.taaveez.database.TaaveezDao
 import com.itssuryansh.taaveez.databinding.*
+import com.itssuryansh.taaveez.helper.Constants
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.android.synthetic.main.activity_add_new_content.*
 import kotlinx.coroutines.launch
@@ -216,8 +218,6 @@ lateinit var drawerlayout : DrawerLayout
     }
 
 
-
-
     private fun setLocate(Lang: String) {
         val locale = Locale(Lang)
         Locale.setDefault(locale)
@@ -309,7 +309,7 @@ lateinit var drawerlayout : DrawerLayout
     // FOR BUTTON SHARE
     private fun share() {
         val i : ImageView = ImageView(applicationContext)
-        i.setImageResource(R.drawable.banner)
+        i.setImageResource(R.drawable.taaveez_image)
         val bitmapDrawable = i.drawable as BitmapDrawable
         val bitmap = bitmapDrawable.bitmap
         val uri: Uri = getImageToShare(bitmap)

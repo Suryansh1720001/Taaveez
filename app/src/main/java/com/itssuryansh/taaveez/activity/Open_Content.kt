@@ -15,11 +15,10 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.*
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.helper.Constants
 import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.TaaveezApp
 import com.itssuryansh.taaveez.databinding.ActivityOpenContentBinding
@@ -188,7 +187,7 @@ class Open_Content : AppCompatActivity() {
 
     private fun dialog_about_open_content() {
         val AboutDialog = Dialog(this)
-        AboutDialog.setCancelable(false)
+        AboutDialog.setCancelable(true)
         val binding = DialogAboutOfOpenContentBinding.inflate(layoutInflater)
         AboutDialog.setContentView(binding.root)
 

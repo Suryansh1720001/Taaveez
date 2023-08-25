@@ -7,16 +7,16 @@
     android:background="?attr/colorWhite"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.itssuryansh.taaveez.activity.SplashActivity">
+    tools:context="com.itssuryansh.taaveez.activity.firstscreen.SplashActivity">
 
 
     <ImageView
         android:id="@+id/ivBook"
         android:layout_width="wrap_content"
         android:layout_height="350dp"
-        android:src="@drawable/splash_screen_image"
+        android:src="@drawable/taaveez_icon"
         app:layout_constraintBottom_toTopOf="@+id/flheadingMain"
-       android:layout_marginBottom="60dp"
+       android:layout_marginBottom="40dp"
         />
 
 
@@ -27,11 +27,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
                 android:fontFamily="serif"
                 android:text="@string/app_name"
                 android:textColor="@color/black"
-                android:textSize="85sp"
+                android:textSize="90sp"
                  />
 
 

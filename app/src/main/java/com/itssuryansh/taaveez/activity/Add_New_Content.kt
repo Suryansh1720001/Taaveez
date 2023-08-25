@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.TaaveezApp
-import com.itssuryansh.taaveez.TaaveezDao
+import com.itssuryansh.taaveez.database.TaaveezDao
 import com.itssuryansh.taaveez.TaaveezEntity
 import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.databinding.ActivityAddNewContentBinding

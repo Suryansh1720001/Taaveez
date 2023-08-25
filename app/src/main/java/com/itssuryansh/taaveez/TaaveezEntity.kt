@@ -16,5 +16,4 @@ data class TaaveezEntity(
     val favorite:Boolean=false,
     val image : String?=null
 
-
 )

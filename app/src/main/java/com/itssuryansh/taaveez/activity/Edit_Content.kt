@@ -25,8 +25,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.itssuryansh.taaveez.*
+import com.itssuryansh.taaveez.database.TaaveezDao
 import com.itssuryansh.taaveez.databinding.ActivityEditContentBinding
 import com.itssuryansh.taaveez.databinding.DialogBinding
+import com.itssuryansh.taaveez.helper.Constants
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -36,6 +38,7 @@ class Edit_Content : AppCompatActivity() {
     private var binding:ActivityEditContentBinding?=null
     private lateinit var TaaveezDao: TaaveezDao
     private var isContentCompleteStatus: Boolean? = null
+
 
     var CreatedDate:String=""
 

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
-import com.itssuryansh.taaveez.Constants
+import com.itssuryansh.taaveez.helper.Constants
 import com.itssuryansh.taaveez.databinding.ActivityWebViewBinding
 
 class WebView : AppCompatActivity() {

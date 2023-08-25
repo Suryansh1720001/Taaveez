@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.viewpager.widget.PagerAdapter
 import com.itssuryansh.taaveez.R
-import com.itssuryansh.taaveez.activity.OneTimeIntroActivity
+import com.itssuryansh.taaveez.activity.firstscreen.OneTimeIntroActivity
 
 
 class OneTimeIntroPagerAdapter(private val context: OneTimeIntroActivity,
