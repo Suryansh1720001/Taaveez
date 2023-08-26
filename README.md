@@ -1,15 +1,16 @@
-![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
+<!-- ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50).-->
 
 
-## 🤔 What is this App?
+
+# Taaveez
  
 ✍️ This app will essentially provide simple and advanced functions for saving your poetry, stories, and other creative content in a beautifully designed interface.
 
 ## 🔗 Download the App 
 
-<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="30%" /></a>
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="15%" /></a>
 
-<br>
+
 
 
 
@@ -18,7 +19,6 @@
 It provides a creative environment for people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
 
 <img src ="https://github.com/Taaveez/Taaveez-android/assets/85965606/7eee25d3-e14f-4935-9660-5d15515571cb" width="700" heigth="600">
-
 
 ### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
 
