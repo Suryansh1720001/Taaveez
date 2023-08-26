@@ -2,7 +2,7 @@
 
 
 
-# Taaveez
+# Taaveez-android
  
 ✍️ This app will essentially provide simple and advanced functions for saving your poetry, stories, and other creative content in a beautifully designed interface.
 
