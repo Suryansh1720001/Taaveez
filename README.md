@@ -64,7 +64,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 ## 🔏 Privacy Policy
 
-### [Check out the Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
+- [Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
 
 # <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
