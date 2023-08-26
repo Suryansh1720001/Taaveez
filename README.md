@@ -73,10 +73,23 @@ Under the umbrella of "Technology" lies a powerful combination of
   <p align="center">
   <a href="https://github.com/suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width="17%" /></a>
 
-  <p align="center">
-  <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+<!--   <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href="https://twitter.com/itssuryanshP"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white" /></a>
 <!--   <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-  <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<!--   <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp; --> 
+ <div align="center">
+        <a href="https://www.linkedin.com/in/itssuryansh/"><img height="20" width="70" src="https://img.shields.io/badge/Linkedin-0077b5?style=flat&logo=linkedin" /></a>
+        <a href="mailto:itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white" /></a>
+       <a href="https://medium.com/@itssuryansh"><img  height="19.5" width="88" src="https://user-images.githubusercontent.com/85965606/213698027-8bb2ee74-7440-49dd-a5b7-a234b7722a51.png" /></a>
+        <a href="https://twitter.com/itssuryanshP"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white" /></a>
+        <a href="https://github.com/Suryansh1720001"><img  height="22" width="81" src="https://img.shields.io/badge/GitHub-black.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
+        <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h?r=nametag"><img  height="20" width="88" src="https://img.shields.io/badge/-INSTAGRAM-cc0099?&style=for-the-badge&logo=instagram&logoColor=white" /></a>
+    
+    
+ </div>
+ 
+   
 </p>
 
 
