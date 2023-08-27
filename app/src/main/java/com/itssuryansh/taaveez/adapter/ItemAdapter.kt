@@ -29,11 +29,11 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
     class ViewHolder(binding: ItemContentBinding): RecyclerView.ViewHolder(binding.root){
 
 
-        val CVMain = binding.CVMain
+        val CvItem = binding.CvItem
         val tvTopic = binding.tvtextTopic
         val ivEdit = binding.ivEdit
         val ivDelete = binding.ivDelete
-        val llTopic = binding.llTopic
+//        val llTopic = binding.llTopic
         val  ivShare= binding.ivShare
         val tvDate = binding.tvDate
         val tvSmallDes = binding.tvSmallDes
@@ -78,7 +78,7 @@ class itemAdapter(private var items: ArrayList<TaaveezEntity>,
         holder.ivDelete.setOnClickListener{
             deleteListener.invoke(item.id)
         }
-        holder.llTopic.setOnClickListener{
+        holder.CvItem.setOnClickListener{
             OpenListener.invoke(item.id)
         }
         holder.ivShare.setOnClickListener{
