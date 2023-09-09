@@ -1,23 +1,24 @@
-![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50)
+<!-- ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50).-->
 
 
-## 🤔 What is this App?
+
+# Taaveez-android
  
 ✍️ This app will essentially provide simple and advanced functions for saving your poetry, stories, and other creative content in a beautifully designed interface.
 
 ## 🔗 Download the App 
 
-<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="30%" /></a>
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="25%" /></a>
 
-<br>
+
+
 
 
 # 📜App Description
  
 It provides a creative environment for people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
 
-<img src ="https://user-images.githubusercontent.com/85965606/210629140-4479c8b7-cca8-42a0-88b6-33ec72b2e4be.png" width="700" heigth="600">
-
+<img src ="https://github.com/Taaveez/Taaveez-android/assets/85965606/7eee25d3-e14f-4935-9660-5d15515571cb" width="700" heigth="600">
 
 ### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
 
@@ -36,11 +37,15 @@ Bilingual and dynamic, this platform offers unlimited updates and engaging visua
 ## <h1 align=center>Screenshots 📸</h1>
 
 
+
+
+
+
 ||||
 |:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://user-images.githubusercontent.com/85965606/221394554-38f9a33f-bf1e-49cc-a489-a008835b73b8.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394567-767b9083-e34b-4524-8536-e152b2f7349b.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/222893516-51d1eb82-2f43-4d66-987d-54f111c155f4.png" width="80%" height="70%"> |
-| <img src= "https://user-images.githubusercontent.com/85965606/221394572-797c28dd-c749-4b71-a4da-fdcc8f7a3b17.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394882-7a325925-24b9-48c6-bee3-52502ee16ace.png" width="80%" height="70%"> | <img src= "https://user-images.githubusercontent.com/85965606/221394574-77e22e12-e32c-44c3-baff-3a221b4ee08c.png" width="80%" height="70%"> |
-|  | <img src= "https://user-images.githubusercontent.com/85965606/221394573-599491de-580d-4e0b-a43b-440cc1a6309b.png" width="80%" height="70%">  |
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/c55a50b7-c3b4-4e90-b72c-c1e06f19d574" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/88d1f136-2f86-48cf-a9d2-d81ba53c00a9" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/4080cc41-bd3b-4dad-87d1-ceff88cc50a1" width="80%" height="70%"> |
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/157bcc31-d94c-4858-834c-34c85e5c3666" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d597c2a4-94e0-4a44-958c-d07dae4c7f76" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/6e4b8067-30f7-4bbf-9c9f-3d5a83785659" width="80%" height="70%"> |
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/785e2a60-6910-4753-bd49-813bb6b93ac6" width="80%" height="70%"> | | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d9baf0ca-61a0-461d-836d-fad614c97e6e" width="80%" height="70%">  |
 
 
 
@@ -59,7 +64,7 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 ## 🔏 Privacy Policy
 
-<a href="https://sites.google.com/view/taaveez-privacy-policy/home"><img src="https://user-images.githubusercontent.com/85965606/221396116-14911e32-68aa-4184-acea-02ea89930bea.png" width="20%" /></a>
+- [Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
 
 # <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
@@ -68,10 +73,23 @@ Under the umbrella of "Technology" lies a powerful combination of
   <p align="center">
   <a href="https://github.com/suryansh1720001"><img src="https://avatars.githubusercontent.com/Suryansh1720001" width="17%" /></a>
 
-  <p align="center">
-  <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+<!--   <a target="_blank" href="https://www.linkedin.com/in/itssuryansh/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href="https://twitter.com/itssuryanshP"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white" /></a>
 <!--   <a href="itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/gmail-%23D14836.svg?&style=for-the-badge&logo=gmail&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-  <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<!--   <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h/"><img src="https://img.shields.io/badge/instagram-%23D14836.svg?&style=for-the-badge&logo=instagram&logoColor=pink" /></a>&nbsp;&nbsp;&nbsp;&nbsp; --> 
+ <div align="center">
+        <a href="https://www.linkedin.com/in/itssuryansh/"><img height="20" width="70" src="https://img.shields.io/badge/Linkedin-0077b5?style=flat&logo=linkedin" /></a>
+        <a href="mailto:itssuryanshprajapati@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white" /></a>
+       <a href="https://medium.com/@itssuryansh"><img  height="19.5" width="88" src="https://user-images.githubusercontent.com/85965606/213698027-8bb2ee74-7440-49dd-a5b7-a234b7722a51.png" /></a>
+        <a href="https://twitter.com/itssuryanshP"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=flat&logo=twitter&logoColor=white" /></a>
+        <a href="https://github.com/Suryansh1720001"><img  height="22" width="81" src="https://img.shields.io/badge/GitHub-black.svg?&style=for-the-badge&logo=github&logoColor=white" /></a>
+        <a href="https://www.instagram.com/_its_s.u.r.y.a.n.s.h?r=nametag"><img  height="20" width="88" src="https://img.shields.io/badge/-INSTAGRAM-cc0099?&style=for-the-badge&logo=instagram&logoColor=white" /></a>
+    
+    
+ </div>
+ 
+   
 </p>
 
 
