@@ -217,9 +217,9 @@ class Open_Content : AppCompatActivity() {
 
 
 
-        binding?.btnAboutOpenContentBack?.setOnClickListener {
-            AboutDialog.dismiss()
-        }
+//        binding?.btnAboutOpenContentBack?.setOnClickListener {
+//            AboutDialog.dismiss()
+//        }
         AboutDialog.show()
     }
 

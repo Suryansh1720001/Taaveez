@@ -197,7 +197,7 @@ class Add_New_Content : AppCompatActivity() {
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
-            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 

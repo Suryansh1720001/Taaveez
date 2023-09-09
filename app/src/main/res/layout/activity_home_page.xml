@@ -57,20 +57,21 @@
 
 
 
-            <TextView
-                android:id="@+id/tvNotesHeadingHindi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="तावीज़"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:layout_marginBottom="3dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="20dp"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/tvNotesHeadingHindi"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="तावीज़"-->
+<!--                android:textSize="30sp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_marginBottom="3dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                />-->
+
             <TextView
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
@@ -80,25 +81,27 @@
                 android:text="@string/taaveez"
                 android:textSize="40sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/white"
+
                 />
 
-            <TextView
-                android:id="@+id/tvNotesHeadingUrdu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="تَعْوِیذ"
-                android:textSize="30sp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:layout_marginBottom="3dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="10dp"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/tvNotesHeadingUrdu"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="تَعْوِیذ"-->
+<!--                android:textSize="30sp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:layout_marginBottom="3dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                />-->
 
 
         </LinearLayout>

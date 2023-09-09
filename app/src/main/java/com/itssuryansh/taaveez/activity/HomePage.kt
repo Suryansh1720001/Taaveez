@@ -40,6 +40,7 @@ import com.itssuryansh.taaveez.databinding.*
 import com.itssuryansh.taaveez.helper.Constants
 import jp.wasabeef.richeditor.RichEditor
 import kotlinx.android.synthetic.main.activity_add_new_content.*
+import kotlinx.android.synthetic.main.menu_header.tv_navigationBar_heading
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -71,9 +72,11 @@ lateinit var drawerlayout : DrawerLayout
         setContentView(binding?.root)
 
 
-        val typeface: Typeface = Typeface.createFromAsset(  assets,"arabian_onenighjtstand.ttf")
+        val typeface: Typeface = Typeface.createFromAsset(  assets,"museo.ttf")
 
         binding?.tvNotesHeading?.typeface = typeface
+
+
 
 
         // Retrieve the boolean value from SharedPreferences
@@ -107,6 +110,7 @@ lateinit var drawerlayout : DrawerLayout
 //        drawerlayout.addDrawerListener(toggle)
 //        toggle.isDrawerIndicatorEnabled = true
 //        toggle.syncState()
+
 
         navigationView = findViewById<View>(R.id.navigation_menu) as NavigationView
         navigationView.setNavigationItemSelectedListener { menuItem ->
@@ -845,7 +849,7 @@ lateinit var drawerlayout : DrawerLayout
             val c = Calendar.getInstance()
             val dateTime = c.time
             Log.e("Date: ", "" + dateTime)
-            val sdf = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
             val date = sdf.format(dateTime)
             Log.e("Formatted Date: ", "" + date)
 
