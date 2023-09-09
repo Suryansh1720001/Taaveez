@@ -8,7 +8,7 @@
 
 ## 🔗 Download the App 
 
-<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="15%" /></a>
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="25%" /></a>
 
 
 
