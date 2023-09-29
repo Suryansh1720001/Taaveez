@@ -199,7 +199,7 @@ Wait for your submission to be accepted and your PR to be merged by a maintainer
 - Take a look at [`contributing guidelines`](CONTRIBUTING.md).
 - Refer [GitHub Flow](https://guides.github.com/introduction/flow).
 
-
+<!--
 ## License<a name = "license"></a>
 
 ```
@@ -226,6 +226,7 @@ with all your source code CLEARLY DISCLOSED on any code hosting platform like Gi
 how to obtain the original software, should clearly STATE ALL CHANGES made and should RETAIN all copyrights.
 Use of this software under any "non-free" license is NOT permitted.
 ```
+--->
 
 See the [Public License](https://github.com/Taaveez/Taaveez-android/blob/master/LICENSE) for more details.
 
