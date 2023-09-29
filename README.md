@@ -227,7 +227,7 @@ how to obtain the original software, should clearly STATE ALL CHANGES made and s
 Use of this software under any "non-free" license is NOT permitted.
 ```
 
-See the [GNU General Public License](https://github.com/Taaveez/Taaveez-android/blob/master/LICENSE) for more details.
+See the [Public License](https://github.com/Taaveez/Taaveez-android/blob/master/LICENSE) for more details.
 
 ## Code of Conduct
 
