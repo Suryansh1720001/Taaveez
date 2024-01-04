@@ -17,7 +17,6 @@ import com.itssuryansh.taaveez.adapter.OneTimeIntroPagerAdapter
 class OneTimeIntroActivity : AppCompatActivity(), OneTimeIntroPagerAdapter.ViewPagerAdapterListener{
 
 
-
     private lateinit var mSlideViewPager: ViewPager
     private lateinit var next: FrameLayout
     private lateinit var skipbtn: FrameLayout
