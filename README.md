@@ -66,6 +66,48 @@ Under the umbrella of "Technology" lies a powerful combination of
 
 - [Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
 
+
+
+# Features ✨
+
+_Taaveez_ focuses on the following key things:
+
+- Single Activity Design.
+- Offline Capability - Content. ✈️
+- Clean and Simple Material UI. 🎨
+- Dark mode. 🌗
+- Markdown keyboard featues. 👀
+- Detailed and Normal View 🖌
+- Share the content 📤
+
+# Built with 🛠
+
+- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous calls and tasks to utilize threads.
+- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
+  - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
+  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes.
+  - [Room](https://developer.android.com/topic/libraries/architecture/room) - Room is an Android library which is an ORM that wraps Android's native SQLite database.
+  - [StateFlow and SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#:~:text=StateFlow%20is%20a%20state%2Dholder,property%20of%20the%20MutableStateFlow%20class.) - StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state updates and emit values to multiple consumers.
+<!--
+- [Dependency Injection](https://developer.android.com/training/dependency-injection) -
+    - [Hilt-Dagger](https://dagger.dev/hilt/) - A standard way to incorporate Dagger dependency injection into an Android application.
+    - [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting ```ViewModel```. 
+    -->
+- [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
+- [Accompanist](https://google.github.io/accompanist/) - A collection of extension libraries for Jetpack Compose.
+<!--
+- [Biometric](https://developer.android.com/jetpack/androidx/releases/biometric) - Authenticate with biometrics or device credentials, and perform cryptographic operations.
+--->
+
+# Architecture 👷‍♂️
+This app uses [MVVM(Model View View-Model)](https://developer.android.com/topic/architecture#recommended-app-arch) architecture.
+
+![image](https://github.com/Taaveez/Taaveez-android/assets/85965606/4e2286e2-1a54-4591-8e8a-8d7b15e31e2f)
+
+
+
+
 # <h1 align=center>⭐ OPEN-SOURCE CONTRIBUTION ⭐</h1>
 
 <h1 align=center> Project Admin  🤵 </h1>
@@ -92,7 +134,7 @@ Under the umbrella of "Technology" lies a powerful combination of
    
 </p>
 
-
+<!--
 # 🖱️ How to Contribute 
 
 If you think that you can add a new feature or want to fix a bug, we invite you to contribute to Taaveez and make this project better. To start contributing, follow the below instructions:
@@ -182,6 +224,9 @@ git push -u origin <your_branch_name>
 Congratulations🎉, you have made a PR to the Calculator.
 Wait for your submission to be accepted and your PR to be merged by a maintainer.
 
+
+-->
+
 ## 🫴 How to Do Your First Pull Request?  
    ***(I am providing some Resource from where you can Learn)***
 
@@ -199,7 +244,7 @@ Wait for your submission to be accepted and your PR to be merged by a maintainer
 - Take a look at [`contributing guidelines`](CONTRIBUTING.md).
 - Refer [GitHub Flow](https://guides.github.com/introduction/flow).
 
-
+<!--
 ## License<a name = "license"></a>
 
 ```
@@ -226,8 +271,9 @@ with all your source code CLEARLY DISCLOSED on any code hosting platform like Gi
 how to obtain the original software, should clearly STATE ALL CHANGES made and should RETAIN all copyrights.
 Use of this software under any "non-free" license is NOT permitted.
 ```
+--->
 
-See the [GNU General Public License](https://github.com/Taaveez/Taaveez-android/blob/master/LICENSE) for more details.
+See the [Public License](https://github.com/Taaveez/Taaveez-android/blob/master/LICENSE) for more details.
 
 ## Code of Conduct
 
