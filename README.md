@@ -1,84 +1,70 @@
 <!-- ![header](https://capsule-render.vercel.app/api?type=rect&color=gradient&height=100&section=footer&text=Taaveez+-+तावीज़+-+تَعْوِیذ&fontSize=50).-->
 
+<div align="center">
+</br>
+<img src="https://github.com/Suryansh1720001/Taaveez/assets/85965606/0666e066-511d-4de3-babd-ff2ddcd8dc62" width="100" />
+
+</div>
+
+<h1 align="center">Taaveez</h1>
+
+<h4 align="center">✍️ Say Hello to Taaveez, the cool new app made just for artists and entertainers. It's super easy to use! You can write down your ideas and cool stuff with just a few taps.    
+This project showcases the Good implementation of Android with proper architecture design with Modern Android development tools.      
+Made with ♥ for all Android Developers
+<br>
+<br>
+I’m building it in public. So the idea is for everyone to contribute, leave comments, suggest ideas, etc. using the <a href="https://github.com/Suryansh1720001/Taaveez/discussions">Discussions</a> tab.
+<br>
+<br>
+Please go through the <a href="https://github.com/Suryansh1720001/Taaveez/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> file before you start contributing.
+</h4>
 
 
-# Taaveez-android
- 
-✍️ This app will essentially provide simple and advanced functions for saving your poetry, stories, and other creative content in a beautifully designed interface.
-
-## 🔗 Download the App 
-
-<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img src="https://user-images.githubusercontent.com/85965606/220664283-12521007-d40f-4624-afc5-6ca049147087.png" width="25%" /></a>
 
 
-
-
-
-# 📜App Description
- 
-It provides a creative environment for people who are fond of writing. This application targets poets and book authors who prefer innovative writing techniques.
-
+<div align="center">
+</br>
 <img src ="https://github.com/Taaveez/Taaveez-android/assets/85965606/7eee25d3-e14f-4935-9660-5d15515571cb" width="700" heigth="600">
 
-### Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
+</div>
 
+
+
+<div align="center">
+  
+# ⬇️ Download
+<a href="https://play.google.com/store/apps/details?id=com.itssuryansh.taaveez"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=80px />
+<a href="https://github.com/Suryansh1720001/Taaveez/releases/latest"><img alt="Get it on GitHub" src="https://user-images.githubusercontent.com/69304392/148696068-0cfea65d-b18f-4685-82b5-329a330b1c0d.png" height=80px />
+</div>
+
+
+
+# Features ✨
+Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
+
+_Taaveez_ focuses on the following key things:
+
+- Simple Activity Design.
+- Offline Capability - Content.
+- Clean and Simple Material UI. 🎨
+- Dark mode. 🌗
+- Material UI. 🖌
+- Switch between layouts. 🌟
+- Share the content easily. 📤
+- Multilingual support. 
+
+
+
+<!--
 The foundation of this platform lies in the Kotlin language, empowering content creators to express their thoughts and ideas in an array of genres. 
 - From the eloquent beauty of **poems or कविताएं**, 
 - to the captivating narratives of **stories or कहानियां**, 
 - and even the profound wisdom of **couplets or दोहे**,
 - the possibilities for creativity are endless.
-
-## 🌐Language
-
-Bilingual and dynamic, this platform offers unlimited updates and engaging visuals to elevate your content in **Hindi and English**.
+-->
 
 
 
-## <h1 align=center>Screenshots 📸</h1>
-
-
-
-
-
-
-||||
-|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
-| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/c55a50b7-c3b4-4e90-b72c-c1e06f19d574" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/88d1f136-2f86-48cf-a9d2-d81ba53c00a9" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/4080cc41-bd3b-4dad-87d1-ceff88cc50a1" width="80%" height="70%"> |
-| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/157bcc31-d94c-4858-834c-34c85e5c3666" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d597c2a4-94e0-4a44-958c-d07dae4c7f76" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/6e4b8067-30f7-4bbf-9c9f-3d5a83785659" width="80%" height="70%"> |
-| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/785e2a60-6910-4753-bd49-813bb6b93ac6" width="80%" height="70%"> | | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d9baf0ca-61a0-461d-836d-fad614c97e6e" width="80%" height="70%">  |
-
-
-
-## 🖥️ Technology
-
-Under the umbrella of "Technology" lies a powerful combination of
-
-- Kotlin language
-- xml language
-- Android Studio
-- Room database
-
-⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
-
-<br>
-
-## 🔏 Privacy Policy
-
-- [Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
-
-
-
-# Features ✨
-
-_Taaveez_ focuses on the following key things:
-
-- Single Activity Design.
-- Offline Capability - Content. ✈️
-- Clean and Simple Material UI. 🎨
-- Dark mode. 🌗
-- Markdown keyboard featues. 👀
-- Detailed and Normal View 🖌
-- Share the content 📤
 
 # Built with 🛠
 
@@ -104,6 +90,37 @@ _Taaveez_ focuses on the following key things:
 This app uses [MVVM(Model View View-Model)](https://developer.android.com/topic/architecture#recommended-app-arch) architecture.
 
 ![image](https://github.com/Taaveez/Taaveez-android/assets/85965606/4e2286e2-1a54-4591-8e8a-8d7b15e31e2f)
+
+
+## 🔏 Privacy Policy
+
+- Click here for - [Privacy Policy](https://taaveez.vercel.app/privacy-policy/taaveez-privacy-policy.html)
+
+
+
+
+## <h1 align=center>Screenshots 📸</h1>
+
+
+||||
+|:----------------------------------------:|:-----------------------------------------:|:-----------------------------------------:|
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/c55a50b7-c3b4-4e90-b72c-c1e06f19d574" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/88d1f136-2f86-48cf-a9d2-d81ba53c00a9" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/4080cc41-bd3b-4dad-87d1-ceff88cc50a1" width="80%" height="70%"> |
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/157bcc31-d94c-4858-834c-34c85e5c3666" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d597c2a4-94e0-4a44-958c-d07dae4c7f76" width="80%" height="70%"> | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/6e4b8067-30f7-4bbf-9c9f-3d5a83785659" width="80%" height="70%"> |
+| <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/785e2a60-6910-4753-bd49-813bb6b93ac6" width="80%" height="70%"> | | <img src= "https://github.com/Taaveez/Taaveez-android/assets/85965606/d9baf0ca-61a0-461d-836d-fad614c97e6e" width="80%" height="70%">  |
+
+
+<!--
+## 🖥️ Technology
+
+Under the umbrella of "Technology" lies a powerful combination of
+
+- Kotlin language
+- xml language
+- Android Studio
+- Room database
+
+⭐ And naturally, the Taaveez App is available for all to explore, with its open-source code hosted on a [Public Repository](https://github.com/Suryansh1720001/Taaveez).
+-->
 
 
 
