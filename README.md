@@ -2,7 +2,7 @@
 
 <div align="center">
 </br>
-<img src="https://github.com/Suryansh1720001/Taaveez/assets/85965606/0666e066-511d-4de3-babd-ff2ddcd8dc62" width="100" />
+<img src="art/app_icon.png" width="150" />
 
 </div>
 
