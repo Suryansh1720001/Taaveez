@@ -8,9 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.activity.HomePage
-
 import com.itssuryansh.taaveez.databinding.ActivitySplashBinding
-
 
 class SplashActivity : AppCompatActivity() {
     private var binding: ActivitySplashBinding?=null
