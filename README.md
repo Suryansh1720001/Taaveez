@@ -40,7 +40,7 @@ Please go through the <a href="https://github.com/Suryansh1720001/Taaveez/blob/m
 
 
 # Features ✨
-Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential!You can save all your stuff in one app.
+Unleash your artistic expression with Taaveez, the perfect app for creatives. Say goodbye to disorganization, easily save, update, and share your work with a few taps.Track your journey and refine your work anytime, anywhere. Download now and unleash your creative potential! You can save all your stuff in one app.
 
 _Taaveez_ focuses on the following key things:
 
@@ -162,11 +162,11 @@ If you think that you can add a new feature or want to fix a bug, we invite you 
 
 3. Create a Git repository.
 
-   Run command `git init`
+   Run the command `git init`
 
 4. [Fork](https://github.com/Suryansh1720001/Taaveez) the project. Click on the <a href="https://github.com/Suryansh1720001/Taaveez/fork"><img src="https://i.imgur.com/G4z1kEe.png" height="15" width="15"></a> icon in the top right to get started.
 
-5. Clone your forked repository of project.
+5. Clone your forked repository of the project.
 
 ```bash
 git clone https://github.com/<your_username>/Taaveez.git
@@ -252,7 +252,7 @@ Wait for your submission to be accepted and your PR to be merged by a maintainer
 
 ## 👩🏽‍💻 Contributing
 
-- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Contributions make the open-source community such an amazing place to learn, inspire, and create.
 - Any contributions you make are greatly appreciated.
 - Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
@@ -273,18 +273,18 @@ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
 ```
 
 ```
-Being Open Source doesn't mean you can just make a copy of the app and upload it on playstore or sell
-a closed source copy of the same.
+Being Open Source doesn't mean you can just make a copy of the app and upload it on play store or sell
+a closed-source copy of the same.
 Read the following carefully:
-1. Any copy of a software under GPL must be under same license. So you can't upload the app on a closed source
+1. Any copy of software under GPL must be under the same license. So you can't upload the app on a closed-source
   app repository like PlayStore/AppStore without distributing the source code.
 2. You can't sell any copied/modified version of the app under any "non-free" license.
-   You must provide the copy with the original software or with instructions on how to obtain original software,
-   should clearly state all changes, should clearly disclose full source code, should include same license
+   You must provide a copy with the original software or with instructions on how to obtain the original software,
+   should clearly state all changes, should disclose full source code, should include the same license
    and all copyrights should be retained.
 
 In simple words, You can ONLY use the source code of this app for `Open Source` Project under `GPL v3.0` or later
-with all your source code CLEARLY DISCLOSED on any code hosting platform like GitHub, with clear INSTRUCTIONS on
+with all your source code DISCLOSED on any code hosting platform like GitHub, with clear INSTRUCTIONS on
 how to obtain the original software, should clearly STATE ALL CHANGES made and should RETAIN all copyrights.
 Use of this software under any "non-free" license is NOT permitted.
 ```
