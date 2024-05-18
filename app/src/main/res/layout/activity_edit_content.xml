@@ -27,46 +27,63 @@
             >
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_update_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-          >
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/edit_content"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </androidx.appcompat.widget.Toolbar>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:id="@+id/UpdateisComplete"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:background="@drawable/custom_button"
-            android:layout_marginTop="8dp"
-            android:text="@string/status"
-            android:layout_marginRight="10dp" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_update_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnUpdatePoem"
-            android:text="@string/update"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:textAllCaps="false"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:background="@drawable/custom_button"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp" />
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_content"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </androidx.appcompat.widget.Toolbar>
+
+                <Button
+                    android:id="@+id/UpdateisComplete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/status"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnUpdatePoem"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnUpdatePoem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/update"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/toolbar_update_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </FrameLayout>
 

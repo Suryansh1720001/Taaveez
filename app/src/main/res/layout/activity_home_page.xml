@@ -34,88 +34,106 @@
     android:background="@drawable/heading_bg">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/menuButton"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:gravity="start"
-            app:iconTint="@android:color/white"
-            >
+            android:layout_height="match_parent">
 
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:weightSum="3"
-            >
-
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvNotesHeadingHindi"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="तावीज़"-->
-<!--                android:textSize="30sp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_marginBottom="3dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:layout_marginLeft="20dp"-->
-<!--                />-->
-
-            <TextView
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:id="@+id/tvNotesHeading"
+            <ImageButton
+                android:id="@+id/btn_home_page_menu"
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:src="@drawable/menu_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/menuButton2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/taaveez"
-                android:textSize="40sp"
-                android:layout_weight="1"
-                android:textStyle="bold"
-                android:layout_gravity="center"
+                android:layout_gravity="top"
+                android:gravity="start"
+                app:iconTint="@android:color/white">
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:textColor="@color/white"
-
-                />
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvNotesHeadingUrdu"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="تَعْوِیذ"-->
-<!--                android:textSize="30sp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:gravity="center"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:layout_marginBottom="3dp"-->
-<!--                android:layout_marginRight="20dp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                />-->
+                android:orientation="horizontal"
+                android:weightSum="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/menuButton2"
+                app:layout_constraintStart_toStartOf="@+id/menuButton2"
+                app:layout_constraintTop_toTopOf="parent">
 
 
-        </LinearLayout>
+                <!--            <TextView-->
+                <!--                android:id="@+id/tvNotesHeadingHindi"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="तावीज़"-->
+                <!--                android:textSize="30sp"-->
+                <!--                android:layout_gravity="center"-->
+                <!--                android:gravity="center"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:textColor="@color/white"-->
+                <!--                android:layout_marginBottom="3dp"-->
+                <!--                android:layout_marginRight="10dp"-->
+                <!--                android:layout_marginLeft="20dp"-->
+                <!--                />-->
+
+                <TextView
+                    android:id="@+id/tvNotesHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/taaveez"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+
+                    />
+
+                <!--            <TextView-->
+                <!--                android:id="@+id/tvNotesHeadingUrdu"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="تَعْوِیذ"-->
+                <!--                android:textSize="30sp"-->
+                <!--                android:layout_gravity="center"-->
+                <!--                android:gravity="center"-->
+                <!--                android:layout_weight="1"-->
+                <!--                android:textColor="@color/white"-->
+                <!--                android:layout_marginBottom="3dp"-->
+                <!--                android:layout_marginRight="20dp"-->
+                <!--                android:layout_marginLeft="10dp"-->
+                <!--                />-->
 
 
-        <ImageButton
-            android:id="@+id/btn_home_page_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/menu_icon"
-            android:layout_gravity="end"
-            android:layout_marginRight="2dp"/>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/menuButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="start"
+                app:iconTint="@android:color/white">
+
+            </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </FrameLayout>
@@ -182,23 +200,20 @@
 
 
         <TextView
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/idFABAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="18dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/selector_option"
             android:elevation="50dp"
-        android:text="@string/add_new_content" />
+            android:gravity="center"
+            android:padding="18dp"
+            android:text="@string/add_new_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
 <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
@@ -270,13 +285,14 @@
 
     <!--</ScrollView>-->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:theme="@style/Theme.AppCompat.DayNight"
-        android:id="@+id/navigation_menu"
-        app:headerLayout="@layout/menu_header"
-        app:menu="@menu/side_menu"
+        android:layout_gravity="start"
         android:background="?attr/bg"
-        android:layout_gravity = "start" />
+        android:theme="@style/Theme.AppCompat.DayNight"
+        android:visibility="gone"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/side_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
