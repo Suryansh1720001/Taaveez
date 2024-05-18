@@ -9,6 +9,7 @@
         android:id="@+id/url_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
         android:hint="URL with https:// starting"
         android:inputType="textUri" />
 
@@ -16,6 +17,7 @@
         android:id="@+id/title_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
         android:hint="Title"
         android:inputType="text" />
 

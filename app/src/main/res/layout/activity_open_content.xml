@@ -38,6 +38,7 @@
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/belgrano"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="28sp"
@@ -87,18 +88,18 @@
 
             >
 
-        <TextView
-            android:textColor="?attr/text"
-            android:id="@+id/tvContentDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"
-            tools:text="Poem DEs"
-            android:textSize="22sp"
-            android:layout_marginBottom="10dp"
-            />
+            <TextView
+                android:id="@+id/tvContentDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/lato"
+                android:textColor="?attr/text"
+                android:textSize="22sp"
+                tools:text="Poem DEs" />
 
         </LinearLayout>
     </ScrollView>

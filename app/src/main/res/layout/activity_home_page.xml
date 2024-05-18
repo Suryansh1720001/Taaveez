@@ -50,7 +50,9 @@
                 android:src="@drawable/menu_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/menuButton2"
@@ -58,7 +60,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:gravity="start"
-                app:iconTint="@android:color/white">
+                app:iconTint="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -98,13 +104,13 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/lato_bold"
                     android:gravity="center"
                     android:text="@string/taaveez"
                     android:textColor="@color/white"
                     android:textSize="40sp"
-                    android:textStyle="bold"
 
-                    />
+                    android:textStyle="bold" />
 
                 <!--            <TextView-->
                 <!--                android:id="@+id/tvNotesHeadingUrdu"-->
@@ -130,7 +136,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:gravity="start"
-                app:iconTint="@android:color/white">
+                app:iconTint="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             </androidx.appcompat.widget.Toolbar>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -156,47 +164,43 @@
         app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 
-    <LinearLayout
+        <LinearLayout
 
-        android:id="@+id/llnoData"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@id/iv_noData"
-        app:layout_constraintTop_toBottomOf="@id/flheading"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
+            android:id="@+id/llnoData"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
 
 
-        >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:src="@drawable/iv_no_data"
-        android:id="@+id/iv_noData"
-        tools:visibility="visible"
-        android:visibility="visible"
-        android:layout_marginBottom="5dp"
-        />
+            <ImageView
+                android:id="@+id/iv_noData"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/iv_no_data"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
 
-    <TextView
-        android:id="@+id/tvNoDataAvailable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="casual"
-        android:gravity="center"
-        android:text="@string/no_data_available"
-        android:textColor="?attr/text"
-        android:textSize="18sp"
-        android:visibility="visible"
-        android:textStyle="bold"
-        tools:visibility="visible" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvNoDataAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/architects_daughter"
+                android:gravity="center"
+                android:text="@string/no_data_available"
+                android:textColor="?attr/text"
+                android:textSize="18sp"
+                android:visibility="visible"
+                tools:visibility="visible" />
+        </LinearLayout>
 
 
         <TextView
@@ -205,8 +209,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="9dp"
             android:layout_marginBottom="15dp"
+            android:layout_marginRight="9dp"
             android:background="@drawable/selector_option"
             android:elevation="50dp"
+            android:fontFamily="@font/lato"
             android:gravity="center"
             android:padding="18dp"
             android:text="@string/add_new_content"
@@ -227,27 +233,23 @@
 <!--            />-->
 
 
-
-
-
         <FrameLayout
-            android:visibility="gone"
-            android:layout_weight="1"
+            android:id="@+id/flbottom"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/flbottom"
+            android:layout_weight="1"
             android:background="@drawable/bottom_bg"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="2"
                 android:gravity="center"
-                >
+                android:orientation="horizontal"
+                android:weightSum="2">
 
 
                 <TextView
@@ -258,6 +260,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:fontFamily="@font/belgrano"
                     android:gravity="center"
                     android:text="@string/setting"
                     android:textColor="?attr/text_white"
@@ -272,6 +275,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:fontFamily="@font/belgrano"
                     android:gravity="center"
                     android:text="@string/about"
                     android:textColor="?attr/text_white"

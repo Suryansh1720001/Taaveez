@@ -46,9 +46,12 @@
                         android:id="@+id/toolbar_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/belgrano"
                         android:text="@string/edit_content"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="14dp" />
                 </androidx.appcompat.widget.Toolbar>
 
                 <Button
@@ -59,6 +62,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
                     android:text="@string/status"
@@ -71,17 +75,18 @@
                     android:id="@+id/btnUpdatePoem"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
                     android:text="@string/update"
                     android:textAllCaps="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/toolbar_update_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginEnd="10dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -108,15 +113,15 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPoemTopic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/etPoemTopic"
-                android:textColor="?attr/text"
+                android:fontFamily="@font/lato"
 
+                android:textColor="?attr/text"
                 android:textColorHint="?attr/text"
-                android:textSize="18sp"
                 android:textCursorDrawable="@drawable/cursor_color"
-                />
+                android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

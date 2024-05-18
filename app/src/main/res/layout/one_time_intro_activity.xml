@@ -9,27 +9,29 @@
 
 
     <FrameLayout
+        android:id="@+id/skipButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:id="@+id/skipButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="end"
-        android:background="@drawable/bg_skip_btn"
-        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_skip_btn"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Skip"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:layout_margin="7dp"
+            android:fontFamily="@font/cabin_semibold"
+            android:text="Skip"
+            android:textColor="@color/black"
 
-            />
+            android:textSize="20sp" />
 
     </FrameLayout>
 

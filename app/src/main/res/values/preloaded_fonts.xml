@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/akaya_telivigala</item>
+        <item>@font/architects_daughter</item>
+        <item>@font/belgrano</item>
+        <item>@font/biorhyme</item>
+        <item>@font/cabin_semibold</item>
+        <item>@font/lato</item>
+        <item>@font/lato_bold</item>
+    </array>
+</resources>

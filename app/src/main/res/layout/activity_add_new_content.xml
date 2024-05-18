@@ -44,9 +44,12 @@
                         android:id="@+id/toolbar_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/belgrano"
                         android:text="@string/new_content"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="23sp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="14dp" />
                 </androidx.appcompat.widget.Toolbar>
 
                 <Button
@@ -58,6 +61,7 @@
                     android:layout_weight="1"
 
                     android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
                     android:text="@string/status"
@@ -74,6 +78,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
                     android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:gravity="center"
                     android:text="@string/save"
@@ -111,6 +116,7 @@
                 android:id="@+id/idTopic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
                 android:inputType="text"
                 android:textColor="?attr/text"
                 android:textColorHint="?attr/text"
