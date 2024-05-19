@@ -13,23 +13,20 @@
         >
 
         <LinearLayout
-            android:background="?attr/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:background="?attr/bg"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/llupdateheading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/heading_bg_dialog"
-                >
+                android:background="@drawable/heading_bg_dialog">
 
                 <TextView
                     android:id="@+id/tvPoem"
-                    android:text="@string/edit_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -38,45 +35,44 @@
                     android:layout_marginEnd="4dp"
                     android:layout_marginRight="4dp"
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/belgrano"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:text="@string/edit_content"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="25sp"
-                    android:textAlignment="center"
-                    />
+                    android:textStyle="bold" />
             </FrameLayout>
 
             <ImageView
+                android:id="@+id/dialog_image"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_marginTop="7dp"
-                android:src="@drawable/iv_image_4"
-                android:id="@+id/dialog_image"
-                tools:visibility="visible"
-                android:visibility="visible"
                 android:layout_marginBottom="5dp"
-                />
+                android:src="@drawable/iv_image_4"
+                android:visibility="visible"
+                tools:visibility="visible" />
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/idPoemTopic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/idPoemTopic"
-                android:textColorHint="?attr/text"
-                android:layout_marginTop="20dp"
-                app:hintTextColor="?attr/text"
                 android:layout_margin="5dp"
-                >
+                android:layout_marginTop="20dp"
+                android:textColorHint="?attr/text"
+                app:hintTextColor="?attr/text">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPoemTopic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/etPoemTopic"
+                    android:fontFamily="@font/lato"
                     android:textColor="?attr/text"
                     android:textColorHint="?attr/text"
-                    android:textSize="18sp"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    />
+                    android:textSize="18sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,63 +80,60 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:weightSum="4"
-                >
-                <ImageButton
-                    android:id="@+id/btn_update_bold"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_bold"
-                    android:layout_weight="1"
-                    />
-                <ImageButton
-                    android:id="@+id/btn_update_italic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_italic"
-                    android:layout_weight="1"
-                    />
-                <ImageButton
-                    android:id="@+id/btn_update_underline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_underline"
-                    android:layout_weight="1"
-                    />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
 
-                <ImageButton
-                    android:id="@+id/btn_udpate_undo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_undo"
-                    android:layout_weight="1"
-                    />
+                    <ImageButton
+                        android:id="@+id/btn_update_bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_bold" />
 
-                <ImageButton
-                    android:id="@+id/btn_update_redo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_redo"
-                    android:layout_weight="1"
-                    />
-                <ImageButton
-                    android:id="@+id/btn_update_addLink"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add_link"
-                    android:layout_weight="1"
-                    />
+                    <ImageButton
+                        android:id="@+id/btn_update_italic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_italic" />
+
+                    <ImageButton
+                        android:id="@+id/btn_update_underline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_underline" />
+
+                    <ImageButton
+                        android:id="@+id/btn_udpate_undo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_undo" />
+
+                    <ImageButton
+                        android:id="@+id/btn_update_redo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_redo" />
+
+                    <ImageButton
+                        android:id="@+id/btn_update_addLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_add_link" />
 
 
-            </LinearLayout>
+                </LinearLayout>
             </HorizontalScrollView>
 
 
@@ -167,47 +160,53 @@
             <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
             <jp.wasabeef.richeditor.RichEditor
-                android:layout_margin="10dp"
                 android:id="@+id/etUpdatePoem"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                />
+                android:layout_margin="10dp" />
 
 
-
-            <LinearLayout
-                android:id="@+id/llbutton"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_margin="5dp"
-                >
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="8dp"
-                    android:id="@+id/btnUpdatePoem"
-                    android:background="@drawable/custom_button"
-                    android:text="@string/update"
-                    android:textAllCaps="false"
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:layout_height="match_parent">
 
-                    />
-                <Button
-                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="8dp"
-                    android:id="@+id/btnCancelPoem"
-                    android:background="@drawable/custom_button"
-                    android:text="@string/cancel"
-                    android:textAllCaps="false"
-                    />
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/btnCancelPoem"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/custom_button"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:text="@string/cancel"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnUpdatePoem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+
+                        android:background="@drawable/custom_button"
+                        android:fontFamily="@font/cabin_semibold"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:text="@string/update"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 

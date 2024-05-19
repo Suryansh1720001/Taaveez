@@ -19,46 +19,49 @@
         >
 
 
-        <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_open_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        >
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_open_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
 
-    </androidx.appcompat.widget.Toolbar>
+                app:layout_constraintStart_toStartOf="parent">
 
+            </androidx.appcompat.widget.Toolbar>
 
+            <TextView
+                android:id="@+id/tvTopic"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/belgrano"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="5dp"
+                tools:text="@string/Poem" />
 
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
 
-        <TextView
-            android:id="@+id/tvTopic"
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            tools:text="@string/Poem"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="28sp"
-            android:gravity="center"
-            />
-
-
-        <ImageButton
-            android:id="@+id/btn_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/menu_icon"
-            android:layout_gravity="end"
-            android:layout_marginRight="3dp"
-
-            />
-
-
+                android:padding="5dp"
+                android:src="@drawable/menu_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </FrameLayout>
@@ -85,18 +88,18 @@
 
             >
 
-        <TextView
-            android:textColor="?attr/text"
-            android:id="@+id/tvContentDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp"
-            tools:text="Poem DEs"
-            android:textSize="22sp"
-            android:layout_marginBottom="10dp"
-            />
+            <TextView
+                android:id="@+id/tvContentDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/lato"
+                android:textColor="?attr/text"
+                android:textSize="22sp"
+                tools:text="Poem DEs" />
 
         </LinearLayout>
     </ScrollView>

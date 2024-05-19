@@ -27,155 +27,176 @@
 
             >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_add_new_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
 
-            >
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/new_content"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </androidx.appcompat.widget.Toolbar>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar_add_new_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:textAllCaps="false"
-                android:id="@+id/isComplete"
+                    app:layout_constraintStart_toStartOf="parent">
 
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:background="@drawable/custom_button"
-                android:layout_marginTop="8dp"
-                android:text="@string/status"
-                android:layout_marginRight="10dp" />
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/belgrano"
+                        android:text="@string/new_content"
+                        android:textColor="@color/white"
+                        android:textSize="23sp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="14dp" />
+                </androidx.appcompat.widget.Toolbar>
+
+                <Button
+                    android:id="@+id/isComplete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+
+                    android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/status"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/saveContent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/saveContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_button"
+                    android:fontFamily="@font/cabin_semibold"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:gravity="center"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="center"
-       android:layout_weight="1"
-            android:textAllCaps="false"
-            android:id="@+id/saveContent"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:background="@drawable/custom_button"
-            android:layout_marginTop="8dp"
-            android:text="@string/save"
-            android:layout_marginRight="10dp" />
         </LinearLayout>
     </FrameLayout>
 
 
     <LinearLayout
+        android:id="@+id/ll_add_new_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:id="@+id/ll_add_new_content"
-        app:layout_constraintTop_toBottomOf="@id/fl_header_image"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fl_header_image">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etNotesTopic"
-        android:layout_margin="5dp"
-        android:hint="@string/Topic"
-        android:padding="5dp"
-        android:textColorHint="?attr/text"
-        app:hintTextColor="?attr/text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/idTopic"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etNotesTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textColor="?attr/text"
+            android:layout_margin="5dp"
+            android:hint="@string/Topic"
+            android:padding="5dp"
             android:textColorHint="?attr/text"
-            android:textSize="18sp" />
+            app:hintTextColor="?attr/text">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:inputType="text"
+                android:textColor="?attr/text"
+                android:textColorHint="?attr/text"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </LinearLayout>
 
 
-
-            <jp.wasabeef.richeditor.RichEditor
-                android:id="@+id/idnotes"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/hsv_buttons"
-                app:layout_constraintTop_toBottomOf="@id/ll_add_new_content"
-                />
+    <jp.wasabeef.richeditor.RichEditor
+        android:id="@+id/idnotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/hsv_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_add_new_content" />
 
     <HorizontalScrollView
+        android:id="@+id/hsv_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/hsv_buttons"
-        app:layout_constraintTop_toBottomOf="@id/idnotes"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/idnotes">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="3dp"
             android:orientation="horizontal"
-            android:weightSum="4"
-            >
+            android:weightSum="4">
+
             <ImageButton
                 android:id="@+id/btn_bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_bold"
                 android:layout_weight="1"
-                />
+                android:src="@drawable/ic_bold" />
+
             <ImageButton
                 android:id="@+id/btn_italic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_italic"
                 android:layout_weight="1"
-                />
+                android:src="@drawable/ic_italic" />
+
             <ImageButton
                 android:id="@+id/btn_underline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_underline"
                 android:layout_weight="1"
-                />
+                android:src="@drawable/ic_underline" />
+
             <ImageButton
                 android:id="@+id/btn_undo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_undo"
                 android:layout_weight="1"
-                />
+                android:src="@drawable/ic_undo" />
 
             <ImageButton
-            android:id="@+id/btn_redo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_redo"
-            android:layout_weight="1"
-            />
+                android:id="@+id/btn_redo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_redo" />
+
             <ImageButton
                 android:id="@+id/btn_add_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_add_link"
                 android:layout_weight="1"
-                />
+                android:src="@drawable/ic_add_link" />
 
         </LinearLayout>
     </HorizontalScrollView>

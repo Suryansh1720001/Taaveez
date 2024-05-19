@@ -34,14 +34,14 @@
             android:id="@+id/tvTopic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/about_content"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="25sp"
+            android:fontFamily="@font/belgrano"
             android:gravity="center"
-            />
+            android:text="@string/about_content"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
     </FrameLayout>
 
@@ -53,16 +53,17 @@
             android:gravity="center_horizontal"
             >
 
-        <TextView
-            android:id="@+id/tv_contentCompleteStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/complete_status"
-            android:textColor="?attr/text"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-           android:layout_marginBottom="20dp" />
+            <TextView
+                android:id="@+id/tv_contentCompleteStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="@string/complete_status"
+                android:textColor="?attr/text"
+                android:textSize="23sp" />
 
 
             <ImageView
@@ -75,60 +76,63 @@
                 />
 
         </LinearLayout>
-    <TextView
-        android:id="@+id/tv_created_on"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/created_date"
-        android:textColor="?attr/text"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp" />
 
-    <TextView
-        android:textColor="?attr/text"
-        android:id="@+id/tvPoemCreatedDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="14sp"
-        android:padding="5dp"
-        android:background="@drawable/updated_date_bg"
-        />
+        <TextView
+            android:id="@+id/tv_created_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/created_date"
+            android:textColor="?attr/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvPoemCreatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/updated_date_bg"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="?attr/text"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
 
-    <TextView
-        android:id="@+id/tv_updated_on"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/updated_date"
-        android:textColor="?attr/text"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp" />
+        <TextView
+            android:id="@+id/tv_updated_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/updated_date"
+            android:textColor="?attr/text"
+            android:textSize="20sp" />
 
-    <TextView
-        android:textStyle="bold"
-        android:textColor="?attr/text"
-        android:id="@+id/tvPoemUpdatedDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="22dp"
-        android:textSize="14sp"
-        android:padding="5dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:background="@drawable/created_date_bg"
+        <TextView
+            android:id="@+id/tvPoemUpdatedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="22dp"
+            android:background="@drawable/created_date_bg"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="?attr/text"
+            android:textSize="14sp"
 
-        />
+            android:textStyle="bold" />
 
 
 <!--        <Button-->

@@ -15,178 +15,180 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/item_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_bg">
 
-        <LinearLayout
-
-            android:layout_margin="4dp"
-            android:id="@+id/llTopic"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/llsmallDes"
-            android:weightSum="6"
-            >
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/ivEdit"
                 android:layout_width="40dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:contentDescription="image"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:scaleType="center"
                 android:src="@drawable/ic_action_edit"
-
-                />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:layout_weight="4"
-                >
-                <TextView
-                    android:layout_margin="2dp"
-                    android:textColor="?attr/text_white"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/Topic"
-                    android:textSize="22sp"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/tvtextTopic"
-                    android:gravity="center"
-                    />
-
-            </LinearLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_isContentComplete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_incomplete"
+                android:layout_marginEnd="10dp"
+
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:src="@drawable/ic_incomplete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                />
+            <TextView
+                android:id="@+id/tvtextTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/belgrano"
+                android:gravity="center"
+                android:textColor="?attr/text_white"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/Topic" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llsmallDes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/llTopic"
-            app:layout_constraintBottom_toTopOf="@id/lldateandbutton"
-
-
-            >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               tools:text="Date"
-                android:textSize="18sp"
                 android:id="@+id/tv_smallDes"
-                android:gravity="center"
-                android:layout_margin="6dp"
-                android:textColor="?attr/text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                />
+                android:layout_margin="6dp"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="?attr/text"
+                android:textSize="18sp"
+                tools:text="Date" />
         </LinearLayout>
-
-
-
-
 
         <LinearLayout
+            android:id="@+id/lldateandbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lldateandbutton"
-            app:layout_constraintTop_toBottomOf="@id/llsmallDes"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="horizontal"
+            android:visibility="visible"
             android:weightSum="5"
-            >
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llsmallDes">
 
 
-            <LinearLayout
-                android:id="@+id/lldate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="5"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                >
+                <LinearLayout
 
-                    <TextView
-                        android:textStyle="bold"
-                   android:layout_gravity="bottom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Date"
-                        android:textSize="15sp"
-                        android:id="@+id/tvDate"
-                        android:gravity="center"
-                        android:layout_margin="7dp"
+                    android:id="@+id/lldelandshare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
 
-                        android:textColor="?attr/text"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <ImageView
+
+                        android:id="@+id/ivShare"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:contentDescription="image"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_share" />
+
+                    <ImageView
+                        android:id="@+id/ivDelete"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:contentDescription="image"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_action_delete"
+
                         />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lldate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_margin="7dp"
 
-            <LinearLayout
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center"
+                        android:textColor="?attr/text"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="Date" />
+                </LinearLayout>
 
-                android:id="@+id/lldelandshare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                >
-
-                <ImageView
-
-                    android:id="@+id/ivShare"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="image"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_share"
-                    android:layout_weight="1"
-                    />
-
-                <ImageView
-                    android:id="@+id/ivDelete"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="image"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_action_delete"
-                    android:layout_weight="1"
-
-                    />
-
-            </LinearLayout>
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
