@@ -295,7 +295,6 @@
         android:layout_gravity="start"
         android:background="?attr/bg"
         android:theme="@style/Theme.AppCompat.DayNight"
-        android:visibility="gone"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/side_menu" />
 
