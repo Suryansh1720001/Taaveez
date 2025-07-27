@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
-import android.view.*
 import android.widget.PopupMenu
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
@@ -23,7 +22,6 @@ import com.itssuryansh.taaveez.R
 import com.itssuryansh.taaveez.TaaveezApp
 import com.itssuryansh.taaveez.databinding.ActivityOpenContentBinding
 import com.itssuryansh.taaveez.databinding.DialogAboutOfOpenContentBinding
-import kotlinx.android.synthetic.main.activity_add_new_content.*
 import kotlinx.coroutines.launch
 import java.util.*
 

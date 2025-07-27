@@ -39,8 +39,6 @@ import com.itssuryansh.taaveez.database.TaaveezDao
 import com.itssuryansh.taaveez.databinding.*
 import com.itssuryansh.taaveez.helper.Constants
 import jp.wasabeef.richeditor.RichEditor
-import kotlinx.android.synthetic.main.activity_add_new_content.*
-import kotlinx.android.synthetic.main.menu_header.tv_navigationBar_heading
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -916,6 +914,7 @@ lateinit var drawerlayout : DrawerLayout
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         BackButton()
     }
 
